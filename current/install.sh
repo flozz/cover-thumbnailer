@@ -28,7 +28,7 @@
 ##                                                                        ##
 ############################################################################
 ##                                                                        ##
-## VERSION : 0.6 (Sat, 26 Dec 2009 21:57:53 +0100)                        ##
+## VERSION : 0.7 (Mon, 28 Dec 2009 00:15:10 +0100)                        ##
 ## WEB SITE : http://software.flogisoft.com/cover-thumbnailer/            ##
 ##                                                                       ##
 #########################################################################
@@ -144,7 +144,7 @@ install_ct() {
 	#/usr/share/locale/xx_XX/LC_MESSAGES
 	#fr
 	mkdir -pv /usr/share/locale/fr/LC_MESSAGES || error=1
-	cp -v ./locale/fr/LC_MESSAGES/cover-thumbnailer-gui.mo /usr/share/locale/fr/LC_MESSAGES/ || error=1
+	cp -v ./locale/fr.mo /usr/share/locale/fr/LC_MESSAGES/cover-thumbnailer.mo || error=1
 	chown -v root:root /usr/share/locale/fr/LC_MESSAGES/cover-thumbnailer-gui.mo || error=1
 	chmod -v 644 /usr/share/locale/fr/LC_MESSAGES/cover-thumbnailer-gui.mo || error=1
 

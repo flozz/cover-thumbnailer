@@ -29,7 +29,7 @@
 ##                                                                        ##
 ############################################################################
 ##                                                                        ##
-## VERSION : 0.6 (Sat, 26 Dec 2009 21:42:34 +0100)                        ##
+## VERSION : 0.7 (Mon, 28 Dec 2009 00:14:22 +0100)                        ##
 ## WEB SITE : http://software.flogisoft.com/cover-thumbnailer/            ##
 ##                                                                       ##
 #########################################################################
@@ -138,9 +138,9 @@ class Conf(object):
 		if not os.path.isdir(ctconfpath):
 			os.makedirs(ctconfpath)
 
-		file = open(ctconfpath + 'cover-thumbnailer.conf', 'w') #FIXME
-		file.write(_('#Configuration writed by Cover Thumbnailer GUI\n'))
-		file.write(_('#Please edit with caution\n'))
+		file = open(ctconfpath + 'cover-thumbnailer.conf', 'w')
+		file.write('#' + _('Configuration writed by Cover Thumbnailer GUI') + "\n")
+		file.write("#" + _('Please edit with caution') + "\n")
 		#MUSIC
 		file.write("\n[MUSIC]\n")
 		if len(self.music_paths) > 0:

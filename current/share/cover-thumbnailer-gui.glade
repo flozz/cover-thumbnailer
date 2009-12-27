@@ -886,7 +886,7 @@
     <property name="skip_taskbar_hint">True</property>
     <property name="program_name">Cover Thumbnailer</property>
     <property name="version">0.6</property>
-    <property name="copyright" translatable="yes">Copyright &#xA9; 2009 Fabien LOISON</property>
+    <property name="copyright">Copyright &#xA9; 2009 Fabien LOISON</property>
     <property name="comments" translatable="yes">Configuration tool for Cover Thumbnailer</property>
     <property name="website">http://software.flogisoft.com/cover-thumbnailer/</property>
     <property name="license">This program is free software: you can redistribute it and/or modify

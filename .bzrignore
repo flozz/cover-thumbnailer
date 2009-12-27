@@ -1,0 +1,11 @@
+*.bak
+*~
+Build*
+Links
+Medias res
+release pkg backup
+TEST
+translation
+*TODO*
+v*
+*.mo
