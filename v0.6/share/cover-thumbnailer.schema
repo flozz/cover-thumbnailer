@@ -1,0 +1,26 @@
+<gconfschemafile>
+  <schemalist>
+    <schema>
+      <key>/schemas/desktop/gnome/thumbnailers/inode@directory/enable</key>
+      <applyto>/desktop/gnome/thumbnailers/inode@directory/enable</applyto>
+      <owner>cover-thumbnailer</owner>
+      <type>bool</type>
+      <default>true</default>
+      <locale name="C">
+        <short></short>
+        <long></long>
+      </locale>
+    </schema>
+    <schema>
+      <key>/schemas/desktop/gnome/thumbnailers/inode@directory/command</key>
+      <applyto>/desktop/gnome/thumbnailers/inode@directory/command</applyto>
+      <owner>cover-thumbnailer</owner>
+      <type>string</type>
+	  <default>cover-thumbnailer %u %o</default>
+      <locale name="C">
+        <short></short>
+        <long></long>
+      </locale>
+    </schema>
+  </schemalist>
+</gconfschemafile>  
