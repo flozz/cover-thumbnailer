@@ -48,6 +48,7 @@ import os, re, shutil
 
 #Base path
 BASE_PATH = '/usr/share/cover-thumbnailer/'
+#BASE_PATH = './share/' #FIXME : dev
 
 
 class Conf(object):

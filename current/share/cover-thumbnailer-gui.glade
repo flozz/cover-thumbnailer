@@ -141,7 +141,7 @@
                                 <property name="spacing">5</property>
                                 <child>
                                   <object class="GtkButton" id="btnMusicAdd">
-                                    <property name="label" translatable="yes">gtk-add</property>
+                                    <property name="label">gtk-add</property>
                                     <property name="visible">True</property>
                                     <property name="can_focus">True</property>
                                     <property name="receives_default">True</property>
@@ -155,7 +155,7 @@
                                 </child>
                                 <child>
                                   <object class="GtkButton" id="btnMusicRemove">
-                                    <property name="label" translatable="yes">gtk-remove</property>
+                                    <property name="label">gtk-remove</property>
                                     <property name="visible">True</property>
                                     <property name="sensitive">False</property>
                                     <property name="can_focus">True</property>
@@ -352,7 +352,7 @@
                                 <property name="spacing">5</property>
                                 <child>
                                   <object class="GtkButton" id="btnPicturesAdd">
-                                    <property name="label" translatable="yes">gtk-add</property>
+                                    <property name="label">gtk-add</property>
                                     <property name="visible">True</property>
                                     <property name="can_focus">True</property>
                                     <property name="receives_default">True</property>
@@ -366,7 +366,7 @@
                                 </child>
                                 <child>
                                   <object class="GtkButton" id="btnPicturesRemove">
-                                    <property name="label" translatable="yes">gtk-remove</property>
+                                    <property name="label">gtk-remove</property>
                                     <property name="visible">True</property>
                                     <property name="sensitive">False</property>
                                     <property name="can_focus">True</property>
@@ -621,7 +621,7 @@
                                 <property name="spacing">5</property>
                                 <child>
                                   <object class="GtkButton" id="btnIgnoredAdd">
-                                    <property name="label" translatable="yes">gtk-add</property>
+                                    <property name="label">gtk-add</property>
                                     <property name="visible">True</property>
                                     <property name="can_focus">True</property>
                                     <property name="receives_default">True</property>
@@ -635,7 +635,7 @@
                                 </child>
                                 <child>
                                   <object class="GtkButton" id="btnIgnoredRemove">
-                                    <property name="label" translatable="yes">gtk-remove</property>
+                                    <property name="label">gtk-remove</property>
                                     <property name="visible">True</property>
                                     <property name="sensitive">False</property>
                                     <property name="can_focus">True</property>
@@ -807,7 +807,7 @@
                 <property name="layout_style">start</property>
                 <child>
                   <object class="GtkButton" id="btnAbout">
-                    <property name="label" translatable="yes">gtk-about</property>
+                    <property name="label">gtk-about</property>
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="receives_default">True</property>
@@ -833,7 +833,7 @@
                 <property name="layout_style">end</property>
                 <child>
                   <object class="GtkButton" id="btnCancel">
-                    <property name="label" translatable="yes">gtk-cancel</property>
+                    <property name="label">gtk-cancel</property>
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="receives_default">True</property>
@@ -848,7 +848,7 @@
                 </child>
                 <child>
                   <object class="GtkButton" id="btnOk">
-                    <property name="label" translatable="yes">gtk-ok</property>
+                    <property name="label">gtk-ok</property>
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="receives_default">True</property>
@@ -884,8 +884,9 @@
     <property name="icon_name">help-about</property>
     <property name="type_hint">normal</property>
     <property name="skip_taskbar_hint">True</property>
+    <property name="has_separator">False</property>
     <property name="program_name">Cover Thumbnailer</property>
-    <property name="version">0.6</property>
+    <property name="version">0.7</property>
     <property name="copyright">Copyright &#xA9; 2009 Fabien LOISON</property>
     <property name="comments" translatable="yes">Configuration tool for Cover Thumbnailer</property>
     <property name="website">http://software.flogisoft.com/cover-thumbnailer/</property>
@@ -907,7 +908,13 @@ along with this program.  If not, see &lt;http://www.gnu.org/licenses/&gt;.</pro
   - Fabien LOISON &lt;flo@flogisoft.com&gt;
 
 French :
- - Fabien LOISON &lt;flo@flogisoft.com&gt;</property>
+ - Fabien LOISON &lt;flo@flogisoft.com&gt;
+
+Polish :
+ - Mateusz LITTWIN
+
+Russian :
+ - Lucas COUROT &lt;lucas(at)courot.com&gt;</property>
     <property name="artists">Fabien LOISON &lt;flo@flogisoft.com&gt;</property>
     <property name="logo">logo.png</property>
     <signal name="delete_event" handler="on_winAbout_delete_event"/>
@@ -917,7 +924,67 @@ French :
         <property name="orientation">vertical</property>
         <property name="spacing">2</property>
         <child>
-          <placeholder/>
+          <object class="GtkVBox" id="vboxTranslate">
+            <property name="visible">True</property>
+            <property name="orientation">vertical</property>
+            <child>
+              <object class="GtkHSeparator" id="hseparator1">
+                <property name="visible">True</property>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="position">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkHBox" id="hboxTranslate">
+                <property name="visible">True</property>
+                <property name="spacing">5</property>
+                <child>
+                  <object class="GtkLabel" id="labelTranslate">
+                    <property name="visible">True</property>
+                    <property name="xalign">0</property>
+                    <property name="label" translatable="yes">Not in your language ?</property>
+                    <attributes>
+                      <attribute name="weight" value="bold"/>
+                    </attributes>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="position">0</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkLinkButton" id="linkbuttonTranslate">
+                    <property name="label" translatable="yes">Translate Cover Thumbnailer</property>
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="receives_default">True</property>
+                    <property name="relief">none</property>
+                    <property name="uri">https://translations.launchpad.net/cover-thumbnailer/trunk</property>
+                  </object>
+                  <packing>
+                    <property name="position">1</property>
+                  </packing>
+                </child>
+              </object>
+              <packing>
+                <property name="position">1</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkHSeparator" id="hseparator2">
+                <property name="visible">True</property>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="position">2</property>
+              </packing>
+            </child>
+          </object>
+          <packing>
+            <property name="position">2</property>
+          </packing>
         </child>
         <child internal-child="action_area">
           <object class="GtkHButtonBox" id="dialog-action_area1">
@@ -948,8 +1015,8 @@ French :
     <property name="type_hint">normal</property>
     <property name="skip_taskbar_hint">True</property>
     <property name="has_separator">False</property>
-    <property name="preview_widget_active">False</property>
     <property name="action">select-folder</property>
+    <property name="preview_widget_active">False</property>
     <signal name="delete_event" handler="on_filechooserdialog_delete_event"/>
     <child internal-child="vbox">
       <object class="GtkVBox" id="dialog-vbox3">
@@ -965,7 +1032,7 @@ French :
             <property name="layout_style">end</property>
             <child>
               <object class="GtkButton" id="btnFileChooserCancel">
-                <property name="label" translatable="yes">gtk-cancel</property>
+                <property name="label">gtk-cancel</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
@@ -980,7 +1047,7 @@ French :
             </child>
             <child>
               <object class="GtkButton" id="btnFileChooserOpen">
-                <property name="label" translatable="yes">gtk-open</property>
+                <property name="label">gtk-open</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
@@ -1033,7 +1100,7 @@ French :
             </child>
             <child>
               <object class="GtkButton" id="btnErrorPAILClose">
-                <property name="label" translatable="yes">gtk-close</property>
+                <property name="label">gtk-close</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>

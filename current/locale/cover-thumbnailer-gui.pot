@@ -1,32 +1,32 @@
-# Cover Thubmnailer GUI : configuration tool for Cover Thumbnailer.
+# SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the Cover Thumbnailer package.
-# Fabien LOISON <flo@flogisoft.com>, 2009.
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: 0.7\n"
+"Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-28 00:19+0100\n"
+"POT-Creation-Date: 2009-12-29 01:07+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../cover-thumbnailer-gui.py:60 ../cover-thumbnailer-gui.py:63
+#: ../cover-thumbnailer-gui.py:61 ../cover-thumbnailer-gui.py:64
 #: ../share/cover-thumbnailer-gui.glade:204
 #: ../share/cover-thumbnailer-gui.glade:415
 msgid "<Empty>"
 msgstr ""
 
-#: ../cover-thumbnailer-gui.py:142
+#: ../cover-thumbnailer-gui.py:143
 msgid "Configuration writed by Cover Thumbnailer GUI"
 msgstr ""
 
-#: ../cover-thumbnailer-gui.py:143
+#: ../cover-thumbnailer-gui.py:144
 msgid "Please edit with caution"
 msgstr ""
 
@@ -48,18 +48,6 @@ msgstr ""
 
 #: ../share/cover-thumbnailer-gui.glade:95
 msgid "List of music folders :"
-msgstr ""
-
-#: ../share/cover-thumbnailer-gui.glade:144
-#: ../share/cover-thumbnailer-gui.glade:355
-#: ../share/cover-thumbnailer-gui.glade:624
-msgid "gtk-add"
-msgstr ""
-
-#: ../share/cover-thumbnailer-gui.glade:158
-#: ../share/cover-thumbnailer-gui.glade:369
-#: ../share/cover-thumbnailer-gui.glade:638
-msgid "gtk-remove"
 msgstr ""
 
 #: ../share/cover-thumbnailer-gui.glade:193
@@ -148,39 +136,26 @@ msgstr ""
 msgid "Miscellaneous"
 msgstr ""
 
-#: ../share/cover-thumbnailer-gui.glade:810
-msgid "gtk-about"
-msgstr ""
-
-#: ../share/cover-thumbnailer-gui.glade:836
-#: ../share/cover-thumbnailer-gui.glade:968
-msgid "gtk-cancel"
-msgstr ""
-
-#: ../share/cover-thumbnailer-gui.glade:851
-msgid "gtk-ok"
-msgstr ""
-
 #: ../share/cover-thumbnailer-gui.glade:879
 msgid "About Cover Thumbnailer"
 msgstr ""
 
-#: ../share/cover-thumbnailer-gui.glade:890
+#: ../share/cover-thumbnailer-gui.glade:891
 msgid "Configuration tool for Cover Thumbnailer"
 msgstr ""
 
-#: ../share/cover-thumbnailer-gui.glade:943
+#: ../share/cover-thumbnailer-gui.glade:947
+msgid "Not in your language ?"
+msgstr ""
+
+#: ../share/cover-thumbnailer-gui.glade:959
+msgid "Translate Cover Thumbnailer"
+msgstr ""
+
+#: ../share/cover-thumbnailer-gui.glade:1010
 msgid "Select a folder - Cover Thumbnailer"
 msgstr ""
 
-#: ../share/cover-thumbnailer-gui.glade:983
-msgid "gtk-open"
-msgstr ""
-
-#: ../share/cover-thumbnailer-gui.glade:1012
+#: ../share/cover-thumbnailer-gui.glade:1079
 msgid "Error - Cover Thumbnailer"
-msgstr ""
-
-#: ../share/cover-thumbnailer-gui.glade:1036
-msgid "gtk-close"
 msgstr ""
