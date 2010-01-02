@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Cover Thumbnailer
+GenericName=Cover Thumbnailer
+Comment=Configuration tool for Cover Thumbnailer
+Comment[fr]=Outil de configuration pour Cover Thumbnailer
+Categories=Settings;
+Exec=cover-thumbnailer-gui
+Icon=/usr/share/cover-thumbnailer/icon.png

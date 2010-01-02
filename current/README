@@ -23,15 +23,15 @@ Cover thumbnailer depend on :
   * Python <http://www.python.org/>
   * Python Imaging (PIL) <http://www.pythonware.com/products/pil/>
   * GConf <http://projects.gnome.org/gconf/>
-
-Cover thumbnailer GUI depend on :
   * PyGTK <http://www.pygtk.org/>
+
+For building Cover Thumbnailer, you need :
   * GNU gettext <http://www.gnu.org/software/gettext/>
 
 
 —— INSTALL —————————————————————————————————————————————————————————————————
 
-For install Cover thumbnailer, run 'install.sh' as root.
+For install Cover thumbnailer, run 'install' as root.
 
 
 —— UNINSTALL ———————————————————————————————————————————————————————————————

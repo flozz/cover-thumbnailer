@@ -28,10 +28,19 @@
 ##                                                                        ##
 ############################################################################
 ##                                                                        ##
-## VERSION : 0.7 (Mon, 28 Dec 2009 00:15:10 +0100)                        ##
+## VERSION : 0.7 (Sat, 02 Jan 2010 22:47:34 +0100)                        ##
 ## WEB SITE : http://software.flogisoft.com/cover-thumbnailer/            ##
 ##                                                                       ##
 #########################################################################
+
+#########################################################################
+##                                                                       ##
+## ARGS :                                                                 ##
+##   -p <path>                                                            ##
+##     Install path (default : /). Usefull for packaging                  ##
+##     NOTE : <path> with no "/" at the end !                             ##
+ ##                                                                       ##
+   #########################################################################
 
 
 #=============================================================== CONFIG ====
@@ -99,13 +108,13 @@ remove_old_version() { #(≤ 0.3.3)
 
 install_ct() {
 	#Old version installed ? (≤ 0.3.3)
-	if [ -d /opt/cover_thumbnailer/ ] ; then {
+	if [ -d /opt/cover_thumbnailer/ ] && [ "$INSTP" == ""] ; then {
 		echo -e "$COLOR_INFO$LANG_INFOS_OLD_VERSION$COLOR_DEFAULT"
 		remove_old_version
 	} fi
 
 	#Old version installed ? (≥ 0.4)
-	if [ -d /usr/share/cover-thumbnailer/ ] ; then {
+	if [ -d /usr/share/cover-thumbnailer/ ]  && [ "$INSTP" == ""] ; then {
 		echo -e "$COLOR_INFO$LANG_INFOS_OLD_VERSION$COLOR_DEFAULT"
 		if [ -x /usr/share/cover-thumbnailer/uninstall.sh ] ; then {
 			echo -e "$COLOR_INFO$LANG_INFOS_OLD_VERSION_RM$COLOR_DEFAULT"
@@ -123,49 +132,60 @@ install_ct() {
 	error=0
 
 	#/usr/share/cover-thumbnailer/
-	mkdir -pv /usr/share/cover-thumbnailer || error=1
-	cp -rv ./share/* /usr/share/cover-thumbnailer || error=1
-	chown -Rv root:root /usr/share/cover-thumbnailer || error=1
-	chmod -Rv 644 /usr/share/cover-thumbnailer/ || error=1
-	chmod -v 755 /usr/share/cover-thumbnailer || error=1
+	mkdir -pv "$INSTP"/usr/share/cover-thumbnailer || error=1
+	cp -rv ./share/* "$INSTP"/usr/share/cover-thumbnailer || error=1
+	chown -Rv root:root "$INSTP"/usr/share/cover-thumbnailer || error=1
+	chmod -Rv 644 "$INSTP"/usr/share/cover-thumbnailer/ || error=1
+	chmod -v 755 "$INSTP"/usr/share/cover-thumbnailer || error=1
 
 	#/usr/share/man/man1
-	mkdir -pv /usr/share/man/man1 || error=1
-	cp -v ./man/cover-thumbnailer.1 /usr/share/man/man1/ || error=1
-	chown -v root:root /usr/share/man/man1/cover-thumbnailer.1 || error=1
-	chmod -v 644 /usr/share/man/man1/cover-thumbnailer.1 || error=1
-	gzip --best /usr/share/man/man1/cover-thumbnailer.1 || error=1
+	mkdir -pv "$INSTP"/usr/share/man/man1 || error=1
+	cp -v ./man/cover-thumbnailer.1 "$INSTP"/usr/share/man/man1/ || error=1
+	chown -v root:root "$INSTP"/usr/share/man/man1/cover-thumbnailer.1 || error=1
+	chmod -v 644 "$INSTP"/usr/share/man/man1/cover-thumbnailer.1 || error=1
+	gzip --best "$INSTP"/usr/share/man/man1/cover-thumbnailer.1 || error=1
 
-	cp -v ./man/cover-thumbnailer-gui.1 /usr/share/man/man1/ || error=1
-	chown -v root:root /usr/share/man/man1/cover-thumbnailer-gui.1 || error=1
-	chmod -v 644 /usr/share/man/man1/cover-thumbnailer-gui.1 || error=1
-	gzip --best /usr/share/man/man1/cover-thumbnailer-gui.1 || error=1
+	cp -v ./man/cover-thumbnailer-gui.1 "$INSTP"/usr/share/man/man1/ || error=1
+	chown -v root:root "$INSTP"/usr/share/man/man1/cover-thumbnailer-gui.1 || error=1
+	chmod -v 644 "$INSTP"/usr/share/man/man1/cover-thumbnailer-gui.1 || error=1
+	gzip --best "$INSTP"/usr/share/man/man1/cover-thumbnailer-gui.1 || error=1
 
 	#/usr/share/locale/xx_XX/LC_MESSAGES
-	#fr
-	mkdir -pv /usr/share/locale/fr/LC_MESSAGES || error=1
-	cp -v ./locale/fr.mo /usr/share/locale/fr/LC_MESSAGES/cover-thumbnailer.mo || error=1
-	chown -v root:root /usr/share/locale/fr/LC_MESSAGES/cover-thumbnailer-gui.mo || error=1
-	chmod -v 644 /usr/share/locale/fr/LC_MESSAGES/cover-thumbnailer-gui.mo || error=1
+	for file in `find ./locale -name "*.po"` ; do {
+		l10elang=`echo $file | sed -r 's#./locale/(.*).po#\1#g'`
+		mkdir -pv "$INSTP"/usr/share/locale/$l10elang/LC_MESSAGES/ || error=1
+		msgfmt "$file" -o "$INSTP"/usr/share/locale/$l10elang/LC_MESSAGES/cover-thumbnailer-gui.mo || error=1
+		chown -v root:root "$INSTP"/usr/share/locale/$l10elang/LC_MESSAGES/cover-thumbnailer-gui.mo || error=1
+		chmod -v 644 "$INSTP"/usr/share/locale/$l10elang/LC_MESSAGES/cover-thumbnailer-gui.mo || error=1
+	} done
+
+	#/usr/share/applications
+	mkdir -pv "$INSTP"/usr/share/applications/ || error=1
+	cp -v ./freedesktop/cover-thumbnailer-gui.desktop "$INSTP"/usr/share/applications/cover-thumbnailer-gui.desktop || error=1
 
 	#/usr/bin
-	mkdir -pv /usr/bin || error=1
-	cp -v ./cover-thumbnailer.py /usr/bin/cover-thumbnailer || error=1
-	chown -v root:root /usr/bin/cover-thumbnailer || error=1
-	chmod -v 755 /usr/bin/cover-thumbnailer || error=1
+	mkdir -pv "$INSTP"/usr/bin || error=1
+	cp -v ./cover-thumbnailer.py "$INSTP"/usr/bin/cover-thumbnailer || error=1
+	chown -v root:root "$INSTP"/usr/bin/cover-thumbnailer || error=1
+	chmod -v 755 "$INSTP"/usr/bin/cover-thumbnailer || error=1
 
-	cp -v ./cover-thumbnailer-gui.py /usr/bin/cover-thumbnailer-gui || error=1
-	chown -v root:root /usr/bin/cover-thumbnailer-gui || error=1
-	chmod -v 755 /usr/bin/cover-thumbnailer-gui || error=1
+	cp -v ./cover-thumbnailer-gui.py "$INSTP"/usr/bin/cover-thumbnailer-gui || error=1
+	chown -v root:root "$INSTP"/usr/bin/cover-thumbnailer-gui || error=1
+	chmod -v 755 "$INSTP"/usr/bin/cover-thumbnailer-gui || error=1
 
 
 	#gconf
-	gconf-schemas --register /usr/share/cover-thumbnailer/cover-thumbnailer.schema || error=1
+	if [ "$INSTP" == "" ] ; then {
+		export GCONF_CONFIG_SOURCE=`gconftool-2 --get-default-source`
+		gconftool-2 --makefile-install-rule /usr/share/cover-thumbnailer/cover-thumbnailer.schema || error=1
+	} fi
 
 	#uninstall
-	cat ./install.sh | sed 's/install_ct #INSTALL/uninstall_ct #UNINSTALL/g' \
-	> /usr/share/cover-thumbnailer/uninstall.sh || error=1
-	chmod -v 755 /usr/share/cover-thumbnailer/uninstall.sh || error=1
+	if [ "$INSTP" == "" ] ; then { #Don't create the uninstall script if we build a package
+		cat ./install | sed 's/install_ct #INSTALL/uninstall_ct #UNINSTALL/g' \
+		> /usr/share/cover-thumbnailer/uninstall.sh || error=1
+		chmod -v 755 /usr/share/cover-thumbnailer/uninstall.sh || error=1
+	} fi
 
 	if [ $error == 0 ] ; then {
 		echo -e "$COLOR_SUCCESS$LANG_SUCCESS_INSTALL$COLOR_DEFAULT"
@@ -217,10 +237,15 @@ if [ `echo $LANG | head -c 2` == fr ] ; then {
 
 echo -e "$COLOR_INFO$LANG_INFOS_WELCOME$COLOR_DEFAULT"
 
-#root ?
+root ?
 if [ `whoami` != root ] ; then {
 	echo -e "$COLOR_ERROR$LANG_ERROR_ROOT$COLOR_DEFAULT"
 	exit 1
+} fi
+
+#Install path
+if [ "$1" == "-p" ] && [ -d "$2" ] ; then {
+	INSTP="$2"
 } fi
 
 #We go to the scrip directory

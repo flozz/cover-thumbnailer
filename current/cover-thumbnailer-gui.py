@@ -53,7 +53,7 @@ BASE_PATH = '/usr/share/cover-thumbnailer/'
 
 class Conf(object):
 	'''
-	Import configuration from config files.
+	Import/Write configuration from config files.
 	'''
 	def __init__(self):
 		#music
@@ -135,12 +135,15 @@ class Conf(object):
 					self.ignored_paths[i] = self.user_homedir+self.ignored_paths[i][1:]
 
 	def saveConf(self):
+		'''
+		Save configuration file.
+		'''
 		ctconfpath = self.user_homedir + '/.cover-thumbnailer/'
 		if not os.path.isdir(ctconfpath):
 			os.makedirs(ctconfpath)
 
 		file = open(ctconfpath + 'cover-thumbnailer.conf', 'w')
-		file.write('#' + _('Configuration writed by Cover Thumbnailer GUI') + "\n")
+		file.write('#' + _('Configuration written by Cover Thumbnailer GUI') + "\n")
 		file.write("#" + _('Please edit with caution') + "\n")
 		#MUSIC
 		file.write("\n[MUSIC]\n")
@@ -171,6 +174,9 @@ class Conf(object):
 
 
 class MainWin(object):
+	'''
+	GUI implementation
+	'''
 	def __init__(self):
 		win = gtk.Builder()
 		win.set_translation_domain(__appname__)
@@ -327,11 +333,11 @@ class MainWin(object):
 
 
 def addPathToList(list, path, conflist):
-	"""
+	'''
 	@path : string, path to add
 	@list : gtkListStore
 	@confilst : array
-	"""
+	'''
 	if not path in conflist:
 		list.append([path])
 		conflist.append(path)
@@ -340,17 +346,21 @@ def addPathToList(list, path, conflist):
 
 
 def removePathFromList(tree, list, conflist):
-	"""
+	'''
 	@tree : gtkTreeView
 	@list : gtkListStore
 	@confilst : array
-	"""
+	'''
 	model, iter = tree.get_selection().get_selected()
 	conflist.remove(list.get_value(iter, 0))
 	list.remove(iter)
 
 
 def loadInterface(gui):
+	'''
+	Put options on GUI
+	@gui : the gui
+	'''
 	#Music:
 	for path in conf.music_paths:
 		gui.lsstMusicPathList.append([path])
