@@ -29,7 +29,7 @@
 ##                                                                        ##
 ############################################################################
 ##                                                                        ##
-## VERSION : 0.7 (Mon, 28 Dec 2009 00:15:57 +0100)                        ##
+## VERSION : 0.7 (Mon, 04 Jan 2010 12:12:54 +0100)                        ##
 ## WEB SITE : http://software.flogisoft.com/cover-thumbnailer/            ##
 ##                                                                       ##
 #########################################################################
@@ -117,7 +117,7 @@ class Conf(object):
 			#Read config
 			for line in file:
 				line = line.replace('\n', '')
-				if re.match(r'\s?#.*', line):
+				if re.match(r'\s*#.*', line):
 					continue
 				elif re.match(r'\s*\[music\]\s*', line.lower()):    #[music]
 					current_section = 'music'
