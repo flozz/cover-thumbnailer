@@ -66,6 +66,7 @@
                             <property name="can_focus">True</property>
                             <property name="receives_default">False</property>
                             <property name="draw_indicator">True</property>
+                            <signal name="toggled" handler="on_cbMusicEnable_toggled"/>
                           </object>
                           <packing>
                             <property name="expand">False</property>
@@ -79,6 +80,7 @@
                             <property name="can_focus">True</property>
                             <property name="receives_default">False</property>
                             <property name="draw_indicator">True</property>
+                            <signal name="toggled" handler="on_cbMusicKeepFIcon_toggled"/>
                           </object>
                           <packing>
                             <property name="expand">False</property>
@@ -279,6 +281,7 @@
                             <property name="can_focus">True</property>
                             <property name="receives_default">False</property>
                             <property name="draw_indicator">True</property>
+                            <signal name="toggled" handler="on_cbPicturesEnable_toggled"/>
                           </object>
                           <packing>
                             <property name="expand">False</property>
@@ -292,6 +295,7 @@
                             <property name="can_focus">True</property>
                             <property name="receives_default">False</property>
                             <property name="draw_indicator">True</property>
+                            <signal name="toggled" handler="on_cbPicturesKeepFIcon_toggled"/>
                           </object>
                           <packing>
                             <property name="expand">False</property>
@@ -492,6 +496,7 @@
                         <property name="can_focus">True</property>
                         <property name="receives_default">False</property>
                         <property name="draw_indicator">True</property>
+                        <signal name="toggled" handler="on_cbOtherEnable_toggled"/>
                       </object>
                     </child>
                   </object>
@@ -720,7 +725,6 @@
                         <child>
                           <object class="GtkCheckButton" id="cbEnableCT">
                             <property name="label" translatable="yes">Enable Cover Thumbnailer</property>
-                            <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="receives_default">False</property>
                             <property name="draw_indicator">True</property>
@@ -731,12 +735,13 @@
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkCheckButton" id="cb_UseGnomeConf">
+                          <object class="GtkCheckButton" id="cbUseGnomeConf">
                             <property name="label" translatable="yes">Use GNOME configuration file for find default folders</property>
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="receives_default">False</property>
                             <property name="draw_indicator">True</property>
+                            <signal name="toggled" handler="on_cbUseGnomeConf_toggled"/>
                           </object>
                           <packing>
                             <property name="expand">False</property>
@@ -921,6 +926,7 @@ French :
 
 Polish :
  - Mateusz Littwin
+ - Marcin Kwidzinski &lt;https://launchpad.net/~marcinkwidzinski&gt;
 
 Russian :
  - Lucas Courot &lt;https://launchpad.net/~lucas-courot&gt;
