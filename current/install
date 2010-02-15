@@ -11,7 +11,7 @@
 ##                                                                        ##
 ## Cover thumbnailer — Installer                                          ##
 ##                                                                        ##
-## Copyright (C) 2009  Fabien Loison (flo@flogisoft.com)                  ##
+## Copyright (C) 2009 - 2010  Fabien Loison (flo@flogisoft.com)           ##
 ##                                                                        ##
 ## This program is free software: you can redistribute it and/or modify   ##
 ## it under the terms of the GNU General Public License as published by   ##
@@ -28,7 +28,7 @@
 ##                                                                        ##
 ############################################################################
 ##                                                                        ##
-## VERSION : 0.7 (Sun, 31 Jan 2010 20:23:45 +0100)                        ##
+## VERSION : 0.7 (Mon, 15 Feb 2010 14:26:33 +0100)                        ##
 ## WEB SITE : http://software.flogisoft.com/cover-thumbnailer/            ##
 ##                                                                       ##
 #########################################################################
@@ -114,7 +114,7 @@ install_ct() {
 	} fi
 
 	#Old version installed ? (≥ 0.4)
-	if [ -d /usr/share/cover-thumbnailer/ ]  && [ "$INSTP" == ""] ; then {
+	if [ -d /usr/share/cover-thumbnailer/ ]  && [ "$INSTP" == "" ] ; then {
 		echo -e "$COLOR_INFO$LANG_INFOS_OLD_VERSION$COLOR_DEFAULT"
 		if [ -x /usr/share/cover-thumbnailer/uninstall.sh ] ; then {
 			echo -e "$COLOR_INFO$LANG_INFOS_OLD_VERSION_RM$COLOR_DEFAULT"

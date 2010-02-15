@@ -12,7 +12,7 @@
 ##                                                                        ##
 ## Cover thumbnailer GUI                                                  ##
 ##                                                                        ##
-## Copyright (C) 2009  Fabien Loison (flo@flogisoft.com)                  ##
+## Copyright (C) 2009 - 2010  Fabien Loison (flo@flogisoft.com)           ##
 ##                                                                        ##
 ## This program is free software: you can redistribute it and/or modify   ##
 ## it under the terms of the GNU General Public License as published by   ##
@@ -29,7 +29,7 @@
 ##                                                                        ##
 ############################################################################
 ##                                                                        ##
-## VERSION : 0.7 (Mon, 15 Feb 2010 12:30:11 +0100)                        ##
+## VERSION : 0.7 (Mon, 15 Feb 2010 14:22:08 +0100)                        ##
 ## WEB SITE : http://software.flogisoft.com/cover-thumbnailer/            ##
 ##                                                                       ##
 #########################################################################
@@ -47,8 +47,8 @@ import os, re, shutil
 
 
 #Base path
-#BASE_PATH = '/usr/share/cover-thumbnailer/'
-BASE_PATH = './share/' #FIXME : dev
+BASE_PATH = '/usr/share/cover-thumbnailer/'
+#BASE_PATH = './share/' #FIXME : dev
 
 
 class Conf(object):

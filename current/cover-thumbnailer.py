@@ -12,7 +12,7 @@
 ##                                                                        ##
 ## Cover thumbnailer                                                      ##
 ##                                                                        ##
-## Copyright (C) 2009  Fabien Loison (flo@flogisoft.com)                  ##
+## Copyright (C) 2009 - 2010  Fabien Loison (flo@flogisoft.com)           ##
 ##                                                                        ##
 ## This program is free software: you can redistribute it and/or modify   ##
 ## it under the terms of the GNU General Public License as published by   ##
@@ -29,7 +29,7 @@
 ##                                                                        ##
 ############################################################################
 ##                                                                        ##
-## VERSION : 0.7 (Mon, 04 Jan 2010 12:12:54 +0100)                        ##
+## VERSION : 0.7 (Mon, 15 Feb 2010 13:15:44 +0100)                        ##
 ## WEB SITE : http://software.flogisoft.com/cover-thumbnailer/            ##
 ##                                                                       ##
 #########################################################################
@@ -67,17 +67,24 @@ class Conf(object):
 	Import configuration from config files.
 	'''
 	def __init__(self):
+		#miscellaneous
+		self.use_gnome_conf = True
 		#music
+		self.music_enabled = True
+		self.music_keepicon = False
 		self.music_paths = []
 		self.music_default = BASE_PATH + 'music_default.png'
 		self.music_fg = BASE_PATH + 'music_fg.png'
 		self.music_bg = BASE_PATH + 'music_bg.png'
 		#pictures
+		self.pictures_enabled = True
+		self.pictures_keepicon = False
 		self.pictures_paths = []
 		self.pictures_default = BASE_PATH + 'pictures_default.png'
 		self.pictures_fg = BASE_PATH + 'pictures_fg.png'
 		self.pictures_bg = BASE_PATH + 'pictures_bg.png'
 		#other
+		self.other_enabled = True
 		self.other_fg = BASE_PATH + 'other_fg.png'
 		#ignored
 		self.ignored_paths = ['/tmp']
@@ -88,8 +95,9 @@ class Conf(object):
 		self.user_conf = self.user_homedir + '/.cover-thumbnailer/cover-thumbnailer.conf'
 
 		#get conf
-		self.import_gnome_conf()
 		self.import_user_conf()
+		if self.use_gnome_conf:
+			self.import_gnome_conf()
 		self.get_pictures_path()
 
 	def import_gnome_conf(self):
@@ -119,12 +127,16 @@ class Conf(object):
 				line = line.replace('\n', '')
 				if re.match(r'\s*#.*', line):
 					continue
-				elif re.match(r'\s*\[music\]\s*', line.lower()):    #[music]
+				elif re.match(r'\s*\[music\]\s*', line.lower()):    #[MUSIC]
 					current_section = 'music'
-				elif re.match(r'\s*\[pictures\]\s*', line.lower()): #[pictures]
+				elif re.match(r'\s*\[pictures\]\s*', line.lower()): #[PICTURES]
 					current_section = 'pictures'
-				elif re.match(r'\s*\[ignored\]\s*', line.lower()):  #[ignored]
+				elif re.match(r'\s*\[other\]\s*', line.lower()): #[OTHER]
+					current_section = 'other'
+				elif re.match(r'\s*\[ignored\]\s*', line.lower()):  #[IGNORED]
 					current_section = 'ignored'
+				elif re.match(r'\s*\[miscellaneous\]\s*', line.lower()):  #[MISCELLANEOUS]
+					current_section = 'miscellaneous'
 				elif re.match(r'\s*(path|PATH)\s*=\s*"(.*)"\s*', line): #path=
 					if current_section == 'music':
 						self.music_paths.append(re.match(r'\s*(path|PATH)\s*=\s*"(.*)"\s*', line).group(2))
@@ -139,6 +151,42 @@ class Conf(object):
 							self.ignored_dotted = True
 						elif value in ['no', 'false', '0']:
 							self.ignored_dotted = False
+				elif re.match(r'\s*enabled\s*=\s*(yes|no|true|false|1|0)\s*', line.lower()): #enabled=
+					value = re.match(r'\s*enabled\s*=\s*(yes|no|true|false|1|0)\s*', line.lower()).group(1)
+					if current_section == 'music':
+						if value in ['yes', 'true', '1']:
+							self.music_enabled = True
+						elif value in ['no', 'false', '0']:
+							self.music_enabled = False
+					if current_section == 'pictures':
+						if value in ['yes', 'true', '1']:
+							self.pictures_enabled = True
+						elif value in ['no', 'false', '0']:
+							self.pictures_enabled = False
+					if current_section == 'other':
+						if value in ['yes', 'true', '1']:
+							self.other_enabled = True
+						elif value in ['no', 'false', '0']:
+							self.other_enabled = False
+				elif re.match(r'\s*keepdefaulticon\s*=\s*(yes|no|true|false|1|0)\s*', line.lower()): #keepDefaultIcon=
+					value = re.match(r'\s*keepdefaulticon\s*=\s*(yes|no|true|false|1|0)\s*', line.lower()).group(1)
+					if current_section == 'music':
+						if value in ['yes', 'true', '1']:
+							self.music_keepicon = True
+						elif value in ['no', 'false', '0']:
+							self.music_keepicon = False
+					if current_section == 'pictures':
+						if value in ['yes', 'true', '1']:
+							self.pictures_keepicon = True
+						elif value in ['no', 'false', '0']:
+							self.pictures_keepicon = False
+				elif re.match(r'\s*usegnomeconf\s*=\s*(yes|no|true|false|1|0)\s*', line.lower()): #useGnomeConf=
+					if current_section == 'miscellaneous':
+						value = re.match(r'\s*usegnomeconf\s*=\s*(yes|no|true|false|1|0)\s*', line.lower()).group(1)
+						if value in ['yes', 'true', '1']:
+							self.use_gnome_conf = True
+						elif value in ['no', 'false', '0']:
+							self.use_gnome_conf = False
 			file.close()
 
 			#Replace all ~ by user home dir
@@ -215,7 +263,7 @@ class Thumb(object):
 		if os.path.isfile(fg_picture): 
 			fg = Image.open(fg_picture).convert('RGBA')
 			y = self.thumb.size[1] - fg.size[1]
-			self.thumb.paste(fg, (0,y), fg)
+			self.thumb.paste(fg, (0, y), fg)
 
 	def add_music_decoration(self, bg_picture, fg_picture=None):
 		'''
@@ -226,11 +274,11 @@ class Thumb(object):
 		if os.path.isfile(bg_picture):
 			bg = Image.open(bg_picture)
 			x = bg.size[0] - self.thumb.size[0]
-			bg.paste(self.thumb, (x,0), self.thumb)
+			bg.paste(self.thumb, (x, 0), self.thumb)
 			self.thumb = bg
 		if os.path.isfile(fg_picture): 
 			fg = Image.open(fg_picture).convert('RGBA')
-			self.thumb.paste(fg, (0,0), fg)
+			self.thumb.paste(fg, (0, 0), fg)
 
 	def add_pictures_decoration(self, pictures, fg_picture=None):
 		'''
@@ -246,7 +294,7 @@ class Thumb(object):
 				pic0.thumbnail((120, 120), Image.ANTIALIAS)
 				x = (self.thumb.size[0] - pic0.size[0]) / 2
 				y = (self.thumb.size[1] - pic0.size[1]) / 2
-				self.thumb.paste(pic0, (x,y), pic0)
+				self.thumb.paste(pic0, (x, y), pic0)
 			except IOError:
 				print "E: Can't open '"+pictures[0]+"'."
 		elif len(pictures) == 2:
@@ -255,7 +303,7 @@ class Thumb(object):
 				pic0 = Image.open(pictures[0]).convert('RGBA')
 				pic0 = pic0.rotate(3, resample=Image.ANTIALIAS, expand=1)
 				pic0.thumbnail((105, 70), Image.ANTIALIAS)
-				self.thumb.paste(pic0, (10,5), pic0)
+				self.thumb.paste(pic0, (10, 5), pic0)
 			except IOError:
 				print "E: Can't open '"+pictures[0]+"'."
 			#PIC1
@@ -265,7 +313,7 @@ class Thumb(object):
 				pic1.thumbnail((105, 70), Image.ANTIALIAS)
 				x = self.thumb.size[0] - pic1.size[0] - 5
 				y = self.thumb.size[1] - pic1.size[1] - 5
-				self.thumb.paste(pic1, (x,y), pic1)
+				self.thumb.paste(pic1, (x, y), pic1)
 			except IOError:
 				print "E: Can't open '"+pictures[1]+"'."
 		elif len(pictures) >= 3:
@@ -273,32 +321,32 @@ class Thumb(object):
 			try:
 				pic0 = Image.open(pictures[0]).convert('RGBA')
 				pic0.thumbnail((49, 56), Image.ANTIALIAS)
-				self.thumb.paste(pic0, (20,5), pic0)
+				self.thumb.paste(pic0, (20, 5), pic0)
 			except IOError:
 				print "E: Can't open '"+pictures[0]+"'."
-				pic0 = Image.new('RGBA', (1,1))
+				pic0 = Image.new('RGBA', (1, 1))
 			#PIC1
 			try:
 				pic1 = Image.open(pictures[1]).convert('RGBA')
 				pic1.thumbnail((49, 56), Image.ANTIALIAS)
 				x = self.thumb.size[0] - pic1.size[0] - 5
-				self.thumb.paste(pic1, (x,5), pic1)
+				self.thumb.paste(pic1, (x, 5), pic1)
 			except IOError:
 				print "E: Can't open '"+pictures[1]+"'."
-				pic1 = Image.new('RGBA', (1,1))
+				pic1 = Image.new('RGBA', (1, 1))
 			#PIC2
 			try:
 				pic2 = Image.open(pictures[2]).convert('RGBA')
-				h = self.thumb.size[1] - max(pic0.size[1],pic1.size[1]) - 15
-				pic2.thumbnail((103,h), Image.ANTIALIAS)
+				h = self.thumb.size[1] - max(pic0.size[1], pic1.size[1]) - 15
+				pic2.thumbnail((103, h), Image.ANTIALIAS)
 				x = (self.thumb.size[0] - 15 - pic2.size[0]) / 2 +15
 				y = self.thumb.size[1] - pic2.size[1] - 5
-				self.thumb.paste(pic2, (x,y), pic2)
+				self.thumb.paste(pic2, (x, y), pic2)
 			except IOError:
 				print "E: Can't open '"+pictures[2]+"'."
 		if os.path.isfile(fg_picture):
 			fg = Image.open(fg_picture)
-			self.thumb.paste(fg, (0,0), fg)
+			self.thumb.paste(fg, (0, 0), fg)
 
 	def save_thumb(self, output, format='PNG'):
 		'''
@@ -401,19 +449,22 @@ if __name__ == "__main__":
 		elif conf.ignored_dotted and re.match('.*/\..*', input):
 			sys.exit(42)
 		
-		#If it's the music folder
-		elif match_path(input, conf.music_paths):
-			cover_path = get_music_cover_path(input, conf.music_default)
+		#If it's a music folder
+		elif match_path(input, conf.music_paths) and conf.music_enabled:
+			if conf.music_keepicon:
+				cover_path = get_music_cover_path(input)
+			else:
+				cover_path = get_music_cover_path(input, conf.music_default)
 			if cover_path != None:
 				pic = Thumb(cover_path)
 				pic.create_thumb(110)
 				pic.add_music_decoration(conf.music_bg, conf.music_fg)
 				pic.save_thumb(output, 'PNG')
-			else:
+			elif not conf.music_keepicon:
 				print "E: ["+__file__+":main] Can't find any cover file and default cover file."
 
-		#If it's the pictures folder
-		elif match_path(input, conf.pictures_paths):
+		#If it's a pictures folder
+		elif match_path(input, conf.pictures_paths) and conf.pictures_enabled:
 			#Search for a cover.png, folder.jpg,...
 			cover_path = get_cover_path(input)
 			if cover_path != None:
@@ -432,15 +483,17 @@ if __name__ == "__main__":
 				pic = Thumb(conf.pictures_bg)
 				pic.create_thumb(128)
 				pic.add_pictures_decoration(pictures, conf.pictures_fg)
-			else:
+				pic.save_thumb(output, 'PNG')
+			elif not conf.pictures_keepicon:
 				pic = Thumb(conf.pictures_default)
 				pic.create_thumb(128)
-			pic.save_thumb(output, 'PNG')
+				pic.save_thumb(output, 'PNG')
+				
 
 		#If it's an other folder
 		else:
 			cover_path = get_cover_path(input)
-			if cover_path != None:
+			if cover_path != None and conf.other_enabled:
 				pic = Thumb(cover_path)
 				pic.create_thumb(128)
 				pic.add_decoration(conf.other_fg)
