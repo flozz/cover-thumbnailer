@@ -899,7 +899,7 @@
     <property name="skip_taskbar_hint">True</property>
     <property name="has_separator">False</property>
     <property name="program_name">Cover Thumbnailer</property>
-    <property name="version">0.7</property>
+    <property name="version">0.7.1</property>
     <property name="copyright">Copyright &#xA9; 2009 - 2010 Fabien LOISON</property>
     <property name="comments" translatable="yes">Configuration tool for Cover Thumbnailer</property>
     <property name="website">http://software.flogisoft.com/cover-thumbnailer/</property>
@@ -917,20 +917,33 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see &lt;http://www.gnu.org/licenses/&gt;.</property>
     <property name="authors">Fabien LOISON &lt;flo@flogisoft.com&gt;</property>
     <property name="documenters">Fabien LOISON &lt;flo@flogisoft.com&gt;</property>
-    <property name="translator_credits">Danish :
+    <property name="translator_credits">Catalan
+ - RedRudeBoy &lt;https://launchpad.net/~redrudeboy&gt;
+
+Danish :
  - nanker &lt;https://launchpad.net/~nanker&gt;
 
 French :
  - Fabien Loison &lt;https://launchpad.net/~flozz&gt;
  - breakolami &lt;https://launchpad.net/~breakolami&gt;
 
+German :
+ - Hornblende &lt;https://launchpad.net/~hornblende049&gt;
+
+Italian
+ - Guido Iodice &lt;https://launchpad.net/~guido-iodice&gt; 
+
 Polish :
  - Mateusz Littwin
  - Marcin Kwidzinski &lt;https://launchpad.net/~marcinkwidzinski&gt;
 
+Portuguese :
+ - asensio &lt;https://launchpad.net/~asensio&gt;
+
 Russian :
  - Lucas Courot &lt;https://launchpad.net/~lucas-courot&gt;
  - Sergey Sedov &lt;https://launchpad.net/~serg-sedov&gt;
+ - DEDan &lt;https://launchpad.net/~zsdedan&gt; 
 
 Spanish :
  - Eduardo Rivas &lt;https://launchpad.net/~jerivasmelgar&gt;
