@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: cover-thumbnailer\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2010-01-03 00:46+0100\n"
-"PO-Revision-Date: 2010-02-28 14:10+0000\n"
+"PO-Revision-Date: 2010-03-07 14:42+0000\n"
 "Last-Translator: DEDan <Unknown>\n"
 "Language-Team: Russian <ru@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-03-01 05:09+0000\n"
+"X-Launchpad-Export-Date: 2010-03-08 05:45+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: ../cover-thumbnailer-gui.py:61 ../cover-thumbnailer-gui.py:64
@@ -65,7 +65,7 @@ msgstr "Aктивировать Cover Thumbnailer для картинок"
 
 #: ../share/cover-thumbnailer-gui.glade:290
 msgid "Keep the default folder icon if no pictures was found"
-msgstr "Храните иконку папки, если не было обнаружено никаких картинок"
+msgstr "Хранить иконку папки, если не было обнаружено никаких картинок"
 
 #: ../share/cover-thumbnailer-gui.glade:310
 msgid "List of picures folders :"

@@ -15,6 +15,15 @@
         <property name="orientation">vertical</property>
         <property name="spacing">10</property>
         <child>
+          <object class="GtkImage" id="image1">
+            <property name="visible">True</property>
+            <property name="pixbuf">banner.png</property>
+          </object>
+          <packing>
+            <property name="position">0</property>
+          </packing>
+        </child>
+        <child>
           <object class="GtkNotebook" id="notebook1">
             <property name="visible">True</property>
             <property name="can_focus">True</property>
@@ -26,18 +35,6 @@
                 <property name="orientation">vertical</property>
                 <property name="spacing">5</property>
                 <child>
-                  <object class="GtkImage" id="imageMusicBanner">
-                    <property name="width_request">552</property>
-                    <property name="height_request">152</property>
-                    <property name="visible">True</property>
-                    <property name="pixbuf">music_banner.png</property>
-                  </object>
-                  <packing>
-                    <property name="expand">False</property>
-                    <property name="position">0</property>
-                  </packing>
-                </child>
-                <child>
                   <object class="GtkLabel" id="label4">
                     <property name="visible">True</property>
                     <property name="label" translatable="yes">&lt;big&gt;&lt;b&gt;Cover Thumbnailer For &lt;i&gt;Music Folders&lt;/i&gt;&lt;/b&gt;&lt;/big&gt;</property>
@@ -45,7 +42,8 @@
                   </object>
                   <packing>
                     <property name="expand">False</property>
-                    <property name="position">1</property>
+                    <property name="padding">5</property>
+                    <property name="position">0</property>
                   </packing>
                 </child>
                 <child>
@@ -221,7 +219,7 @@
                     </child>
                   </object>
                   <packing>
-                    <property name="position">2</property>
+                    <property name="position">1</property>
                   </packing>
                 </child>
               </object>
@@ -241,18 +239,6 @@
                 <property name="orientation">vertical</property>
                 <property name="spacing">5</property>
                 <child>
-                  <object class="GtkImage" id="imagePicturesBanner">
-                    <property name="width_request">552</property>
-                    <property name="height_request">152</property>
-                    <property name="visible">True</property>
-                    <property name="pixbuf">pictures_banner.png</property>
-                  </object>
-                  <packing>
-                    <property name="expand">False</property>
-                    <property name="position">0</property>
-                  </packing>
-                </child>
-                <child>
                   <object class="GtkLabel" id="label5">
                     <property name="visible">True</property>
                     <property name="label" translatable="yes">&lt;big&gt;&lt;b&gt;Cover Thumbnailer For &lt;i&gt;Pictures Folders&lt;/i&gt;&lt;/b&gt;&lt;/big&gt;</property>
@@ -260,7 +246,8 @@
                   </object>
                   <packing>
                     <property name="expand">False</property>
-                    <property name="position">1</property>
+                    <property name="padding">5</property>
+                    <property name="position">0</property>
                   </packing>
                 </child>
                 <child>
@@ -436,7 +423,7 @@
                     </child>
                   </object>
                   <packing>
-                    <property name="position">2</property>
+                    <property name="position">1</property>
                   </packing>
                 </child>
               </object>
@@ -460,18 +447,6 @@
                 <property name="orientation">vertical</property>
                 <property name="spacing">5</property>
                 <child>
-                  <object class="GtkImage" id="imageOthersBanner">
-                    <property name="width_request">552</property>
-                    <property name="height_request">152</property>
-                    <property name="visible">True</property>
-                    <property name="pixbuf">other_banner.png</property>
-                  </object>
-                  <packing>
-                    <property name="expand">False</property>
-                    <property name="position">0</property>
-                  </packing>
-                </child>
-                <child>
                   <object class="GtkLabel" id="label6">
                     <property name="visible">True</property>
                     <property name="label" translatable="yes">&lt;big&gt;&lt;b&gt;Cover Thumbnailer For &lt;i&gt;Other Folders&lt;/i&gt;&lt;/b&gt;&lt;/big&gt;</property>
@@ -479,7 +454,8 @@
                   </object>
                   <packing>
                     <property name="expand">False</property>
-                    <property name="position">1</property>
+                    <property name="padding">5</property>
+                    <property name="position">0</property>
                   </packing>
                 </child>
                 <child>
@@ -503,7 +479,7 @@
                   <packing>
                     <property name="expand">False</property>
                     <property name="fill">False</property>
-                    <property name="position">2</property>
+                    <property name="position">1</property>
                   </packing>
                 </child>
               </object>
@@ -527,18 +503,6 @@
                 <property name="orientation">vertical</property>
                 <property name="spacing">5</property>
                 <child>
-                  <object class="GtkImage" id="imageIgnoredBanner">
-                    <property name="width_request">552</property>
-                    <property name="height_request">152</property>
-                    <property name="visible">True</property>
-                    <property name="pixbuf">ignored_banner.png</property>
-                  </object>
-                  <packing>
-                    <property name="expand">False</property>
-                    <property name="position">0</property>
-                  </packing>
-                </child>
-                <child>
                   <object class="GtkLabel" id="label7">
                     <property name="visible">True</property>
                     <property name="label" translatable="yes">&lt;big&gt;&lt;b&gt;Ignored Folders&lt;/b&gt;&lt;/big&gt;</property>
@@ -546,7 +510,8 @@
                   </object>
                   <packing>
                     <property name="expand">False</property>
-                    <property name="position">1</property>
+                    <property name="padding">5</property>
+                    <property name="position">0</property>
                   </packing>
                 </child>
                 <child>
@@ -676,7 +641,7 @@
                     </child>
                   </object>
                   <packing>
-                    <property name="position">2</property>
+                    <property name="position">1</property>
                   </packing>
                 </child>
               </object>
@@ -808,7 +773,7 @@
             </child>
           </object>
           <packing>
-            <property name="position">0</property>
+            <property name="position">1</property>
           </packing>
         </child>
         <child>
@@ -881,7 +846,7 @@
             </child>
           </object>
           <packing>
-            <property name="position">1</property>
+            <property name="position">2</property>
           </packing>
         </child>
       </object>
@@ -899,7 +864,7 @@
     <property name="skip_taskbar_hint">True</property>
     <property name="has_separator">False</property>
     <property name="program_name">Cover Thumbnailer</property>
-    <property name="version">0.7.1</property>
+    <property name="version">0.7.2</property>
     <property name="copyright">Copyright &#xA9; 2009 - 2010 Fabien LOISON</property>
     <property name="comments" translatable="yes">Configuration tool for Cover Thumbnailer</property>
     <property name="website">http://software.flogisoft.com/cover-thumbnailer/</property>
@@ -917,8 +882,11 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see &lt;http://www.gnu.org/licenses/&gt;.</property>
     <property name="authors">Fabien LOISON &lt;flo@flogisoft.com&gt;</property>
     <property name="documenters">Fabien LOISON &lt;flo@flogisoft.com&gt;</property>
-    <property name="translator_credits">Catalan
+    <property name="translator_credits">Catalan :
  - RedRudeBoy &lt;https://launchpad.net/~redrudeboy&gt;
+
+Czech :
+ - Dominik Sauer &lt;https://launchpad.net/~dominik-sauer&gt;
 
 Danish :
  - nanker &lt;https://launchpad.net/~nanker&gt;
@@ -927,11 +895,21 @@ French :
  - Fabien Loison &lt;https://launchpad.net/~flozz&gt;
  - breakolami &lt;https://launchpad.net/~breakolami&gt;
 
+Galician :
+ - Manuel Xos&#xE9; Lemos &lt;https://launchpad.net/~mxlemos&gt;
+
 German :
  - Hornblende &lt;https://launchpad.net/~hornblende049&gt;
+ - claudia89 &lt;https://launchpad.net/~claudia-mechtler-sj&gt;
+ - Jan-Christoph Borchardt &lt;https://launchpad.net/~inquata&gt;
 
-Italian
- - Guido Iodice &lt;https://launchpad.net/~guido-iodice&gt; 
+Hungarian :
+ - Richard Soml&#xF3;i &lt;https://launchpad.net/~ricsipontaz&gt;
+ - Krasznecz Zolt&#xE1;n &lt;https://launchpad.net/~krasznecz-zoltan&gt;
+
+Italian :
+ - Guido Iodice &lt;https://launchpad.net/~guido-iodice&gt;
+ - Lorenzo De Liso &lt;https://launchpad.net/~blackz&gt;
 
 Polish :
  - Mateusz Littwin
@@ -939,16 +917,23 @@ Polish :
 
 Portuguese :
  - asensio &lt;https://launchpad.net/~asensio&gt;
+ - eSkiSo &lt;https://launchpad.net/~wise-gdr&gt;
+
+Romanian :
+ - ValentinV &lt;https://launchpad.net/~valentinverde&gt;
 
 Russian :
  - Lucas Courot &lt;https://launchpad.net/~lucas-courot&gt;
  - Sergey Sedov &lt;https://launchpad.net/~serg-sedov&gt;
  - DEDan &lt;https://launchpad.net/~zsdedan&gt; 
 
+Slovak :
+ - Tom&#xE1;&#x161; Virgl &lt;https://launchpad.net/~tomasvirgl&gt;
+
 Spanish :
  - Eduardo Rivas &lt;https://launchpad.net/~jerivasmelgar&gt;
 
-Turkish
+Turkish :
  - zeugma &lt;https://launchpad.net/~sunder67&gt;
 </property>
     <property name="artists">Fabien LOISON &lt;flo@flogisoft.com&gt;</property>

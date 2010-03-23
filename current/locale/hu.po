@@ -1,16 +1,16 @@
-# Italian translation for cover-thumbnailer
-# Copyright (c) 2009 Rosetta Contributors and Canonical Ltd 2009
+# Hungarian translation for cover-thumbnailer
+# Copyright (c) 2010 Rosetta Contributors and Canonical Ltd 2010
 # This file is distributed under the same license as the cover-thumbnailer package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2009.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2010.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: cover-thumbnailer\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2010-01-03 00:46+0100\n"
-"PO-Revision-Date: 2010-03-10 20:49+0000\n"
-"Last-Translator: Lorenzo De Liso <blackz@email.it>\n"
-"Language-Team: Italian <it@li.org>\n"
+"PO-Revision-Date: 2010-03-10 13:51+0000\n"
+"Last-Translator: Krasznecz Zoltán <krasznecz.zoltan@gmail.com>\n"
+"Language-Team: Hungarian <hu@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -21,141 +21,141 @@ msgstr ""
 #: ../share/cover-thumbnailer-gui.glade:206
 #: ../share/cover-thumbnailer-gui.glade:419
 msgid "<Empty>"
-msgstr "<Vuoto>"
+msgstr "<Üres>"
 
 #: ../cover-thumbnailer-gui.py:146
 msgid "Configuration written by Cover Thumbnailer GUI"
-msgstr "Configurazione scritta da Cover Thumbnailer GUI"
+msgstr "A konfiguráció a Borítóbélyegkép grafikusfelülettel készült"
 
 #: ../cover-thumbnailer-gui.py:147
 msgid "Please edit with caution"
-msgstr "Modificare con cautela"
+msgstr "Körültekintően szerkessze"
 
 #: ../share/cover-thumbnailer-gui.glade:43
 msgid "<big><b>Cover Thumbnailer For <i>Music Folders</i></b></big>"
-msgstr "<big><b>Cover Thumbnailer per <i>Cartelle Musica</i></b></big>"
+msgstr "<big><b>Borítóbélyegkép <i>zenei mappákhoz</i></b></big>"
 
 #: ../share/cover-thumbnailer-gui.glade:64
 msgid "Enable Cover Thumbnailer for music folders"
-msgstr "Attivare Cover Thumbnailer per le cartelle di musica"
+msgstr "Borítóbélyegkép engedélyezése zenei mappákhoz"
 
 #: ../share/cover-thumbnailer-gui.glade:77
 msgid "Keep the default folder icon if no cover was found"
-msgstr "Mantieni l'icona predefinita se non viene trovata la copertina"
+msgstr "Alapértelmezett könyvtárikon megtartása, ha nem található borító"
 
 #: ../share/cover-thumbnailer-gui.glade:97
 msgid "List of music folders :"
-msgstr "Cartelle con musica :"
+msgstr "Zenei mappák listája :"
 
 #: ../share/cover-thumbnailer-gui.glade:195
 msgid "GNOME music folder :"
-msgstr "Cartella Musica di GNOME :"
+msgstr "A GNOME zenei mappája :"
 
 #: ../share/cover-thumbnailer-gui.glade:230
 msgid "Music"
-msgstr "Musica"
+msgstr "Zene"
 
 #: ../share/cover-thumbnailer-gui.glade:256
 msgid "<big><b>Cover Thumbnailer For <i>Pictures Folders</i></b></big>"
-msgstr "<big><b>Cover Thumbnailer per <i>Cartelle Immagini</i></b></big>"
+msgstr "<big><b>Borítóbélyegkép <i>képek mappákhoz</i></b></big>"
 
 #: ../share/cover-thumbnailer-gui.glade:277
 msgid "Enable Cover Thumbnailer for pictures folders"
-msgstr "Abilita Cover Thumbnailer per le cartelle immagini"
+msgstr "Borítóbélyegkép engedélyezése képek mappákhoz"
 
 #: ../share/cover-thumbnailer-gui.glade:290
 msgid "Keep the default folder icon if no pictures was found"
-msgstr "Mantieni l'icona predefinita se non viene trovata nessuna immagine"
+msgstr "Alapértelmezett könyvtárikon megtartása, ha nem található kép"
 
 #: ../share/cover-thumbnailer-gui.glade:310
 msgid "List of picures folders :"
-msgstr "Lista di immagini delle cartelle :"
+msgstr "Kép mappák listája :"
 
 #: ../share/cover-thumbnailer-gui.glade:408
 msgid "GNOME pictures folder :"
-msgstr "Cartelle foto di GNOME :"
+msgstr "A GNOME képek mappája :"
 
 #: ../share/cover-thumbnailer-gui.glade:446
 msgid "Pictures"
-msgstr "Immagini"
+msgstr "Képek"
 
 #: ../share/cover-thumbnailer-gui.glade:473
 msgid "<big><b>Cover Thumbnailer For <i>Other Folders</i></b></big>"
-msgstr "<big><b>Cover Thumbnailer per <i>altre cartelle</i></b></big>"
+msgstr "<big><b>Borítóbélyegkép <i>egyéb mappákhoz</i></b></big>"
 
 #: ../share/cover-thumbnailer-gui.glade:490
 msgid "Enable Cover Thumbnailer for other folders"
-msgstr "Attivare la cover Thumbaniler per le altre cartelle"
+msgstr "Borítóbélyegkép engedélyezése egyéb mappákhoz"
 
 #: ../share/cover-thumbnailer-gui.glade:512
 msgid "Others"
-msgstr "Altri"
+msgstr "Egyebek"
 
 #: ../share/cover-thumbnailer-gui.glade:539
 msgid "<big><b>Ignored Folders</b></big>"
-msgstr "<big><b>Cartelle Ignorate</b></big>"
+msgstr "<big><b>Kihagyott mappák</b></big>"
 
 #: ../share/cover-thumbnailer-gui.glade:560
 msgid "Ignore hidden folders (folders whose name start with a dot)"
-msgstr "Ignora cartelle nascoste (cartelle il cui nome inizia con un punto)"
+msgstr "Rejtett mappák kihagyása (a ponttal kezdődő könyvtárak)"
 
 #: ../share/cover-thumbnailer-gui.glade:581
 msgid "Folders to ignore :"
-msgstr "Cartelle da ignorare :"
+msgstr "Kihagyni kívánt mappák :"
 
 #: ../share/cover-thumbnailer-gui.glade:685
 msgid "Ignored"
-msgstr "Ignorati"
+msgstr "Kihagyott"
 
 #: ../share/cover-thumbnailer-gui.glade:699
 msgid "<big><b>Miscellaneous Options</b></big>"
-msgstr "<big><b>Opzioni Varie</b></big>"
+msgstr "<big><b>Egyéb beállítások</b></big>"
 
 #: ../share/cover-thumbnailer-gui.glade:722
 msgid "Enable Cover Thumbnailer"
-msgstr "Attiva Cover Thumbnailer"
+msgstr "Borítóbélyegkép engedélyezése"
 
 #: ../share/cover-thumbnailer-gui.glade:735
 msgid "Use GNOME configuration file for find default folders"
 msgstr ""
-"Usa il file di configurazione di GNOME per trovare le cartelle predefinite"
+"A GNOME beállítófájl használata az alapértelmezett mappák megtalálásához"
 
 #: ../share/cover-thumbnailer-gui.glade:752
 msgid "Clear thumbnail cache"
-msgstr "Svuota la cache di thumbnail"
+msgstr "Előnézet gyorsítótár törlése"
 
 #: ../share/cover-thumbnailer-gui.glade:768
 msgid ""
 "Clear the thumbnail cache if you have some problem with thumbnails, after "
 "changing the configuration for example"
 msgstr ""
-"Svuota la cache di thumbnail se hai qualche problema con thumbnails, dopo "
-"aver cambiato la configurazione per esempio"
+"A gyorsítótár törlése, az előnézetek újra elkészítéséhez. Például beállítás "
+"változtatások után."
 
 #: ../share/cover-thumbnailer-gui.glade:797
 msgid "Miscellaneous"
-msgstr "Varie"
+msgstr "Egyebek"
 
 #: ../share/cover-thumbnailer-gui.glade:887
 msgid "About Cover Thumbnailer"
-msgstr "Informazioni su Thumbnailer"
+msgstr "Borítóbélyegkép névjegye"
 
 #: ../share/cover-thumbnailer-gui.glade:899
 msgid "Configuration tool for Cover Thumbnailer"
-msgstr "Tool di configurazione per Cover Thumbnailer"
+msgstr "Beállítóeszköz a Borítóbélyegkép alkalmazáshoz"
 
 #: ../share/cover-thumbnailer-gui.glade:958
 msgid "Not in your language ?"
-msgstr "Non è nel tuo linguaggio ?"
+msgstr "Nincs az Ön nyelvén ?"
 
 #: ../share/cover-thumbnailer-gui.glade:970
 msgid "Translate Cover Thumbnailer"
-msgstr "Traduci la Cover Thumbnailer"
+msgstr "Fordítsa le az alkalmazást"
 
 #: ../share/cover-thumbnailer-gui.glade:1021
 msgid "Select a folder - Cover Thumbnailer"
-msgstr "Seleziona una cartella - Cover Thumbnailer"
+msgstr "Mappa kiválasztása - Borítóbélyegkép"
 
 #: ../share/cover-thumbnailer-gui.glade:1090
 msgid "Error - Cover Thumbnailer"
-msgstr "Errore - Cover Thumbnailer"
+msgstr "Hiba - Borítóbélyegkép"
