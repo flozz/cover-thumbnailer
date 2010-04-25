@@ -37,7 +37,7 @@
                 <child>
                   <object class="GtkLabel" id="label4">
                     <property name="visible">True</property>
-                    <property name="label" translatable="yes">Cover Thumbnailer For Music Folders</property>
+                    <property name="label" translatable="yes">Music Folders</property>
                     <attributes>
                       <attribute name="weight" value="bold"/>
                       <attribute name="size" value="12000"/>
@@ -189,7 +189,7 @@
                         </child>
                         <child>
                           <object class="GtkCheckButton" id="cb_useGnomeMusic">
-                            <property name="label" translatable="yes">Use GNOME music folder (%s)</property>
+                            <property name="label" translatable="yes">Enable for GNOME's music folder (%s)</property>
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="receives_default">False</property>
@@ -226,7 +226,7 @@
                 <child>
                   <object class="GtkLabel" id="label5">
                     <property name="visible">True</property>
-                    <property name="label" translatable="yes">Cover Thumbnailer For Pictures Folders</property>
+                    <property name="label" translatable="yes">Picture Folders</property>
                     <attributes>
                       <attribute name="weight" value="bold"/>
                       <attribute name="size" value="12000"/>
@@ -378,7 +378,7 @@
                         </child>
                         <child>
                           <object class="GtkCheckButton" id="cb_useGnomePictures">
-                            <property name="label" translatable="yes">Use GNOME pictures folder (%s)</property>
+                            <property name="label" translatable="yes">Enable for GNOME's pictures folder (%s)</property>
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="receives_default">False</property>
@@ -419,7 +419,7 @@
                 <child>
                   <object class="GtkLabel" id="label6">
                     <property name="visible">True</property>
-                    <property name="label" translatable="yes">Cover Thumbnailer For Other Folders</property>
+                    <property name="label" translatable="yes">Other Folders</property>
                     <attributes>
                       <attribute name="weight" value="bold"/>
                       <attribute name="size" value="12000"/>
