@@ -864,7 +864,7 @@
     <property name="skip_taskbar_hint">True</property>
     <property name="has_separator">False</property>
     <property name="program_name">Cover Thumbnailer</property>
-    <property name="version">0.7.2</property>
+    <property name="version">0.7.3</property>
     <property name="copyright">Copyright &#xA9; 2009 - 2010 Fabien LOISON</property>
     <property name="comments" translatable="yes">Configuration tool for Cover Thumbnailer</property>
     <property name="website">http://software.flogisoft.com/cover-thumbnailer/</property>
@@ -882,14 +882,23 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see &lt;http://www.gnu.org/licenses/&gt;.</property>
     <property name="authors">Fabien LOISON &lt;flo@flogisoft.com&gt;</property>
     <property name="documenters">Fabien LOISON &lt;flo@flogisoft.com&gt;</property>
-    <property name="translator_credits">Catalan :
+    <property name="translator_credits">Arabic :
+ - Mahmoud &lt;https://launchpad.net/~mahmouds-com&gt;
+
+Catalan :
  - RedRudeBoy &lt;https://launchpad.net/~redrudeboy&gt;
+
+Chinese :
+ - zenixls2 &lt;https://launchpad.net/~zenixls2&gt;
 
 Czech :
  - Dominik Sauer &lt;https://launchpad.net/~dominik-sauer&gt;
 
 Danish :
  - nanker &lt;https://launchpad.net/~nanker&gt;
+
+English (United Kingdom) :
+ - Jan-Christoph Borchardt &lt;https://launchpad.net/~inquata&gt;
 
 French :
  - Fabien Loison &lt;https://launchpad.net/~flozz&gt;
@@ -932,10 +941,11 @@ Slovak :
 
 Spanish :
  - Eduardo Rivas &lt;https://launchpad.net/~jerivasmelgar&gt;
+ - Jonay &lt;https://launchpad.net/~jonay-santana&gt;
 
 Turkish :
  - zeugma &lt;https://launchpad.net/~sunder67&gt;
-</property>
+ - Mustafa Y&#x131;lmaz &lt;https://launchpad.net/~apshalasha&gt;</property>
     <property name="artists">Fabien LOISON &lt;flo@flogisoft.com&gt;</property>
     <property name="logo">logo.png</property>
     <signal name="delete_event" handler="on_winAbout_delete_event"/>
@@ -982,7 +992,7 @@ Turkish :
                     <property name="can_focus">True</property>
                     <property name="receives_default">True</property>
                     <property name="relief">none</property>
-                    <property name="uri">https://translations.launchpad.net/cover-thumbnailer/trunk</property>
+                    <property name="uri">https://translations.launchpad.net/cover-thumbnailer/+translations</property>
                   </object>
                   <packing>
                     <property name="position">1</property>

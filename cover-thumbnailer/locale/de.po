@@ -1,0 +1,163 @@
+# German translation for cover-thumbnailer
+# Copyright (c) 2010 Rosetta Contributors and Canonical Ltd 2010
+# This file is distributed under the same license as the cover-thumbnailer package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2010.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: cover-thumbnailer\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2010-01-03 00:46+0100\n"
+"PO-Revision-Date: 2010-03-29 23:09+0000\n"
+"Last-Translator: Jan-Christoph Borchardt <jan@inquata.com>\n"
+"Language-Team: German <de@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2010-03-31 04:03+0000\n"
+"X-Generator: Launchpad (build Unknown)\n"
+
+#: ../cover-thumbnailer-gui.py:61 ../cover-thumbnailer-gui.py:64
+#: ../share/cover-thumbnailer-gui.glade:206
+#: ../share/cover-thumbnailer-gui.glade:419
+msgid "<Empty>"
+msgstr "<Leer>"
+
+#: ../cover-thumbnailer-gui.py:146
+msgid "Configuration written by Cover Thumbnailer GUI"
+msgstr "Konfiguration geschrieben durch Cover Thumbnailer GUI"
+
+#: ../cover-thumbnailer-gui.py:147
+msgid "Please edit with caution"
+msgstr "Vorsicht beim Verändern"
+
+#: ../share/cover-thumbnailer-gui.glade:43
+msgid "<big><b>Cover Thumbnailer For <i>Music Folders</i></b></big>"
+msgstr "<big><b>Cover Thumbnailer für <i>Musik-Ordner</i></b></big>"
+
+#: ../share/cover-thumbnailer-gui.glade:64
+msgid "Enable Cover Thumbnailer for music folders"
+msgstr "Cover Thumbnailer für Musik-Ordner aktivieren"
+
+#: ../share/cover-thumbnailer-gui.glade:77
+msgid "Keep the default folder icon if no cover was found"
+msgstr ""
+"Standard-Icon des Ordners beibehalten, falls kein Cover gefunden wurde"
+
+#: ../share/cover-thumbnailer-gui.glade:97
+msgid "List of music folders :"
+msgstr "Liste der Musik-Ordner :"
+
+#: ../share/cover-thumbnailer-gui.glade:195
+msgid "GNOME music folder :"
+msgstr "GNOME Musik-Ordner :"
+
+#: ../share/cover-thumbnailer-gui.glade:230
+msgid "Music"
+msgstr "Musik"
+
+#: ../share/cover-thumbnailer-gui.glade:256
+msgid "<big><b>Cover Thumbnailer For <i>Pictures Folders</i></b></big>"
+msgstr "<big><b>Cover Thumbnailer für <i>Bilder-Ordner</i></b></big>"
+
+#: ../share/cover-thumbnailer-gui.glade:277
+msgid "Enable Cover Thumbnailer for pictures folders"
+msgstr "Cover Thumbnailer für Bilder-Ordner aktivieren"
+
+#: ../share/cover-thumbnailer-gui.glade:290
+msgid "Keep the default folder icon if no pictures was found"
+msgstr ""
+"Standard-Icon des Ordners beibehalten, falls keine Bilder gefunden wurden"
+
+#: ../share/cover-thumbnailer-gui.glade:310
+msgid "List of picures folders :"
+msgstr "Liste der Bilder-Ordner :"
+
+#: ../share/cover-thumbnailer-gui.glade:408
+msgid "GNOME pictures folder :"
+msgstr "GNOME Bilder-Ordner :"
+
+#: ../share/cover-thumbnailer-gui.glade:446
+msgid "Pictures"
+msgstr "Bilder"
+
+#: ../share/cover-thumbnailer-gui.glade:473
+msgid "<big><b>Cover Thumbnailer For <i>Other Folders</i></b></big>"
+msgstr "<big><b>Cover Thumbnailer für <i>andere Ordner</i></b></big>"
+
+#: ../share/cover-thumbnailer-gui.glade:490
+msgid "Enable Cover Thumbnailer for other folders"
+msgstr "Cover Thumbnailer für andere Ordner aktivieren"
+
+#: ../share/cover-thumbnailer-gui.glade:512
+msgid "Others"
+msgstr "Sonstige"
+
+#: ../share/cover-thumbnailer-gui.glade:539
+msgid "<big><b>Ignored Folders</b></big>"
+msgstr "<big><b>Ignorierte Ordner</b></big>"
+
+#: ../share/cover-thumbnailer-gui.glade:560
+msgid "Ignore hidden folders (folders whose name start with a dot)"
+msgstr ""
+"Versteckte Ordner ignorieren (Ordner, deren Name mit einem Punkt beginnt)"
+
+#: ../share/cover-thumbnailer-gui.glade:581
+msgid "Folders to ignore :"
+msgstr "Ordner, die ingnoriert werden sollen :"
+
+#: ../share/cover-thumbnailer-gui.glade:685
+msgid "Ignored"
+msgstr "Ignoriert"
+
+#: ../share/cover-thumbnailer-gui.glade:699
+msgid "<big><b>Miscellaneous Options</b></big>"
+msgstr "<big><b>Verschiedene Optionen</b></big>"
+
+#: ../share/cover-thumbnailer-gui.glade:722
+msgid "Enable Cover Thumbnailer"
+msgstr "Cover Thumbnailer aktivieren"
+
+#: ../share/cover-thumbnailer-gui.glade:735
+msgid "Use GNOME configuration file for find default folders"
+msgstr "GNOME-Konfigurationsdatei verwenden, um Standard-Ordner zu finden"
+
+#: ../share/cover-thumbnailer-gui.glade:752
+msgid "Clear thumbnail cache"
+msgstr "Zwischenspeicher der Miniaturansichten löschen"
+
+#: ../share/cover-thumbnailer-gui.glade:768
+msgid ""
+"Clear the thumbnail cache if you have some problem with thumbnails, after "
+"changing the configuration for example"
+msgstr ""
+"Löschen Sie den Zwischenspeicher der Miniaturansichten, falls Probleme mit "
+"Miniaturansichten auftreten, z. B. nach Ändern der Konfiguration"
+
+#: ../share/cover-thumbnailer-gui.glade:797
+msgid "Miscellaneous"
+msgstr "Verschiedenes"
+
+#: ../share/cover-thumbnailer-gui.glade:887
+msgid "About Cover Thumbnailer"
+msgstr "Über Cover Thumbnailer"
+
+#: ../share/cover-thumbnailer-gui.glade:899
+msgid "Configuration tool for Cover Thumbnailer"
+msgstr "Konfigurationswerkzeug für Cover Thumbnailer"
+
+#: ../share/cover-thumbnailer-gui.glade:958
+msgid "Not in your language ?"
+msgstr "Nicht in Ihrer Sprache verfügbar ?"
+
+#: ../share/cover-thumbnailer-gui.glade:970
+msgid "Translate Cover Thumbnailer"
+msgstr "Cover Thumbnailer übersetzen"
+
+#: ../share/cover-thumbnailer-gui.glade:1021
+msgid "Select a folder - Cover Thumbnailer"
+msgstr "Wählen Sie einen Ordner – Cover Thumbnailer"
+
+#: ../share/cover-thumbnailer-gui.glade:1090
+msgid "Error - Cover Thumbnailer"
+msgstr "Fehler – Cover Thumbnailer"
