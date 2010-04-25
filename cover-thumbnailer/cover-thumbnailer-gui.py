@@ -62,12 +62,12 @@ class Conf(object):
 		self.music_enabled = True
 		self.music_keepicon = False
 		self.music_paths = []
-		self.gnome_music_path = _('<Empty>')
+		self.gnome_music_path = _('<None>')
 		#pictures
 		self.pictures_enabled = True
 		self.pictures_keepicon = False
 		self.pictures_paths = []
-		self.gnome_pictures_path = _('<Empty>')
+		self.gnome_pictures_path = _('<None>')
 		#ignored
 		self.ignored_paths = []
 		self.ignored_dotted = False
