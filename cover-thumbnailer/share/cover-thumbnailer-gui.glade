@@ -847,6 +847,7 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see &lt;http://www.gnu.org/licenses/&gt;.</property>
     <property name="authors">Fabien LOISON &lt;flo@flogisoft.com&gt;</property>
     <property name="documenters">Fabien LOISON &lt;flo@flogisoft.com&gt;</property>
+    <property name="translator_credits" translatable="yes">translator-credits</property>
     <property name="artists">Fabien LOISON &lt;flo@flogisoft.com&gt;</property>
     <property name="logo">logo.png</property>
     <signal name="delete_event" handler="on_winAbout_delete_event"/>
@@ -947,8 +948,8 @@ along with this program.  If not, see &lt;http://www.gnu.org/licenses/&gt;.</pro
     <property name="type_hint">normal</property>
     <property name="skip_taskbar_hint">True</property>
     <property name="has_separator">False</property>
-    <property name="action">select-folder</property>
     <property name="preview_widget_active">False</property>
+    <property name="action">select-folder</property>
     <signal name="delete_event" handler="on_filechooserdialog_delete_event"/>
     <child internal-child="vbox">
       <object class="GtkVBox" id="dialog-vbox3">

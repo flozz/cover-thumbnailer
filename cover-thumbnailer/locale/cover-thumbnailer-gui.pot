@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-25 14:46+0200\n"
+"POT-Creation-Date: 2010-04-26 12:22+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -134,18 +134,22 @@ msgstr ""
 msgid "Configuration tool for Cover Thumbnailer"
 msgstr ""
 
-#: ../share/cover-thumbnailer-gui.glade:879
+#: ../share/cover-thumbnailer-gui.glade:850
+msgid "translator-credits"
+msgstr ""
+
+#: ../share/cover-thumbnailer-gui.glade:880
 msgid "Not in your language ?"
 msgstr ""
 
-#: ../share/cover-thumbnailer-gui.glade:891
+#: ../share/cover-thumbnailer-gui.glade:892
 msgid "Translate Cover Thumbnailer"
 msgstr ""
 
-#: ../share/cover-thumbnailer-gui.glade:942
+#: ../share/cover-thumbnailer-gui.glade:943
 msgid "Select a folder - Cover Thumbnailer"
 msgstr ""
 
-#: ../share/cover-thumbnailer-gui.glade:1011
+#: ../share/cover-thumbnailer-gui.glade:1012
 msgid "Error - Cover Thumbnailer"
 msgstr ""
