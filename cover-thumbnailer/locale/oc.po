@@ -1,155 +1,163 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# Occitan (post 1500) translation for cover-thumbnailer
+# Copyright (c) 2010 Rosetta Contributors and Canonical Ltd 2010
+# This file is distributed under the same license as the cover-thumbnailer package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2010.
 #
-#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-26 12:53+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"Project-Id-Version: cover-thumbnailer\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2010-04-26 12:22+0200\n"
+"PO-Revision-Date: 2010-05-01 09:09+0000\n"
+"Last-Translator: Cédric VALMARY (Tot en òc) <cvalmary@yahoo.fr>\n"
+"Language-Team: Occitan (post 1500) <oc@li.org>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2010-05-02 04:06+0000\n"
+"X-Generator: Launchpad (build Unknown)\n"
 
 #: ../cover-thumbnailer-gui.py:65 ../cover-thumbnailer-gui.py:70
 msgid "<None>"
-msgstr ""
+msgstr "<Pas cap>"
 
 #: ../cover-thumbnailer-gui.py:194
 msgid "Configuration written by Cover Thumbnailer GUI"
-msgstr ""
+msgstr "Configuracion escricha per Cover Thumbnailer"
 
 #: ../cover-thumbnailer-gui.py:195
 msgid "Please edit with caution"
-msgstr ""
+msgstr "Mercés d'editar aqueste fichièr amb precaucions"
 
 #: ../share/cover-thumbnailer-gui.glade:40
 msgid "Music Folders"
-msgstr ""
+msgstr "Dorsièrs de musica"
 
 #: ../share/cover-thumbnailer-gui.glade:65
 msgid "Enable Cover Thumbnailer for music folders"
-msgstr ""
+msgstr "Activar Cover Thumbnailer pels dorsièrs de musica"
 
 #: ../share/cover-thumbnailer-gui.glade:79
 msgid "Keep the default folder icon if no cover was found"
 msgstr ""
+"Gardar l'icòna per defaut dels dorsièrs se cap de cobertura es pas estada "
+"trobada"
 
 #: ../share/cover-thumbnailer-gui.glade:100
 msgid "List of music folders :"
-msgstr ""
+msgstr "Lista dels dorsièrs de musica :"
 
 #: ../share/cover-thumbnailer-gui.glade:192
 msgid "Enable for GNOME's music folder (%s)"
-msgstr ""
+msgstr "Activar pel dorsièr de musica de GNOME (%s)"
 
 #: ../share/cover-thumbnailer-gui.glade:215
 msgid "Music"
-msgstr ""
+msgstr "Musica"
 
 #: ../share/cover-thumbnailer-gui.glade:229
 msgid "Picture Folders"
-msgstr ""
+msgstr "Dorsièrs d'imatges"
 
 #: ../share/cover-thumbnailer-gui.glade:254
 msgid "Enable Cover Thumbnailer for pictures folders"
-msgstr ""
+msgstr "Activar Cover Thumbnailer pels dorsièrs d'imatges"
 
 #: ../share/cover-thumbnailer-gui.glade:268
 msgid "Keep the default folder icon if no pictures was found"
 msgstr ""
+"Gardar l'icòna per defaut dels dorsièrs se cap d'imatge es pas estat trobat"
 
 #: ../share/cover-thumbnailer-gui.glade:289
 msgid "List of picture folders :"
-msgstr ""
+msgstr "Lista dels dorsièrs d'imatges :"
 
 #: ../share/cover-thumbnailer-gui.glade:381
 msgid "Enable for GNOME's pictures folder (%s)"
-msgstr ""
+msgstr "Activar pel dorsièr d'imatge de GNOME (%s)"
 
 #: ../share/cover-thumbnailer-gui.glade:407
 msgid "Pictures"
-msgstr ""
+msgstr "Imatges"
 
 #: ../share/cover-thumbnailer-gui.glade:422
 msgid "Other Folders"
-msgstr ""
+msgstr "Autres dorsièrs"
 
 #: ../share/cover-thumbnailer-gui.glade:443
 msgid "Enable Cover Thumbnailer for other folders"
-msgstr ""
+msgstr "Activar Cover Thumbnailer pels autres dorsièrs"
 
 #: ../share/cover-thumbnailer-gui.glade:466
 msgid "Others"
-msgstr ""
+msgstr "Autres"
 
 #: ../share/cover-thumbnailer-gui.glade:481
 msgid "Ignored Folders"
-msgstr ""
+msgstr "Dorsièrs ignorats"
 
 #: ../share/cover-thumbnailer-gui.glade:506
 msgid "Ignore hidden folders (folders whose name start with a dot)"
-msgstr ""
+msgstr "Ignorar los dorsièrs amagats (los que lo nom comença per un punt)"
 
 #: ../share/cover-thumbnailer-gui.glade:527
 msgid "Folders to ignore :"
-msgstr ""
+msgstr "Dorsièrs d'ignorar :"
 
 #: ../share/cover-thumbnailer-gui.glade:631
 msgid "Ignored"
-msgstr ""
+msgstr "Ignorats"
 
 #: ../share/cover-thumbnailer-gui.glade:645
 msgid "Miscellaneous Options"
-msgstr ""
+msgstr "Opcions divèrsas"
 
 #: ../share/cover-thumbnailer-gui.glade:671
 msgid "Enable Cover Thumbnailer"
-msgstr ""
+msgstr "Activar Cover Thumbnailer"
 
 #: ../share/cover-thumbnailer-gui.glade:687
 msgid "Clear thumbnail cache"
-msgstr ""
+msgstr "Voidar l'amagatal de las miniaturas"
 
 #: ../share/cover-thumbnailer-gui.glade:703
 msgid ""
 "Clear the thumbnail cache if you have some problem with thumbnails, after "
 "changing the configuration for example"
 msgstr ""
+"Voidar l'amagatal de las miniaturas s'avètz de problèmas amb las miniaturas, "
+"aprèp aver cambiat la configuracion per exemple"
 
 #: ../share/cover-thumbnailer-gui.glade:732
 msgid "Miscellaneous"
-msgstr ""
+msgstr "Divèrs"
 
 #: ../share/cover-thumbnailer-gui.glade:822
 msgid "About Cover Thumbnailer"
-msgstr ""
+msgstr "A prepaus de Cover Thumbnailer"
 
 #: ../share/cover-thumbnailer-gui.glade:834
 msgid "Configuration tool for Cover Thumbnailer"
-msgstr ""
+msgstr "Esplech de configuracion per Cover Thumbnailer"
 
 #: ../share/cover-thumbnailer-gui.glade:850
 msgid "translator-credits"
 msgstr ""
+"Launchpad Contributions:\n"
+"  Cédric VALMARY (Tot en òc) https://launchpad.net/~cvalmary"
 
 #: ../share/cover-thumbnailer-gui.glade:880
 msgid "Not in your language ?"
-msgstr ""
+msgstr "Pas dins vòstra lenga ?"
 
 #: ../share/cover-thumbnailer-gui.glade:892
 msgid "Translate Cover Thumbnailer"
-msgstr ""
+msgstr "Traduire Cover Thumbnailer"
 
 #: ../share/cover-thumbnailer-gui.glade:943
 msgid "Select a folder - Cover Thumbnailer"
-msgstr ""
+msgstr "Seleccionar un dorsièr - Cover Thumbnailer"
 
 #: ../share/cover-thumbnailer-gui.glade:1012
 msgid "Error - Cover Thumbnailer"
-msgstr ""
+msgstr "Error - Cover Thumbnailer"

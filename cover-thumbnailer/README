@@ -24,6 +24,7 @@ Cover thumbnailer depend on :
   * Python Imaging (PIL) <http://www.pythonware.com/products/pil/>
   * GConf <http://projects.gnome.org/gconf/>
   * PyGTK <http://www.pygtk.org/>
+  * python-gconf
 
 For building Cover Thumbnailer, you need :
   * GNU gettext <http://www.gnu.org/software/gettext/>

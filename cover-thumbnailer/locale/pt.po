@@ -7,14 +7,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: cover-thumbnailer\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2010-04-25 14:46+0200\n"
-"PO-Revision-Date: 2010-04-25 11:50+0000\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2010-04-26 12:22+0200\n"
+"PO-Revision-Date: 2010-04-26 10:36+0000\n"
+"Last-Translator: Launchpad Translations Administrators "
+"<rosetta@launchpad.net>\n"
 "Language-Team: Portuguese <pt@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-04-26 03:51+0000\n"
+"X-Launchpad-Export-Date: 2010-04-27 03:52+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: ../cover-thumbnailer-gui.py:65 ../cover-thumbnailer-gui.py:70
@@ -137,18 +138,22 @@ msgstr "Sobre o Cover Thumbnailer"
 msgid "Configuration tool for Cover Thumbnailer"
 msgstr "Ferramenta de configuração do Cover Thumbnailer"
 
-#: ../share/cover-thumbnailer-gui.glade:879
+#: ../share/cover-thumbnailer-gui.glade:850
+msgid "translator-credits"
+msgstr ""
+
+#: ../share/cover-thumbnailer-gui.glade:880
 msgid "Not in your language ?"
 msgstr "Não existe na sua língua ?"
 
-#: ../share/cover-thumbnailer-gui.glade:891
+#: ../share/cover-thumbnailer-gui.glade:892
 msgid "Translate Cover Thumbnailer"
 msgstr "Traduzir Cover Thumbnailer"
 
-#: ../share/cover-thumbnailer-gui.glade:942
+#: ../share/cover-thumbnailer-gui.glade:943
 msgid "Select a folder - Cover Thumbnailer"
 msgstr "Escolha uma pasta - Cover Thumbnailer"
 
-#: ../share/cover-thumbnailer-gui.glade:1011
+#: ../share/cover-thumbnailer-gui.glade:1012
 msgid "Error - Cover Thumbnailer"
 msgstr "Erro - Cover Thumbnailer"

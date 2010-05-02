@@ -7,19 +7,19 @@ msgid ""
 msgstr ""
 "Project-Id-Version: cover-thumbnailer\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2010-04-25 14:46+0200\n"
-"PO-Revision-Date: 2010-04-25 11:50+0000\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2010-04-26 12:22+0200\n"
+"PO-Revision-Date: 2010-04-29 21:12+0000\n"
+"Last-Translator: Lucas <Unknown>\n"
 "Language-Team: Russian <ru@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-04-26 03:51+0000\n"
+"X-Launchpad-Export-Date: 2010-04-30 04:00+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: ../cover-thumbnailer-gui.py:65 ../cover-thumbnailer-gui.py:70
 msgid "<None>"
-msgstr ""
+msgstr "<Пусто>"
 
 #: ../cover-thumbnailer-gui.py:194
 msgid "Configuration written by Cover Thumbnailer GUI"
@@ -31,7 +31,7 @@ msgstr "Просьба измените с осторожностью"
 
 #: ../share/cover-thumbnailer-gui.glade:40
 msgid "Music Folders"
-msgstr ""
+msgstr "Папки с музыкой"
 
 #: ../share/cover-thumbnailer-gui.glade:65
 msgid "Enable Cover Thumbnailer for music folders"
@@ -55,7 +55,7 @@ msgstr "Музыка"
 
 #: ../share/cover-thumbnailer-gui.glade:229
 msgid "Picture Folders"
-msgstr ""
+msgstr "Папки с картинками"
 
 #: ../share/cover-thumbnailer-gui.glade:254
 msgid "Enable Cover Thumbnailer for pictures folders"
@@ -67,7 +67,7 @@ msgstr "Хранить иконку папки, если не было обна�
 
 #: ../share/cover-thumbnailer-gui.glade:289
 msgid "List of picture folders :"
-msgstr ""
+msgstr "Список папок с картинками"
 
 #: ../share/cover-thumbnailer-gui.glade:381
 msgid "Enable for GNOME's pictures folder (%s)"
@@ -79,7 +79,7 @@ msgstr "Изображения"
 
 #: ../share/cover-thumbnailer-gui.glade:422
 msgid "Other Folders"
-msgstr ""
+msgstr "Другие папки"
 
 #: ../share/cover-thumbnailer-gui.glade:443
 msgid "Enable Cover Thumbnailer for other folders"
@@ -91,7 +91,7 @@ msgstr "Другие"
 
 #: ../share/cover-thumbnailer-gui.glade:481
 msgid "Ignored Folders"
-msgstr ""
+msgstr "Не учитывание папки"
 
 #: ../share/cover-thumbnailer-gui.glade:506
 msgid "Ignore hidden folders (folders whose name start with a dot)"
@@ -107,7 +107,7 @@ msgstr "Игнорируемое"
 
 #: ../share/cover-thumbnailer-gui.glade:645
 msgid "Miscellaneous Options"
-msgstr ""
+msgstr "Различные опции"
 
 #: ../share/cover-thumbnailer-gui.glade:671
 msgid "Enable Cover Thumbnailer"
@@ -137,18 +137,24 @@ msgstr "О Cover Thumbnailer"
 msgid "Configuration tool for Cover Thumbnailer"
 msgstr "Инструмент конфигурации для Cover Thumbnailer"
 
-#: ../share/cover-thumbnailer-gui.glade:879
+#: ../share/cover-thumbnailer-gui.glade:850
+msgid "translator-credits"
+msgstr ""
+"Launchpad Contributions:\n"
+"  Lucas https://launchpad.net/~lucas-courot"
+
+#: ../share/cover-thumbnailer-gui.glade:880
 msgid "Not in your language ?"
 msgstr "Не на вашем языке ?"
 
-#: ../share/cover-thumbnailer-gui.glade:891
+#: ../share/cover-thumbnailer-gui.glade:892
 msgid "Translate Cover Thumbnailer"
 msgstr "Переведите Cover Thumbnailer"
 
-#: ../share/cover-thumbnailer-gui.glade:942
+#: ../share/cover-thumbnailer-gui.glade:943
 msgid "Select a folder - Cover Thumbnailer"
 msgstr "Выберите папку - Cover Thumbnailer"
 
-#: ../share/cover-thumbnailer-gui.glade:1011
+#: ../share/cover-thumbnailer-gui.glade:1012
 msgid "Error - Cover Thumbnailer"
 msgstr "Ошибка - Cover Thumbnailer"
