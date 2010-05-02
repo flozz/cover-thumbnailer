@@ -29,7 +29,7 @@
 ##                                                                        ##
 ############################################################################
 ##                                                                        ##
-## VERSION : 0.8 (Sun, 25 Apr 2010 13:24:42 +0200)                        ##
+## VERSION : 0.8 (Sun, 02 May 2010 20:38:18 +0200)                        ##
 ## WEB SITE : http://software.flogisoft.com/cover-thumbnailer/            ##
 ##                                                                       ##
 #########################################################################
@@ -68,7 +68,7 @@ class Conf(object):
 	'''
 	def __init__(self):
 		#miscellaneous
-		self.use_gnome_conf = True
+#		self.use_gnome_conf = True FIXME Depreciated
 		#music
 		self.music_enabled = True
 		self.music_keepicon = False
@@ -76,6 +76,7 @@ class Conf(object):
 		self.music_default = BASE_PATH + 'music_default.png'
 		self.music_fg = BASE_PATH + 'music_fg.png'
 		self.music_bg = BASE_PATH + 'music_bg.png'
+		self.music_use_gnome_folder = True
 		#pictures
 		self.pictures_enabled = True
 		self.pictures_keepicon = False
@@ -83,6 +84,7 @@ class Conf(object):
 		self.pictures_default = BASE_PATH + 'pictures_default.png'
 		self.pictures_fg = BASE_PATH + 'pictures_fg.png'
 		self.pictures_bg = BASE_PATH + 'pictures_bg.png'
+		self.pictures_use_gnome_folder = True
 		#other
 		self.other_enabled = True
 		self.other_fg = BASE_PATH + 'other_fg.png'
@@ -96,8 +98,7 @@ class Conf(object):
 
 		#get conf
 		self.import_user_conf()
-		if self.use_gnome_conf:
-			self.import_gnome_conf()
+		self.import_gnome_conf()
 		self.get_pictures_path()
 
 	def import_gnome_conf(self):
@@ -107,9 +108,9 @@ class Conf(object):
 		if os.path.isfile(self.user_gnomeconf):
 			file = open(self.user_gnomeconf, 'r')
 			for line in file:
-				if re.match(r'.*?XDG_MUSIC_DIR.*?=.*?"(.*)".*?', line):
+				if re.match(r'.*?XDG_MUSIC_DIR.*?=.*?"(.*)".*?', line) and self.music_use_gnome_folder:
 					self.music_paths.append(re.match(r'.*?XDG_MUSIC_DIR.*?=.*?"(.*)".*?', line).group(1).replace('$HOME', self.user_homedir))
-				elif re.match(r'.*?XDG_PICTURES_DIR.*?=.*?"(.*)".*?', line):
+				elif re.match(r'.*?XDG_PICTURES_DIR.*?=.*?"(.*)".*?', line) and self.pictures_use_gnome_folder:
 					self.pictures_paths.append(re.match(r'.*?XDG_PICTURES_DIR.*?=.*?"(.*)".*?', line).group(1).replace('$HOME', self.user_homedir))
 			file.close()
 		else:
@@ -135,7 +136,7 @@ class Conf(object):
 					current_section = 'other'
 				elif re.match(r'\s*\[ignored\]\s*', line.lower()):  #[IGNORED]
 					current_section = 'ignored'
-				elif re.match(r'\s*\[miscellaneous\]\s*', line.lower()):  #[MISCELLANEOUS]
+				elif re.match(r'\s*\[miscellaneous\]\s*', line.lower()):  #[MISCELLANEOUS] /!\ depreciated
 					current_section = 'miscellaneous'
 				elif re.match(r'\s*(path|PATH)\s*=\s*"(.*)"\s*', line): #path=
 					if current_section == 'music':
@@ -180,13 +181,28 @@ class Conf(object):
 							self.pictures_keepicon = True
 						elif value in ['no', 'false', '0']:
 							self.pictures_keepicon = False
-				elif re.match(r'\s*usegnomeconf\s*=\s*(yes|no|true|false|1|0)\s*', line.lower()): #useGnomeConf=
+				elif re.match(r'\s*usegnomeconf\s*=\s*(yes|no|true|false|1|0)\s*', line.lower()): #useGnomeConf= /!\ depreciated
 					if current_section == 'miscellaneous':
 						value = re.match(r'\s*usegnomeconf\s*=\s*(yes|no|true|false|1|0)\s*', line.lower()).group(1)
 						if value in ['yes', 'true', '1']:
-							self.use_gnome_conf = True
+							self.music_use_gnome_folder = True
+							self.pictures_use_gnome_folder = True
 						elif value in ['no', 'false', '0']:
-							self.use_gnome_conf = False
+							self.music_use_gnome_folder = False
+							self.pictures_use_gnome_folder = False
+				elif re.match(r'\s*usegnomefolder\s*=\s*(yes|no|true|false|1|0)\s*', line.lower()): #useGnomeFolder=
+					if current_section == 'music':
+						value = re.match(r'\s*usegnomefolder\s*=\s*(yes|no|true|false|1|0)\s*', line.lower()).group(1)
+						if value in ['yes', 'true', '1']:
+							self.music_use_gnome_folder = True
+						elif value in ['no', 'false', '0']:
+							self.music_use_gnome_folder = False
+					elif current_section == 'pictures':
+						value = re.match(r'\s*usegnomefolder\s*=\s*(yes|no|true|false|1|0)\s*', line.lower()).group(1)
+						if value in ['yes', 'true', '1']:
+							self.pictures_use_gnome_folder = True
+						elif value in ['no', 'false', '0']:
+							self.pictures_use_gnome_folder = False
 			file.close()
 
 			#Replace all ~ by user home dir

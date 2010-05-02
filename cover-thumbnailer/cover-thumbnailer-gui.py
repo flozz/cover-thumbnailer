@@ -29,12 +29,12 @@
 ##                                                                        ##
 ############################################################################
 ##                                                                        ##
-## VERSION : 0.8 (Sun, 02 May 2010 18:09:35 +0200)                        ##
+## VERSION : 0.8 (Sun, 02 May 2010 20:22:32 +0200)                        ##
 ## WEB SITE : http://software.flogisoft.com/cover-thumbnailer/            ##
 ##                                                                       ##
 #########################################################################
 
-__appname__ = 'cover-thumbnailer-gui'
+__appname__ = "cover-thumbnailer-gui"
 
 import pygtk
 pygtk.require("2.0")
@@ -47,10 +47,14 @@ import os, re, shutil, gconf
 
 
 #Base path
-BASE_PATH = '/usr/share/cover-thumbnailer/'
-#BASE_PATH = './share/' #FIXME : dev
-#Gconf key for enabling/disabling Cover thumbnailer
-GCONF_KEY = '/desktop/gnome/thumbnailers/inode@directory/enable'
+BASE_PATH = "/usr/share/cover-thumbnailer/"
+#BASE_PATH = "./share/" #FIXME : dev
+
+#GConf key for enabling/disabling Cover thumbnailer
+GCONF_KEY = "/desktop/gnome/thumbnailers/inode@directory/enable"
+
+#GConf key for nautilus thumbnails size
+GCONF_KEY_NAUTILUS_THUMB_SIZE = "/apps/nautilus/icon_view/thumbnail_size"
 
 
 class Conf(object):
@@ -58,8 +62,6 @@ class Conf(object):
 	Import/Write configuration from config files.
 	'''
 	def __init__(self):
-		#miscellaneous
-		self.use_gnome_conf = True #FIXME: depreciated
 		#music
 		self.music_enabled = True
 		self.music_keepicon = False
@@ -345,6 +347,7 @@ class MainWin(object):
 		### MISCELLANEOUS ###
 		#Enable Cover-Thumbnailer checkBox
 		self.cbEnableCT = win.get_object("cbEnableCT")
+		self.spinbtn_thumbSize = win.get_object("spinbtn_thumbSize")
 
 		### FileChooser Dialog ###
 		self.fileChooser = win.get_object("filechooserdialog")
@@ -446,6 +449,10 @@ class MainWin(object):
 	def on_cbEnableCT_toggled(self, widget):
 		gconf_client = gconf.client_get_default()
 		gconf_client.set_bool(GCONF_KEY, self.cbEnableCT.get_active())
+	
+	def on_spinbtn_thumbSize_value_changed(self, widget):
+		gconf_client = gconf.client_get_default()
+		gconf_client.set_int(GCONF_KEY_NAUTILUS_THUMB_SIZE, int(self.spinbtn_thumbSize.get_value()))
 
 	### FILECHOOSER DIALOG ###
 	def on_btnFileChooserCancel_clicked(self, widget):
@@ -536,6 +543,13 @@ def loadInterface(gui):
 	#Miscellaneous
 	gconf_client = gconf.client_get_default()
 	gui.cbEnableCT.set_active(gconf_client.get_bool(GCONF_KEY))
+	thumb_size = gconf_client.get_int(GCONF_KEY_NAUTILUS_THUMB_SIZE)
+	if thumb_size > 128:
+		gui.spinbtn_thumbSize.set_value(128)
+	elif thumb_size < 64:
+		gui.spinbtn_thumbSize.set_value(64)
+	else:
+		gui.spinbtn_thumbSize.set_value(thumb_size)
 
 
 
