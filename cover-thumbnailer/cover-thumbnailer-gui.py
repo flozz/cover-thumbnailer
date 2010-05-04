@@ -29,7 +29,7 @@
 ##                                                                        ##
 ############################################################################
 ##                                                                        ##
-## VERSION : 0.8 (Sun, 02 May 2010 20:22:32 +0200)                        ##
+## VERSION : 0.8 (Tue, 04 May 2010 20:46:23 +0200)                        ##
 ## WEB SITE : http://software.flogisoft.com/cover-thumbnailer/            ##
 ##                                                                       ##
 #########################################################################
@@ -280,7 +280,7 @@ class Conf(object):
 				file.write("\tpath = \"" + path + "\"\n")
 
 		#END
-		file.write("\n\n") #Because I don't like files with no blank lines at the end :)
+		file.write("\n\n") #Because I like files with blank lines at the end :)
 		file.close()
 
 
@@ -291,6 +291,7 @@ class MainWin(object):
 	def __init__(self):
 		win = gtk.Builder()
 		win.set_translation_domain(__appname__)
+		#FIXME: GtkWarning: Ignoring the separator setting (wtf ?!)
 		win.add_from_file(BASE_PATH + 'cover-thumbnailer-gui.glade')
 
 		self.winAbout = win.get_object("winAbout")
@@ -301,7 +302,7 @@ class MainWin(object):
 		self.trvMusicPathList = win.get_object("trvMusicPathList")
 		self.lsstMusicPathList = gtk.ListStore(str)
 		self.trvMusicPathList.set_model(self.lsstMusicPathList)
-		self.columnMusicPathList = gtk.TreeViewColumn("Path", gtk.CellRendererText(), text=False)
+		self.columnMusicPathList = gtk.TreeViewColumn("Path", gtk.CellRendererText(), text=0)
 		self.trvMusicPathList.append_column(self.columnMusicPathList)
 		#MusicRemove button
 		self.btnMusicRemove = win.get_object("btnMusicRemove")
@@ -317,7 +318,7 @@ class MainWin(object):
 		self.trvPicturesPathList = win.get_object("trvPicturesPathList")
 		self.lsstPicturesPathList = gtk.ListStore(str)
 		self.trvPicturesPathList.set_model(self.lsstPicturesPathList)
-		self.columnPicturesPathList = gtk.TreeViewColumn("Path", gtk.CellRendererText(), text=False)
+		self.columnPicturesPathList = gtk.TreeViewColumn("Path", gtk.CellRendererText(), text=0)
 		self.trvPicturesPathList.append_column(self.columnPicturesPathList)
 		#PicturesRemove button
 		self.btnPicturesRemove = win.get_object("btnPicturesRemove")
@@ -337,7 +338,7 @@ class MainWin(object):
 		self.trvIgnoredPathList = win.get_object("trvIgnoredPathList")
 		self.lsstIgnoredPathList = gtk.ListStore(str)
 		self.trvIgnoredPathList.set_model(self.lsstIgnoredPathList)
-		self.columnIgnoredPathList = gtk.TreeViewColumn("Path", gtk.CellRendererText(), text=False)
+		self.columnIgnoredPathList = gtk.TreeViewColumn("Path", gtk.CellRendererText(), text=0)
 		self.trvIgnoredPathList.append_column(self.columnIgnoredPathList)
 		#IgnoredRemove button
 		self.btnIgnoredRemove = win.get_object("btnIgnoredRemove")
