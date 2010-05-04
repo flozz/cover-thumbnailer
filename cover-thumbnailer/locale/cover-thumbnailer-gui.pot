@@ -8,12 +8,12 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-05-02 20:40+0200\n"
+"POT-Creation-Date: 2010-05-04 00:30+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 #: ../cover-thumbnailer-gui.py:69 ../cover-thumbnailer-gui.py:75
@@ -30,12 +30,12 @@ msgstr ""
 
 #: ../cover-thumbnailer-gui.py:528 ../share/cover-thumbnailer-gui.glade:192
 #, python-format
-msgid "Enable for GNOME's music folder (%s)"
+msgid "Enable for GNOME’s music folder (%s)"
 msgstr ""
 
 #: ../cover-thumbnailer-gui.py:535 ../share/cover-thumbnailer-gui.glade:382
 #, python-format
-msgid "Enable for GNOME's pictures folder (%s)"
+msgid "Enable for GNOME’s picture folder (%s)"
 msgstr ""
 
 #: ../share/cover-thumbnailer-gui.glade:40
@@ -51,7 +51,7 @@ msgid "Keep the default folder icon if no cover was found"
 msgstr ""
 
 #: ../share/cover-thumbnailer-gui.glade:100
-msgid "List of music folders :"
+msgid "List of music folders:"
 msgstr ""
 
 #: ../share/cover-thumbnailer-gui.glade:216
@@ -63,15 +63,15 @@ msgid "Picture Folders"
 msgstr ""
 
 #: ../share/cover-thumbnailer-gui.glade:255
-msgid "Enable Cover Thumbnailer for pictures folders"
+msgid "Enable Cover Thumbnailer for picture folders"
 msgstr ""
 
 #: ../share/cover-thumbnailer-gui.glade:269
-msgid "Keep the default folder icon if no pictures was found"
+msgid "Keep the default folder icon if no pictures were found"
 msgstr ""
 
 #: ../share/cover-thumbnailer-gui.glade:290
-msgid "List of picture folders :"
+msgid "List of picture folders:"
 msgstr ""
 
 #: ../share/cover-thumbnailer-gui.glade:409
@@ -95,11 +95,11 @@ msgid "Ignored Folders"
 msgstr ""
 
 #: ../share/cover-thumbnailer-gui.glade:508
-msgid "Ignore hidden folders (folders whose name start with a dot)"
+msgid "Ignore hidden folders (folders whose name starts with a dot)"
 msgstr ""
 
 #: ../share/cover-thumbnailer-gui.glade:529
-msgid "Folders to ignore :"
+msgid "Folders to ignore:"
 msgstr ""
 
 #: ../share/cover-thumbnailer-gui.glade:633
@@ -115,7 +115,7 @@ msgid "Enable Cover Thumbnailer"
 msgstr ""
 
 #: ../share/cover-thumbnailer-gui.glade:694
-msgid "Thumbnails size  :"
+msgid "Thumbnail size:"
 msgstr ""
 
 #: ../share/cover-thumbnailer-gui.glade:705
@@ -134,8 +134,8 @@ msgstr ""
 
 #: ../share/cover-thumbnailer-gui.glade:770
 msgid ""
-"Clear the thumbnail cache if you have some problem with thumbnails, after "
-"changing the configuration for example"
+"Clear the thumbnail cache if you have some problem with thumbnails, for "
+"example after changing the configuration."
 msgstr ""
 
 #: ../share/cover-thumbnailer-gui.glade:799
@@ -150,12 +150,28 @@ msgstr ""
 msgid "Configuration tool for Cover Thumbnailer"
 msgstr ""
 
+#: ../share/cover-thumbnailer-gui.glade:903
+msgid ""
+"This program is free software: you can redistribute it and/or modify\n"
+"it under the terms of the GNU General Public License as published by\n"
+"the Free Software Foundation, either version 3 of the License, or\n"
+"(at your option) any later version.\n"
+"\n"
+"This program is distributed in the hope that it will be useful,\n"
+"but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
+"MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the\n"
+"GNU General Public License for more details.\n"
+"\n"
+"You should have received a copy of the GNU General Public License\n"
+"along with this program. If not, see <http://www.gnu.org/licenses/>."
+msgstr ""
+
 #: ../share/cover-thumbnailer-gui.glade:917
 msgid "translator-credits"
 msgstr ""
 
 #: ../share/cover-thumbnailer-gui.glade:947
-msgid "Not in your language ?"
+msgid "Not in your language?"
 msgstr ""
 
 #: ../share/cover-thumbnailer-gui.glade:959
@@ -168,4 +184,12 @@ msgstr ""
 
 #: ../share/cover-thumbnailer-gui.glade:1079
 msgid "Error - Cover Thumbnailer"
+msgstr ""
+
+#: ../share/cover-thumbnailer-gui.glade:1086
+msgid "Can’t add this path"
+msgstr ""
+
+#: ../share/cover-thumbnailer-gui.glade:1087
+msgid "This path was already in the list!"
 msgstr ""

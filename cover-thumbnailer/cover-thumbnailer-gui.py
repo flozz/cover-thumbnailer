@@ -525,14 +525,14 @@ def loadInterface(gui):
 	gui.cbMusicKeepFIcon.set_active(conf.music_keepicon)
 	for path in conf.music_paths:
 		gui.lsstMusicPathList.append([path])
-	gui.cb_useGnomeMusic.set_label(_("Enable for GNOME's music folder (%s)") %(conf.gnome_music_path))
+	gui.cb_useGnomeMusic.set_label(_("Enable for GNOME’s music folder (%s)") %(conf.gnome_music_path))
 	gui.cb_useGnomeMusic.set_active(conf.music_use_gnome_folder)
 	#Pictures
 	gui.cbPicturesEnable.set_active(conf.pictures_enabled)
 	gui.cbPicturesKeepFIcon.set_active(conf.pictures_keepicon)
 	for path in conf.pictures_paths:
 		gui.lsstPicturesPathList.append([path])
-	gui.cb_useGnomePictures.set_label(_("Enable for GNOME's pictures folder (%s)") %(conf.gnome_pictures_path))
+	gui.cb_useGnomePictures.set_label(_("Enable for GNOME’s picture folder (%s)") %(conf.gnome_pictures_path))
 	gui.cb_useGnomePictures.set_active(conf.pictures_use_gnome_folder)
 	#Other
 	gui.cbOtherEnable.set_active(conf.other_enabled)
