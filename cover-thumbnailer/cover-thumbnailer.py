@@ -306,8 +306,16 @@ class Thumb(object):
 			#PIC0
 			try:
 				pic0 = Image.open(pictures[0]).convert('RGBA')
-				pic0 = pic0.rotate(-10, resample=Image.ANTIALIAS, expand=1)
-				pic0.thumbnail((120, 120), Image.ANTIALIAS)
+				#Optimisation with resempling : don't resemple when rotate big
+				#pictures (useless and verry slow)
+				if pic0.size[0] <= 120 and pic0.size[1] <= 120:   # <= 120x120
+					pic0 = pic0.rotate(-10, resample=Image.BICUBIC, expand=1)
+				elif pic0.size[0] <= 256 and pic0.size[1] <= 256: # <= 256x256
+					pic0 = pic0.rotate(-10, resample=Image.BILINEAR, expand=1)
+					pic0.thumbnail((120, 120), Image.ANTIALIAS)
+				else:                                             # > 256x256
+					pic0 = pic0.rotate(-10, resample=Image.NONE, expand=1)
+					pic0.thumbnail((120, 120), Image.ANTIALIAS)
 				x = (self.thumb.size[0] - pic0.size[0]) / 2
 				y = (self.thumb.size[1] - pic0.size[1]) / 2
 				self.thumb.paste(pic0, (x, y), pic0)
@@ -317,16 +325,32 @@ class Thumb(object):
 			#PIC0
 			try:
 				pic0 = Image.open(pictures[0]).convert('RGBA')
-				pic0 = pic0.rotate(3, resample=Image.ANTIALIAS, expand=1)
-				pic0.thumbnail((105, 70), Image.ANTIALIAS)
+				#Optimisation with resempling : don't resemple when rotate big
+				#pictures (useless and verry slow)
+				if pic0.size[0] <= 105 and pic0.size[1] <= 70:    # <= 105x70
+					pic0 = pic0.rotate(3, resample=Image.BICUBIC, expand=1)
+				elif pic0.size[0] <= 256 and pic0.size[1] <= 256: # <= 256x256
+					pic0 = pic0.rotate(3, resample=Image.BILINEAR, expand=1)
+					pic0.thumbnail((105, 70), Image.ANTIALIAS)
+				else:                                             # > 256x256
+					pic0 = pic0.rotate(3, resample=Image.NONE, expand=1)
+					pic0.thumbnail((105, 70), Image.ANTIALIAS)
 				self.thumb.paste(pic0, (10, 5), pic0)
 			except IOError:
 				print "E: Can't open '"+pictures[0]+"'."
 			#PIC1
 			try:
 				pic1 = Image.open(pictures[1]).convert('RGBA')
-				pic1 = pic1.rotate(-5, resample=Image.ANTIALIAS, expand=1)
-				pic1.thumbnail((105, 70), Image.ANTIALIAS)
+				#Optimisation with resempling : don't resemple when rotate big
+				#pictures (useless and verry slow)
+				if pic1.size[0] <= 105 and pic1.size[1] <= 70:    # <= 105x70
+					pic1 = pic1.rotate(-5, resample=Image.BICUBIC, expand=1)
+				elif pic1.size[0] <= 256 and pic1.size[1] <= 256: # <= 256x256
+					pic1 = pic1.rotate(-5, resample=Image.BILINEAR, expand=1)
+					pic1.thumbnail((105, 70), Image.ANTIALIAS)
+				else:                                             # > 256x256
+					pic1 = pic1.rotate(-5, resample=Image.NONE, expand=1)
+					pic1.thumbnail((105, 70), Image.ANTIALIAS)
 				x = self.thumb.size[0] - pic1.size[0] - 5
 				y = self.thumb.size[1] - pic1.size[1] - 5
 				self.thumb.paste(pic1, (x, y), pic1)
