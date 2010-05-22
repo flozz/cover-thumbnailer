@@ -44,505 +44,503 @@ BASE_PATH = '/usr/share/cover-thumbnailer/'
 
 #Cover files list
 COVER_FILES = ['cover.png', 'cover.jpg', '.cover.png', '.cover.jpg',
-		'Cover.png', 'Cover.jpg', '.Cover.png', '.Cover.jpg',
-		'folder.png', 'folder.jpg', '.folder.png', '.folder.jpg',
-		'Folder.png', 'Folder.jpg', '.Folder.png', '.Folder.jpg']
+        'Cover.png', 'Cover.jpg', '.Cover.png', '.Cover.jpg',
+        'folder.png', 'folder.jpg', '.folder.png', '.folder.jpg',
+        'Folder.png', 'Folder.jpg', '.Folder.png', '.Folder.jpg']
 
 #Supported picture ext (ALWAY LAST 4 CHARS !!)
 PICTURES_EXT = ['.jpg', '.JPG', 'jpeg', 'JPEG',
-		'.png', '.PNG', #None interlaced
-		'.gif', '.GIF',
-		'.bmp', '.BMP', #Window ans OS/2 bitmap
-		'.ico', '.ICO', #Windows icon format
-		'.tga', '.TGA', #Truevision Targa format
-		'.tif', '.TIF', 'tiff', 'TIFF', #Adobe Tagged Image File Format
-		'.psd', '.PSD', #Adobe Photosop format (only version 2.5 and 3.0)
-		]
+        '.png', '.PNG', #None interlaced
+        '.gif', '.GIF',
+        '.bmp', '.BMP', #Window ans OS/2 bitmap
+        '.ico', '.ICO', #Windows icon format
+        '.tga', '.TGA', #Truevision Targa format
+        '.tif', '.TIF', 'tiff', 'TIFF', #Adobe Tagged Image File Format
+        '.psd', '.PSD', #Adobe Photosop format (only version 2.5 and 3.0)
+        ]
 
 #==============================================================================
 
 
 class Conf(object):
-	'''
-	Import configuration from config files.
-	'''
-	def __init__(self):
-		#miscellaneous
-#		self.use_gnome_conf = True FIXME Depreciated
-		#music
-		self.music_enabled = True
-		self.music_keepicon = False
-		self.music_paths = []
-		self.music_default = BASE_PATH + 'music_default.png'
-		self.music_fg = BASE_PATH + 'music_fg.png'
-		self.music_bg = BASE_PATH + 'music_bg.png'
-		self.music_use_gnome_folder = True
-		#pictures
-		self.pictures_enabled = True
-		self.pictures_keepicon = False
-		self.pictures_paths = []
-		self.pictures_default = BASE_PATH + 'pictures_default.png'
-		self.pictures_fg = BASE_PATH + 'pictures_fg.png'
-		self.pictures_bg = BASE_PATH + 'pictures_bg.png'
-		self.pictures_use_gnome_folder = True
-		#other
-		self.other_enabled = True
-		self.other_fg = BASE_PATH + 'other_fg.png'
-		#ignored
-		self.ignored_paths = ['/tmp']
-		self.ignored_dotted = False
-		#global
-		self.user_homedir = os.environ.get('HOME')
-		self.user_gnomeconf = self.user_homedir + '/.config/user-dirs.dirs'
-		self.user_conf = self.user_homedir + '/.cover-thumbnailer/cover-thumbnailer.conf'
+    '''
+    Import configuration from config files.
+    '''
+    def __init__(self):
+        #music
+        self.music_enabled = True
+        self.music_keepicon = False
+        self.music_paths = []
+        self.music_default = BASE_PATH + 'music_default.png'
+        self.music_fg = BASE_PATH + 'music_fg.png'
+        self.music_bg = BASE_PATH + 'music_bg.png'
+        self.music_use_gnome_folder = True
+        #pictures
+        self.pictures_enabled = True
+        self.pictures_keepicon = False
+        self.pictures_paths = []
+        self.pictures_default = BASE_PATH + 'pictures_default.png'
+        self.pictures_fg = BASE_PATH + 'pictures_fg.png'
+        self.pictures_bg = BASE_PATH + 'pictures_bg.png'
+        self.pictures_use_gnome_folder = True
+        #other
+        self.other_enabled = True
+        self.other_fg = BASE_PATH + 'other_fg.png'
+        #ignored
+        self.ignored_paths = ['/tmp']
+        self.ignored_dotted = False
+        #global
+        self.user_homedir = os.environ.get('HOME')
+        self.user_gnomeconf = self.user_homedir + '/.config/user-dirs.dirs'
+        self.user_conf = self.user_homedir + '/.cover-thumbnailer/cover-thumbnailer.conf'
 
-		#get conf
-		self.import_user_conf()
-		self.import_gnome_conf()
-		self.get_pictures_path()
+        #get conf
+        self.import_user_conf()
+        self.import_gnome_conf()
+        self.get_pictures_path()
 
-	def import_gnome_conf(self):
-		'''
-		Import user folders from GNOME config file.
-		'''
-		if os.path.isfile(self.user_gnomeconf):
-			file = open(self.user_gnomeconf, 'r')
-			for line in file:
-				if re.match(r'.*?XDG_MUSIC_DIR.*?=.*?"(.*)".*?', line) and self.music_use_gnome_folder:
-					self.music_paths.append(re.match(r'.*?XDG_MUSIC_DIR.*?=.*?"(.*)".*?', line).group(1).replace('$HOME', self.user_homedir))
-				elif re.match(r'.*?XDG_PICTURES_DIR.*?=.*?"(.*)".*?', line) and self.pictures_use_gnome_folder:
-					self.pictures_paths.append(re.match(r'.*?XDG_PICTURES_DIR.*?=.*?"(.*)".*?', line).group(1).replace('$HOME', self.user_homedir))
-			file.close()
-		else:
-			print "W: ["+__file__+":get_music_path] Can't find `user-dirs.dirs' file."
-	
-	def import_user_conf(self):
-		'''
-		Import user configuration file.
-		'''
-		if os.path.isfile(self.user_conf):
-			current_section = None
-			file = open(self.user_conf, 'r')
-			#Read config
-			for line in file:
-				line = line.replace('\n', '')
-				if re.match(r'\s*#.*', line):
-					continue
-				elif re.match(r'\s*\[music\]\s*', line.lower()):    #[MUSIC]
-					current_section = 'music'
-				elif re.match(r'\s*\[pictures\]\s*', line.lower()): #[PICTURES]
-					current_section = 'pictures'
-				elif re.match(r'\s*\[other\]\s*', line.lower()): #[OTHER]
-					current_section = 'other'
-				elif re.match(r'\s*\[ignored\]\s*', line.lower()):  #[IGNORED]
-					current_section = 'ignored'
-				elif re.match(r'\s*\[miscellaneous\]\s*', line.lower()):  #[MISCELLANEOUS] /!\ depreciated
-					current_section = 'miscellaneous'
-				elif re.match(r'\s*(path|PATH)\s*=\s*"(.*)"\s*', line): #path=
-					if current_section == 'music':
-						self.music_paths.append(re.match(r'\s*(path|PATH)\s*=\s*"(.*)"\s*', line).group(2))
-					elif current_section == 'pictures':
-						self.pictures_paths.append(re.match(r'\s*(path|PATH)\s*=\s*"(.*)"\s*', line).group(2))
-					elif current_section == 'ignored':
-						self.ignored_paths.append(re.match(r'\s*(path|PATH)\s*=\s*"(.*)"\s*', line).group(2))
-				elif re.match(r'\s*dotted\s*=\s*(yes|no|true|false|1|0)\s*', line.lower()): #doted=
-					if current_section == 'ignored':
-						value = re.match(r'\s*dotted\s*=\s*(yes|no|true|false|1|0)\s*', line.lower()).group(1)
-						if value in ['yes', 'true', '1']:
-							self.ignored_dotted = True
-						elif value in ['no', 'false', '0']:
-							self.ignored_dotted = False
-				elif re.match(r'\s*enabled\s*=\s*(yes|no|true|false|1|0)\s*', line.lower()): #enabled=
-					value = re.match(r'\s*enabled\s*=\s*(yes|no|true|false|1|0)\s*', line.lower()).group(1)
-					if current_section == 'music':
-						if value in ['yes', 'true', '1']:
-							self.music_enabled = True
-						elif value in ['no', 'false', '0']:
-							self.music_enabled = False
-					if current_section == 'pictures':
-						if value in ['yes', 'true', '1']:
-							self.pictures_enabled = True
-						elif value in ['no', 'false', '0']:
-							self.pictures_enabled = False
-					if current_section == 'other':
-						if value in ['yes', 'true', '1']:
-							self.other_enabled = True
-						elif value in ['no', 'false', '0']:
-							self.other_enabled = False
-				elif re.match(r'\s*keepdefaulticon\s*=\s*(yes|no|true|false|1|0)\s*', line.lower()): #keepDefaultIcon=
-					value = re.match(r'\s*keepdefaulticon\s*=\s*(yes|no|true|false|1|0)\s*', line.lower()).group(1)
-					if current_section == 'music':
-						if value in ['yes', 'true', '1']:
-							self.music_keepicon = True
-						elif value in ['no', 'false', '0']:
-							self.music_keepicon = False
-					if current_section == 'pictures':
-						if value in ['yes', 'true', '1']:
-							self.pictures_keepicon = True
-						elif value in ['no', 'false', '0']:
-							self.pictures_keepicon = False
-				elif re.match(r'\s*usegnomeconf\s*=\s*(yes|no|true|false|1|0)\s*', line.lower()): #useGnomeConf= /!\ depreciated
-					if current_section == 'miscellaneous':
-						value = re.match(r'\s*usegnomeconf\s*=\s*(yes|no|true|false|1|0)\s*', line.lower()).group(1)
-						if value in ['yes', 'true', '1']:
-							self.music_use_gnome_folder = True
-							self.pictures_use_gnome_folder = True
-						elif value in ['no', 'false', '0']:
-							self.music_use_gnome_folder = False
-							self.pictures_use_gnome_folder = False
-				elif re.match(r'\s*usegnomefolder\s*=\s*(yes|no|true|false|1|0)\s*', line.lower()): #useGnomeFolder=
-					if current_section == 'music':
-						value = re.match(r'\s*usegnomefolder\s*=\s*(yes|no|true|false|1|0)\s*', line.lower()).group(1)
-						if value in ['yes', 'true', '1']:
-							self.music_use_gnome_folder = True
-						elif value in ['no', 'false', '0']:
-							self.music_use_gnome_folder = False
-					elif current_section == 'pictures':
-						value = re.match(r'\s*usegnomefolder\s*=\s*(yes|no|true|false|1|0)\s*', line.lower()).group(1)
-						if value in ['yes', 'true', '1']:
-							self.pictures_use_gnome_folder = True
-						elif value in ['no', 'false', '0']:
-							self.pictures_use_gnome_folder = False
-			file.close()
+    def import_gnome_conf(self):
+        '''
+        Import user folders from GNOME config file.
+        '''
+        if os.path.isfile(self.user_gnomeconf):
+            file = open(self.user_gnomeconf, 'r')
+            for line in file:
+                if re.match(r'.*?XDG_MUSIC_DIR.*?=.*?"(.*)".*?', line) and self.music_use_gnome_folder:
+                    self.music_paths.append(re.match(r'.*?XDG_MUSIC_DIR.*?=.*?"(.*)".*?', line).group(1).replace('$HOME', self.user_homedir))
+                elif re.match(r'.*?XDG_PICTURES_DIR.*?=.*?"(.*)".*?', line) and self.pictures_use_gnome_folder:
+                    self.pictures_paths.append(re.match(r'.*?XDG_PICTURES_DIR.*?=.*?"(.*)".*?', line).group(1).replace('$HOME', self.user_homedir))
+            file.close()
+        else:
+            print "W: ["+__file__+":get_music_path] Can't find `user-dirs.dirs' file."
 
-			#Replace all ~ by user home dir
-			for i in range(0, len(self.music_paths)):
-				if self.music_paths[i][0] == '~':
-					self.music_paths[i] = self.user_homedir+self.music_paths[i][1:]
-			for i in range(0, len(self.pictures_paths)):
-				if self.pictures_paths[i][0] == '~':
-					self.pictures_paths[i] = self.user_homedir+self.pictures_paths[i][1:]
-			for i in range(0, len(self.ignored_paths)):
-				if self.ignored_paths[i][0] == '~':
-					self.ignored_paths[i] = self.user_homedir+self.ignored_paths[i][1:]
-		
-	def get_pictures_path(self):
-		'''
-		Search if user have put some custom pictures in his home.
-		'''
-		#Music
-		if os.path.isfile(self.user_homedir + '/.cover-thumbnailer/music_default.png'):
-			self.music_default = self.user_homedir + '/.cover-thumbnailer/music_default.png'
-		if os.path.isfile(self.user_homedir + '/.cover-thumbnailer/music_fg.png'):
-			self.music_fg = self.user_homedir + '/.cover-thumbnailer/music_fg.png'
-		if os.path.isfile(self.user_homedir + '/.cover-thumbnailer/music_bg.png'):
-			self.music_bg = self.user_homedir + '/.cover-thumbnailer/music_bg.png'
-		#Pictures
-		if os.path.isfile(self.user_homedir + '/.cover-thumbnailer/pictures_default.png'):
-			self.pictures_default = self.user_homedir + '/.cover-thumbnailer/pictures_default.png'
-		if os.path.isfile(self.user_homedir + '/.cover-thumbnailer/pictures_fg.png'):
-			self.pictures_fg = self.user_homedir + '/.cover-thumbnailer/pictures_fg.png'
-		if os.path.isfile(self.user_homedir + '/.cover-thumbnailer/pictures_bg.png'):
-			self.pictures_bg = self.user_homedir + '/.cover-thumbnailer/pictures_bg.png'
-		#other
-		if os.path.isfile(self.user_homedir + '/.cover-thumbnailer/other_fg.png'):
-			self.other_fg = self.user_homedir + '/.cover-thumbnailer/other_fg.png'
+    def import_user_conf(self):
+        '''
+        Import user configuration file.
+        '''
+        if os.path.isfile(self.user_conf):
+            current_section = None
+            file = open(self.user_conf, 'r')
+            #Read config
+            for line in file:
+                line = line.replace('\n', '')
+                if re.match(r'\s*#.*', line):
+                    continue
+                elif re.match(r'\s*\[music\]\s*', line.lower()):    #[MUSIC]
+                    current_section = 'music'
+                elif re.match(r'\s*\[pictures\]\s*', line.lower()): #[PICTURES]
+                    current_section = 'pictures'
+                elif re.match(r'\s*\[other\]\s*', line.lower()): #[OTHER]
+                    current_section = 'other'
+                elif re.match(r'\s*\[ignored\]\s*', line.lower()):  #[IGNORED]
+                    current_section = 'ignored'
+                elif re.match(r'\s*\[miscellaneous\]\s*', line.lower()):  #[MISCELLANEOUS] /!\ depreciated
+                    current_section = 'miscellaneous'
+                elif re.match(r'\s*(path|PATH)\s*=\s*"(.*)"\s*', line): #path=
+                    if current_section == 'music':
+                        self.music_paths.append(re.match(r'\s*(path|PATH)\s*=\s*"(.*)"\s*', line).group(2))
+                    elif current_section == 'pictures':
+                        self.pictures_paths.append(re.match(r'\s*(path|PATH)\s*=\s*"(.*)"\s*', line).group(2))
+                    elif current_section == 'ignored':
+                        self.ignored_paths.append(re.match(r'\s*(path|PATH)\s*=\s*"(.*)"\s*', line).group(2))
+                elif re.match(r'\s*dotted\s*=\s*(yes|no|true|false|1|0)\s*', line.lower()): #doted=
+                    if current_section == 'ignored':
+                        value = re.match(r'\s*dotted\s*=\s*(yes|no|true|false|1|0)\s*', line.lower()).group(1)
+                        if value in ['yes', 'true', '1']:
+                            self.ignored_dotted = True
+                        elif value in ['no', 'false', '0']:
+                            self.ignored_dotted = False
+                elif re.match(r'\s*enabled\s*=\s*(yes|no|true|false|1|0)\s*', line.lower()): #enabled=
+                    value = re.match(r'\s*enabled\s*=\s*(yes|no|true|false|1|0)\s*', line.lower()).group(1)
+                    if current_section == 'music':
+                        if value in ['yes', 'true', '1']:
+                            self.music_enabled = True
+                        elif value in ['no', 'false', '0']:
+                            self.music_enabled = False
+                    if current_section == 'pictures':
+                        if value in ['yes', 'true', '1']:
+                            self.pictures_enabled = True
+                        elif value in ['no', 'false', '0']:
+                            self.pictures_enabled = False
+                    if current_section == 'other':
+                        if value in ['yes', 'true', '1']:
+                            self.other_enabled = True
+                        elif value in ['no', 'false', '0']:
+                            self.other_enabled = False
+                elif re.match(r'\s*keepdefaulticon\s*=\s*(yes|no|true|false|1|0)\s*', line.lower()): #keepDefaultIcon=
+                    value = re.match(r'\s*keepdefaulticon\s*=\s*(yes|no|true|false|1|0)\s*', line.lower()).group(1)
+                    if current_section == 'music':
+                        if value in ['yes', 'true', '1']:
+                            self.music_keepicon = True
+                        elif value in ['no', 'false', '0']:
+                            self.music_keepicon = False
+                    if current_section == 'pictures':
+                        if value in ['yes', 'true', '1']:
+                            self.pictures_keepicon = True
+                        elif value in ['no', 'false', '0']:
+                            self.pictures_keepicon = False
+                elif re.match(r'\s*usegnomeconf\s*=\s*(yes|no|true|false|1|0)\s*', line.lower()): #useGnomeConf= /!\ depreciated
+                    if current_section == 'miscellaneous':
+                        value = re.match(r'\s*usegnomeconf\s*=\s*(yes|no|true|false|1|0)\s*', line.lower()).group(1)
+                        if value in ['yes', 'true', '1']:
+                            self.music_use_gnome_folder = True
+                            self.pictures_use_gnome_folder = True
+                        elif value in ['no', 'false', '0']:
+                            self.music_use_gnome_folder = False
+                            self.pictures_use_gnome_folder = False
+                elif re.match(r'\s*usegnomefolder\s*=\s*(yes|no|true|false|1|0)\s*', line.lower()): #useGnomeFolder=
+                    if current_section == 'music':
+                        value = re.match(r'\s*usegnomefolder\s*=\s*(yes|no|true|false|1|0)\s*', line.lower()).group(1)
+                        if value in ['yes', 'true', '1']:
+                            self.music_use_gnome_folder = True
+                        elif value in ['no', 'false', '0']:
+                            self.music_use_gnome_folder = False
+                    elif current_section == 'pictures':
+                        value = re.match(r'\s*usegnomefolder\s*=\s*(yes|no|true|false|1|0)\s*', line.lower()).group(1)
+                        if value in ['yes', 'true', '1']:
+                            self.pictures_use_gnome_folder = True
+                        elif value in ['no', 'false', '0']:
+                            self.pictures_use_gnome_folder = False
+            file.close()
+
+            #Replace all ~ by user home dir
+            for i in range(0, len(self.music_paths)):
+                if self.music_paths[i][0] == '~':
+                    self.music_paths[i] = self.user_homedir+self.music_paths[i][1:]
+            for i in range(0, len(self.pictures_paths)):
+                if self.pictures_paths[i][0] == '~':
+                    self.pictures_paths[i] = self.user_homedir+self.pictures_paths[i][1:]
+            for i in range(0, len(self.ignored_paths)):
+                if self.ignored_paths[i][0] == '~':
+                    self.ignored_paths[i] = self.user_homedir+self.ignored_paths[i][1:]
+
+    def get_pictures_path(self):
+        '''
+        Search if user have put some custom pictures in his home.
+        '''
+        #Music
+        if os.path.isfile(self.user_homedir + '/.cover-thumbnailer/music_default.png'):
+            self.music_default = self.user_homedir + '/.cover-thumbnailer/music_default.png'
+        if os.path.isfile(self.user_homedir + '/.cover-thumbnailer/music_fg.png'):
+            self.music_fg = self.user_homedir + '/.cover-thumbnailer/music_fg.png'
+        if os.path.isfile(self.user_homedir + '/.cover-thumbnailer/music_bg.png'):
+            self.music_bg = self.user_homedir + '/.cover-thumbnailer/music_bg.png'
+        #Pictures
+        if os.path.isfile(self.user_homedir + '/.cover-thumbnailer/pictures_default.png'):
+            self.pictures_default = self.user_homedir + '/.cover-thumbnailer/pictures_default.png'
+        if os.path.isfile(self.user_homedir + '/.cover-thumbnailer/pictures_fg.png'):
+            self.pictures_fg = self.user_homedir + '/.cover-thumbnailer/pictures_fg.png'
+        if os.path.isfile(self.user_homedir + '/.cover-thumbnailer/pictures_bg.png'):
+            self.pictures_bg = self.user_homedir + '/.cover-thumbnailer/pictures_bg.png'
+        #other
+        if os.path.isfile(self.user_homedir + '/.cover-thumbnailer/other_fg.png'):
+            self.other_fg = self.user_homedir + '/.cover-thumbnailer/other_fg.png'
 
 
 
 class Thumb(object):
-	'''
-	Create thumnails
-	@img_path : The path of the picture to thumnail
-	'''
-	def __init__(self, img_path):
-		self.img = Image.open(img_path).convert('RGBA')
-		self.thumb = None
+    '''
+    Create thumnails
+    @img_path : The path of the picture to thumnail
+    '''
+    def __init__(self, img_path):
+        self.img = Image.open(img_path).convert('RGBA')
+        self.thumb = None
 
-	def create_thumb(self, size=96):
-		'''
-		create a square thumbnail
-		@size : the size of the thumbnail (in pixels). NOTE: Shouldn't be
-		        greater than 128 px for a standard freedesktop thumbnail.
-		'''
-		width = self.img.size[0]
-		height = self.img.size[1]
-		if width > height:
-			left = int((width - height)/2)
-			upper = 0
-			right = height + left
-			lower = height
-		else:
-			left = 0
-			upper = int((height - width)/2)
-			right = width
-			lower = width + upper
-		self.thumb = self.img.crop((left, upper, right, lower))
-		self.thumb.thumbnail((size, size), Image.ANTIALIAS)
+    def create_thumb(self, size=96):
+        '''
+        create a square thumbnail
+        @size : the size of the thumbnail (in pixels). NOTE: Shouldn't be
+                greater than 128 px for a standard freedesktop thumbnail.
+        '''
+        width = self.img.size[0]
+        height = self.img.size[1]
+        if width > height:
+            left = int((width - height)/2)
+            upper = 0
+            right = height + left
+            lower = height
+        else:
+            left = 0
+            upper = int((height - width)/2)
+            right = width
+            lower = width + upper
+        self.thumb = self.img.crop((left, upper, right, lower))
+        self.thumb.thumbnail((size, size), Image.ANTIALIAS)
 
-	def add_decoration(self, fg_picture):
-		'''
-		Add decoration for most folders. The foreground picture is added
-		in the bottom-left corner.
-		@fg_picture : The foreground picture to add (Must be a rgba png !)
-		'''
-		if os.path.isfile(fg_picture): 
-			fg = Image.open(fg_picture).convert('RGBA')
-			y = self.thumb.size[1] - fg.size[1]
-			self.thumb.paste(fg, (0, y), fg)
+    def add_decoration(self, fg_picture):
+        '''
+        Add decoration for most folders. The foreground picture is added
+        in the bottom-left corner.
+        @fg_picture : The foreground picture to add (Must be a rgba png !)
+        '''
+        if os.path.isfile(fg_picture):
+            fg = Image.open(fg_picture).convert('RGBA')
+            y = self.thumb.size[1] - fg.size[1]
+            self.thumb.paste(fg, (0, y), fg)
 
-	def add_music_decoration(self, bg_picture, fg_picture=None):
-		'''
-		Add decoration for music folders.
-		@bg_picture : The background picture (Must be a rgba png !)
-		@fg_picture : the foreground picture (Must be a rgba png !)
-		'''
-		if os.path.isfile(bg_picture):
-			bg = Image.open(bg_picture)
-			x = bg.size[0] - self.thumb.size[0]
-			bg.paste(self.thumb, (x, 0), self.thumb)
-			self.thumb = bg
-		if os.path.isfile(fg_picture): 
-			fg = Image.open(fg_picture).convert('RGBA')
-			self.thumb.paste(fg, (0, 0), fg)
+    def add_music_decoration(self, bg_picture, fg_picture=None):
+        '''
+        Add decoration for music folders.
+        @bg_picture : The background picture (Must be a rgba png !)
+        @fg_picture : the foreground picture (Must be a rgba png !)
+        '''
+        if os.path.isfile(bg_picture):
+            bg = Image.open(bg_picture)
+            x = bg.size[0] - self.thumb.size[0]
+            bg.paste(self.thumb, (x, 0), self.thumb)
+            self.thumb = bg
+        if os.path.isfile(fg_picture):
+            fg = Image.open(fg_picture).convert('RGBA')
+            self.thumb.paste(fg, (0, 0), fg)
 
-	def add_pictures_decoration(self, pictures, fg_picture=None):
-		'''
-		Add decoration for pictures folder
-		@picture : a list with at least the path of one picture
-		@fg_picture : the foreground picture (Must be a rgba png !)
-		'''
-		if len(pictures) == 1:
-			#PIC0
-			try:
-				pic0 = Image.open(pictures[0]).convert('RGBA')
-				#Optimisation with resempling : don't resemple when rotate big
-				#pictures (useless and verry slow)
-				if pic0.size[0] <= 120 and pic0.size[1] <= 120:   # <= 120x120
-					pic0 = pic0.rotate(-10, resample=Image.BICUBIC, expand=1)
-				elif pic0.size[0] <= 256 and pic0.size[1] <= 256: # <= 256x256
-					pic0 = pic0.rotate(-10, resample=Image.BILINEAR, expand=1)
-					pic0.thumbnail((120, 120), Image.ANTIALIAS)
-				else:                                             # > 256x256
-					pic0 = pic0.rotate(-10, resample=Image.NONE, expand=1)
-					pic0.thumbnail((120, 120), Image.ANTIALIAS)
-				x = (self.thumb.size[0] - pic0.size[0]) / 2
-				y = (self.thumb.size[1] - pic0.size[1]) / 2
-				self.thumb.paste(pic0, (x, y), pic0)
-			except IOError:
-				print "E: Can't open '"+pictures[0]+"'."
-		elif len(pictures) == 2:
-			#PIC0
-			try:
-				pic0 = Image.open(pictures[0]).convert('RGBA')
-				#Optimisation with resempling : don't resemple when rotate big
-				#pictures (useless and verry slow)
-				if pic0.size[0] <= 105 and pic0.size[1] <= 70:    # <= 105x70
-					pic0 = pic0.rotate(3, resample=Image.BICUBIC, expand=1)
-				elif pic0.size[0] <= 256 and pic0.size[1] <= 256: # <= 256x256
-					pic0 = pic0.rotate(3, resample=Image.BILINEAR, expand=1)
-					pic0.thumbnail((105, 70), Image.ANTIALIAS)
-				else:                                             # > 256x256
-					pic0 = pic0.rotate(3, resample=Image.NONE, expand=1)
-					pic0.thumbnail((105, 70), Image.ANTIALIAS)
-				self.thumb.paste(pic0, (10, 5), pic0)
-			except IOError:
-				print "E: Can't open '"+pictures[0]+"'."
-			#PIC1
-			try:
-				pic1 = Image.open(pictures[1]).convert('RGBA')
-				#Optimisation with resempling : don't resemple when rotate big
-				#pictures (useless and verry slow)
-				if pic1.size[0] <= 105 and pic1.size[1] <= 70:    # <= 105x70
-					pic1 = pic1.rotate(-5, resample=Image.BICUBIC, expand=1)
-				elif pic1.size[0] <= 256 and pic1.size[1] <= 256: # <= 256x256
-					pic1 = pic1.rotate(-5, resample=Image.BILINEAR, expand=1)
-					pic1.thumbnail((105, 70), Image.ANTIALIAS)
-				else:                                             # > 256x256
-					pic1 = pic1.rotate(-5, resample=Image.NONE, expand=1)
-					pic1.thumbnail((105, 70), Image.ANTIALIAS)
-				x = self.thumb.size[0] - pic1.size[0] - 5
-				y = self.thumb.size[1] - pic1.size[1] - 5
-				self.thumb.paste(pic1, (x, y), pic1)
-			except IOError:
-				print "E: Can't open '"+pictures[1]+"'."
-		elif len(pictures) >= 3:
-			#PIC0
-			try:
-				pic0 = Image.open(pictures[0]).convert('RGBA')
-				pic0.thumbnail((49, 56), Image.ANTIALIAS)
-				self.thumb.paste(pic0, (20, 5), pic0)
-			except IOError:
-				print "E: Can't open '"+pictures[0]+"'."
-				pic0 = Image.new('RGBA', (1, 1))
-			#PIC1
-			try:
-				pic1 = Image.open(pictures[1]).convert('RGBA')
-				pic1.thumbnail((49, 56), Image.ANTIALIAS)
-				x = self.thumb.size[0] - pic1.size[0] - 5
-				self.thumb.paste(pic1, (x, 5), pic1)
-			except IOError:
-				print "E: Can't open '"+pictures[1]+"'."
-				pic1 = Image.new('RGBA', (1, 1))
-			#PIC2
-			try:
-				pic2 = Image.open(pictures[2]).convert('RGBA')
-				h = self.thumb.size[1] - max(pic0.size[1], pic1.size[1]) - 15
-				pic2.thumbnail((103, h), Image.ANTIALIAS)
-				x = (self.thumb.size[0] - 15 - pic2.size[0]) / 2 +15
-				y = self.thumb.size[1] - pic2.size[1] - 5
-				self.thumb.paste(pic2, (x, y), pic2)
-			except IOError:
-				print "E: Can't open '"+pictures[2]+"'."
-		if os.path.isfile(fg_picture):
-			fg = Image.open(fg_picture)
-			self.thumb.paste(fg, (0, 0), fg)
+    def add_pictures_decoration(self, pictures, fg_picture=None):
+        '''
+        Add decoration for pictures folder
+        @picture : a list with at least the path of one picture
+        @fg_picture : the foreground picture (Must be a rgba png !)
+        '''
+        if len(pictures) == 1:
+            #PIC0
+            try:
+                pic0 = Image.open(pictures[0]).convert('RGBA')
+                #Optimisation with resempling : don't resemple when rotate big
+                #pictures (useless and verry slow)
+                if pic0.size[0] <= 120 and pic0.size[1] <= 120:   # <= 120x120
+                    pic0 = pic0.rotate(-10, resample=Image.BICUBIC, expand=1)
+                elif pic0.size[0] <= 256 and pic0.size[1] <= 256: # <= 256x256
+                    pic0 = pic0.rotate(-10, resample=Image.BILINEAR, expand=1)
+                    pic0.thumbnail((120, 120), Image.ANTIALIAS)
+                else:                                             # > 256x256
+                    pic0 = pic0.rotate(-10, resample=Image.NONE, expand=1)
+                    pic0.thumbnail((120, 120), Image.ANTIALIAS)
+                x = (self.thumb.size[0] - pic0.size[0]) / 2
+                y = (self.thumb.size[1] - pic0.size[1]) / 2
+                self.thumb.paste(pic0, (x, y), pic0)
+            except IOError:
+                print "E: Can't open '"+pictures[0]+"'."
+        elif len(pictures) == 2:
+            #PIC0
+            try:
+                pic0 = Image.open(pictures[0]).convert('RGBA')
+                #Optimisation with resempling : don't resemple when rotate big
+                #pictures (useless and verry slow)
+                if pic0.size[0] <= 105 and pic0.size[1] <= 70:    # <= 105x70
+                    pic0 = pic0.rotate(3, resample=Image.BICUBIC, expand=1)
+                elif pic0.size[0] <= 256 and pic0.size[1] <= 256: # <= 256x256
+                    pic0 = pic0.rotate(3, resample=Image.BILINEAR, expand=1)
+                    pic0.thumbnail((105, 70), Image.ANTIALIAS)
+                else:                                             # > 256x256
+                    pic0 = pic0.rotate(3, resample=Image.NONE, expand=1)
+                    pic0.thumbnail((105, 70), Image.ANTIALIAS)
+                self.thumb.paste(pic0, (10, 5), pic0)
+            except IOError:
+                print "E: Can't open '"+pictures[0]+"'."
+            #PIC1
+            try:
+                pic1 = Image.open(pictures[1]).convert('RGBA')
+                #Optimisation with resempling : don't resemple when rotate big
+                #pictures (useless and verry slow)
+                if pic1.size[0] <= 105 and pic1.size[1] <= 70:    # <= 105x70
+                    pic1 = pic1.rotate(-5, resample=Image.BICUBIC, expand=1)
+                elif pic1.size[0] <= 256 and pic1.size[1] <= 256: # <= 256x256
+                    pic1 = pic1.rotate(-5, resample=Image.BILINEAR, expand=1)
+                    pic1.thumbnail((105, 70), Image.ANTIALIAS)
+                else:                                             # > 256x256
+                    pic1 = pic1.rotate(-5, resample=Image.NONE, expand=1)
+                    pic1.thumbnail((105, 70), Image.ANTIALIAS)
+                x = self.thumb.size[0] - pic1.size[0] - 5
+                y = self.thumb.size[1] - pic1.size[1] - 5
+                self.thumb.paste(pic1, (x, y), pic1)
+            except IOError:
+                print "E: Can't open '"+pictures[1]+"'."
+        elif len(pictures) >= 3:
+            #PIC0
+            try:
+                pic0 = Image.open(pictures[0]).convert('RGBA')
+                pic0.thumbnail((49, 56), Image.ANTIALIAS)
+                self.thumb.paste(pic0, (20, 5), pic0)
+            except IOError:
+                print "E: Can't open '"+pictures[0]+"'."
+                pic0 = Image.new('RGBA', (1, 1))
+            #PIC1
+            try:
+                pic1 = Image.open(pictures[1]).convert('RGBA')
+                pic1.thumbnail((49, 56), Image.ANTIALIAS)
+                x = self.thumb.size[0] - pic1.size[0] - 5
+                self.thumb.paste(pic1, (x, 5), pic1)
+            except IOError:
+                print "E: Can't open '"+pictures[1]+"'."
+                pic1 = Image.new('RGBA', (1, 1))
+            #PIC2
+            try:
+                pic2 = Image.open(pictures[2]).convert('RGBA')
+                h = self.thumb.size[1] - max(pic0.size[1], pic1.size[1]) - 15
+                pic2.thumbnail((103, h), Image.ANTIALIAS)
+                x = (self.thumb.size[0] - 15 - pic2.size[0]) / 2 +15
+                y = self.thumb.size[1] - pic2.size[1] - 5
+                self.thumb.paste(pic2, (x, y), pic2)
+            except IOError:
+                print "E: Can't open '"+pictures[2]+"'."
+        if os.path.isfile(fg_picture):
+            fg = Image.open(fg_picture)
+            self.thumb.paste(fg, (0, 0), fg)
 
-	def save_thumb(self, output, format='PNG'):
-		'''
-		Save the thumbnail in a file
-		@output : the output path for the thumbnail
-		@format : the format of the picture (Must be a PNG for a standard
-		          freedesktop thumbnail !)
-		'''
-		self.thumb.save(output, format)
+    def save_thumb(self, output, format='PNG'):
+        '''
+        Save the thumbnail in a file
+        @output : the output path for the thumbnail
+        @format : the format of the picture (Must be a PNG for a standard
+                  freedesktop thumbnail !)
+        '''
+        self.thumb.save(output, format)
 
 
 def get_cover_path(folder_path, default_pic=None):
-	'''
-	Find the name of the cover file (Search for files like cover.png,...)
-	@directory_path : the path of the directory
-	@default_pic : the default picture (if we need one)
-	'''
-	cover_path = None
-	for cover in COVER_FILES:
-		if os.path.isfile(folder_path+'/'+cover):
-			cover_path = folder_path+'/'+cover
-			break
-	if cover_path == None and default_pic != None:
-		if os.path.isfile(default_pic):
-			cover_path = default_pic
-	return cover_path
+    '''
+    Find the name of the cover file (Search for files like cover.png,...)
+    @directory_path : the path of the directory
+    @default_pic : the default picture (if we need one)
+    '''
+    cover_path = None
+    for cover in COVER_FILES:
+        if os.path.isfile(folder_path+'/'+cover):
+            cover_path = folder_path+'/'+cover
+            break
+    if cover_path == None and default_pic != None:
+        if os.path.isfile(default_pic):
+            cover_path = default_pic
+    return cover_path
 
 
 def get_music_cover_path(folder_path, default_pic=None):
-	'''
-	Find the name of the cover file
-	@directory_path : the path of the directory
-	@default_pic : the default picture (if we need one)
-	'''
-	#Search for a file like "cover.png" or "folder.jpg"
-	cover_path = get_cover_path(folder_path) 
+    '''
+    Find the name of the cover file
+    @directory_path : the path of the directory
+    @default_pic : the default picture (if we need one)
+    '''
+    #Search for a file like "cover.png" or "folder.jpg"
+    cover_path = get_cover_path(folder_path) 
 
-	if cover_path == None:
-		#Search for any picture in the directory 
-		files = os.listdir(input)
-		picture = None
-		for file in files:
-			if PICTURES_EXT.count(file[-4:]):
-				picture = os.path.join(input, file)
+    if cover_path == None:
+        #Search for any picture in the directory 
+        files = os.listdir(input)
+        picture = None
+        for file in files:
+            if PICTURES_EXT.count(file[-4:]):
+                picture = os.path.join(input, file)
 
-		#Search for any picture in subdirectory
-		if picture == None:
-			files = None
-			for root, dirs, files in os.walk(folder_path): 
-				if picture == None:
-					for file in files: 
-						if file[-4:] in PICTURES_EXT:
-							picture = os.path.join(input, root, file)
-							break
-				else:
-					break
+        #Search for any picture in subdirectory
+        if picture == None:
+            files = None
+            for root, dirs, files in os.walk(folder_path):
+                if picture == None:
+                    for file in files:
+                        if file[-4:] in PICTURES_EXT:
+                            picture = os.path.join(input, root, file)
+                            break
+                else:
+                    break
 
-		#Select default picture if no picture found
-		if picture != None:
-			cover_path = picture
-		else:
-			cover_path = default_pic
-	return cover_path
+        #Select default picture if no picture found
+        if picture != None:
+            cover_path = picture
+        else:
+            cover_path = default_pic
+    return cover_path
 
 
 def match_path(path, list):
-	'''
-	Search if path is a sub-folder of a path in list.
-	@path : path to check
-	@list : list of path
-	'''
-	match = False
-	#We add a slash at the end.
-	if path[-1:] != '/':
-		path += '/'
-	for entry in list:
-		#We add a slash at the end.
-		if entry[-1:] != '/':
-			entry += '/'
-		if re.match(r'^'+entry+'.*', path):
-			if path != entry:
-				match = True
-				break
-	return match 
+    '''
+    Search if path is a sub-folder of a path in list.
+    @path : path to check
+    @list : list of path
+    '''
+    match = False
+    #We add a slash at the end.
+    if path[-1:] != '/':
+        path += '/'
+    for entry in list:
+        #We add a slash at the end.
+        if entry[-1:] != '/':
+            entry += '/'
+        if re.match(r'^'+entry+'.*', path):
+            if path != entry:
+                match = True
+                break
+    return match 
 
 
 if __name__ == "__main__":
-	#If we have 2 args
-	if len(sys.argv) == 3:
-		input = urllib.url2pathname(sys.argv[1]).replace('file://', '')
-		output = urllib.url2pathname(sys.argv[2]).replace('file://', '')
+    #If we have 2 args
+    if len(sys.argv) == 3:
+        input = urllib.url2pathname(sys.argv[1]).replace('file://', '')
+        output = urllib.url2pathname(sys.argv[2]).replace('file://', '')
 
-		conf = Conf()
+        conf = Conf()
 
-		#If it's an ignored folder
-		if match_path(input, conf.ignored_paths):
-			sys.exit(42)
+        #If it's an ignored folder
+        if match_path(input, conf.ignored_paths):
+            sys.exit(42)
 
-		#If it's a dotted folder
-		elif conf.ignored_dotted and re.match('.*/\..*', input):
-			sys.exit(42)
-		
-		#If it's a music folder
-		elif match_path(input, conf.music_paths) and conf.music_enabled:
-			if conf.music_keepicon:
-				cover_path = get_music_cover_path(input)
-			else:
-				cover_path = get_music_cover_path(input, conf.music_default)
-			if cover_path != None:
-				pic = Thumb(cover_path)
-				pic.create_thumb(110)
-				pic.add_music_decoration(conf.music_bg, conf.music_fg)
-				pic.save_thumb(output, 'PNG')
-			elif not conf.music_keepicon:
-				print "E: ["+__file__+":main] Can't find any cover file and default cover file."
+        #If it's a dotted folder
+        elif conf.ignored_dotted and re.match('.*/\..*', input):
+            sys.exit(42)
 
-		#If it's a pictures folder
-		elif match_path(input, conf.pictures_paths) and conf.pictures_enabled:
-			#Search for a cover.png, folder.jpg,...
-			cover_path = get_cover_path(input)
-			if cover_path != None:
-				pictures = [cover_path]
-			else:
-			#List pictures
-				files = os.listdir(input)
-				pictures = []
-				for file in files:
-					if PICTURES_EXT.count(file[-4:]):
-						pictures.append(os.path.join(input, file))
-					if len(pictures) >= 3:
-						break
-			#Create thumbnail
-			if len(pictures) > 0:
-				pic = Thumb(conf.pictures_bg)
-				pic.create_thumb(128)
-				pic.add_pictures_decoration(pictures, conf.pictures_fg)
-				pic.save_thumb(output, 'PNG')
-			elif not conf.pictures_keepicon:
-				pic = Thumb(conf.pictures_default)
-				pic.create_thumb(128)
-				pic.save_thumb(output, 'PNG')
-				
+        #If it's a music folder
+        elif match_path(input, conf.music_paths) and conf.music_enabled:
+            if conf.music_keepicon:
+                cover_path = get_music_cover_path(input)
+            else:
+                cover_path = get_music_cover_path(input, conf.music_default)
+            if cover_path != None:
+                pic = Thumb(cover_path)
+                pic.create_thumb(110)
+                pic.add_music_decoration(conf.music_bg, conf.music_fg)
+                pic.save_thumb(output, 'PNG')
+            elif not conf.music_keepicon:
+                print "E: ["+__file__+":main] Can't find any cover file and default cover file."
 
-		#If it's an other folder
-		else:
-			cover_path = get_cover_path(input)
-			if cover_path != None and conf.other_enabled:
-				pic = Thumb(cover_path)
-				pic.create_thumb(128)
-				pic.add_decoration(conf.other_fg)
-				pic.save_thumb(output, 'PNG')
-			else :
-				sys.exit(42)
+        #If it's a pictures folder
+        elif match_path(input, conf.pictures_paths) and conf.pictures_enabled:
+            #Search for a cover.png, folder.jpg,...
+            cover_path = get_cover_path(input)
+            if cover_path != None:
+                pictures = [cover_path]
+            else:
+            #List pictures
+                files = os.listdir(input)
+                pictures = []
+                for file in files:
+                    if PICTURES_EXT.count(file[-4:]):
+                        pictures.append(os.path.join(input, file))
+                    if len(pictures) >= 3:
+                        break
+            #Create thumbnail
+            if len(pictures) > 0:
+                pic = Thumb(conf.pictures_bg)
+                pic.create_thumb(128)
+                pic.add_pictures_decoration(pictures, conf.pictures_fg)
+                pic.save_thumb(output, 'PNG')
+            elif not conf.pictures_keepicon:
+                pic = Thumb(conf.pictures_default)
+                pic.create_thumb(128)
+                pic.save_thumb(output, 'PNG')
 
-	else:
-		print "E: ["+__file__+":main] Need two args : the input directory and the output image file."
-		sys.exit(1)
+
+        #If it's an other folder
+        else:
+            cover_path = get_cover_path(input)
+            if cover_path != None and conf.other_enabled:
+                pic = Thumb(cover_path)
+                pic.create_thumb(128)
+                pic.add_decoration(conf.other_fg)
+                pic.save_thumb(output, 'PNG')
+            else :
+                sys.exit(42)
+
+    else:
+        print "E: ["+__file__+":main] Need two args : the input directory and the output image file."
+        sys.exit(1)
 
 
