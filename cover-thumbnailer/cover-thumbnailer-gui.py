@@ -65,7 +65,7 @@ GCONF_KEY = "/desktop/gnome/thumbnailers/inode@directory/enable"
 GCONF_KEY_NAUTILUS_THUMB_SIZE = "/apps/nautilus/icon_view/thumbnail_size"
 
 
-class Conf(object):
+class Conf(dict):
 
     """ Import configuration.
 
@@ -73,30 +73,40 @@ class Conf(object):
     """
 
     def __init__(self):
-        """ The constructor. """
-        #music
-        self.music_enabled = True
-        self.music_keepicon = False
-        self.music_paths = []
-        self.gnome_music_path = _('<None>')
-        self.music_use_gnome_folder = True
-        #pictures
-        self.pictures_enabled = True
-        self.pictures_keepicon = False
-        self.pictures_paths = []
-        self.gnome_pictures_path = _('<None>')
-        self.pictures_use_gnome_folder = True
-        #ignored
-        self.ignored_paths = []
-        self.ignored_dotted = False
-        #other
-        self.other_enabled = True
-        #global
+        """ The constructor
+        
+        Set the default values
+        """
+        #Initialize the dictionary
+        dict.__init__(self)
+        #Music
+        self['music_enabled'] = True
+        self['music_keepdefaulticon'] = False
+        self['music_usegnomefolder'] = True
+        self['music_paths'] = []
+        self['music_gnomefolderpath'] = _('<None>')
+        #Pictures
+        self['pictures_enabled'] = True
+        self['pictures_keepdefaulticon'] = False
+        self['pictures_usegnomefolder'] = True
+        self['pictures_paths'] = []
+        self['pictures_gnomefolderpath'] = _('<None>')
+        #Other
+        self['other_enabled'] = True
+        #Ignored
+        self['ignored_dotted'] = False
+        self['ignored_paths'] = []
+        #Global
         self.user_homedir = os.environ.get('HOME')
-        self.user_gnomeconf = self.user_homedir + '/.config/user-dirs.dirs'
-        self.user_conf = self.user_homedir + '/.cover-thumbnailer/cover-thumbnailer.conf'
-
-        #get conf
+        self.user_gnomeconf = os.path.join(
+                self.user_homedir,
+                '.config/user-dirs.dirs'
+                )
+        self.user_conf = os.path.join(
+                self.user_homedir,
+                '.cover-thumbnailer/cover-thumbnailer.conf'
+                )
+        #Read configuration
         self.import_gnome_conf()
         self.import_user_conf()
 
@@ -106,188 +116,128 @@ class Conf(object):
             gnome_conf_file = open(self.user_gnomeconf, 'r')
             for line in gnome_conf_file:
                 if re.match(r'.*?XDG_MUSIC_DIR.*?=.*?"(.*)".*?', line):
-                    self.gnome_music_path = re.match(r'.*?XDG_MUSIC_DIR.*?=.*?"(.*)".*?', line).group(1).replace('$HOME', self.user_homedir)
+                    match = re.match(r'.*?XDG_MUSIC_DIR.*?=.*?"(.*)".*?', line)
+                    path = match.group(1).replace('$HOME', self.user_homedir)
+                    self['music_gnomefolderpath'] = path
                 elif re.match(r'.*?XDG_PICTURES_DIR.*?=.*?"(.*)".*?', line):
-                    self.gnome_pictures_path = re.match(r'.*?XDG_PICTURES_DIR.*?=.*?"(.*)".*?', line).group(1).replace('$HOME', self.user_homedir)
+                    match = re.match(r'.*?XDG_PICTURES_DIR.*?=.*?"(.*)".*?', line)
+                    path = match.group(1).replace('$HOME', self.user_homedir)
+                    self['pictures_gnomefolderpath'] = path
             gnome_conf_file.close()
         else:
-            print "W: ["+__file__+":get_music_path] Can't find `user-dirs.dirs' file."
+            print("W: [%s:Conf.import_gnome_conf] Can't find `user-dirs.dirs' file." % __file__)
 
     def import_user_conf(self):
         """ Import user configuration file. """
         if os.path.isfile(self.user_conf):
-            current_section = None
+            current_section = "unknown"
             user_conf_file = open(self.user_conf, 'r')
-            #Read config
             for line in user_conf_file:
-                line = line.replace('\n', '')
-                if re.match(r'\s*#.*', line):
+                #Comments
+                if re.match(r"\s*#.*", line):
                     continue
-                elif re.match(r'\s*\[music\]\s*', line.lower()):    #[MUSIC]
-                    current_section = 'music'
-                elif re.match(r'\s*\[pictures\]\s*', line.lower()): #[PICTURES]
-                    current_section = 'pictures'
-                elif re.match(r'\s*\[other\]\s*', line.lower()): #[OTHER]
-                    current_section = 'other'
-                elif re.match(r'\s*\[ignored\]\s*', line.lower()):  #[IGNORED]
-                    current_section = 'ignored'
-                elif re.match(r'\s*\[miscellaneous\]\s*', line.lower()):  #[MISCELLANEOUS] /!\ depreciated
-                    current_section = 'miscellaneous'
-                elif re.match(r'\s*(path|PATH)\s*=\s*"(.*)"\s*', line): #path=
-                    if current_section == 'music':
-                        self.music_paths.append(re.match(r'\s*(path|PATH)\s*=\s*"(.*)"\s*', line).group(2))
-                    elif current_section == 'pictures':
-                        self.pictures_paths.append(re.match(r'\s*(path|PATH)\s*=\s*"(.*)"\s*', line).group(2))
-                    elif current_section == 'ignored':
-                        self.ignored_paths.append(re.match(r'\s*(path|PATH)\s*=\s*"(.*)"\s*', line).group(2))
-                elif re.match(r'\s*dotted\s*=\s*(yes|no|true|false|1|0)\s*', line.lower()): #doted=
-                    if current_section == 'ignored':
-                        value = re.match(r'\s*dotted\s*=\s*(yes|no|true|false|1|0)\s*', line.lower()).group(1)
-                        if value in ['yes', 'true', '1']:
-                            self.ignored_dotted = True
-                        elif value in ['no', 'false', '0']:
-                            self.ignored_dotted = False
-                elif re.match(r'\s*enabled\s*=\s*(yes|no|true|false|1|0)\s*', line.lower()): #enabled=
-                    value = re.match(r'\s*enabled\s*=\s*(yes|no|true|false|1|0)\s*', line.lower()).group(1)
-                    if current_section == 'music':
-                        if value in ['yes', 'true', '1']:
-                            self.music_enabled = True
-                        elif value in ['no', 'false', '0']:
-                            self.music_enabled = False
-                    if current_section == 'pictures':
-                        if value in ['yes', 'true', '1']:
-                            self.pictures_enabled = True
-                        elif value in ['no', 'false', '0']:
-                            self.pictures_enabled = False
-                    if current_section == 'other':
-                        if value in ['yes', 'true', '1']:
-                            self.other_enabled = True
-                        elif value in ['no', 'false', '0']:
-                            self.other_enabled = False
-                elif re.match(r'\s*keepdefaulticon\s*=\s*(yes|no|true|false|1|0)\s*', line.lower()): #keepDefaultIcon=
-                    value = re.match(r'\s*keepdefaulticon\s*=\s*(yes|no|true|false|1|0)\s*', line.lower()).group(1)
-                    if current_section == 'music':
-                        if value in ['yes', 'true', '1']:
-                            self.music_keepicon = True
-                        elif value in ['no', 'false', '0']:
-                            self.music_keepicon = False
-                    if current_section == 'pictures':
-                        if value in ['yes', 'true', '1']:
-                            self.pictures_keepicon = True
-                        elif value in ['no', 'false', '0']:
-                            self.pictures_keepicon = False
-                elif re.match(r'\s*usegnomeconf\s*=\s*(yes|no|true|false|1|0)\s*', line.lower()): #useGnomeConf= /!\ depreciated
-                    if current_section == 'miscellaneous':
-                        value = re.match(r'\s*usegnomeconf\s*=\s*(yes|no|true|false|1|0)\s*', line.lower()).group(1)
-                        if value in ['yes', 'true', '1']:
-                            self.music_use_gnome_folder = True
-                            self.pictures_use_gnome_folder = True
-                        elif value in ['no', 'false', '0']:
-                            self.music_use_gnome_folder = False
-                            self.pictures_use_gnome_folder = False
-                elif re.match(r'\s*usegnomefolder\s*=\s*(yes|no|true|false|1|0)\s*', line.lower()): #useGnomeFolder=
-                    if current_section == 'music':
-                        value = re.match(r'\s*usegnomefolder\s*=\s*(yes|no|true|false|1|0)\s*', line.lower()).group(1)
-                        if value in ['yes', 'true', '1']:
-                            self.music_use_gnome_folder = True
-                        elif value in ['no', 'false', '0']:
-                            self.music_use_gnome_folder = False
-                    elif current_section == 'pictures':
-                        value = re.match(r'\s*usegnomefolder\s*=\s*(yes|no|true|false|1|0)\s*', line.lower()).group(1)
-                        if value in ['yes', 'true', '1']:
-                            self.pictures_use_gnome_folder = True
-                        elif value in ['no', 'false', '0']:
-                            self.pictures_use_gnome_folder = False
+                #Section
+                elif re.match(r"\s*\[([a-z]+)\]\s*", line.lower()):
+                    match = re.match(r'\s*\[([a-z]+)\]\s*', line.lower())
+                    current_section = match.group(1)
+                #Boolean key
+                elif re.match(r"\s*([a-z]+)\s*=\s*(yes|no|true|false)\s*", line.lower()):
+                    match = re.match(r"\s*([a-z]+)\s*=\s*(yes|no|true|false)\s*", line.lower())
+                    key = match.group(1)
+                    value = match.group(2)
+                    if value in ("yes", "true"):
+                        value = True
+                    else:
+                        value = False
+                    self[current_section + "_" + key] = value
+                #String key : path
+                elif re.match(r"\s*(path|PATH|Path)\s*=\s*\"(.+)\"\s*", line):
+                    match = re.match(r"\s*(path|PATH|Path)\s*=\s*\"(.+)\"\s*", line)
+                    key = "paths"
+                    value = match.group(2)
+                    self[current_section + "_" + key].append(value)
+
+            user_conf_file.close()
+            
+            #Replace "~/" by the user home dir 
+            for path_list in (self['music_paths'], self['pictures_paths'], self['ignored_paths']):
+                for i in range(0, len(path_list)):
+                    if path_list[i][0] == "~":
+                        path_list[i] = os.path.join(self.user_homedir, path_list[i][2:])
+
+            #Import "useGnomeConf" key (for compatibility)
+            if "miscellaneous_usegnomeconf" in self:
+                self["music_usegnomefolder"] = self["miscellaneous_usegnomeconf"]
+                self["pictures_usegnomefolder"] = self["miscellaneous_usegnomeconf"]
+
+    def save_user_conf(self):
+        """ Save configuration file. """
+        #Check if output folder exists, else create it
+        conf_dir = os.path.join(self.user_homedir, ".cover-thumbnailer")
+        if not os.path.isdir(conf_dir):
+            try:
+                os.makedirs(conf_dir)
+            except OSError: #Permission denied
+                print("E: [%s:Conf.save_user_conf] Can't write configuration directory (permission denied)" % __file__)
+                return
+        try:
+            user_conf_file = open(self.user_conf, 'w')
+            #Warning
+            user_conf_file.write('#' + _('Configuration written by Cover Thumbnailer GUI') + "\n")
+            user_conf_file.write("#" + _('Please edit with caution') + "\n")
+            #Music
+            user_conf_file.write("\n[MUSIC]\n")
+            user_conf_file.write(self._write_bool("music_enabled"))
+            user_conf_file.write(self._write_bool("music_keepdefaulticon"))
+            user_conf_file.write(self._write_bool("music_usegnomefolder"))
+            user_conf_file.write(self._write_list("music_paths"))
+            #Pictures
+            user_conf_file.write("\n[PICTURES]\n")
+            user_conf_file.write(self._write_bool("pictures_enabled"))
+            user_conf_file.write(self._write_bool("pictures_keepdefaulticon"))
+            user_conf_file.write(self._write_bool("pictures_usegnomefolder"))
+            user_conf_file.write(self._write_list("pictures_paths"))
+            #Other
+            user_conf_file.write("\n[OTHER]\n")
+            user_conf_file.write(self._write_bool("other_enabled"))
+            #Ignored
+            user_conf_file.write("\n[IGNORED]\n")
+            user_conf_file.write(self._write_bool("ignored_dotted"))
+            user_conf_file.write(self._write_list("ignored_paths"))
+            #End
+            user_conf_file.write("\n\n") #I like blank lines at the end :)
+        except OSError: #Permission denied
+            print("E: [%s:Conf.save_user_conf] Can't write configuration (permission denied)" % __file__)
+            return
+        except IOError: #Input/Output error
+            print("E: [%s:Conf.save_user_conf] Can't write configuration (IO error)" % __file__)
+            return
+        else:
             user_conf_file.close()
 
-            #Replace all ~ by user home dir
-            for i in range(0, len(self.music_paths)):
-                if self.music_paths[i][0] == '~':
-                    self.music_paths[i] = self.user_homedir+self.music_paths[i][1:]
-            for i in range(0, len(self.pictures_paths)):
-                if self.pictures_paths[i][0] == '~':
-                    self.pictures_paths[i] = self.user_homedir+self.pictures_paths[i][1:]
-            for i in range(0, len(self.ignored_paths)):
-                if self.ignored_paths[i][0] == '~':
-                    self.ignored_paths[i] = self.user_homedir+self.ignored_paths[i][1:]
-
-    def saveConf(self):
-        """ Save configuration file. """
-        ctconfpath = self.user_homedir + '/.cover-thumbnailer/'
-        if not os.path.isdir(ctconfpath):
-            os.makedirs(ctconfpath)
-
-        user_conf_file = open(ctconfpath + 'cover-thumbnailer.conf', 'w')
-        user_conf_file.write('#' + _('Configuration written by Cover Thumbnailer GUI') + "\n")
-        user_conf_file.write("#" + _('Please edit with caution') + "\n")
-
-        #MUSIC
-        user_conf_file.write("\n[MUSIC]\n")
-
-        if self.music_enabled:
-            user_conf_file.write("\tenabled = Yes\n")
+    def _write_bool(self, key):
+        """ Return the string to write in config file for boolean key
+        
+        Argument:
+          * key -- the name of the CONF key
+        """
+        wkey = key.split("_")[1]
+        if self[key]:
+            value = "Yes"
         else:
-            user_conf_file.write("\tenabled = No\n")
+            value = "No"
+        return "\t%s = %s\n" % (wkey, value)
 
-        if self.music_keepicon:
-            user_conf_file.write("\tkeepDefaultIcon = Yes\n")
-        else:
-            user_conf_file.write("\tkeepDefaultIcon = No\n")
-
-        if self.music_use_gnome_folder:
-            user_conf_file.write("\tuseGnomeFolder = Yes\n")
-        else:
-            user_conf_file.write("\tuseGnomeFolder = No\n")
-
-        if len(self.music_paths) > 0:
-            for path in self.music_paths:
-                user_conf_file.write("\tpath = \"" + path + "\"\n")
-
-        #PICTURES
-        user_conf_file.write("\n[PICTURES]\n")
-
-        if self.pictures_enabled:
-            user_conf_file.write("\tenabled = Yes\n")
-        else:
-            user_conf_file.write("\tenabled = No\n")
-
-        if self.pictures_keepicon:
-            user_conf_file.write("\tkeepDefaultIcon = Yes\n")
-        else:
-            user_conf_file.write("\tkeepDefaultIcon = No\n")
-
-        if self.pictures_use_gnome_folder:
-            user_conf_file.write("\tuseGnomeFolder = Yes\n")
-        else:
-            user_conf_file.write("\tuseGnomeFolder = No\n")
-
-        if len(self.pictures_paths) > 0:
-            for path in self.pictures_paths:
-                user_conf_file.write("\tpath = \"" + path + "\"\n")
-
-        #OTHER
-        user_conf_file.write("\n[OTHER]\n")
-
-        if self.other_enabled:
-            user_conf_file.write("\tenabled = Yes\n")
-        else:
-            user_conf_file.write("\tenabled = No\n")
-
-        #IGNORED
-        user_conf_file.write("\n[IGNORED]\n")
-
-        if self.ignored_dotted:
-            user_conf_file.write("\tdotted = Yes\n")
-        else:
-            user_conf_file.write("\tdotted = No\n")
-
-        if len(self.ignored_paths) > 0:
-            for path in self.ignored_paths:
-                user_conf_file.write("\tpath = \"" + path + "\"\n")
-
-        #END
-        user_conf_file.write("\n\n") #Because I like files with blank lines at the end :)
-        user_conf_file.close()
+    def _write_list(self, key):
+        """ Return the string to write in config file for list key (path)
+        
+        Argument:
+          * key -- the name of the CONF key
+        """
+        result = ""
+        for value in self[key]:
+            result += "\tpath = \"%s\"\n" % value
+        return result
 
 
 class MainWin(object):
@@ -375,20 +325,20 @@ class MainWin(object):
         gtk.main_quit()
 
     def on_btnOk_clicked(self, widget):
-        conf.saveConf()
+        CONF.save_user_conf()
         gtk.main_quit()
 
     def on_btnClearThumbnailCache_clicked(self, widget):
-        thumbpath = conf.user_homedir + '/.thumbnails'
+        thumbpath = os.path.join(CONF.user_homedir, '.thumbnails')
         if os.path.isdir(thumbpath):
             shutil.rmtree(thumbpath)
 
     #~~~ MUSIC ~~~
     def on_cbMusicEnable_toggled(self, widget):
-        conf.music_enabled = self.cbMusicEnable.get_active()
+        CONF['music_enabled'] = self.cbMusicEnable.get_active()
 
     def on_cbMusicKeepFIcon_toggled(self, widget):
-        conf.music_keepicon = self.cbMusicKeepFIcon.get_active()
+        CONF['music_keepdefaulticon'] = self.cbMusicKeepFIcon.get_active()
 
     def on_btnMusicAdd_clicked(self, widget):
         self.fileChooserFor = 'music'
@@ -400,18 +350,22 @@ class MainWin(object):
             self.btnMusicRemove.set_sensitive(True)
 
     def on_btnMusicRemove_clicked(self, widget):
-        removePathFromList(self.trvMusicPathList, self.lsstMusicPathList, conf.music_paths)
+        removePathFromList(
+                self.trvMusicPathList,
+                self.lsstMusicPathList,
+                CONF['music_paths']
+                )
         self.btnMusicRemove.set_sensitive(False)
 
     def on_cb_useGnomeMusic_toggled(self, widget):
-        conf.music_use_gnome_folder = self.cb_useGnomeMusic.get_active()
+        CONF['music_usegnomefolder'] = self.cb_useGnomeMusic.get_active()
 
     #~~~ PICTURES ~~~
     def on_cbPicturesEnable_toggled(self, widget):
-        conf.pictures_enabled = self.cbPicturesEnable.get_active()
+        CONF['pictures_enabled'] = self.cbPicturesEnable.get_active()
 
     def on_cbPicturesKeepFIcon_toggled(self, widget):
-        conf.pictures_keepicon = self.cbPicturesKeepFIcon.get_active()
+        CONF['pictures_keepdefaulticon'] = self.cbPicturesKeepFIcon.get_active()
 
     def on_btnPicturesAdd_clicked(self, widget):
         self.fileChooserFor = 'pictures'
@@ -423,15 +377,19 @@ class MainWin(object):
             self.btnPicturesRemove.set_sensitive(True)
 
     def on_btnPicturesRemove_clicked(self, widget):
-        removePathFromList(self.trvPicturesPathList, self.lsstPicturesPathList, conf.pictures_paths)
+        removePathFromList(
+                self.trvPicturesPathList,
+                self.lsstPicturesPathList,
+                CONF['pictures_paths']
+                )
         self.btnPicturesRemove.set_sensitive(False)
 
     def on_cb_useGnomePictures_toggled(self, widget):
-        conf.pictures_use_gnome_folder = self.cb_useGnomePictures.get_active()
+        CONF['pictures_usegnomefolder'] = self.cb_useGnomePictures.get_active()
 
     #~~~ OTHER ~~~
     def on_cbOtherEnable_toggled(self, widget):
-        conf.other_enabled = self.cbOtherEnable.get_active()
+        CONF['other_enabled'] = self.cbOtherEnable.get_active()
 
     #~~~ IGNORED ~~~
     def on_btnIgnoredAdd_clicked(self, widget):
@@ -444,11 +402,11 @@ class MainWin(object):
             self.btnIgnoredRemove.set_sensitive(True)
 
     def on_btnIgnoredRemove_clicked(self, widget):
-        removePathFromList(self.trvIgnoredPathList, self.lsstIgnoredPathList, conf.ignored_paths)
+        removePathFromList(self.trvIgnoredPathList, self.lsstIgnoredPathList, CONF['ignored_paths'])
         self.btnIgnoredRemove.set_sensitive(False)
 
     def on_cbIgnoreHidden_toggled(self, widget):
-        conf.ignored_dotted = self.cbIgnoreHidden.get_active()
+        CONF['ignored_dotted'] = self.cbIgnoreHidden.get_active()
 
     #~~~ MISCELLANEOUS ~~~
     def on_cbEnableCT_toggled(self, widget):
@@ -467,11 +425,11 @@ class MainWin(object):
         self.fileChooser.hide()
         path = self.fileChooser.get_filename()
         if self.fileChooserFor == 'music':
-            addPathToList(self.lsstMusicPathList, path, conf.music_paths)
+            addPathToList(self.lsstMusicPathList, path, CONF['music_paths'])
         elif self.fileChooserFor == 'pictures':
-            addPathToList(self.lsstPicturesPathList, path, conf.pictures_paths)
+            addPathToList(self.lsstPicturesPathList, path, CONF['pictures_paths'])
         elif self.fileChooserFor == 'ignored':
-            addPathToList(self.lsstIgnoredPathList, path, conf.ignored_paths)
+            addPathToList(self.lsstIgnoredPathList, path, CONF['ignored_paths'])
         self.fileChooserFor = None
 
     def on_filechooserdialog_delete_event(self, widget, response):
@@ -530,25 +488,25 @@ def loadInterface(gui):
     Argument:
       * gui -- the gui
     """
-    #Music:
-    gui.cbMusicEnable.set_active(conf.music_enabled)
-    gui.cbMusicKeepFIcon.set_active(conf.music_keepicon)
-    for path in conf.music_paths:
+    #Music
+    gui.cbMusicEnable.set_active(CONF['music_enabled'])
+    gui.cbMusicKeepFIcon.set_active(CONF['music_keepdefaulticon'])
+    for path in CONF['music_paths']:
         gui.lsstMusicPathList.append([path])
-    gui.cb_useGnomeMusic.set_label(_("Enable for GNOME’s music folder (%s)") %(conf.gnome_music_path))
-    gui.cb_useGnomeMusic.set_active(conf.music_use_gnome_folder)
+    gui.cb_useGnomeMusic.set_label(_("Enable for GNOME’s music folder (%s)") %(CONF['music_gnomefolderpath']))
+    gui.cb_useGnomeMusic.set_active(CONF['music_usegnomefolder'])
     #Pictures
-    gui.cbPicturesEnable.set_active(conf.pictures_enabled)
-    gui.cbPicturesKeepFIcon.set_active(conf.pictures_keepicon)
-    for path in conf.pictures_paths:
+    gui.cbPicturesEnable.set_active(CONF['pictures_enabled'])
+    gui.cbPicturesKeepFIcon.set_active(CONF['pictures_keepdefaulticon'])
+    for path in CONF['pictures_paths']:
         gui.lsstPicturesPathList.append([path])
-    gui.cb_useGnomePictures.set_label(_("Enable for GNOME’s picture folder (%s)") %(conf.gnome_pictures_path))
-    gui.cb_useGnomePictures.set_active(conf.pictures_use_gnome_folder)
+    gui.cb_useGnomePictures.set_label(_("Enable for GNOME’s picture folder (%s)") %(CONF['pictures_gnomefolderpath']))
+    gui.cb_useGnomePictures.set_active(CONF['pictures_usegnomefolder'])
     #Other
-    gui.cbOtherEnable.set_active(conf.other_enabled)
+    gui.cbOtherEnable.set_active(CONF['other_enabled'])
     #Ignored
-    gui.cbIgnoreHidden.set_active(conf.ignored_dotted)
-    for path in conf.ignored_paths:
+    gui.cbIgnoreHidden.set_active(CONF['ignored_dotted'])
+    for path in CONF['ignored_paths']:
         gui.lsstIgnoredPathList.append([path])
     #Miscellaneous
     gconf_client = gconf.client_get_default()
@@ -564,7 +522,7 @@ def loadInterface(gui):
 
 
 if __name__ == "__main__":
-    conf = Conf()
+    CONF = Conf()
     gui = MainWin()
     gtk.main()
 
