@@ -32,13 +32,13 @@ For building Cover Thumbnailer, you need :
 
 —— INSTALL —————————————————————————————————————————————————————————————————
 
-For install Cover thumbnailer, run 'install' as root.
+For install Cover thumbnailer, run './install.sh --install' as root.
 
 
 —— UNINSTALL ———————————————————————————————————————————————————————————————
 
 For uninstall Cover thumbnailer, run 
-'/usr/share/cover-thumbnailer/uninstall.sh' as root.
+'/usr/share/cover-thumbnailer/uninstall.sh --remove' as root.
 
 
 —— CONFIGURATION ———————————————————————————————————————————————————————————

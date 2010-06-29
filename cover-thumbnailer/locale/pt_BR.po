@@ -1,4 +1,4 @@
-# Portuguese translation for cover-thumbnailer
+# Brazilian Portuguese translation for cover-thumbnailer
 # Copyright (c) 2010 Rosetta Contributors and Canonical Ltd 2010
 # This file is distributed under the same license as the cover-thumbnailer package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2010.
@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: cover-thumbnailer\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2010-05-04 00:30+0200\n"
-"PO-Revision-Date: 2010-06-11 10:18+0000\n"
-"Last-Translator: Sérgio Marques <Unknown>\n"
-"Language-Team: Portuguese <pt@li.org>\n"
+"PO-Revision-Date: 2010-05-24 13:33+0000\n"
+"Last-Translator: LiqSquid <Unknown>\n"
+"Language-Team: Brazilian Portuguese <pt_BR@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-06-12 03:54+0000\n"
+"X-Launchpad-Export-Date: 2010-05-25 03:52+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: ../cover-thumbnailer-gui.py:69 ../cover-thumbnailer-gui.py:75
@@ -23,57 +23,57 @@ msgstr "<Nenhum>"
 
 #: ../cover-thumbnailer-gui.py:215
 msgid "Configuration written by Cover Thumbnailer GUI"
-msgstr "Configuração escrita pelo Cover Thumbnailer GUI"
+msgstr "Configuração gerada pela interface gráfica do Cover Thumbnailer"
 
 #: ../cover-thumbnailer-gui.py:216
 msgid "Please edit with caution"
-msgstr "Por favor edite com cuidado"
+msgstr "Por favor, cuidado ao editar"
 
 #: ../cover-thumbnailer-gui.py:528 ../share/cover-thumbnailer-gui.glade:192
 #, python-format
 msgid "Enable for GNOME’s music folder (%s)"
-msgstr "Activo para a pasta de música GNOME (%s)"
+msgstr "Habilitar para pasta padrão de músicas do GNOME (%s)"
 
 #: ../cover-thumbnailer-gui.py:535 ../share/cover-thumbnailer-gui.glade:382
 #, python-format
 msgid "Enable for GNOME’s picture folder (%s)"
-msgstr "Activo para a pasta de imagens GNOME (%s)"
+msgstr "Habilitar para pasta padrão de imagens do GNOME (%s)"
 
 #: ../share/cover-thumbnailer-gui.glade:40
 msgid "Music Folders"
-msgstr "Pastas de Música"
+msgstr "Pastas de músicas"
 
 #: ../share/cover-thumbnailer-gui.glade:65
 msgid "Enable Cover Thumbnailer for music folders"
-msgstr "Permitir o Cover Thumbnailer para pastas de música"
+msgstr "Habilitar Cover Thumbnailer para pastas de músicas"
 
 #: ../share/cover-thumbnailer-gui.glade:79
 msgid "Keep the default folder icon if no cover was found"
-msgstr "Manter o ícone da pasta por omissão se não forem encontradas capas"
+msgstr "Manter o ícone padrão se uma capa não for encontrada"
 
 #: ../share/cover-thumbnailer-gui.glade:100
 msgid "List of music folders:"
-msgstr "Lista de pastas de música:"
+msgstr "Lista de pastas de músicas"
 
 #: ../share/cover-thumbnailer-gui.glade:216
 msgid "Music"
-msgstr "Música"
+msgstr "Músicas"
 
 #: ../share/cover-thumbnailer-gui.glade:230
 msgid "Picture Folders"
-msgstr "Pastas de Imagens"
+msgstr "Pasta de imagens"
 
 #: ../share/cover-thumbnailer-gui.glade:255
 msgid "Enable Cover Thumbnailer for picture folders"
-msgstr "Activar Cover Thumbnailer para as pastas de imagens"
+msgstr "Habilitar Cover Thumbnailer para pastas de imagens"
 
 #: ../share/cover-thumbnailer-gui.glade:269
 msgid "Keep the default folder icon if no pictures were found"
-msgstr "Manter o ícone por omissão se não forem encontradas imagens"
+msgstr "Manter o ícone padrão se uma capa não for encontrada"
 
 #: ../share/cover-thumbnailer-gui.glade:290
 msgid "List of picture folders:"
-msgstr "Lista das pastas de imagens:"
+msgstr "Lista de pastas de imagens"
 
 #: ../share/cover-thumbnailer-gui.glade:409
 msgid "Pictures"
@@ -81,11 +81,11 @@ msgstr "Imagens"
 
 #: ../share/cover-thumbnailer-gui.glade:424
 msgid "Other Folders"
-msgstr "Outras Pastas"
+msgstr "Outras pastas"
 
 #: ../share/cover-thumbnailer-gui.glade:445
 msgid "Enable Cover Thumbnailer for other folders"
-msgstr "Permitir o Cover Thumbnailer para outras pastas"
+msgstr "Habilitar Cover Thumbnailer para outras pastas"
 
 #: ../share/cover-thumbnailer-gui.glade:468
 msgid "Others"
@@ -93,11 +93,11 @@ msgstr "Outros"
 
 #: ../share/cover-thumbnailer-gui.glade:483
 msgid "Ignored Folders"
-msgstr "Pastas Ignoradas"
+msgstr "Pastas ignoradas"
 
 #: ../share/cover-thumbnailer-gui.glade:508
 msgid "Ignore hidden folders (folders whose name starts with a dot)"
-msgstr "Ignorar pastas ocultas (pastas cujos nomes iniciam com ponto)"
+msgstr "Ignorar pastas ocultas (pastas com nomes iniciados por um ponto)"
 
 #: ../share/cover-thumbnailer-gui.glade:529
 msgid "Folders to ignore:"
@@ -105,7 +105,7 @@ msgstr "Pastas a ignorar:"
 
 #: ../share/cover-thumbnailer-gui.glade:633
 msgid "Ignored"
-msgstr "Ignorado"
+msgstr "Ignorados"
 
 #: ../share/cover-thumbnailer-gui.glade:647
 msgid "Miscellaneous Options"
@@ -113,39 +113,37 @@ msgstr "Outras Opções"
 
 #: ../share/cover-thumbnailer-gui.glade:673
 msgid "Enable Cover Thumbnailer"
-msgstr "Activar Cover Thumbnailer"
+msgstr "Habilitar Cover Thumbnailer"
 
 #: ../share/cover-thumbnailer-gui.glade:694
 msgid "Thumbnail size:"
-msgstr "Tamanho das miniaturas:"
+msgstr "Tamanho da miniatura:"
 
 #: ../share/cover-thumbnailer-gui.glade:705
 msgid "From 64px to 128px, the default value is 96px."
-msgstr "Entre 64px e 128px. Por omissão, o valor é 96 px."
+msgstr "De 64px a 128px, o valor padrão é 96px."
 
 #: ../share/cover-thumbnailer-gui.glade:735
 msgid ""
 "This option will affect all thumbnails, not only those created by Cover "
 "Thumbnailer."
 msgstr ""
-"Esta opção afectará todas as miniaturas e não apenas as que foram criadas "
-"com Cover Thumbnailer."
+"Esta opção afetará todas as miniaturas, não se limitando as geradas pelo "
+"Cover Thumbnailer."
 
 #: ../share/cover-thumbnailer-gui.glade:754
 msgid "Clear thumbnail cache"
-msgstr "Limpar cache de miniaturas"
+msgstr "Limpar o cache de miniaturas"
 
 #: ../share/cover-thumbnailer-gui.glade:770
 msgid ""
 "Clear the thumbnail cache if you have some problem with thumbnails, for "
 "example after changing the configuration."
-msgstr ""
-"Apague a cache de miniaturas se tiver alguns problemas com miniaturas. Por "
-"exemplo, após alterar a configuração."
+msgstr "Caso surja algum problema com as miniaturas, favor limpar o cache."
 
 #: ../share/cover-thumbnailer-gui.glade:799
 msgid "Miscellaneous"
-msgstr "Outras Opções"
+msgstr "Diversos"
 
 #: ../share/cover-thumbnailer-gui.glade:889
 msgid "About Cover Thumbnailer"
@@ -153,7 +151,7 @@ msgstr "Sobre o Cover Thumbnailer"
 
 #: ../share/cover-thumbnailer-gui.glade:901
 msgid "Configuration tool for Cover Thumbnailer"
-msgstr "Ferramenta de configuração do Cover Thumbnailer"
+msgstr "Ferramenta de configuração para o Cover Thumbnailer"
 
 #: ../share/cover-thumbnailer-gui.glade:903
 msgid ""
@@ -170,38 +168,37 @@ msgid ""
 "You should have received a copy of the GNU General Public License\n"
 "along with this program. If not, see <http://www.gnu.org/licenses/>."
 msgstr ""
-"Esta aplicação é um programa livre; pode distribui-lo e/ou modifica-lo\n"
-"nos termos da GNU General Public License conforme publicada pela\n"
-"Free Software Foundation,tanto na versão 3, ou por opção qualquer \n"
-"versão mais recente.\n"
+"Este programa é um software livre; você pode redistribuí-lo e/ou modificá-"
+"lo\n"
+"dentro dos termos da Licença Pública Geral GNU como publicada pela\n"
+"Fundação do Software Livre; tanto na versão 3 da Licença, quanto\n"
+"(a seu critério) em qualquer versão posterior da mesma.\n"
 "\n"
-"Este programa é distribuído com o intuito de lhe ser útil, mas NÃO\n"
-"TEM QUALQUER GARANTIA; inclusive a garantia implícita de \n"
-"COMERCIALIZAÇÃO ou CONFIGURAÇÃO PARA UM FIM ESPECIFICO .\n"
-"Consulte a GNU General Public License para mais detalhes.\n"
+"Este programa é distribuído na esperança que será útil,\n"
+"mas SEM QUALQUER GARANTIA, sem mesmo a garantia implícita de\n"
+"COMERCIALIZAÇÃO ou ADEQUAÇÃO PARA UM PROPÓSITO PARTICULAR. Veja o\n"
+"GNU General Public License para mais detalhes.\n"
 "\n"
-"Você deve ter recebido juntamente com este programa uma cópia da \n"
-"GNU General Public License. Se tal não ocorreu, consulte "
-"<http://www.gnu.org/licenses/>."
+"Você deve ter recebido uma cópia da GNU General Public License\n"
+"junto com este programa. Se contrário, veja <http://www.gnu.org/licenses/>."
 
 #: ../share/cover-thumbnailer-gui.glade:917
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
-"  LiqSquid https://launchpad.net/~liqsquid00\n"
-"  Sérgio Marques https://launchpad.net/~sergio+marques"
+"  LiqSquid https://launchpad.net/~liqsquid00"
 
 #: ../share/cover-thumbnailer-gui.glade:947
 msgid "Not in your language?"
-msgstr "Não disponível no seu idioma?"
+msgstr "Não disponível em sua língua?"
 
 #: ../share/cover-thumbnailer-gui.glade:959
 msgid "Translate Cover Thumbnailer"
-msgstr "Traduzir Cover Thumbnailer"
+msgstr "Traduzir o Cover Thumbnailer"
 
 #: ../share/cover-thumbnailer-gui.glade:1010
 msgid "Select a folder - Cover Thumbnailer"
-msgstr "Escolha uma pasta - Cover Thumbnailer"
+msgstr "Selecione uma pasta - Cover Thumbnailer"
 
 #: ../share/cover-thumbnailer-gui.glade:1079
 msgid "Error - Cover Thumbnailer"
@@ -209,8 +206,8 @@ msgstr "Erro - Cover Thumbnailer"
 
 #: ../share/cover-thumbnailer-gui.glade:1086
 msgid "Can’t add this path"
-msgstr "Incapaz de adicionar este caminho"
+msgstr "Erro ao adicionar caminho"
 
 #: ../share/cover-thumbnailer-gui.glade:1087
 msgid "This path was already in the list!"
-msgstr "Este caminho já está na lista."
+msgstr "O caminho já se apresenta na lista."

@@ -29,10 +29,23 @@
 ##                                                                        ##
 ############################################################################
 ##                                                                        ##
-## VERSION : 0.8 (Sun, 02 May 2010 20:38:18 +0200)                        ##
 ## WEB SITE : http://software.flogisoft.com/cover-thumbnailer/            ##
 ##                                                                       ##
 #########################################################################
+
+
+"""Generates thumbnails for nautilus' folders.
+
+Cover thumbnailer generates thumbnail that will be displayed instead of the
+default folder icons. It has a specific presentation for music and pictures
+folders, and a generic one for other folders.
+
+Usage:
+    cover-thumbnailer <directory's path> <output thumbnail's path>
+"""
+
+__author__ = "Fabien Loison <flo@flogisoft.com>"
+__version__ = "0.8"
 
 
 import Image, urllib, os.path, sys, re
@@ -50,7 +63,7 @@ COVER_FILES = ['cover.png', 'cover.jpg', '.cover.png', '.cover.jpg',
 
 #Supported picture ext (ALWAY LAST 4 CHARS !!)
 PICTURES_EXT = ['.jpg', '.JPG', 'jpeg', 'JPEG',
-        '.png', '.PNG', #None interlaced
+        '.png', '.PNG', #Not interlaced
         '.gif', '.GIF',
         '.bmp', '.BMP', #Window ans OS/2 bitmap
         '.ico', '.ICO', #Windows icon format
@@ -63,10 +76,14 @@ PICTURES_EXT = ['.jpg', '.JPG', 'jpeg', 'JPEG',
 
 
 class Conf(object):
-    '''
-    Import configuration from config files.
-    '''
+
+    """ Import configuration.
+
+    Import configuration from the GNOME and cover thumbnailer files
+    """
+
     def __init__(self):
+        """ The constructor. """
         #music
         self.music_enabled = True
         self.music_keepicon = False
@@ -100,9 +117,7 @@ class Conf(object):
         self.get_pictures_path()
 
     def import_gnome_conf(self):
-        '''
-        Import user folders from GNOME config file.
-        '''
+        """ Import user folders from GNOME configuration file. """
         if os.path.isfile(self.user_gnomeconf):
             file = open(self.user_gnomeconf, 'r')
             for line in file:
@@ -115,14 +130,12 @@ class Conf(object):
             print "W: ["+__file__+":get_music_path] Can't find `user-dirs.dirs' file."
 
     def import_user_conf(self):
-        '''
-        Import user configuration file.
-        '''
+        """ Import user configuration file. """
         if os.path.isfile(self.user_conf):
             current_section = None
-            file = open(self.user_conf, 'r')
+            user_conf_file = open(self.user_conf, 'r')
             #Read config
-            for line in file:
+            for line in user_conf_file:
                 line = line.replace('\n', '')
                 if re.match(r'\s*#.*', line):
                     continue
@@ -201,7 +214,7 @@ class Conf(object):
                             self.pictures_use_gnome_folder = True
                         elif value in ['no', 'false', '0']:
                             self.pictures_use_gnome_folder = False
-            file.close()
+            user_conf_file.close()
 
             #Replace all ~ by user home dir
             for i in range(0, len(self.music_paths)):
@@ -215,9 +228,7 @@ class Conf(object):
                     self.ignored_paths[i] = self.user_homedir+self.ignored_paths[i][1:]
 
     def get_pictures_path(self):
-        '''
-        Search if user have put some custom pictures in his home.
-        '''
+        """ Search if user have put some custom pictures in his home. """
         #Music
         if os.path.isfile(self.user_homedir + '/.cover-thumbnailer/music_default.png'):
             self.music_default = self.user_homedir + '/.cover-thumbnailer/music_default.png'
@@ -239,20 +250,30 @@ class Conf(object):
 
 
 class Thumb(object):
-    '''
-    Create thumnails
-    @img_path : The path of the picture to thumnail
-    '''
+    """ Makes thumbnails.
+
+    Generate thumbnails for all kind of folders
+    """
     def __init__(self, img_path):
+        """The constructor.
+
+        Argument:
+            * img_path -- The path of the picture to thumbnail
+        """
         self.img = Image.open(img_path).convert('RGBA')
         self.thumb = None
 
-    def create_thumb(self, size=96):
-        '''
-        create a square thumbnail
-        @size : the size of the thumbnail (in pixels). NOTE: Shouldn't be
-                greater than 128 px for a standard freedesktop thumbnail.
-        '''
+    def create_thumb(self, size=128):
+        """ Make a squared thumbnail.
+
+        Croups the picture if necessaries and makes a thumbnail with it.
+
+        Keyword argument:
+            * size -- the size of the thumbnail (in pixels).
+
+        NOTE: the size shouldn't be greater than 128 px for a standard
+              freedesktop thumbnail.
+        """
         width = self.img.size[0]
         height = self.img.size[1]
         if width > height:
@@ -269,22 +290,26 @@ class Thumb(object):
         self.thumb.thumbnail((size, size), Image.ANTIALIAS)
 
     def add_decoration(self, fg_picture):
-        '''
-        Add decoration for most folders. The foreground picture is added
-        in the bottom-left corner.
-        @fg_picture : The foreground picture to add (Must be a rgba png !)
-        '''
+        """ Add decoration for "other" folders.
+
+        The foreground picture is added at the bottom-left corner.
+
+        Argument:
+            * fg_picture -- the foreground picture to add (Must be a rgba png!)
+        """
         if os.path.isfile(fg_picture):
             fg = Image.open(fg_picture).convert('RGBA')
             y = self.thumb.size[1] - fg.size[1]
             self.thumb.paste(fg, (0, y), fg)
 
     def add_music_decoration(self, bg_picture, fg_picture=None):
-        '''
-        Add decoration for music folders.
-        @bg_picture : The background picture (Must be a rgba png !)
-        @fg_picture : the foreground picture (Must be a rgba png !)
-        '''
+        """ Add decoration for music folders.
+
+        Argument:
+            * bg_picture -- the background picture (Must be a rgba png!)
+        Keyword argument:
+            * fg_picture -- the foreground picture (Must be a rgba png!)
+        """
         if os.path.isfile(bg_picture):
             bg = Image.open(bg_picture)
             x = bg.size[0] - self.thumb.size[0]
@@ -295,11 +320,13 @@ class Thumb(object):
             self.thumb.paste(fg, (0, 0), fg)
 
     def add_pictures_decoration(self, pictures, fg_picture=None):
-        '''
-        Add decoration for pictures folder
-        @picture : a list with at least the path of one picture
-        @fg_picture : the foreground picture (Must be a rgba png !)
-        '''
+        """ Add decoration for pictures folder.
+
+        Argument:
+            * picture -- a list with at least the path of one picture
+        Keyword argument:
+            * fg_picture -- the foreground picture (Must be a rgba png!)
+        """
         if len(pictures) == 1:
             #PIC0
             try:
@@ -386,22 +413,32 @@ class Thumb(object):
             fg = Image.open(fg_picture)
             self.thumb.paste(fg, (0, 0), fg)
 
-    def save_thumb(self, output, format='PNG'):
-        '''
-        Save the thumbnail in a file
-        @output : the output path for the thumbnail
-        @format : the format of the picture (Must be a PNG for a standard
-                  freedesktop thumbnail !)
-        '''
-        self.thumb.save(output, format)
+    def save_thumb(self, output_path, format='PNG'):
+        """ Save the thumbnail in a file.
+
+        Argument:
+            * output_path -- the output path for the thumbnail
+        Keyword argument:
+            * format -- the format of the picture (PNG, JPEG,...)
+
+        NOTE : The output format must be a PNG for a standard
+               freedesktop thumbnail
+        """
+        self.thumb.save(output_path, format)
 
 
 def get_cover_path(folder_path, default_pic=None):
-    '''
-    Find the name of the cover file (Search for files like cover.png,...)
-    @directory_path : the path of the directory
-    @default_pic : the default picture (if we need one)
-    '''
+    """ Finds the name of the cover file.
+
+    Search for files like cover.png, Folder.jpg,... in the folder.
+    If a cover file is found, returns the path of the cover file, else
+    returns the default picture, if given.
+
+    Argument:
+        * directory_path -- the folder path
+    Keyword argument:
+        * default_pic -- the default picture (if we need one)
+    """
     cover_path = None
     for cover in COVER_FILES:
         if os.path.isfile(folder_path+'/'+cover):
@@ -414,21 +451,23 @@ def get_cover_path(folder_path, default_pic=None):
 
 
 def get_music_cover_path(folder_path, default_pic=None):
-    '''
-    Find the name of the cover file
-    @directory_path : the path of the directory
-    @default_pic : the default picture (if we need one)
-    '''
+    """ Finds the name of the cover file for music directories
+
+    Argument:
+        * directory_path -- the path of the directory
+    Keyword argument:
+        * default_pic -- the default picture (if we need one)
+    """
     #Search for a file like "cover.png" or "folder.jpg"
     cover_path = get_cover_path(folder_path) 
 
     if cover_path == None:
         #Search for any picture in the directory 
-        files = os.listdir(input)
+        files = os.listdir(folder_path)
         picture = None
         for file in files:
             if PICTURES_EXT.count(file[-4:]):
-                picture = os.path.join(input, file)
+                picture = os.path.join(folder_path, file)
 
         #Search for any picture in subdirectory
         if picture == None:
@@ -437,7 +476,7 @@ def get_music_cover_path(folder_path, default_pic=None):
                 if picture == None:
                     for file in files:
                         if file[-4:] in PICTURES_EXT:
-                            picture = os.path.join(input, root, file)
+                            picture = os.path.join(folder_path, root, file)
                             break
                 else:
                     break
@@ -450,17 +489,18 @@ def get_music_cover_path(folder_path, default_pic=None):
     return cover_path
 
 
-def match_path(path, list):
-    '''
-    Search if path is a sub-folder of a path in list.
-    @path : path to check
-    @list : list of path
-    '''
+def match_path(path, path_list):
+    """ Search if a folder is a sub-folder of another one.
+
+    Arguments
+        * path -- path to check
+        * path_list -- list of path
+    """
     match = False
     #We add a slash at the end.
     if path[-1:] != '/':
         path += '/'
-    for entry in list:
+    for entry in path_list:
         #We add a slash at the end.
         if entry[-1:] != '/':
             entry += '/'
@@ -474,46 +514,46 @@ def match_path(path, list):
 if __name__ == "__main__":
     #If we have 2 args
     if len(sys.argv) == 3:
-        input = urllib.url2pathname(sys.argv[1]).replace('file://', '')
-        output = urllib.url2pathname(sys.argv[2]).replace('file://', '')
+        input_folder = urllib.url2pathname(sys.argv[1]).replace('file://', '')
+        output_file = urllib.url2pathname(sys.argv[2]).replace('file://', '')
 
         conf = Conf()
 
         #If it's an ignored folder
-        if match_path(input, conf.ignored_paths):
+        if match_path(input_folder, conf.ignored_paths):
             sys.exit(42)
 
         #If it's a dotted folder
-        elif conf.ignored_dotted and re.match('.*/\..*', input):
+        elif conf.ignored_dotted and re.match('.*/\..*', input_folder):
             sys.exit(42)
 
         #If it's a music folder
-        elif match_path(input, conf.music_paths) and conf.music_enabled:
+        elif match_path(input_folder, conf.music_paths) and conf.music_enabled:
             if conf.music_keepicon:
-                cover_path = get_music_cover_path(input)
+                cover_path = get_music_cover_path(input_folder)
             else:
-                cover_path = get_music_cover_path(input, conf.music_default)
+                cover_path = get_music_cover_path(input_folder, conf.music_default)
             if cover_path != None:
                 pic = Thumb(cover_path)
                 pic.create_thumb(110)
                 pic.add_music_decoration(conf.music_bg, conf.music_fg)
-                pic.save_thumb(output, 'PNG')
+                pic.save_thumb(output_file, 'PNG')
             elif not conf.music_keepicon:
-                print "E: ["+__file__+":main] Can't find any cover file and default cover file."
+                print "E: [%s:main] Can't find any cover file and default cover file." % __file__
 
         #If it's a pictures folder
-        elif match_path(input, conf.pictures_paths) and conf.pictures_enabled:
+        elif match_path(input_folder, conf.pictures_paths) and conf.pictures_enabled:
             #Search for a cover.png, folder.jpg,...
-            cover_path = get_cover_path(input)
+            cover_path = get_cover_path(input_folder)
             if cover_path != None:
                 pictures = [cover_path]
             else:
             #List pictures
-                files = os.listdir(input)
+                files = os.listdir(input_folder)
                 pictures = []
                 for file in files:
                     if PICTURES_EXT.count(file[-4:]):
-                        pictures.append(os.path.join(input, file))
+                        pictures.append(os.path.join(input_folder, file))
                     if len(pictures) >= 3:
                         break
             #Create thumbnail
@@ -521,26 +561,26 @@ if __name__ == "__main__":
                 pic = Thumb(conf.pictures_bg)
                 pic.create_thumb(128)
                 pic.add_pictures_decoration(pictures, conf.pictures_fg)
-                pic.save_thumb(output, 'PNG')
+                pic.save_thumb(output_file, 'PNG')
             elif not conf.pictures_keepicon:
                 pic = Thumb(conf.pictures_default)
                 pic.create_thumb(128)
-                pic.save_thumb(output, 'PNG')
+                pic.save_thumb(output_file, 'PNG')
 
 
         #If it's an other folder
         else:
-            cover_path = get_cover_path(input)
+            cover_path = get_cover_path(input_folder)
             if cover_path != None and conf.other_enabled:
                 pic = Thumb(cover_path)
                 pic.create_thumb(128)
                 pic.add_decoration(conf.other_fg)
-                pic.save_thumb(output, 'PNG')
+                pic.save_thumb(output_file, 'PNG')
             else :
                 sys.exit(42)
 
     else:
-        print "E: ["+__file__+":main] Need two args : the input directory and the output image file."
+        print "Cover thumbnailer - " + __doc__
         sys.exit(1)
 
 

@@ -29,16 +29,22 @@
 ##                                                                        ##
 ############################################################################
 ##                                                                        ##
-## VERSION : 0.8 (Tue, 04 May 2010 20:46:23 +0200)                        ##
 ## WEB SITE : http://software.flogisoft.com/cover-thumbnailer/            ##
 ##                                                                       ##
 #########################################################################
 
+
+"""Configuration GUI for Cover Thumbnailer.
+
+Provides a GUI for easily configuring Cover Thumbnailer.
+"""
+
+__author__ = "Fabien Loison <flo@flogisoft.com>"
+__version__ = "0.8"
 __appname__ = "cover-thumbnailer-gui"
 
-import pygtk
+import gtk, pygtk
 pygtk.require("2.0")
-import gtk
 
 import gettext
 gettext.install(__appname__)
@@ -47,8 +53,10 @@ import os, re, shutil, gconf
 
 
 #Base path
-BASE_PATH = "/usr/share/cover-thumbnailer/"
-#BASE_PATH = "./share/" #FIXME : dev
+if "DEVEL" in os.environ:
+    BASE_PATH = "./share/" #For devel
+else:
+    BASE_PATH = "/usr/share/cover-thumbnailer/"
 
 #GConf key for enabling/disabling Cover thumbnailer
 GCONF_KEY = "/desktop/gnome/thumbnailers/inode@directory/enable"
@@ -58,10 +66,14 @@ GCONF_KEY_NAUTILUS_THUMB_SIZE = "/apps/nautilus/icon_view/thumbnail_size"
 
 
 class Conf(object):
-    '''
-    Import/Write configuration from config files.
-    '''
+
+    """ Import configuration.
+
+    Import configuration from the GNOME and cover thumbnailer files
+    """
+
     def __init__(self):
+        """ The constructor. """
         #music
         self.music_enabled = True
         self.music_keepicon = False
@@ -89,29 +101,25 @@ class Conf(object):
         self.import_user_conf()
 
     def import_gnome_conf(self):
-        '''
-        Import user folders from GNOME config file.
-        '''
+        """ Import user folders from GNOME configuration file. """
         if os.path.isfile(self.user_gnomeconf):
-            file = open(self.user_gnomeconf, 'r')
-            for line in file:
+            gnome_conf_file = open(self.user_gnomeconf, 'r')
+            for line in gnome_conf_file:
                 if re.match(r'.*?XDG_MUSIC_DIR.*?=.*?"(.*)".*?', line):
                     self.gnome_music_path = re.match(r'.*?XDG_MUSIC_DIR.*?=.*?"(.*)".*?', line).group(1).replace('$HOME', self.user_homedir)
                 elif re.match(r'.*?XDG_PICTURES_DIR.*?=.*?"(.*)".*?', line):
                     self.gnome_pictures_path = re.match(r'.*?XDG_PICTURES_DIR.*?=.*?"(.*)".*?', line).group(1).replace('$HOME', self.user_homedir)
-            file.close()
+            gnome_conf_file.close()
         else:
             print "W: ["+__file__+":get_music_path] Can't find `user-dirs.dirs' file."
 
     def import_user_conf(self):
-        '''
-        Import user configuration file.
-        '''
+        """ Import user configuration file. """
         if os.path.isfile(self.user_conf):
             current_section = None
-            file = open(self.user_conf, 'r')
+            user_conf_file = open(self.user_conf, 'r')
             #Read config
-            for line in file:
+            for line in user_conf_file:
                 line = line.replace('\n', '')
                 if re.match(r'\s*#.*', line):
                     continue
@@ -190,7 +198,7 @@ class Conf(object):
                             self.pictures_use_gnome_folder = True
                         elif value in ['no', 'false', '0']:
                             self.pictures_use_gnome_folder = False
-            file.close()
+            user_conf_file.close()
 
             #Replace all ~ by user home dir
             for i in range(0, len(self.music_paths)):
@@ -204,90 +212,86 @@ class Conf(object):
                     self.ignored_paths[i] = self.user_homedir+self.ignored_paths[i][1:]
 
     def saveConf(self):
-        '''
-        Save configuration file.
-        '''
+        """ Save configuration file. """
         ctconfpath = self.user_homedir + '/.cover-thumbnailer/'
         if not os.path.isdir(ctconfpath):
             os.makedirs(ctconfpath)
 
-        file = open(ctconfpath + 'cover-thumbnailer.conf', 'w')
-        file.write('#' + _('Configuration written by Cover Thumbnailer GUI') + "\n")
-        file.write("#" + _('Please edit with caution') + "\n")
+        user_conf_file = open(ctconfpath + 'cover-thumbnailer.conf', 'w')
+        user_conf_file.write('#' + _('Configuration written by Cover Thumbnailer GUI') + "\n")
+        user_conf_file.write("#" + _('Please edit with caution') + "\n")
 
         #MUSIC
-        file.write("\n[MUSIC]\n")
+        user_conf_file.write("\n[MUSIC]\n")
 
         if self.music_enabled:
-            file.write("\tenabled = Yes\n")
+            user_conf_file.write("\tenabled = Yes\n")
         else:
-            file.write("\tenabled = No\n")
+            user_conf_file.write("\tenabled = No\n")
 
         if self.music_keepicon:
-            file.write("\tkeepDefaultIcon = Yes\n")
+            user_conf_file.write("\tkeepDefaultIcon = Yes\n")
         else:
-            file.write("\tkeepDefaultIcon = No\n")
+            user_conf_file.write("\tkeepDefaultIcon = No\n")
 
         if self.music_use_gnome_folder:
-            file.write("\tuseGnomeFolder = Yes\n")
+            user_conf_file.write("\tuseGnomeFolder = Yes\n")
         else:
-            file.write("\tuseGnomeFolder = No\n")
+            user_conf_file.write("\tuseGnomeFolder = No\n")
 
         if len(self.music_paths) > 0:
             for path in self.music_paths:
-                file.write("\tpath = \"" + path + "\"\n")
+                user_conf_file.write("\tpath = \"" + path + "\"\n")
 
         #PICTURES
-        file.write("\n[PICTURES]\n")
+        user_conf_file.write("\n[PICTURES]\n")
 
         if self.pictures_enabled:
-            file.write("\tenabled = Yes\n")
+            user_conf_file.write("\tenabled = Yes\n")
         else:
-            file.write("\tenabled = No\n")
+            user_conf_file.write("\tenabled = No\n")
 
         if self.pictures_keepicon:
-            file.write("\tkeepDefaultIcon = Yes\n")
+            user_conf_file.write("\tkeepDefaultIcon = Yes\n")
         else:
-            file.write("\tkeepDefaultIcon = No\n")
+            user_conf_file.write("\tkeepDefaultIcon = No\n")
 
         if self.pictures_use_gnome_folder:
-            file.write("\tuseGnomeFolder = Yes\n")
+            user_conf_file.write("\tuseGnomeFolder = Yes\n")
         else:
-            file.write("\tuseGnomeFolder = No\n")
+            user_conf_file.write("\tuseGnomeFolder = No\n")
 
         if len(self.pictures_paths) > 0:
             for path in self.pictures_paths:
-                file.write("\tpath = \"" + path + "\"\n")
+                user_conf_file.write("\tpath = \"" + path + "\"\n")
 
         #OTHER
-        file.write("\n[OTHER]\n")
+        user_conf_file.write("\n[OTHER]\n")
 
         if self.other_enabled:
-            file.write("\tenabled = Yes\n")
+            user_conf_file.write("\tenabled = Yes\n")
         else:
-            file.write("\tenabled = No\n")
+            user_conf_file.write("\tenabled = No\n")
 
         #IGNORED
-        file.write("\n[IGNORED]\n")
+        user_conf_file.write("\n[IGNORED]\n")
 
         if self.ignored_dotted:
-            file.write("\tdotted = Yes\n")
+            user_conf_file.write("\tdotted = Yes\n")
         else:
-            file.write("\tdotted = No\n")
+            user_conf_file.write("\tdotted = No\n")
 
         if len(self.ignored_paths) > 0:
             for path in self.ignored_paths:
-                file.write("\tpath = \"" + path + "\"\n")
+                user_conf_file.write("\tpath = \"" + path + "\"\n")
 
         #END
-        file.write("\n\n") #Because I like files with blank lines at the end :)
-        file.close()
+        user_conf_file.write("\n\n") #Because I like files with blank lines at the end :)
+        user_conf_file.close()
 
 
 class MainWin(object):
-    '''
-    GUI implementation
-    '''
+    """ The configuration GUI """
     def __init__(self):
         win = gtk.Builder()
         win.set_translation_domain(__appname__)
@@ -391,8 +395,8 @@ class MainWin(object):
         self.fileChooser.show()
 
     def on_trvMusicPathList_cursor_changed(self, widget):
-        model, iter = widget.get_selection().get_selected()
-        if iter != None:
+        model, iter_ = widget.get_selection().get_selected()
+        if iter_ != None:
             self.btnMusicRemove.set_sensitive(True)
 
     def on_btnMusicRemove_clicked(self, widget):
@@ -414,8 +418,8 @@ class MainWin(object):
         self.fileChooser.show()
 
     def on_trvPicturesPathList_cursor_changed(self, widget):
-        model, iter = widget.get_selection().get_selected()
-        if iter != None:
+        model, iter_ = widget.get_selection().get_selected()
+        if iter_ != None:
             self.btnPicturesRemove.set_sensitive(True)
 
     def on_btnPicturesRemove_clicked(self, widget):
@@ -435,8 +439,8 @@ class MainWin(object):
         self.fileChooser.show()
 
     def on_trvIgnoredPathList_cursor_changed(self, widget):
-        model, iter = widget.get_selection().get_selected()
-        if iter != None:
+        model, iter_ = widget.get_selection().get_selected()
+        if iter_ != None:
             self.btnIgnoredRemove.set_sensitive(True)
 
     def on_btnIgnoredRemove_clicked(self, widget):
@@ -492,35 +496,40 @@ class MainWin(object):
         self.msgdlgErrorPAIL.hide()
 
 
-def addPathToList(list, path, conflist):
-    '''
-    @path : string, path to add
-    @list : gtkListStore
-    @confilst : array
-    '''
+def addPathToList(gtklist, path, conflist):
+    """ Adds the path in the list
+
+    Arguments:
+      * path -- the path to add
+      * gtklist -- the gtkListStore where we will add the path
+      * confilst -- the "Conf" path list
+    """
     if not path in conflist:
-        list.append([path])
+        gtklist.append([path])
         conflist.append(path)
     else:
         gui.msgdlgErrorPAIL.show()
 
 
-def removePathFromList(tree, list, conflist):
-    '''
-    @tree : gtkTreeView
-    @list : gtkListStore
-    @confilst : array
-    '''
-    model, iter = tree.get_selection().get_selected()
-    conflist.remove(list.get_value(iter, 0))
-    list.remove(iter)
+def removePathFromList(gtktree, gtklist, conflist):
+    """ Remove the path from the list
+
+    Arguments:
+      * gtktree -- the gtkTreeView
+      * gtklist -- the gtkListStore where we will add the path
+      * confilst -- the "Conf" path list
+    """
+    model, iter_ = gtktree.get_selection().get_selected()
+    conflist.remove(gtklist.get_value(iter_, 0))
+    gtklist.remove(iter_)
 
 
 def loadInterface(gui):
-    '''
-    Put options on GUI
-    @gui : the gui
-    '''
+    """ Put options on the GUI
+
+    Argument:
+      * gui -- the gui
+    """
     #Music:
     gui.cbMusicEnable.set_active(conf.music_enabled)
     gui.cbMusicKeepFIcon.set_active(conf.music_keepicon)

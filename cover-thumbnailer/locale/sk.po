@@ -7,32 +7,41 @@ msgid ""
 msgstr ""
 "Project-Id-Version: cover-thumbnailer\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2010-04-26 12:22+0200\n"
-"PO-Revision-Date: 2010-04-26 10:36+0000\n"
-"Last-Translator: Launchpad Translations Administrators "
-"<rosetta@launchpad.net>\n"
+"POT-Creation-Date: 2010-05-04 00:30+0200\n"
+"PO-Revision-Date: 2010-05-06 19:45+0000\n"
+"Last-Translator: Tomáš Virgl <tomas@virgl.net>\n"
 "Language-Team: Slovak <sk@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-04-27 03:52+0000\n"
+"X-Launchpad-Export-Date: 2010-05-20 05:49+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
-#: ../cover-thumbnailer-gui.py:65 ../cover-thumbnailer-gui.py:70
+#: ../cover-thumbnailer-gui.py:69 ../cover-thumbnailer-gui.py:75
 msgid "<None>"
-msgstr ""
+msgstr "<Žiadny>"
 
-#: ../cover-thumbnailer-gui.py:194
+#: ../cover-thumbnailer-gui.py:215
 msgid "Configuration written by Cover Thumbnailer GUI"
 msgstr "Konfigurácia zapísaná užívateľským rozhraním Cover Thumbnailer"
 
-#: ../cover-thumbnailer-gui.py:195
+#: ../cover-thumbnailer-gui.py:216
 msgid "Please edit with caution"
 msgstr "Upravujte prosím opatrne"
 
+#: ../cover-thumbnailer-gui.py:528 ../share/cover-thumbnailer-gui.glade:192
+#, python-format
+msgid "Enable for GNOME’s music folder (%s)"
+msgstr "Povoliť hudobný priečinok GNOME (%s)"
+
+#: ../cover-thumbnailer-gui.py:535 ../share/cover-thumbnailer-gui.glade:382
+#, python-format
+msgid "Enable for GNOME’s picture folder (%s)"
+msgstr "Povoliť priečinok s obrázkami GNOME (%s)"
+
 #: ../share/cover-thumbnailer-gui.glade:40
 msgid "Music Folders"
-msgstr ""
+msgstr "Hudobné priečinky"
 
 #: ../share/cover-thumbnailer-gui.glade:65
 msgid "Enable Cover Thumbnailer for music folders"
@@ -43,118 +52,150 @@ msgid "Keep the default folder icon if no cover was found"
 msgstr "Ponechať predvolenú ikonu v prípade nenájdeného albumu"
 
 #: ../share/cover-thumbnailer-gui.glade:100
-msgid "List of music folders :"
-msgstr "Zoznam hudobných priečinkov :"
+msgid "List of music folders:"
+msgstr "Zoznam hudobných priečinkov"
 
-#: ../share/cover-thumbnailer-gui.glade:192
-msgid "Enable for GNOME's music folder (%s)"
-msgstr ""
-
-#: ../share/cover-thumbnailer-gui.glade:215
+#: ../share/cover-thumbnailer-gui.glade:216
 msgid "Music"
 msgstr "Hudba"
 
-#: ../share/cover-thumbnailer-gui.glade:229
+#: ../share/cover-thumbnailer-gui.glade:230
 msgid "Picture Folders"
-msgstr ""
+msgstr "Priečinky s obrázkami"
 
-#: ../share/cover-thumbnailer-gui.glade:254
-msgid "Enable Cover Thumbnailer for pictures folders"
-msgstr "Zapnúť Cover Thumbnailer pre priečinky s obrázkami"
+#: ../share/cover-thumbnailer-gui.glade:255
+msgid "Enable Cover Thumbnailer for picture folders"
+msgstr "Povoliť Cover Thumbnailer pre priečinky s obrázkami"
 
-#: ../share/cover-thumbnailer-gui.glade:268
-msgid "Keep the default folder icon if no pictures was found"
-msgstr "Ponechať predvolenú ikonku v prípade nenájdených obrázkov"
+#: ../share/cover-thumbnailer-gui.glade:269
+msgid "Keep the default folder icon if no pictures were found"
+msgstr "Ponechať predvolenú ikonu ak nebude nájdený žiaden obrázok"
 
-#: ../share/cover-thumbnailer-gui.glade:289
-msgid "List of picture folders :"
-msgstr ""
+#: ../share/cover-thumbnailer-gui.glade:290
+msgid "List of picture folders:"
+msgstr "Zoznam priečinkov s obrázkami:"
 
-#: ../share/cover-thumbnailer-gui.glade:381
-msgid "Enable for GNOME's pictures folder (%s)"
-msgstr ""
-
-#: ../share/cover-thumbnailer-gui.glade:407
+#: ../share/cover-thumbnailer-gui.glade:409
 msgid "Pictures"
 msgstr "Obrázky"
 
-#: ../share/cover-thumbnailer-gui.glade:422
+#: ../share/cover-thumbnailer-gui.glade:424
 msgid "Other Folders"
-msgstr ""
+msgstr "Iné priečinky"
 
-#: ../share/cover-thumbnailer-gui.glade:443
+#: ../share/cover-thumbnailer-gui.glade:445
 msgid "Enable Cover Thumbnailer for other folders"
 msgstr "Zapnúť Cover Thumbnailer pre ostatné priečinky"
 
-#: ../share/cover-thumbnailer-gui.glade:466
+#: ../share/cover-thumbnailer-gui.glade:468
 msgid "Others"
 msgstr "Ostatné"
 
-#: ../share/cover-thumbnailer-gui.glade:481
+#: ../share/cover-thumbnailer-gui.glade:483
 msgid "Ignored Folders"
+msgstr "Ignorované priečinky"
+
+#: ../share/cover-thumbnailer-gui.glade:508
+msgid "Ignore hidden folders (folders whose name starts with a dot)"
 msgstr ""
+"Ignorovať skryté priečinky (priečinky, ktorých názvy sa začínajú s bodkou)"
 
-#: ../share/cover-thumbnailer-gui.glade:506
-msgid "Ignore hidden folders (folders whose name start with a dot)"
-msgstr ""
-"Ignorovať skryté priečinky (priečinky, ktorých názov sa začína bodkou)"
+#: ../share/cover-thumbnailer-gui.glade:529
+msgid "Folders to ignore:"
+msgstr "Ignorovať priečinky:"
 
-#: ../share/cover-thumbnailer-gui.glade:527
-msgid "Folders to ignore :"
-msgstr "Ignorovať tieto priečinky :"
-
-#: ../share/cover-thumbnailer-gui.glade:631
+#: ../share/cover-thumbnailer-gui.glade:633
 msgid "Ignored"
 msgstr "Ignorované"
 
-#: ../share/cover-thumbnailer-gui.glade:645
+#: ../share/cover-thumbnailer-gui.glade:647
 msgid "Miscellaneous Options"
-msgstr ""
+msgstr "Rôzne nastavenia"
 
-#: ../share/cover-thumbnailer-gui.glade:671
+#: ../share/cover-thumbnailer-gui.glade:673
 msgid "Enable Cover Thumbnailer"
 msgstr "Zapnúť Cover Thumbnailer"
 
-#: ../share/cover-thumbnailer-gui.glade:687
+#: ../share/cover-thumbnailer-gui.glade:694
+msgid "Thumbnail size:"
+msgstr "Veľkosť miniatúry:"
+
+#: ../share/cover-thumbnailer-gui.glade:705
+msgid "From 64px to 128px, the default value is 96px."
+msgstr "Od 64px do 128px, predvolená hodnota je 96px"
+
+#: ../share/cover-thumbnailer-gui.glade:735
+msgid ""
+"This option will affect all thumbnails, not only those created by Cover "
+"Thumbnailer."
+msgstr ""
+"Táto možnosť sa dotkne všetkých miniatúr, nie len tých ktoré boli vytvorené "
+"pomocou Cover Thumbnailer."
+
+#: ../share/cover-thumbnailer-gui.glade:754
 msgid "Clear thumbnail cache"
 msgstr "Vyprázdniť vyrovnávaciu pamäť miniatúr"
 
-#: ../share/cover-thumbnailer-gui.glade:703
+#: ../share/cover-thumbnailer-gui.glade:770
 msgid ""
-"Clear the thumbnail cache if you have some problem with thumbnails, after "
-"changing the configuration for example"
+"Clear the thumbnail cache if you have some problem with thumbnails, for "
+"example after changing the configuration."
 msgstr ""
-"V prípade problémov s miniatúrami (napr. po zmene nastavenia) vyprázdnite "
-"vyrovnávaciu pamäť miniatúr."
 
-#: ../share/cover-thumbnailer-gui.glade:732
+#: ../share/cover-thumbnailer-gui.glade:799
 msgid "Miscellaneous"
 msgstr "Rôzne"
 
-#: ../share/cover-thumbnailer-gui.glade:822
+#: ../share/cover-thumbnailer-gui.glade:889
 msgid "About Cover Thumbnailer"
 msgstr "O Cover Thumbnailer"
 
-#: ../share/cover-thumbnailer-gui.glade:834
+#: ../share/cover-thumbnailer-gui.glade:901
 msgid "Configuration tool for Cover Thumbnailer"
 msgstr "Konfiguračný nástroj pre Cover Thumbnailer"
 
-#: ../share/cover-thumbnailer-gui.glade:850
-msgid "translator-credits"
+#: ../share/cover-thumbnailer-gui.glade:903
+msgid ""
+"This program is free software: you can redistribute it and/or modify\n"
+"it under the terms of the GNU General Public License as published by\n"
+"the Free Software Foundation, either version 3 of the License, or\n"
+"(at your option) any later version.\n"
+"\n"
+"This program is distributed in the hope that it will be useful,\n"
+"but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
+"MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the\n"
+"GNU General Public License for more details.\n"
+"\n"
+"You should have received a copy of the GNU General Public License\n"
+"along with this program. If not, see <http://www.gnu.org/licenses/>."
 msgstr ""
 
-#: ../share/cover-thumbnailer-gui.glade:880
-msgid "Not in your language ?"
-msgstr "Váš jazyk nie je podporovaný ?"
+#: ../share/cover-thumbnailer-gui.glade:917
+msgid "translator-credits"
+msgstr ""
+"Launchpad Contributions:\n"
+"  Tomáš Virgl https://launchpad.net/~tomasvirgl"
 
-#: ../share/cover-thumbnailer-gui.glade:892
+#: ../share/cover-thumbnailer-gui.glade:947
+msgid "Not in your language?"
+msgstr ""
+
+#: ../share/cover-thumbnailer-gui.glade:959
 msgid "Translate Cover Thumbnailer"
 msgstr "Preložiť Cover Thumbnailer"
 
-#: ../share/cover-thumbnailer-gui.glade:943
+#: ../share/cover-thumbnailer-gui.glade:1010
 msgid "Select a folder - Cover Thumbnailer"
 msgstr "Vybrať priečinok - Cover Thumbnailer"
 
-#: ../share/cover-thumbnailer-gui.glade:1012
+#: ../share/cover-thumbnailer-gui.glade:1079
 msgid "Error - Cover Thumbnailer"
 msgstr "Chyba - Cover Thumbnailer"
+
+#: ../share/cover-thumbnailer-gui.glade:1086
+msgid "Can’t add this path"
+msgstr ""
+
+#: ../share/cover-thumbnailer-gui.glade:1087
+msgid "This path was already in the list!"
+msgstr ""
