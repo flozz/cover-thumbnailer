@@ -28,7 +28,7 @@
 ##                                                                        ##
 ############################################################################
 ##                                                                        ##
-## VERSION : 0.8 (Thu, 24 Jun 2010 12:12:22 +0200)                        ##
+## VERSION : 0.8 (Wed, 30 Jun 2010 14:16:46 +0200)                        ##
 ## WEB SITE : http://software.flogisoft.com/cover-thumbnailer/            ##
 ##                                                                       ##
 #########################################################################
@@ -157,11 +157,15 @@ _remove() {
 _locale() {
 	#Extracts strings
 
-	mkdir -pv ./locale2/
-	xgettext -k_ -kN_
-		-o ./locale2/cover-thumbnailer-gui.pot \
+	mkdir -pv ./locale/
+	xgettext -k_ -kN_ \
+		-o ./locale/cover-thumbnailer-gui.pot \
 		./cover-thumbnailer-gui.py \
 		./share/cover-thumbnailer-gui.glade
+	for lcfile in $(find ./locale/ -name "*.po") ; do {
+		echo -n "   * $lcfile"
+		msgmerge --update $lcfile ./locale/cover-thumbnailer-gui.pot
+	} done
 }
 
 
@@ -228,7 +232,7 @@ _check_build_dep() {
 }
 
 
-#Go to the scrip directory
+#Go to the script directory
 cd "${0%/*}" 1> /dev/null 2> /dev/null
 
 #Force English
