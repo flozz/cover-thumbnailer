@@ -84,27 +84,27 @@ class Conf(dict):
         self['music_keepdefaulticon'] = False
         self['music_usegnomefolder'] = True
         self['music_paths'] = []
-        self['music_gnomefolderpath'] = _('<None>')
+        self['music_gnomefolderpath'] = _("<None>")
         #Pictures
         self['pictures_enabled'] = True
         self['pictures_keepdefaulticon'] = False
         self['pictures_usegnomefolder'] = True
         self['pictures_paths'] = []
-        self['pictures_gnomefolderpath'] = _('<None>')
+        self['pictures_gnomefolderpath'] = _("<None>")
         #Other
         self['other_enabled'] = True
         #Ignored
         self['ignored_dotted'] = False
         self['ignored_paths'] = []
         #Global
-        self.user_homedir = os.environ.get('HOME')
+        self.user_homedir = os.environ.get("HOME")
         self.user_gnomeconf = os.path.join(
                 self.user_homedir,
-                '.config/user-dirs.dirs'
+                ".config/user-dirs.dirs"
                 )
         self.user_conf = os.path.join(
                 self.user_homedir,
-                '.cover-thumbnailer/cover-thumbnailer.conf'
+                ".cover-thumbnailer/cover-thumbnailer.conf"
                 )
         #Read configuration
         self.import_gnome_conf()
@@ -518,6 +518,16 @@ def loadInterface(gui):
         gui.spinbtn_thumbSize.set_value(64)
     else:
         gui.spinbtn_thumbSize.set_value(thumb_size)
+    #If GNOME folders == user home dir or not defined,
+    #deactivate the option, it's probably a misconfiguration !
+    if os.path.samefile(CONF['music_gnomefolderpath'], CONF.user_homedir) \
+        or CONF['music_gnomefolderpath'] == _("<None>"):
+        gui.cb_useGnomeMusic.set_active(False)
+        gui.cb_useGnomeMusic.set_sensitive(False)
+    if os.path.samefile(CONF['pictures_gnomefolderpath'], CONF.user_homedir) \
+        or CONF['pictures_gnomefolderpath'] == _("<None>"):
+        gui.cb_useGnomePictures.set_active(False)
+        gui.cb_useGnomePictures.set_sensitive(False)
 
 
 
