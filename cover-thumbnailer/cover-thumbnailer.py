@@ -289,7 +289,7 @@ class Thumb(object):
                 y = (self.thumb.size[1] - pic0.size[1]) / 2
                 self.thumb.paste(pic0, (x, y), pic0)
             except IOError:
-                print "E: Can't open '"+pictures[0]+"'."
+                print("E: Can't open '%s'." % pictures[0])
         elif len(pictures) == 2:
             #PIC0
             try:
@@ -306,7 +306,7 @@ class Thumb(object):
                     pic0.thumbnail((105, 70), Image.ANTIALIAS)
                 self.thumb.paste(pic0, (10, 5), pic0)
             except IOError:
-                print "E: Can't open '"+pictures[0]+"'."
+                print("E: Can't open '%s'." % pictures[0])
             #PIC1
             try:
                 pic1 = Image.open(pictures[1]).convert('RGBA')
@@ -324,7 +324,7 @@ class Thumb(object):
                 y = self.thumb.size[1] - pic1.size[1] - 5
                 self.thumb.paste(pic1, (x, y), pic1)
             except IOError:
-                print "E: Can't open '"+pictures[1]+"'."
+                print("E: Can't open '%s'." % pictures[1])
         elif len(pictures) >= 3:
             #PIC0
             try:
@@ -332,7 +332,7 @@ class Thumb(object):
                 pic0.thumbnail((49, 56), Image.ANTIALIAS)
                 self.thumb.paste(pic0, (20, 5), pic0)
             except IOError:
-                print "E: Can't open '"+pictures[0]+"'."
+                print("E: Can't open '%s'." % pictures[0])
                 pic0 = Image.new('RGBA', (1, 1))
             #PIC1
             try:
@@ -341,7 +341,7 @@ class Thumb(object):
                 x = self.thumb.size[0] - pic1.size[0] - 5
                 self.thumb.paste(pic1, (x, 5), pic1)
             except IOError:
-                print "E: Can't open '"+pictures[1]+"'."
+                print("E: Can't open '%s'." % pictures[1])
                 pic1 = Image.new('RGBA', (1, 1))
             #PIC2
             try:
@@ -352,7 +352,7 @@ class Thumb(object):
                 y = self.thumb.size[1] - pic2.size[1] - 5
                 self.thumb.paste(pic2, (x, y), pic2)
             except IOError:
-                print "E: Can't open '"+pictures[2]+"'."
+                print("E: Can't open '%s'." % pictures[2])
         if os.path.isfile(fg_picture):
             fg = Image.open(fg_picture)
             self.thumb.paste(fg, (0, 0), fg)
@@ -483,7 +483,7 @@ if __name__ == "__main__":
                 pic.add_music_decoration(CONF['music_bg'], CONF['music_fg'])
                 pic.save_thumb(output_file, 'PNG')
             elif not CONF['music_keepdefaulticon']:
-                print "E: [%s:main] Can't find any cover file and default cover file." % __file__
+                print("E: [%s:main] Can't find any cover file and default cover file." % __file__)
 
         #If it's a pictures folder
         elif match_path(input_folder, CONF['pictures_paths']) and CONF['pictures_enabled']:
@@ -524,7 +524,7 @@ if __name__ == "__main__":
                 sys.exit(42)
 
     else:
-        print "Cover thumbnailer - " + __doc__
+        print("Cover thumbnailer - " + __doc__)
         sys.exit(1)
 
 

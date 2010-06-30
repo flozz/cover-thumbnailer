@@ -12,7 +12,6 @@
     <child>
       <object class="GtkVBox" id="vbox1">
         <property name="visible">True</property>
-        <property name="orientation">vertical</property>
         <property name="spacing">10</property>
         <child>
           <object class="GtkImage" id="image1">
@@ -32,7 +31,6 @@
             <child>
               <object class="GtkVBox" id="vbox2">
                 <property name="visible">True</property>
-                <property name="orientation">vertical</property>
                 <property name="spacing">5</property>
                 <child>
                   <object class="GtkLabel" id="label4">
@@ -59,7 +57,6 @@
                     <child>
                       <object class="GtkVBox" id="vbox7">
                         <property name="visible">True</property>
-                        <property name="orientation">vertical</property>
                         <child>
                           <object class="GtkCheckButton" id="cbMusicEnable">
                             <property name="label" translatable="yes">Enable Cover Thumbnailer for music folders</property>
@@ -142,7 +139,6 @@
                             <child>
                               <object class="GtkVBox" id="vbox8">
                                 <property name="visible">True</property>
-                                <property name="orientation">vertical</property>
                                 <property name="spacing">5</property>
                                 <child>
                                   <object class="GtkButton" id="btnMusicAdd">
@@ -189,7 +185,7 @@
                         </child>
                         <child>
                           <object class="GtkCheckButton" id="cb_useGnomeMusic">
-                            <property name="label" translatable="yes" comments="%s will be replaced by the folder path and must be kept unchanged.">Enable for GNOME’s music folder (%s)</property>
+                            <property name="label" translatable="yes" comments="%s will be replaced by the folder path and must be kept unchanged.">Enable for GNOME's music folder (%s)</property>
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="receives_default">False</property>
@@ -222,7 +218,6 @@
             <child>
               <object class="GtkVBox" id="vbox3">
                 <property name="visible">True</property>
-                <property name="orientation">vertical</property>
                 <property name="spacing">5</property>
                 <child>
                   <object class="GtkLabel" id="label5">
@@ -249,7 +244,6 @@
                     <child>
                       <object class="GtkVBox" id="vbox9">
                         <property name="visible">True</property>
-                        <property name="orientation">vertical</property>
                         <child>
                           <object class="GtkCheckButton" id="cbPicturesEnable">
                             <property name="label" translatable="yes">Enable Cover Thumbnailer for picture folders</property>
@@ -332,7 +326,6 @@
                             <child>
                               <object class="GtkVBox" id="vbox10">
                                 <property name="visible">True</property>
-                                <property name="orientation">vertical</property>
                                 <property name="spacing">5</property>
                                 <child>
                                   <object class="GtkButton" id="btnPicturesAdd">
@@ -379,7 +372,7 @@
                         </child>
                         <child>
                           <object class="GtkCheckButton" id="cb_useGnomePictures">
-                            <property name="label" translatable="yes" comments="%s will be replaced by the folder path and must be kept unchanged.">Enable for GNOME’s picture folder (%s)</property>
+                            <property name="label" translatable="yes" comments="%s will be replaced by the folder path and must be kept unchanged.">Enable for GNOME's picture folder (%s)</property>
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="receives_default">False</property>
@@ -416,7 +409,6 @@
             <child>
               <object class="GtkVBox" id="vbox13">
                 <property name="visible">True</property>
-                <property name="orientation">vertical</property>
                 <property name="spacing">5</property>
                 <child>
                   <object class="GtkLabel" id="label6">
@@ -475,7 +467,6 @@
             <child>
               <object class="GtkVBox" id="vbox4">
                 <property name="visible">True</property>
-                <property name="orientation">vertical</property>
                 <property name="spacing">5</property>
                 <child>
                   <object class="GtkLabel" id="label7">
@@ -502,7 +493,6 @@
                     <child>
                       <object class="GtkVBox" id="vbox5">
                         <property name="visible">True</property>
-                        <property name="orientation">vertical</property>
                         <child>
                           <object class="GtkCheckButton" id="cbIgnoreHidden">
                             <property name="label" translatable="yes">Ignore hidden folders (folders whose name starts with a dot)</property>
@@ -570,7 +560,6 @@
                             <child>
                               <object class="GtkVBox" id="vbox6">
                                 <property name="visible">True</property>
-                                <property name="orientation">vertical</property>
                                 <property name="spacing">5</property>
                                 <child>
                                   <object class="GtkButton" id="btnIgnoredAdd">
@@ -640,7 +629,6 @@
             <child>
               <object class="GtkVBox" id="vbox11">
                 <property name="visible">True</property>
-                <property name="orientation">vertical</property>
                 <child>
                   <object class="GtkLabel" id="label15">
                     <property name="visible">True</property>
@@ -666,7 +654,6 @@
                     <child>
                       <object class="GtkVBox" id="vbox12">
                         <property name="visible">True</property>
-                        <property name="orientation">vertical</property>
                         <property name="spacing">20</property>
                         <child>
                           <object class="GtkCheckButton" id="cbEnableCT">
@@ -897,7 +884,7 @@
     <property name="has_separator">False</property>
     <property name="program_name">Cover Thumbnailer</property>
     <property name="version">0.8</property>
-    <property name="copyright">Copyright &#xA9; 2009–2010 Fabien LOISON</property>
+    <property name="copyright">Copyright &#xA9; 2009&#x2013;2010 Fabien LOISON</property>
     <property name="comments" translatable="yes">Configuration tool for Cover Thumbnailer</property>
     <property name="website">http://software.flogisoft.com/cover-thumbnailer/</property>
     <property name="license" translatable="yes">This program is free software: you can redistribute it and/or modify
@@ -921,12 +908,10 @@ along with this program. If not, see &lt;http://www.gnu.org/licenses/&gt;.</prop
     <child internal-child="vbox">
       <object class="GtkVBox" id="dialog-vbox1">
         <property name="visible">True</property>
-        <property name="orientation">vertical</property>
         <property name="spacing">2</property>
         <child>
           <object class="GtkVBox" id="vboxTranslate">
             <property name="visible">True</property>
-            <property name="orientation">vertical</property>
             <child>
               <object class="GtkHSeparator" id="hseparator1">
                 <property name="visible">True</property>
@@ -1021,7 +1006,6 @@ along with this program. If not, see &lt;http://www.gnu.org/licenses/&gt;.</prop
     <child internal-child="vbox">
       <object class="GtkVBox" id="dialog-vbox3">
         <property name="visible">True</property>
-        <property name="orientation">vertical</property>
         <property name="spacing">2</property>
         <child>
           <placeholder/>
@@ -1083,13 +1067,12 @@ along with this program. If not, see &lt;http://www.gnu.org/licenses/&gt;.</prop
     <property name="skip_pager_hint">True</property>
     <property name="has_separator">False</property>
     <property name="message_type">error</property>
-    <property name="text" translatable="yes">Can’t add this path</property>
+    <property name="text" translatable="yes">Can&#x2019;t add this path</property>
     <property name="secondary_text" translatable="yes">This path was already in the list!</property>
     <signal name="delete_event" handler="on_msgdlgErrorPAIL_delete_event"/>
     <child internal-child="vbox">
       <object class="GtkVBox" id="dialog-vbox7">
         <property name="visible">True</property>
-        <property name="orientation">vertical</property>
         <property name="spacing">2</property>
         <child internal-child="action_area">
           <object class="GtkHButtonBox" id="dialog-action_area7">
