@@ -39,8 +39,9 @@
 Provides a GUI for easily configuring Cover Thumbnailer.
 """
 
+__version__ = "0.8 beta"
 __author__ = "Fabien Loison <flo@flogisoft.com>"
-__version__ = "0.8"
+__copyright__ = "Copyright © 2009–2010 Fabien LOISON"
 __appname__ = "cover-thumbnailer-gui"
 
 import gtk, pygtk
@@ -83,6 +84,7 @@ class Conf(dict):
         self['music_enabled'] = True
         self['music_keepdefaulticon'] = False
         self['music_usegnomefolder'] = True
+        self['music_cropimg'] = True
         self['music_paths'] = []
         self['music_gnomefolderpath'] = _("<None>")
         #Pictures
@@ -190,6 +192,7 @@ class Conf(dict):
             user_conf_file.write(self._write_bool("music_enabled"))
             user_conf_file.write(self._write_bool("music_keepdefaulticon"))
             user_conf_file.write(self._write_bool("music_usegnomefolder"))
+            user_conf_file.write(self._write_bool("music_cropimg"))
             user_conf_file.write(self._write_list("music_paths"))
             #Pictures
             user_conf_file.write("\n[PICTURES]\n")
@@ -246,10 +249,12 @@ class MainWin(object):
         win = gtk.Builder()
         win.set_translation_domain(__appname__)
         #FIXME: GtkWarning: Ignoring the separator setting (wtf ?!)
-        win.add_from_file(BASE_PATH + 'cover-thumbnailer-gui.glade')
+        win.add_from_file(os.path.join(BASE_PATH, "cover-thumbnailer-gui.glade"))
 
         self.winAbout = win.get_object("winAbout")
         self.winAbout.connect("response", self.on_winAbout_response)
+        self.winAbout.set_version(__version__)
+        self.winAbout.set_copyright(__copyright__)
 
         ### MUSIC ###
         #Music path list
@@ -266,6 +271,9 @@ class MainWin(object):
         self.cbMusicEnable = win.get_object("cbMusicEnable")
         #KeepIcon checkBox
         self.cbMusicKeepFIcon = win.get_object("cbMusicKeepFIcon")
+        #rbMusicCrop and rbMusicPreserve radiobutton
+        self.rbMusicCrop = win.get_object("rbMusicCrop")
+        self.rbMusicPreserve = win.get_object("rbMusicPreserve")
 
         ### PICTURES ###
         #Pictures path list
@@ -359,6 +367,9 @@ class MainWin(object):
 
     def on_cb_useGnomeMusic_toggled(self, widget):
         CONF['music_usegnomefolder'] = self.cb_useGnomeMusic.get_active()
+
+    def on_rbMusicCrop_toggled(self, widget):
+        CONF['music_cropimg'] = self.rbMusicCrop.get_active()
 
     #~~~ PICTURES ~~~
     def on_cbPicturesEnable_toggled(self, widget):
@@ -495,6 +506,10 @@ def loadInterface(gui):
         gui.lsstMusicPathList.append([path])
     gui.cb_useGnomeMusic.set_label(_("Enable for GNOME's music folder (%s)") %(CONF['music_gnomefolderpath']))
     gui.cb_useGnomeMusic.set_active(CONF['music_usegnomefolder'])
+    if CONF['music_cropimg']:
+        gui.rbMusicCrop.set_active(True)
+    else:
+        gui.rbMusicPreserve.set_active(True)
     #Pictures
     gui.cbPicturesEnable.set_active(CONF['pictures_enabled'])
     gui.cbPicturesKeepFIcon.set_active(CONF['pictures_keepdefaulticon'])

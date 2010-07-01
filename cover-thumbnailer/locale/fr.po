@@ -6,15 +6,15 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: cover-thumbnailer\n"
-"Report-Msgid-Bugs-To: \n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2010-06-30 16:32+0200\n"
-"PO-Revision-Date: 2010-05-05 10:57+0000\n"
+"PO-Revision-Date: 2010-06-30 14:54+0000\n"
 "Last-Translator: Fabien LOISON (FLOZz) <flo@flogisoft.com>\n"
 "Language-Team: French <fr@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-05-20 05:49+0000\n"
+"X-Launchpad-Export-Date: 2010-07-01 03:58+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: cover-thumbnailer-gui.py:87 cover-thumbnailer-gui.py:93
@@ -31,14 +31,14 @@ msgid "Please edit with caution"
 msgstr "Merci d'éditer ce fichier avec précautions"
 
 #: cover-thumbnailer-gui.py:496 share/cover-thumbnailer-gui.glade:188
-#, fuzzy, python-format
+#, python-format
 msgid "Enable for GNOME's music folder (%s)"
-msgstr "Activer pour le dossier musique de GNOME (%s)"
+msgstr "Activer pour le dossier de musique de GNOME (%s)"
 
 #: cover-thumbnailer-gui.py:503 share/cover-thumbnailer-gui.glade:375
-#, fuzzy, python-format
+#, python-format
 msgid "Enable for GNOME's picture folder (%s)"
-msgstr "Activer pour le dossier image de GNOME (%s)"
+msgstr "Activer pour le dossier d'image de GNOME (%s)"
 
 #: share/cover-thumbnailer-gui.glade:38
 msgid "Music Folders"
@@ -237,8 +237,7 @@ msgstr "Le chemin est déjà dans la liste !"
 #~ msgstr "Dossiers à ignorer :"
 
 #~ msgid "Ignore hidden folders (folders whose name start with a dot)"
-#~ msgstr ""
-#~ "Ignorer les dossiers cachés (ceux dont le nom commence par un point)"
+#~ msgstr "Ignorer les dossiers cachés (ceux dont le nom commence par un point)"
 
 #~ msgid "<big><b>Ignored Folders</b></big>"
 #~ msgstr "<big><b>Dossiers ignorés</b></big>"

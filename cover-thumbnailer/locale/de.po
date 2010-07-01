@@ -6,15 +6,15 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: cover-thumbnailer\n"
-"Report-Msgid-Bugs-To: \n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2010-06-30 16:32+0200\n"
-"PO-Revision-Date: 2010-05-08 13:35+0000\n"
+"PO-Revision-Date: 2010-06-30 19:28+0000\n"
 "Last-Translator: Jan-Christoph Borchardt <inquata@gmail.com>\n"
 "Language-Team: German <de@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-05-20 05:49+0000\n"
+"X-Launchpad-Export-Date: 2010-07-01 03:58+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: cover-thumbnailer-gui.py:87 cover-thumbnailer-gui.py:93
@@ -31,14 +31,14 @@ msgid "Please edit with caution"
 msgstr "Nur mit Vorsicht bearbeiten"
 
 #: cover-thumbnailer-gui.py:496 share/cover-thumbnailer-gui.glade:188
-#, fuzzy, python-format
+#, python-format
 msgid "Enable for GNOME's music folder (%s)"
-msgstr "Für GNOME-Musikordner aktivieren (%s)"
+msgstr "Für GNOMEs Musikordner (%s) aktivieren"
 
 #: cover-thumbnailer-gui.py:503 share/cover-thumbnailer-gui.glade:375
-#, fuzzy, python-format
+#, python-format
 msgid "Enable for GNOME's picture folder (%s)"
-msgstr "Für GNOME-Bilderordner aktivieren (%s)"
+msgstr "Für GNOMEs Bilderordner (%s) aktivieren"
 
 #: share/cover-thumbnailer-gui.glade:38
 msgid "Music Folders"
@@ -190,8 +190,8 @@ msgstr ""
 "\n"
 "Mit diesem Programm sollten Sie außerdem eine Kopie der GNU General Public "
 "License erhalten\n"
-"haben. Wenn dem nicht so ist, schauen Sie bitte unter <http://www.gnu.org/"
-"licenses/> (Englisch)."
+"haben. Wenn dem nicht so ist, schauen Sie bitte unter "
+"<http://www.gnu.org/licenses/> (Englisch)."
 
 #: share/cover-thumbnailer-gui.glade:904
 msgid "translator-credits"
