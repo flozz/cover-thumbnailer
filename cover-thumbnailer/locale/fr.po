@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: cover-thumbnailer\n"
-"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2010-06-30 16:32+0200\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2010-07-02 14:44+0200\n"
 "PO-Revision-Date: 2010-06-30 14:54+0000\n"
 "Last-Translator: Fabien LOISON (FLOZz) <flo@flogisoft.com>\n"
 "Language-Team: French <fr@li.org>\n"
@@ -17,25 +17,25 @@ msgstr ""
 "X-Launchpad-Export-Date: 2010-07-01 03:58+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
-#: cover-thumbnailer-gui.py:87 cover-thumbnailer-gui.py:93
-#: cover-thumbnailer-gui.py:524 cover-thumbnailer-gui.py:528
+#: cover-thumbnailer-gui.py:90 cover-thumbnailer-gui.py:96
+#: cover-thumbnailer-gui.py:551 cover-thumbnailer-gui.py:555
 msgid "<None>"
 msgstr "<Aucun>"
 
-#: cover-thumbnailer-gui.py:186
+#: cover-thumbnailer-gui.py:189
 msgid "Configuration written by Cover Thumbnailer GUI"
 msgstr "Configuration écrite par Cover Thumbnailer"
 
-#: cover-thumbnailer-gui.py:187
+#: cover-thumbnailer-gui.py:190
 msgid "Please edit with caution"
 msgstr "Merci d'éditer ce fichier avec précautions"
 
-#: cover-thumbnailer-gui.py:496 share/cover-thumbnailer-gui.glade:188
+#: cover-thumbnailer-gui.py:515 share/cover-thumbnailer-gui.glade:377
 #, python-format
 msgid "Enable for GNOME's music folder (%s)"
 msgstr "Activer pour le dossier de musique de GNOME (%s)"
 
-#: cover-thumbnailer-gui.py:503 share/cover-thumbnailer-gui.glade:375
+#: cover-thumbnailer-gui.py:530 share/cover-thumbnailer-gui.glade:565
 #, python-format
 msgid "Enable for GNOME's picture folder (%s)"
 msgstr "Activer pour le dossier d'image de GNOME (%s)"
@@ -53,79 +53,103 @@ msgid "Keep the default folder icon if no cover was found"
 msgstr ""
 "Garder l'icône par défaut des dossiers si aucune couverture n'a été trouvée"
 
-#: share/cover-thumbnailer-gui.glade:97
+#: share/cover-thumbnailer-gui.glade:105
+msgid "Resize method:"
+msgstr ""
+
+#: share/cover-thumbnailer-gui.glade:123
+msgid "Crop"
+msgstr ""
+
+#: share/cover-thumbnailer-gui.glade:139
+msgid "Preserve"
+msgstr ""
+
+#: share/cover-thumbnailer-gui.glade:194
+msgid "Allow mosaic:"
+msgstr ""
+
+#: share/cover-thumbnailer-gui.glade:227
+msgid "No"
+msgstr ""
+
+#: share/cover-thumbnailer-gui.glade:243
+msgid "Yes"
+msgstr ""
+
+#: share/cover-thumbnailer-gui.glade:286
 msgid "List of music folders:"
 msgstr "Liste des dossiers de musique :"
 
-#: share/cover-thumbnailer-gui.glade:212
+#: share/cover-thumbnailer-gui.glade:402
 msgid "Music"
 msgstr "Musique"
 
-#: share/cover-thumbnailer-gui.glade:225
+#: share/cover-thumbnailer-gui.glade:415
 msgid "Picture Folders"
 msgstr "Dossiers d'images"
 
-#: share/cover-thumbnailer-gui.glade:249
+#: share/cover-thumbnailer-gui.glade:439
 msgid "Enable Cover Thumbnailer for picture folders"
 msgstr "Activer Cover Thumbnailer pour les dossiers d'image"
 
-#: share/cover-thumbnailer-gui.glade:263
+#: share/cover-thumbnailer-gui.glade:453
 msgid "Keep the default folder icon if no pictures were found"
 msgstr "Garder l'icône par défaut du dossier si aucune image n'a été trouvée"
 
-#: share/cover-thumbnailer-gui.glade:284
+#: share/cover-thumbnailer-gui.glade:474
 msgid "List of picture folders:"
 msgstr "Liste des dossiers d'image :"
 
-#: share/cover-thumbnailer-gui.glade:402
+#: share/cover-thumbnailer-gui.glade:593
 msgid "Pictures"
 msgstr "Images"
 
-#: share/cover-thumbnailer-gui.glade:416
+#: share/cover-thumbnailer-gui.glade:607
 msgid "Other Folders"
 msgstr "Autres dossiers"
 
-#: share/cover-thumbnailer-gui.glade:437
+#: share/cover-thumbnailer-gui.glade:628
 msgid "Enable Cover Thumbnailer for other folders"
 msgstr "Activer Cover Thumbnailer pour les autres dossiers"
 
-#: share/cover-thumbnailer-gui.glade:460
+#: share/cover-thumbnailer-gui.glade:651
 msgid "Others"
 msgstr "Autres"
 
-#: share/cover-thumbnailer-gui.glade:474
+#: share/cover-thumbnailer-gui.glade:665
 msgid "Ignored Folders"
 msgstr "Dossiers ignorés"
 
-#: share/cover-thumbnailer-gui.glade:498
+#: share/cover-thumbnailer-gui.glade:689
 msgid "Ignore hidden folders (folders whose name starts with a dot)"
 msgstr "Ignorer les dossiers cachés (ceux dont le nom commence par un point)"
 
-#: share/cover-thumbnailer-gui.glade:519
+#: share/cover-thumbnailer-gui.glade:710
 msgid "Folders to ignore:"
 msgstr "Dossiers à ignorer :"
 
-#: share/cover-thumbnailer-gui.glade:622
+#: share/cover-thumbnailer-gui.glade:813
 msgid "Ignored"
 msgstr "Ignorés"
 
-#: share/cover-thumbnailer-gui.glade:635
+#: share/cover-thumbnailer-gui.glade:826
 msgid "Miscellaneous Options"
 msgstr "Options Diverses"
 
-#: share/cover-thumbnailer-gui.glade:660
+#: share/cover-thumbnailer-gui.glade:851
 msgid "Enable Cover Thumbnailer"
 msgstr "Activer Cover Thumbnailer"
 
-#: share/cover-thumbnailer-gui.glade:681
+#: share/cover-thumbnailer-gui.glade:872
 msgid "Thumbnail size:"
 msgstr "Taille des miniatures :"
 
-#: share/cover-thumbnailer-gui.glade:692
+#: share/cover-thumbnailer-gui.glade:883
 msgid "From 64px to 128px, the default value is 96px."
 msgstr "De 64px à 128px, la valeur par défaut est 96px."
 
-#: share/cover-thumbnailer-gui.glade:722
+#: share/cover-thumbnailer-gui.glade:913
 msgid ""
 "This option will affect all thumbnails, not only those created by Cover "
 "Thumbnailer."
@@ -133,11 +157,11 @@ msgstr ""
 "Cette option aura une incidence sur toutes les miniatures, pas seulement "
 "celles créées par Cover Thumbnailer."
 
-#: share/cover-thumbnailer-gui.glade:741
+#: share/cover-thumbnailer-gui.glade:933
 msgid "Clear thumbnail cache"
 msgstr "Vider le cache des miniatures"
 
-#: share/cover-thumbnailer-gui.glade:757
+#: share/cover-thumbnailer-gui.glade:949
 msgid ""
 "Clear the thumbnail cache if you have some problem with thumbnails, for "
 "example after changing the configuration."
@@ -145,19 +169,19 @@ msgstr ""
 "Videz le cache si vous avez des problèmes avec les miniatures (après avoir "
 "changé la configuration par exemple)"
 
-#: share/cover-thumbnailer-gui.glade:786
+#: share/cover-thumbnailer-gui.glade:979
 msgid "Miscellaneous"
 msgstr "Divers"
 
-#: share/cover-thumbnailer-gui.glade:876
+#: share/cover-thumbnailer-gui.glade:1069
 msgid "About Cover Thumbnailer"
 msgstr "À propos de Cover Thumbnailer"
 
-#: share/cover-thumbnailer-gui.glade:888
+#: share/cover-thumbnailer-gui.glade:1079
 msgid "Configuration tool for Cover Thumbnailer"
 msgstr "Outil de configuration pour Cover Thumbnailer"
 
-#: share/cover-thumbnailer-gui.glade:890
+#: share/cover-thumbnailer-gui.glade:1081
 msgid ""
 "This program is free software: you can redistribute it and/or modify\n"
 "it under the terms of the GNU General Public License as published by\n"
@@ -173,34 +197,34 @@ msgid ""
 "along with this program. If not, see <http://www.gnu.org/licenses/>."
 msgstr ""
 
-#: share/cover-thumbnailer-gui.glade:904
+#: share/cover-thumbnailer-gui.glade:1095
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
 "  Cédric VALMARY (Tot en òc) https://launchpad.net/~cvalmary\n"
 "  Fabien LOISON (FLOZz) https://launchpad.net/~flozz"
 
-#: share/cover-thumbnailer-gui.glade:932
+#: share/cover-thumbnailer-gui.glade:1123
 msgid "Not in your language?"
 msgstr "Pas dans votre langue ?"
 
-#: share/cover-thumbnailer-gui.glade:944
+#: share/cover-thumbnailer-gui.glade:1135
 msgid "Translate Cover Thumbnailer"
 msgstr "Traduire Cover Thumbnailer"
 
-#: share/cover-thumbnailer-gui.glade:995
+#: share/cover-thumbnailer-gui.glade:1186
 msgid "Select a folder - Cover Thumbnailer"
 msgstr "Sélectionner un dossier - Cover Thumbnailer"
 
-#: share/cover-thumbnailer-gui.glade:1063
+#: share/cover-thumbnailer-gui.glade:1254
 msgid "Error - Cover Thumbnailer"
 msgstr "Erreur - Cover Thumbnailer"
 
-#: share/cover-thumbnailer-gui.glade:1070
+#: share/cover-thumbnailer-gui.glade:1261
 msgid "Can’t add this path"
 msgstr "Impossible d'ajouter ce chemin"
 
-#: share/cover-thumbnailer-gui.glade:1071
+#: share/cover-thumbnailer-gui.glade:1262
 msgid "This path was already in the list!"
 msgstr "Le chemin est déjà dans la liste !"
 
@@ -237,7 +261,8 @@ msgstr "Le chemin est déjà dans la liste !"
 #~ msgstr "Dossiers à ignorer :"
 
 #~ msgid "Ignore hidden folders (folders whose name start with a dot)"
-#~ msgstr "Ignorer les dossiers cachés (ceux dont le nom commence par un point)"
+#~ msgstr ""
+#~ "Ignorer les dossiers cachés (ceux dont le nom commence par un point)"
 
 #~ msgid "<big><b>Ignored Folders</b></big>"
 #~ msgstr "<big><b>Dossiers ignorés</b></big>"

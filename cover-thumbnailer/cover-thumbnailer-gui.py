@@ -85,6 +85,7 @@ class Conf(dict):
         self['music_keepdefaulticon'] = False
         self['music_usegnomefolder'] = True
         self['music_cropimg'] = True
+        self['music_makemosaic'] = False
         self['music_paths'] = []
         self['music_gnomefolderpath'] = _("<None>")
         #Pictures
@@ -193,6 +194,7 @@ class Conf(dict):
             user_conf_file.write(self._write_bool("music_keepdefaulticon"))
             user_conf_file.write(self._write_bool("music_usegnomefolder"))
             user_conf_file.write(self._write_bool("music_cropimg"))
+            user_conf_file.write(self._write_bool("music_makemosaic"))
             user_conf_file.write(self._write_list("music_paths"))
             #Pictures
             user_conf_file.write("\n[PICTURES]\n")
@@ -271,9 +273,12 @@ class MainWin(object):
         self.cbMusicEnable = win.get_object("cbMusicEnable")
         #KeepIcon checkBox
         self.cbMusicKeepFIcon = win.get_object("cbMusicKeepFIcon")
-        #rbMusicCrop and rbMusicPreserve radiobutton
+        #rbMusicCrop and rbMusicPreserve radiobuttons
         self.rbMusicCrop = win.get_object("rbMusicCrop")
         self.rbMusicPreserve = win.get_object("rbMusicPreserve")
+        #rbMusicNoMosaic and rbMusicMosaic radiobuttons
+        self.rbMusicNoMosaic = win.get_object("rbMusicNoMosaic")
+        self.rbMusicMosaic = win.get_object("rbMusicMosaic")
 
         ### PICTURES ###
         #Pictures path list
@@ -370,6 +375,9 @@ class MainWin(object):
 
     def on_rbMusicCrop_toggled(self, widget):
         CONF['music_cropimg'] = self.rbMusicCrop.get_active()
+
+    def on_rbMusicNoMosaic_toggled(self, widget):
+        CONF['music_makemosaic'] = self.rbMusicMosaic.get_active()
 
     #~~~ PICTURES ~~~
     def on_cbPicturesEnable_toggled(self, widget):
@@ -510,6 +518,10 @@ def loadInterface(gui):
         gui.rbMusicCrop.set_active(True)
     else:
         gui.rbMusicPreserve.set_active(True)
+    if CONF['music_makemosaic']:
+        gui.rbMusicMosaic.set_active(True)
+    else:
+        gui.rbMusicNoMosaic.set_active(True)
     #Pictures
     gui.cbPicturesEnable.set_active(CONF['pictures_enabled'])
     gui.cbPicturesKeepFIcon.set_active(CONF['pictures_keepdefaulticon'])
