@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: cover-thumbnailer\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-07-02 14:44+0200\n"
+"POT-Creation-Date: 2010-07-02 23:05+0200\n"
 "PO-Revision-Date: 2010-05-20 18:36+0000\n"
 "Last-Translator: sebikul <Unknown>\n"
 "Language-Team: Spanish <es@li.org>\n"
@@ -17,25 +17,25 @@ msgstr ""
 "X-Launchpad-Export-Date: 2010-05-21 03:53+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
-#: cover-thumbnailer-gui.py:90 cover-thumbnailer-gui.py:96
-#: cover-thumbnailer-gui.py:551 cover-thumbnailer-gui.py:555
+#: cover-thumbnailer-gui.py:90 cover-thumbnailer-gui.py:97
+#: cover-thumbnailer-gui.py:581 cover-thumbnailer-gui.py:585
 msgid "<None>"
 msgstr "<Ninguno>"
 
-#: cover-thumbnailer-gui.py:189
+#: cover-thumbnailer-gui.py:196
 msgid "Configuration written by Cover Thumbnailer GUI"
 msgstr "Configuración escrita por Cover Thumbnailer GUI"
 
-#: cover-thumbnailer-gui.py:190
+#: cover-thumbnailer-gui.py:197
 msgid "Please edit with caution"
 msgstr "Edite con precaución"
 
-#: cover-thumbnailer-gui.py:515 share/cover-thumbnailer-gui.glade:377
+#: cover-thumbnailer-gui.py:539 share/cover-thumbnailer-gui.glade:377
 #, fuzzy, python-format
 msgid "Enable for GNOME's music folder (%s)"
 msgstr "Habilitar para la carpeta de música de GNOME (%s)"
 
-#: cover-thumbnailer-gui.py:530 share/cover-thumbnailer-gui.glade:565
+#: cover-thumbnailer-gui.py:554 share/cover-thumbnailer-gui.glade:602
 #, fuzzy, python-format
 msgid "Enable for GNOME's picture folder (%s)"
 msgstr "Habilitar para la carpeta de imágenes de GNOME (%s)"
@@ -97,59 +97,63 @@ msgstr "Habilitar Cover Thumbnailer  para carpetas de imágenes"
 msgid "Keep the default folder icon if no pictures were found"
 msgstr "Usar el icono de carpeta por defecto si ninguna imagen es encontrada"
 
-#: share/cover-thumbnailer-gui.glade:474
+#: share/cover-thumbnailer-gui.glade:472
+msgid "Maximum number of pictures on thumbnail:"
+msgstr ""
+
+#: share/cover-thumbnailer-gui.glade:511
 msgid "List of picture folders:"
 msgstr "Lista ca carpetas de imágenes"
 
-#: share/cover-thumbnailer-gui.glade:593
+#: share/cover-thumbnailer-gui.glade:630
 msgid "Pictures"
 msgstr "Fotos"
 
-#: share/cover-thumbnailer-gui.glade:607
+#: share/cover-thumbnailer-gui.glade:644
 msgid "Other Folders"
 msgstr "Otras Carpetas"
 
-#: share/cover-thumbnailer-gui.glade:628
+#: share/cover-thumbnailer-gui.glade:665
 msgid "Enable Cover Thumbnailer for other folders"
 msgstr "Habilitar Cover Thumbnailer para otras carpetas"
 
-#: share/cover-thumbnailer-gui.glade:651
+#: share/cover-thumbnailer-gui.glade:688
 msgid "Others"
 msgstr "Otros"
 
-#: share/cover-thumbnailer-gui.glade:665
+#: share/cover-thumbnailer-gui.glade:702
 msgid "Ignored Folders"
 msgstr "Carpetas Ignoradas"
 
-#: share/cover-thumbnailer-gui.glade:689
+#: share/cover-thumbnailer-gui.glade:726
 msgid "Ignore hidden folders (folders whose name starts with a dot)"
 msgstr "Ignorar carpetas ocultas (carpetas que comienzan con un punto)"
 
-#: share/cover-thumbnailer-gui.glade:710
+#: share/cover-thumbnailer-gui.glade:747
 msgid "Folders to ignore:"
 msgstr "Carpetas a ignorar:"
 
-#: share/cover-thumbnailer-gui.glade:813
+#: share/cover-thumbnailer-gui.glade:850
 msgid "Ignored"
 msgstr "Ignoradas"
 
-#: share/cover-thumbnailer-gui.glade:826
+#: share/cover-thumbnailer-gui.glade:863
 msgid "Miscellaneous Options"
 msgstr "Otras Opciones"
 
-#: share/cover-thumbnailer-gui.glade:851
+#: share/cover-thumbnailer-gui.glade:888
 msgid "Enable Cover Thumbnailer"
 msgstr "Habilitar Cover Thumbnailer"
 
-#: share/cover-thumbnailer-gui.glade:872
+#: share/cover-thumbnailer-gui.glade:909
 msgid "Thumbnail size:"
 msgstr "Tamaño de las miniaturas:"
 
-#: share/cover-thumbnailer-gui.glade:883
+#: share/cover-thumbnailer-gui.glade:920
 msgid "From 64px to 128px, the default value is 96px."
 msgstr "De 64px a 128px, el valor por defecto es 96px."
 
-#: share/cover-thumbnailer-gui.glade:913
+#: share/cover-thumbnailer-gui.glade:949
 msgid ""
 "This option will affect all thumbnails, not only those created by Cover "
 "Thumbnailer."
@@ -157,11 +161,11 @@ msgstr ""
 "Esta opción afectara a todas las miniaturas, no solo las creadas por Cover "
 "Thumbnailer."
 
-#: share/cover-thumbnailer-gui.glade:933
+#: share/cover-thumbnailer-gui.glade:969
 msgid "Clear thumbnail cache"
 msgstr "Limpiar el cache de miniaturas"
 
-#: share/cover-thumbnailer-gui.glade:949
+#: share/cover-thumbnailer-gui.glade:985
 msgid ""
 "Clear the thumbnail cache if you have some problem with thumbnails, for "
 "example after changing the configuration."
@@ -169,19 +173,19 @@ msgstr ""
 "Borre el cache de miniaturas si esta teniendo algún problema con ellas, por "
 "ejemplo, luego de cambiar la configuración."
 
-#: share/cover-thumbnailer-gui.glade:979
+#: share/cover-thumbnailer-gui.glade:1015
 msgid "Miscellaneous"
 msgstr "Varios"
 
-#: share/cover-thumbnailer-gui.glade:1069
+#: share/cover-thumbnailer-gui.glade:1105
 msgid "About Cover Thumbnailer"
 msgstr "Acerca de Cover Thumbnailer"
 
-#: share/cover-thumbnailer-gui.glade:1079
+#: share/cover-thumbnailer-gui.glade:1115
 msgid "Configuration tool for Cover Thumbnailer"
 msgstr "Herramienta de configuración de Cover Thumbnailer"
 
-#: share/cover-thumbnailer-gui.glade:1081
+#: share/cover-thumbnailer-gui.glade:1117
 msgid ""
 "This program is free software: you can redistribute it and/or modify\n"
 "it under the terms of the GNU General Public License as published by\n"
@@ -209,32 +213,32 @@ msgstr ""
 "Debería haber recibido una copia de la GNU General Public License\n"
 "junto con este programa. Si no, véase <http://www.gnu.org/licenses/>."
 
-#: share/cover-thumbnailer-gui.glade:1095
+#: share/cover-thumbnailer-gui.glade:1131
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
 "  sebikul https://launchpad.net/~sebikul"
 
-#: share/cover-thumbnailer-gui.glade:1123
+#: share/cover-thumbnailer-gui.glade:1159
 msgid "Not in your language?"
 msgstr "¿No es su Lenguaje?"
 
-#: share/cover-thumbnailer-gui.glade:1135
+#: share/cover-thumbnailer-gui.glade:1171
 msgid "Translate Cover Thumbnailer"
 msgstr "Traducir Cover Thumbnailer"
 
-#: share/cover-thumbnailer-gui.glade:1186
+#: share/cover-thumbnailer-gui.glade:1222
 msgid "Select a folder - Cover Thumbnailer"
 msgstr "Seleccionar carpeta -  Cover Thumbnailer"
 
-#: share/cover-thumbnailer-gui.glade:1254
+#: share/cover-thumbnailer-gui.glade:1290
 msgid "Error - Cover Thumbnailer"
 msgstr "Error - Cover Thumbnailer"
 
-#: share/cover-thumbnailer-gui.glade:1261
+#: share/cover-thumbnailer-gui.glade:1297
 msgid "Can’t add this path"
 msgstr "No se ha podido agregar esta ruta"
 
-#: share/cover-thumbnailer-gui.glade:1262
+#: share/cover-thumbnailer-gui.glade:1298
 msgid "This path was already in the list!"
 msgstr "Esta ruta ya existe en la lista!"

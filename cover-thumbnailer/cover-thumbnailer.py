@@ -107,8 +107,8 @@ class Conf(dict):
         self['pictures_enabled'] = True
         self['pictures_keepdefaulticon'] = False
         self['pictures_usegnomefolder'] = True
+        self['pictures_maxthumbs'] = 3
         self['pictures_paths'] = []
-        self['pictures_defaultimg'] = os.path.join(BASE_PATH, "pictures_default.png")
         self['pictures_fg'] = os.path.join(BASE_PATH, "pictures_fg.png")
         self['pictures_bg'] = os.path.join(BASE_PATH, "pictures_bg.png")
         #Other
@@ -181,6 +181,12 @@ class Conf(dict):
                     key = "paths"
                     value = match.group(2)
                     self[current_section + "_" + key].append(value)
+                #Integer key
+                elif re.match(r"\s*([a-z]+)\s*=\s*([0-9]+)\s*", line.lower()):
+                    match = re.match(r"\s*([a-z]+)\s*=\s*([0-9]+)\s*", line.lower())
+                    key = match.group(1)
+                    value = match.group(2)
+                    self[current_section + "_" + key] = value
 
             user_conf_file.close()
             
@@ -217,13 +223,15 @@ class Thumb(object):
                 self.img.append(img)
         self.thumb = None
 
-    def thumbnailize(self, image, size=128, crop=True):
+    def thumbnailize(self, image, twidth=128, theight=128, crop=True):
         """ Make thumbnail.
 
         Crop the picture if necessaries and return a thumbnail of it.
 
         Keyword argument:
-          * size -- the size of the thumbnail (in pixels).
+          * twidth -- the width of the thumbnail (in pixels).
+          * theight -- the width of the thumbnail (in pixels).
+            NOTE: useless if crop = True
           * crop -- the resize method (True for having a squared thumbnail)
 
         NOTE: the size shouldn't be greater than 128 px for a standard
@@ -231,7 +239,7 @@ class Thumb(object):
         """
         width = image.size[0]
         height = image.size[1]
-        if crop and width >= size and height >= size:
+        if crop and width >= twidth and height >= theight:
             if width > height:
                 left = int((width - height) / 2)
                 upper = 0
@@ -243,7 +251,7 @@ class Thumb(object):
                 right = width
                 lower = width + upper
             image = image.crop((left, upper, right, lower))
-        image.thumbnail((size, size), Image.ANTIALIAS)
+        image.thumbnail((twidth, theight), Image.ANTIALIAS)
         return image
 
     def music_thumbnail(self, bg_picture, fg_picture, crop=True):
@@ -259,7 +267,7 @@ class Thumb(object):
         bg_width = bg.size[0]
         bg_height = bg.size[1]
         #Album cover
-        cover = self.thumbnailize(self.img[0], bg_height, crop)
+        cover = self.thumbnailize(self.img[0], bg_height, crop=crop)
         cover_width = cover.size[0]
         cover_height = cover.size[1]
         #Cover position on background
@@ -291,7 +299,7 @@ class Thumb(object):
         #Album covers
         covers_thumb = []
         for img in self.img:
-            cover_thumb = self.thumbnailize(img, int(bg_height / 2), crop)
+            cover_thumb = self.thumbnailize(img, int(bg_height / 2), crop=crop)
             cover_thumb_width = cover_thumb.size[0]
             cover_thumb_height = cover_thumb.size[1]
             covers_thumb.append({
@@ -315,7 +323,7 @@ class Thumb(object):
         covers_thumb[2]['y'] = int(3*bg_height/4 - covers_thumb[2]['height']/2)
         covers_thumb[3]['x'] = int(3*(bg_width - delta)/4 - covers_thumb[3]['width']/2 + delta)
         covers_thumb[3]['y'] = int(3*bg_height/4 - covers_thumb[3]['height']/2)
-        #Past covers on background
+        #Paste covers on background
         for i in range(0, 4):
             bg.paste(covers_thumb[i]['cover'],
                     (covers_thumb[i]['x'], covers_thumb[i]['y']),
@@ -323,116 +331,202 @@ class Thumb(object):
                     )
         #Forground picture
         fg = Image.open(fg_picture).convert("RGBA")
-        #Past forground on background+cover
+        #Paste forground on background+cover
         bg.paste(fg, (0, 0), fg)
         self.thumb = bg
 
-    def add_pictures_decoration(self, pictures, fg_picture=None):
-        """ Add decoration for pictures folder.
+    def pictures_thumbnail(self, bg_picture, fg_picture, max_pictures=3):
+        """ Makes thumbnails for picture folders.
 
-        Argument:
-          * picture -- a list with at least the path of one picture
+        Arguments:
+          * bg_picture -- the background picture
+          * fg_picture -- the foreground picture
+
         Keyword argument:
-          * fg_picture -- the foreground picture (Must be a rgba png!)
+          * max_pictures -- the maximum number of pictures on the thumbnail
         """
-        if len(pictures) == 1:
-            #PIC0
-            try:
-                pic0 = Image.open(pictures[0]).convert('RGBA')
-                #Optimisation with resempling : don't resemple when rotate big
-                #pictures (useless and verry slow)
-                if pic0.size[0] <= 120 and pic0.size[1] <= 120:   # <= 120x120
-                    pic0 = pic0.rotate(-10, resample=Image.BICUBIC, expand=1)
-                elif pic0.size[0] <= 256 and pic0.size[1] <= 256: # <= 256x256
-                    pic0 = pic0.rotate(-10, resample=Image.BILINEAR, expand=1)
-                    pic0.thumbnail((120, 120), Image.ANTIALIAS)
-                else:                                             # > 256x256
-                    pic0 = pic0.rotate(-10, resample=Image.NONE, expand=1)
-                    pic0.thumbnail((120, 120), Image.ANTIALIAS)
-                x = (self.thumb.size[0] - pic0.size[0]) / 2
-                y = (self.thumb.size[1] - pic0.size[1]) / 2
-                self.thumb.paste(pic0, (x, y), pic0)
-            except IOError:
-                print("E: Can't open '%s'." % pictures[0])
-        elif len(pictures) == 2:
-            #PIC0
-            try:
-                pic0 = Image.open(pictures[0]).convert('RGBA')
-                #Optimisation with resempling : don't resemple when rotate big
-                #pictures (useless and verry slow)
-                if pic0.size[0] <= 105 and pic0.size[1] <= 70:    # <= 105x70
-                    pic0 = pic0.rotate(3, resample=Image.BICUBIC, expand=1)
-                elif pic0.size[0] <= 256 and pic0.size[1] <= 256: # <= 256x256
-                    pic0 = pic0.rotate(3, resample=Image.BILINEAR, expand=1)
-                    pic0.thumbnail((105, 70), Image.ANTIALIAS)
-                else:                                             # > 256x256
-                    pic0 = pic0.rotate(3, resample=Image.NONE, expand=1)
-                    pic0.thumbnail((105, 70), Image.ANTIALIAS)
-                self.thumb.paste(pic0, (10, 5), pic0)
-            except IOError:
-                print("E: Can't open '%s'." % pictures[0])
-            #PIC1
-            try:
-                pic1 = Image.open(pictures[1]).convert('RGBA')
-                #Optimisation with resempling : don't resemple when rotate big
-                #pictures (useless and verry slow)
-                if pic1.size[0] <= 105 and pic1.size[1] <= 70:    # <= 105x70
-                    pic1 = pic1.rotate(-5, resample=Image.BICUBIC, expand=1)
-                elif pic1.size[0] <= 256 and pic1.size[1] <= 256: # <= 256x256
-                    pic1 = pic1.rotate(-5, resample=Image.BILINEAR, expand=1)
-                    pic1.thumbnail((105, 70), Image.ANTIALIAS)
-                else:                                             # > 256x256
-                    pic1 = pic1.rotate(-5, resample=Image.NONE, expand=1)
-                    pic1.thumbnail((105, 70), Image.ANTIALIAS)
-                x = self.thumb.size[0] - pic1.size[0] - 5
-                y = self.thumb.size[1] - pic1.size[1] - 5
-                self.thumb.paste(pic1, (x, y), pic1)
-            except IOError:
-                print("E: Can't open '%s'." % pictures[1])
-        elif len(pictures) >= 3:
-            #PIC0
-            try:
-                pic0 = Image.open(pictures[0]).convert('RGBA')
-                pic0.thumbnail((49, 56), Image.ANTIALIAS)
-                self.thumb.paste(pic0, (20, 5), pic0)
-            except IOError:
-                print("E: Can't open '%s'." % pictures[0])
-                pic0 = Image.new('RGBA', (1, 1))
-            #PIC1
-            try:
-                pic1 = Image.open(pictures[1]).convert('RGBA')
-                pic1.thumbnail((49, 56), Image.ANTIALIAS)
-                x = self.thumb.size[0] - pic1.size[0] - 5
-                self.thumb.paste(pic1, (x, 5), pic1)
-            except IOError:
-                print("E: Can't open '%s'." % pictures[1])
-                pic1 = Image.new('RGBA', (1, 1))
-            #PIC2
-            try:
-                pic2 = Image.open(pictures[2]).convert('RGBA')
-                h = self.thumb.size[1] - max(pic0.size[1], pic1.size[1]) - 15
-                pic2.thumbnail((103, h), Image.ANTIALIAS)
-                x = (self.thumb.size[0] - 15 - pic2.size[0]) / 2 +15
-                y = self.thumb.size[1] - pic2.size[1] - 5
-                self.thumb.paste(pic2, (x, y), pic2)
-            except IOError:
-                print("E: Can't open '%s'." % pictures[2])
-        if os.path.isfile(fg_picture):
-            fg = Image.open(fg_picture)
-            self.thumb.paste(fg, (0, 0), fg)
+        #Background
+        bg = Image.open(bg_picture).convert("RGB")
+        bg_width = bg.size[0]
+        bg_height = bg.size[1]
+        picts = []
+        #One picture
+        if len(self.img) == 1 or max_pictures == 1:
+            number_of_pictures = 1
+            thumb = self.thumbnailize(
+                    self.img[0],
+                    bg_width - 20,
+                    bg_height - 20,
+                    crop=False
+                    )
+            x = int((bg_width - thumb.size[0]) / 2)
+            y = int((bg_height - thumb.size[1]) / 2)
+            picts.append({
+                    'thumb': thumb,
+                    'x': x,
+                    'y': y
+                    })
+        #Two pictures
+        elif len(self.img) == 2 or max_pictures == 2:
+            number_of_pictures = 2
+            #Thumb 0
+            thumb = self.thumbnailize(
+                    self.img[0],
+                    bg_width - 10,
+                    int(bg_height/2 - 7.5),
+                    crop=False
+                    )
+            x = int((bg_width - thumb.size[0])/2  + 5)
+            y = int(1*bg_height/4 - thumb.size[1]/2)
+            picts.append({
+                    'thumb': thumb,
+                    'x': x,
+                    'y': y
+                    })
+            #Thumb 1
+            thumb = self.thumbnailize(
+                    self.img[1],
+                    bg_width - 10,
+                    int(bg_height/2 - 7.5),
+                    crop=False
+                    )
+            x = int((bg_width - thumb.size[0])/2 + 5)
+            y = int(3*bg_height/4 - thumb.size[1]/2)
+            picts.append({
+                    'thumb': thumb,
+                    'x': x,
+                    'y': y
+                    })
+        #Three pictures
+        elif len(self.img) == 3 or max_pictures == 3:
+            number_of_pictures = 3
+            #Thumb 0
+            thumb = self.thumbnailize(
+                    self.img[0],
+                    int(bg_width/2 - 15),
+                    int(bg_height/3 - 7.5),
+                    crop=False
+                    )
+            x = int(1*bg_width/4 - thumb.size[0]/2 + 10)
+            y = int(1*bg_height/6 - thumb.size[1]/2)
+            picts.append({
+                    'thumb': thumb,
+                    'x': x,
+                    'y': y
+                    })
+            #Thumb 1
+            thumb = self.thumbnailize(
+                    self.img[1],
+                    int(bg_width/2 - 15),
+                    int(bg_height/3 - 7.5),
+                    crop=False
+                    )
+            x = int(3*bg_width/4 - thumb.size[0]/2 + 4)
+            y = int(1*bg_height/6 - thumb.size[1]/2)
+            picts.append({
+                    'thumb': thumb,
+                    'x': x,
+                    'y': y
+                    })
+            #Thumb 2
+            thumb = self.thumbnailize(
+                    self.img[2],
+                    int(bg_width - 13),
+                    int(2*bg_height/3 - 7.5),
+                    crop=False
+                    )
+            x = int((bg_width - thumb.size[0])/2 + 8)
+            y = int(4*bg_height/6 - thumb.size[1]/2)
+            picts.append({
+                    'thumb': thumb,
+                    'x': x,
+                    'y': y
+                    })
+        #Four pictures
+        elif len(self.img) == 4 or max_pictures == 4:
+            number_of_pictures = 4
+            #Thumb 0
+            thumb = self.thumbnailize(
+                    self.img[0],
+                    int(bg_width/2 - 7.5),
+                    int(bg_height/2 - 7.5),
+                    crop=False
+                    )
+            x = int(1*bg_width/4 - thumb.size[0]/2)
+            y = int(1*bg_height/4 - thumb.size[1]/2)
+            picts.append({
+                    'thumb': thumb,
+                    'x': x,
+                    'y': y
+                    })
+            #Thumb 1
+            thumb = self.thumbnailize(
+                    self.img[1],
+                    int(bg_width/2 - 7.5),
+                    int(bg_height/2 - 7.5),
+                    crop=False
+                    )
+            x = int(3*bg_width/4 - thumb.size[0]/2)
+            y = int(1*bg_height/4 - thumb.size[1]/2)
+            picts.append({
+                    'thumb': thumb,
+                    'x': x,
+                    'y': y
+                    })
+            #Thumb 2
+            thumb = self.thumbnailize(
+                    self.img[2],
+                    int(bg_width/2 - 7.5),
+                    int(bg_height/2 - 7.5),
+                    crop=False
+                    )
+            x = int(1*bg_width/4 - thumb.size[0]/2)
+            y = int(3*bg_height/4 - thumb.size[1]/2)
+            picts.append({
+                    'thumb': thumb,
+                    'x': x,
+                    'y': y
+                    })
+            #Thumb 3
+            thumb = self.thumbnailize(
+                    self.img[3],
+                    int(bg_width/2 - 7.5),
+                    int(bg_height/2 - 7.5),
+                    crop=False
+                    )
+            x = int(3*bg_width/4 - thumb.size[0]/2)
+            y = int(3*bg_height/4 - thumb.size[1]/2)
+            picts.append({
+                    'thumb': thumb,
+                    'x': x,
+                    'y': y
+                    })
 
-    def add_decoration(self, fg_picture):
-        """ Add decoration for "other" folders.
+        #Paste pictures on background
+        for i in range(0, number_of_pictures):
+            bg.paste(
+                    picts[i]['thumb'],
+                    (picts[i]['x'], picts[i]['y']),
+                    picts[i]['thumb']
+                    )
+        #Paste forground on background+pictures
+        fg = Image.open(fg_picture).convert("RGBA")
+        bg.paste(fg, (0, 0), fg)
+        self.thumb = bg
 
-        The foreground picture is added at the bottom-left corner.
+    def other_thumbnail(self, fg_picture):
+        """ Makes thumbnails for "other" folders
 
         Argument:
-          * fg_picture -- the foreground picture to add (Must be a rgba png!)
+          * fg_picture -- the foreground picture to add
         """
-        if os.path.isfile(fg_picture):
-            fg = Image.open(fg_picture).convert('RGBA')
-            y = self.thumb.size[1] - fg.size[1]
-            self.thumb.paste(fg, (0, y), fg)
+        fg = Image.open(fg_picture).convert("RGBA")
+        size = fg.size[0]
+        if len(self.img) == 1:
+            image = self.thumbnailize(self.img[0], size, crop=True)
+            if image.size[0] == size and image.size[1] == size:
+                image.paste(fg, (0, 0), fg)
+                self.thumb = image
 
     def save_thumb(self, output_path, output_format='PNG'):
         """ Save the thumbnail in a file.
@@ -445,7 +539,10 @@ class Thumb(object):
         NOTE : The output format must be a PNG for a standard
                freedesktop thumbnail
         """
-        self.thumb.save(output_path, output_format)
+        if self.thumb != None:
+            self.thumb.save(output_path, output_format)
+        else:
+            print("E: [%s:Thumb.save_thumb] No thumbnail created" % __file__)
 
 
 def search_cover(path):
@@ -534,9 +631,15 @@ if __name__ == "__main__":
         OUTPUT_FILE = urllib.url2pathname(sys.argv[2]).replace("file://", "")
     else:
         #Display informations and usage
-        print("Cover thumbnailer - " + __doc__)
-        #Exit with an error code
+        print("Cover thumbnailer - %s" % __doc__)
+        print("Version: %s" % __version__)
+        print(__copyright__)
         sys.exit(1)
+
+    #If input path does not exists
+    if not os.path.isfile(INPUT_FOLDER):
+        print("E: [%s:__main__] '%s' is not a directory" % (__file__, INPUT_FOLDER))
+        sys.exit(2)
 
     #Load configuration
     CONF = Conf()
@@ -549,7 +652,7 @@ if __name__ == "__main__":
     elif CONF['ignored_dotted'] and re.match(".*/\..*", INPUT_FOLDER):
         sys.exit(0)
 
-    #If it's a music folder
+    #Music folders
     elif CONF['music_enabled'] and match_path(INPUT_FOLDER, CONF['music_paths']):
         covers = search_cover(INPUT_FOLDER)
         if len(covers) == 0:
@@ -584,58 +687,27 @@ if __name__ == "__main__":
                     )
             thumbnail.save_thumb(OUTPUT_FILE, "PNG")
 
-#            if CONF['music_keepdefaulticon']:
-#                cover_path = get_music_cover_path(input_folder)
-#            else:
-#                cover_path = get_music_cover_path(input_folder, CONF['music_defaultimg'])
-#            if cover_path != None:
-#                pic = Thumb(cover_path)
-#                pic.create_thumb(110)
-#                pic.add_music_decoration(CONF['music_bg'], CONF['music_fg'])
-#                pic.save_thumb(output_file, 'PNG')
-#            elif not CONF['music_keepdefaulticon']:
-#                print("E: [%s:main] Can't find any cover file and default cover file." % __file__)
-#
-#        #If it's a pictures folder
-#        elif match_path(input_folder, CONF['pictures_paths']) and CONF['pictures_enabled']:
-#            #Search for a cover.png, folder.jpg,...
-#            cover_path = get_cover_path(input_folder)
-#            if cover_path != None:
-#                pictures = [cover_path]
-#            else:
-#            #List pictures
-#                files = os.listdir(input_folder)
-#                pictures = []
-#                for file_ in files:
-#                    if PICTURES_EXT.count(file_[-4:]):
-#                        pictures.append(os.path.join(input_folder, file_))
-#                    if len(pictures) >= 3:
-#                        break
-#            #Create thumbnail
-#            if len(pictures) > 0:
-#                pic = Thumb(CONF['pictures_bg'])
-#                pic.create_thumb(128)
-#                pic.add_pictures_decoration(pictures, CONF['pictures_fg'])
-#                pic.save_thumb(output_file, 'PNG')
-#            elif not CONF['pictures_keepdefaulticon']:
-#                pic = Thumb(CONF['pictures_defaultimg'])
-#                pic.create_thumb(128)
-#                pic.save_thumb(output_file, 'PNG')
-#
-#
-#        #If it's an other folder
-#        else:
-#            cover_path = get_cover_path(input_folder)
-#            if cover_path != None and CONF['other_enabled']:
-#                pic = Thumb(cover_path)
-#                pic.create_thumb(128)
-#                pic.add_decoration(CONF['other_fg'])
-#                pic.save_thumb(output_file, "PNG")
-#            else :
-#                sys.exit(42)
-#
-#    else:
-#        print("Cover thumbnailer - " + __doc__)
-#        sys.exit(1)
+    #Picture folders
+    elif CONF['pictures_enabled'] and match_path(INPUT_FOLDER, CONF['pictures_paths']):
+        pictures = search_cover(INPUT_FOLDER)
+        if len(pictures) == 0:
+            pictures = search_pictures(INPUT_FOLDER)
+            if len(pictures) == 0:
+                pictures = search_pictures_recursiv(INPUT_FOLDER)
+        thumbnail = Thumb(pictures)
+        thumbnail.pictures_thumbnail(
+                CONF['pictures_bg'],
+                CONF['pictures_fg'],
+                CONF['pictures_maxthumbs']
+                )
+        thumbnail.save_thumb(OUTPUT_FILE, "PNG")
+
+    #Other folders
+    elif CONF['other_enabled']:
+        covers = search_cover(INPUT_FOLDER)
+        if len(covers) == 1:
+            thumbnail = Thumb(covers)
+            thumbnail.other_thumbnail(CONF['other_fg'])
+            thumbnail.save_thumb(OUTPUT_FILE, "PNG")
 
 

@@ -36,7 +36,7 @@
 
 """Configuration GUI for Cover Thumbnailer.
 
-Provides a GUI for easily configuring Cover Thumbnailer.
+A GUI for easily configuring Cover Thumbnailer.
 """
 
 __version__ = "0.8 beta"
@@ -92,6 +92,7 @@ class Conf(dict):
         self['pictures_enabled'] = True
         self['pictures_keepdefaulticon'] = False
         self['pictures_usegnomefolder'] = True
+        self['pictures_maxthumbs'] = 3
         self['pictures_paths'] = []
         self['pictures_gnomefolderpath'] = _("<None>")
         #Other
@@ -159,6 +160,12 @@ class Conf(dict):
                     key = "paths"
                     value = match.group(2)
                     self[current_section + "_" + key].append(value)
+                #Integer key
+                elif re.match(r"\s*([a-z]+)\s*=\s*([0-9]+)\s*", line.lower()):
+                    match = re.match(r"\s*([a-z]+)\s*=\s*([0-9]+)\s*", line.lower())
+                    key = match.group(1)
+                    value = match.group(2)
+                    self[current_section + "_" + key] = int(value)
 
             user_conf_file.close()
             
@@ -201,6 +208,7 @@ class Conf(dict):
             user_conf_file.write(self._write_bool("pictures_enabled"))
             user_conf_file.write(self._write_bool("pictures_keepdefaulticon"))
             user_conf_file.write(self._write_bool("pictures_usegnomefolder"))
+            user_conf_file.write(self._write_int("pictures_maxthumbs"))
             user_conf_file.write(self._write_list("pictures_paths"))
             #Other
             user_conf_file.write("\n[OTHER]\n")
@@ -243,6 +251,16 @@ class Conf(dict):
         for value in self[key]:
             result += "\tpath = \"%s\"\n" % value
         return result
+
+    def _write_int(self, key):
+        """ Return the string to write in config file for integer key
+        
+        Argument:
+          * key -- the name of the CONF key
+        """
+        wkey = key.split("_")[1]
+        value = self[key]
+        return "\t%s = %i\n" % (wkey, value)
 
 
 class MainWin(object):
@@ -295,6 +313,8 @@ class MainWin(object):
         self.cbPicturesEnable = win.get_object("cbPicturesEnable")
         #KeepIcon checkBox
         self.cbPicturesKeepFIcon = win.get_object("cbPicturesKeepFIcon")
+        #spinbtn_maxThumbs Spin Button
+        self.spinbtn_maxThumbs = win.get_object("spinbtn_maxThumbs")
 
         ### OTHER ###
         #Enable checkBox
@@ -315,6 +335,7 @@ class MainWin(object):
         ### MISCELLANEOUS ###
         #Enable Cover-Thumbnailer checkBox
         self.cbEnableCT = win.get_object("cbEnableCT")
+        #
         self.spinbtn_thumbSize = win.get_object("spinbtn_thumbSize")
 
         ### FileChooser Dialog ###
@@ -402,6 +423,9 @@ class MainWin(object):
                 CONF['pictures_paths']
                 )
         self.btnPicturesRemove.set_sensitive(False)
+    
+    def on_spinbtn_maxThumbs_value_changed(self, widget):
+        CONF['pictures_maxthumbs'] = int(self.spinbtn_thumbSize.get_value())
 
     def on_cb_useGnomePictures_toggled(self, widget):
         CONF['pictures_usegnomefolder'] = self.cb_useGnomePictures.get_active()
@@ -529,6 +553,12 @@ def loadInterface(gui):
         gui.lsstPicturesPathList.append([path])
     gui.cb_useGnomePictures.set_label(_("Enable for GNOME's picture folder (%s)") %(CONF['pictures_gnomefolderpath']))
     gui.cb_useGnomePictures.set_active(CONF['pictures_usegnomefolder'])
+    if CONF['pictures_maxthumbs'] > 4:
+        gui.spinbtn_maxThumbs.set_value(4)
+    elif CONF['pictures_maxthumbs'] < 1:
+        gui.spinbtn_maxThumbs.set_value(1)
+    else:
+        gui.spinbtn_maxThumbs.set_value(CONF['pictures_maxthumbs'])
     #Other
     gui.cbOtherEnable.set_active(CONF['other_enabled'])
     #Ignored
@@ -562,4 +592,5 @@ if __name__ == "__main__":
     CONF = Conf()
     gui = MainWin()
     gtk.main()
+
 
