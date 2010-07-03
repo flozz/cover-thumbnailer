@@ -354,7 +354,7 @@ class Thumb(object):
         picts = []
         number_of_pictures = 0
         #One picture
-        if len(self.img) == 1 or max_pictures == 1:
+        if len(self.img) == 1 or max_pictures == 1 and len(self.img) > 0:
             number_of_pictures = 1
             thumb = self.thumbnailize(
                     self.img[0],
@@ -370,7 +370,7 @@ class Thumb(object):
                     'y': y
                     })
         #Two pictures
-        elif len(self.img) == 2 or max_pictures == 2:
+        elif len(self.img) == 2 or max_pictures == 2 and len(self.img) > 0:
             number_of_pictures = 2
             #Thumb 0
             thumb = self.thumbnailize(
@@ -399,7 +399,7 @@ class Thumb(object):
                     'y': y
                     })
         #Three pictures
-        elif len(self.img) == 3 or max_pictures == 3:
+        elif len(self.img) == 3 or max_pictures == 3 and len(self.img) > 0:
             number_of_pictures = 3
             #Thumb 0
             thumb = self.thumbnailize(self.img[0], 49, 56, crop=False)
@@ -427,7 +427,7 @@ class Thumb(object):
                     'y': y
                     })
         #Four pictures
-        elif len(self.img) == 4 or max_pictures == 4:
+        elif len(self.img) == 4 or max_pictures == 4 and len(self.img) > 0:
             number_of_pictures = 4
             #Thumb 0
             thumb = self.thumbnailize(
