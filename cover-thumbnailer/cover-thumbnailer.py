@@ -117,6 +117,8 @@ class Conf(dict):
         #Ignored
         self['ignored_dotted'] = False
         self['ignored_paths'] = []
+        #Never ignored
+        self['neverignored_paths'] = []
         #Global
         self.user_homedir = os.environ.get("HOME")
         self.user_gnomeconf = os.path.join(
@@ -350,6 +352,7 @@ class Thumb(object):
         bg_width = bg.size[0]
         bg_height = bg.size[1]
         picts = []
+        number_of_pictures = 0
         #One picture
         if len(self.img) == 1 or max_pictures == 1:
             number_of_pictures = 1
@@ -637,7 +640,7 @@ if __name__ == "__main__":
         sys.exit(1)
 
     #If input path does not exists
-    if not os.path.isfile(INPUT_FOLDER):
+    if not os.path.isdir(INPUT_FOLDER):
         print("E: [%s:__main__] '%s' is not a directory" % (__file__, INPUT_FOLDER))
         sys.exit(2)
 
@@ -645,7 +648,8 @@ if __name__ == "__main__":
     CONF = Conf()
 
     #Ignored folders
-    if match_path(INPUT_FOLDER, CONF['ignored_paths']):
+    if match_path(INPUT_FOLDER, CONF['ignored_paths']) \
+    and not match_path(INPUT_FOLDER, CONF['neverignored_paths']):
         sys.exit(0)
 
     #Folders whose name starts with a dot
@@ -689,12 +693,12 @@ if __name__ == "__main__":
 
     #Picture folders
     elif CONF['pictures_enabled'] and match_path(INPUT_FOLDER, CONF['pictures_paths']):
-        pictures = search_cover(INPUT_FOLDER)
-        if len(pictures) == 0:
-            pictures = search_pictures(INPUT_FOLDER)
-            if len(pictures) == 0:
-                pictures = search_pictures_recursiv(INPUT_FOLDER)
-        thumbnail = Thumb(pictures)
+        picture_list = search_cover(INPUT_FOLDER)
+        if len(picture_list) == 0:
+            picture_list = search_pictures(INPUT_FOLDER)
+            if len(picture_list) == 0:
+                picture_list = search_pictures_recursiv(INPUT_FOLDER)
+        thumbnail = Thumb(picture_list)
         thumbnail.pictures_thumbnail(
                 CONF['pictures_bg'],
                 CONF['pictures_fg'],

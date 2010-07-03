@@ -100,6 +100,8 @@ class Conf(dict):
         #Ignored
         self['ignored_dotted'] = False
         self['ignored_paths'] = []
+        #Never ignored
+        self['neverignored_paths'] = []
         #Global
         self.user_homedir = os.environ.get("HOME")
         self.user_gnomeconf = os.path.join(
@@ -217,6 +219,9 @@ class Conf(dict):
             user_conf_file.write("\n[IGNORED]\n")
             user_conf_file.write(self._write_bool("ignored_dotted"))
             user_conf_file.write(self._write_list("ignored_paths"))
+            #Never ignored
+            user_conf_file.write("\n[NEVERIGNORED]\n")
+            user_conf_file.write(self._write_list("neverignored_paths"))
             #End
             user_conf_file.write("\n\n") #I like blank lines at the end :)
         except OSError: #Permission denied
@@ -332,10 +337,20 @@ class MainWin(object):
         #IgnoreHidden checkBox
         self.cbIgnoreHidden = win.get_object("cbIgnoreHidden")
 
+        ### NEVER IGNORED ###
+        #Never ignored path list
+        self.trvNeverIgnoredPathList = win.get_object("trvNeverIgnoredPathList")
+        self.lsstNeverIgnoredPathList = gtk.ListStore(str)
+        self.trvNeverIgnoredPathList.set_model(self.lsstNeverIgnoredPathList)
+        self.columnNeverIgnoredPathList = gtk.TreeViewColumn("Path", gtk.CellRendererText(), text=0)
+        self.trvNeverIgnoredPathList.append_column(self.columnNeverIgnoredPathList)
+        #NeverIgnoredRemove button
+        self.btnNeverIgnoredRemove = win.get_object("btnNeverIgnoredRemove")
+
         ### MISCELLANEOUS ###
         #Enable Cover-Thumbnailer checkBox
         self.cbEnableCT = win.get_object("cbEnableCT")
-        #
+        #Thumbnail size spinbtn
         self.spinbtn_thumbSize = win.get_object("spinbtn_thumbSize")
 
         ### FileChooser Dialog ###
@@ -425,7 +440,7 @@ class MainWin(object):
         self.btnPicturesRemove.set_sensitive(False)
     
     def on_spinbtn_maxThumbs_value_changed(self, widget):
-        CONF['pictures_maxthumbs'] = int(self.spinbtn_thumbSize.get_value())
+        CONF['pictures_maxthumbs'] = int(self.spinbtn_maxThumbs.get_value())
 
     def on_cb_useGnomePictures_toggled(self, widget):
         CONF['pictures_usegnomefolder'] = self.cb_useGnomePictures.get_active()
@@ -451,6 +466,20 @@ class MainWin(object):
     def on_cbIgnoreHidden_toggled(self, widget):
         CONF['ignored_dotted'] = self.cbIgnoreHidden.get_active()
 
+    #~~~ NEVER IGNORED ~~~
+    def on_btnNeverIgnoredAdd_clicked(self, widget):
+        self.fileChooserFor = 'neverignored'
+        self.fileChooser.show()
+
+    def on_trvNeverIgnoredPathList_cursor_changed(self, widget):
+        model, iter_ = widget.get_selection().get_selected()
+        if iter_ != None:
+            self.btnNeverIgnoredRemove.set_sensitive(True)
+
+    def on_btnNeverIgnoredRemove_clicked(self, widget):
+        removePathFromList(self.trvNeverIgnoredPathList, self.lsstNeverIgnoredPathList, CONF['neverignored_paths'])
+        self.btnNeverIgnoredRemove.set_sensitive(False)
+
     #~~~ MISCELLANEOUS ~~~
     def on_cbEnableCT_toggled(self, widget):
         gconf_client = gconf.client_get_default()
@@ -473,6 +502,8 @@ class MainWin(object):
             addPathToList(self.lsstPicturesPathList, path, CONF['pictures_paths'])
         elif self.fileChooserFor == 'ignored':
             addPathToList(self.lsstIgnoredPathList, path, CONF['ignored_paths'])
+        elif self.fileChooserFor == 'neverignored':
+            addPathToList(self.lsstNeverIgnoredPathList, path, CONF['neverignored_paths'])
         self.fileChooserFor = None
 
     def on_filechooserdialog_delete_event(self, widget, response):
@@ -565,6 +596,9 @@ def loadInterface(gui):
     gui.cbIgnoreHidden.set_active(CONF['ignored_dotted'])
     for path in CONF['ignored_paths']:
         gui.lsstIgnoredPathList.append([path])
+    #Ignored
+    for path in CONF['neverignored_paths']:
+        gui.lsstNeverIgnoredPathList.append([path])
     #Miscellaneous
     gconf_client = gconf.client_get_default()
     gui.cbEnableCT.set_active(gconf_client.get_bool(GCONF_KEY))
