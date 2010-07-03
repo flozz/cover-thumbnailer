@@ -188,7 +188,7 @@ class Conf(dict):
                     match = re.match(r"\s*([a-z]+)\s*=\s*([0-9]+)\s*", line.lower())
                     key = match.group(1)
                     value = match.group(2)
-                    self[current_section + "_" + key] = value
+                    self[current_section + "_" + key] = int(value)
 
             user_conf_file.close()
             
@@ -375,26 +375,24 @@ class Thumb(object):
             #Thumb 0
             thumb = self.thumbnailize(
                     self.img[0],
-                    bg_width - 10,
-                    int(bg_height/2 - 7.5),
+                    bg_width - 20,
+                    int(0.53*bg_height),
                     crop=False
                     )
-            x = int((bg_width - thumb.size[0])/2  + 5)
-            y = int(1*bg_height/4 - thumb.size[1]/2)
             picts.append({
                     'thumb': thumb,
-                    'x': x,
-                    'y': y
+                    'x': 10,
+                    'y': 5
                     })
             #Thumb 1
             thumb = self.thumbnailize(
                     self.img[1],
-                    bg_width - 10,
-                    int(bg_height/2 - 7.5),
+                    bg_width - 20,
+                    int(0.53*bg_height),
                     crop=False
                     )
-            x = int((bg_width - thumb.size[0])/2 + 5)
-            y = int(3*bg_height/4 - thumb.size[1]/2)
+            x = bg_width - thumb.size[0] - 10
+            y = bg_height - thumb.size[1] - 5
             picts.append({
                     'thumb': thumb,
                     'x': x,
@@ -404,42 +402,25 @@ class Thumb(object):
         elif len(self.img) == 3 or max_pictures == 3:
             number_of_pictures = 3
             #Thumb 0
-            thumb = self.thumbnailize(
-                    self.img[0],
-                    int(bg_width/2 - 15),
-                    int(bg_height/3 - 7.5),
-                    crop=False
-                    )
-            x = int(1*bg_width/4 - thumb.size[0]/2 + 10)
-            y = int(1*bg_height/6 - thumb.size[1]/2)
+            thumb = self.thumbnailize(self.img[0], 49, 56, crop=False)
             picts.append({
                     'thumb': thumb,
-                    'x': x,
-                    'y': y
+                    'x': 20,
+                    'y': 5
                     })
             #Thumb 1
-            thumb = self.thumbnailize(
-                    self.img[1],
-                    int(bg_width/2 - 15),
-                    int(bg_height/3 - 7.5),
-                    crop=False
-                    )
-            x = int(3*bg_width/4 - thumb.size[0]/2 + 4)
-            y = int(1*bg_height/6 - thumb.size[1]/2)
+            thumb = self.thumbnailize(self.img[1], 49, 56, crop=False)
+            x = bg_width - thumb.size[0] - 5
             picts.append({
                     'thumb': thumb,
                     'x': x,
-                    'y': y
+                    'y': 5
                     })
             #Thumb 2
-            thumb = self.thumbnailize(
-                    self.img[2],
-                    int(bg_width - 13),
-                    int(2*bg_height/3 - 7.5),
-                    crop=False
-                    )
-            x = int((bg_width - thumb.size[0])/2 + 8)
-            y = int(4*bg_height/6 - thumb.size[1]/2)
+            h = bg_height - max(picts[0]['thumb'].size[1], picts[1]['thumb'].size[1]) - 15
+            thumb = self.thumbnailize(self.img[2], 103, h, crop=False)
+            x = (bg_width - 15 - thumb.size[0])/2 + 15
+            y = bg_height - thumb.size[1] - 5
             picts.append({
                     'thumb': thumb,
                     'x': x,
