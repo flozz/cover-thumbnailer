@@ -81,12 +81,14 @@ _install() {
 	cp -v ./freedesktop/cover-thumbnailer-gui.desktop "$1"/usr/share/applications/cover-thumbnailer-gui.desktop 1>> $LOGFILE 2>> $LOGFILE || error=1
 
 	#GConf schemas
+	mkdir -pv "$1"/etc/gconf/schemas/ 1>> $LOGFILE 2>> $LOGFILE || error=1
+	cp -v ./gconf/cover-thumbnailer.schemas "$1"/etc/gconf/schemas/ 1>> $LOGFILE 2>> $LOGFILE || error=1
 	if [ -z $1 ] ; then {
-		if [ -x /usr/sbin/gconf-schemas ] ; then { #For Debian/Ubuntu
-			gconf-schemas --register /usr/share/cover-thumbnailer/cover-thumbnailer.schemas 1>> $LOGFILE 2>> $LOGFILE || error=1
+		if [ -x /usr/sbin/gconf-schemas ] ; then { #For Debian/Ubuntu based distro
+			gconf-schemas --register /etc/gconf/schemas/cover-thumbnailer.schemas 1>> $LOGFILE 2>> $LOGFILE || error=1
 		} else {
 			export GCONF_CONFIG_SOURCE=`gconftool-2 --get-default-source`
-			gconftool-2 --makefile-install-rule /usr/share/cover-thumbnailer/cover-thumbnailer.schemas 1>> $LOGFILE 2>> $LOGFILE || error=1
+			gconftool-2 --makefile-install-rule /etc/gconf/schemas/cover-thumbnailer.schemas 1>> $LOGFILE 2>> $LOGFILE || error=1
 		} fi
 	} fi
 
@@ -111,12 +113,21 @@ _install() {
 _remove() {
 	#Remove the software
 
-	#gconf
-	if [ -x /usr/sbin/gconf-schemas ] ; then { #For Debian/Ubuntu
-		gconf-schemas --unregister /usr/share/cover-thumbnailer/cover-thumbnailer.schemas 1>> $LOGFILE 2>> $LOGFILE || error=1
-	} else {
-		export GCONF_CONFIG_SOURCE=`gconftool-2 --get-default-source`
-		gconftool-2 --makefile-uninstall-rule /usr/share/cover-thumbnailer/cover-thumbnailer.schemas 1>> $LOGFILE 2>> $LOGFILE || error=1
+	#gconf schemas
+	if [ -f /etc/gconf/schemas/cover-thumbnailer.schemas ] ; then { #New place
+		if [ -x /usr/sbin/gconf-schemas ] ; then { #For Debian/Ubuntu based distro
+			gconf-schemas --unregister /etc/gconf/schemas/cover-thumbnailer.schemas 1>> $LOGFILE 2>> $LOGFILE || error=1
+		} else {
+			export GCONF_CONFIG_SOURCE=`gconftool-2 --get-default-source`
+			gconftool-2 --makefile-uninstall-rule /etc/gconf/schemas/cover-thumbnailer.schemas 1>> $LOGFILE 2>> $LOGFILE || error=1
+		} fi
+	} else { #Old place
+		if [ -x /usr/sbin/gconf-schemas ] ; then { #For Debian/Ubuntu based distro
+			gconf-schemas --unregister /usr/share/cover-thumbnailer/cover-thumbnailer.schemas 1>> $LOGFILE 2>> $LOGFILE || error=1
+		} else {
+			export GCONF_CONFIG_SOURCE=`gconftool-2 --get-default-source`
+			gconftool-2 --makefile-uninstall-rule /usr/share/cover-thumbnailer/cover-thumbnailer.schemas 1>> $LOGFILE 2>> $LOGFILE || error=1
+		} fi
 	} fi
 
 	#/usr/share/applications

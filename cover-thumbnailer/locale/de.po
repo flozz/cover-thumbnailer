@@ -6,15 +6,15 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: cover-thumbnailer\n"
-"Report-Msgid-Bugs-To: \n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2010-07-03 13:44+0200\n"
-"PO-Revision-Date: 2010-06-30 19:28+0000\n"
+"PO-Revision-Date: 2010-07-06 09:11+0000\n"
 "Last-Translator: Jan-Christoph Borchardt <inquata@gmail.com>\n"
 "Language-Team: German <de@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-07-01 03:58+0000\n"
+"X-Launchpad-Export-Date: 2010-07-07 03:52+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: cover-thumbnailer-gui.py:90 cover-thumbnailer-gui.py:97
@@ -55,27 +55,27 @@ msgstr ""
 
 #: share/cover-thumbnailer-gui.glade:105
 msgid "Resize method:"
-msgstr ""
+msgstr "Methode zur Größenänderung:"
 
 #: share/cover-thumbnailer-gui.glade:123
 msgid "Crop"
-msgstr ""
+msgstr "Zuschneiden"
 
 #: share/cover-thumbnailer-gui.glade:139
 msgid "Preserve"
-msgstr ""
+msgstr "Erhalten"
 
 #: share/cover-thumbnailer-gui.glade:194
 msgid "Allow mosaic:"
-msgstr ""
+msgstr "Mosaik erlauben:"
 
 #: share/cover-thumbnailer-gui.glade:227
 msgid "No"
-msgstr ""
+msgstr "Nein"
 
 #: share/cover-thumbnailer-gui.glade:243
 msgid "Yes"
-msgstr ""
+msgstr "Ja"
 
 #: share/cover-thumbnailer-gui.glade:286
 msgid "List of music folders:"
@@ -100,7 +100,7 @@ msgstr ""
 
 #: share/cover-thumbnailer-gui.glade:472
 msgid "Maximum number of pictures on thumbnail:"
-msgstr ""
+msgstr "Maximale Bilderanzahl auf Vorschaubild:"
 
 #: share/cover-thumbnailer-gui.glade:511
 msgid "List of picture folders:"
@@ -136,9 +136,8 @@ msgid "Folders to ignore:"
 msgstr "Folgende Ordner ignorieren:"
 
 #: share/cover-thumbnailer-gui.glade:844
-#, fuzzy
 msgid "Folders to never ignore:"
-msgstr "Folgende Ordner ignorieren:"
+msgstr "Folgende Ordner nie ignorieren:"
 
 #: share/cover-thumbnailer-gui.glade:946
 msgid "Ignored"
@@ -223,8 +222,8 @@ msgstr ""
 "\n"
 "Mit diesem Programm sollten Sie außerdem eine Kopie der GNU General Public "
 "License erhalten\n"
-"haben. Wenn dem nicht so ist, schauen Sie bitte unter <http://www.gnu.org/"
-"licenses/> (Englisch)."
+"haben. Wenn dem nicht so ist, schauen Sie bitte unter "
+"<http://www.gnu.org/licenses/> (Englisch)."
 
 #: share/cover-thumbnailer-gui.glade:1227
 msgid "translator-credits"

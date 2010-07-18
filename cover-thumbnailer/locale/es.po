@@ -6,15 +6,15 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: cover-thumbnailer\n"
-"Report-Msgid-Bugs-To: \n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2010-07-03 13:44+0200\n"
-"PO-Revision-Date: 2010-05-20 18:36+0000\n"
-"Last-Translator: sebikul <Unknown>\n"
+"PO-Revision-Date: 2010-07-12 23:32+0000\n"
+"Last-Translator: Fernando Muñoz <munozferna@gmail.com>\n"
 "Language-Team: Spanish <es@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-05-21 03:53+0000\n"
+"X-Launchpad-Export-Date: 2010-07-14 03:50+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: cover-thumbnailer-gui.py:90 cover-thumbnailer-gui.py:97
@@ -31,14 +31,14 @@ msgid "Please edit with caution"
 msgstr "Edite con precaución"
 
 #: cover-thumbnailer-gui.py:570 share/cover-thumbnailer-gui.glade:377
-#, fuzzy, python-format
+#, python-format
 msgid "Enable for GNOME's music folder (%s)"
-msgstr "Habilitar para la carpeta de música de GNOME (%s)"
+msgstr ""
 
 #: cover-thumbnailer-gui.py:585 share/cover-thumbnailer-gui.glade:602
-#, fuzzy, python-format
+#, python-format
 msgid "Enable for GNOME's picture folder (%s)"
-msgstr "Habilitar para la carpeta de imágenes de GNOME (%s)"
+msgstr ""
 
 #: share/cover-thumbnailer-gui.glade:38
 msgid "Music Folders"
@@ -59,11 +59,11 @@ msgstr ""
 
 #: share/cover-thumbnailer-gui.glade:123
 msgid "Crop"
-msgstr ""
+msgstr "Recortar"
 
 #: share/cover-thumbnailer-gui.glade:139
 msgid "Preserve"
-msgstr ""
+msgstr "Conservar"
 
 #: share/cover-thumbnailer-gui.glade:194
 msgid "Allow mosaic:"
@@ -71,11 +71,11 @@ msgstr ""
 
 #: share/cover-thumbnailer-gui.glade:227
 msgid "No"
-msgstr ""
+msgstr "No"
 
 #: share/cover-thumbnailer-gui.glade:243
 msgid "Yes"
-msgstr ""
+msgstr "Sí"
 
 #: share/cover-thumbnailer-gui.glade:286
 msgid "List of music folders:"
@@ -134,9 +134,8 @@ msgid "Folders to ignore:"
 msgstr "Carpetas a ignorar:"
 
 #: share/cover-thumbnailer-gui.glade:844
-#, fuzzy
 msgid "Folders to never ignore:"
-msgstr "Carpetas a ignorar:"
+msgstr ""
 
 #: share/cover-thumbnailer-gui.glade:946
 msgid "Ignored"
@@ -222,6 +221,7 @@ msgstr ""
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
+"  Fernando Muñoz https://launchpad.net/~munozferna\n"
 "  sebikul https://launchpad.net/~sebikul"
 
 #: share/cover-thumbnailer-gui.glade:1255
