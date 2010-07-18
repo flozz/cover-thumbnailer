@@ -39,7 +39,7 @@
 A GUI for easily configuring Cover Thumbnailer.
 """
 
-__version__ = "0.8 beta"
+__version__ = "0.8"
 __author__ = "Fabien Loison <flo@flogisoft.com>"
 __copyright__ = "Copyright © 2009–2010 Fabien LOISON"
 __appname__ = "cover-thumbnailer-gui"
