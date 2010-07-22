@@ -611,11 +611,13 @@ def loadInterface(gui):
         gui.spinbtn_thumbSize.set_value(thumb_size)
     #If GNOME folders == user home dir or not defined,
     #deactivate the option, it's probably a misconfiguration !
-    if os.path.samefile(CONF['music_gnomefolderpath'], CONF.user_homedir) \
+    if os.path.isdir(CONF['music_gnomefolderpath']) \
+        and os.path.samefile(CONF['music_gnomefolderpath'], CONF.user_homedir) \
         or CONF['music_gnomefolderpath'] == _("<None>"):
         gui.cb_useGnomeMusic.set_active(False)
         gui.cb_useGnomeMusic.set_sensitive(False)
-    if os.path.samefile(CONF['pictures_gnomefolderpath'], CONF.user_homedir) \
+    if os.path.isdir(CONF['pictures_gnomefolderpath']) \
+        and os.path.samefile(CONF['pictures_gnomefolderpath'], CONF.user_homedir) \
         or CONF['pictures_gnomefolderpath'] == _("<None>"):
         gui.cb_useGnomePictures.set_active(False)
         gui.cb_useGnomePictures.set_sensitive(False)

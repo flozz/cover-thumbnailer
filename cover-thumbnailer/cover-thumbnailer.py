@@ -142,13 +142,13 @@ class Conf(dict):
                     match = re.match(r'.*?XDG_MUSIC_DIR.*?=.*?"(.*)".*?', line)
                     path = match.group(1).replace('$HOME', self.user_homedir)
                     #If path == user home dir, don't use it, it's probably a misconfiguration !
-                    if not os.path.samefile(path, self.user_homedir):
+                    if os.path.isdir(path) and not os.path.samefile(path, self.user_homedir):
                         self['music_paths'].append(path)
                 elif re.match(r'.*?XDG_PICTURES_DIR.*?=.*?"(.*)".*?', line):
                     match = re.match(r'.*?XDG_PICTURES_DIR.*?=.*?"(.*)".*?', line)
                     path = match.group(1).replace('$HOME', self.user_homedir)
                     #If path == user home dir, don't use it, it's probably a misconfiguration !
-                    if not os.path.samefile(path, self.user_homedir):
+                    if os.path.isdir(path) and not os.path.samefile(path, self.user_homedir):
                         self['pictures_paths'].append(path)
             gnome_conf_file.close()
         else:
