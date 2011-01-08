@@ -348,7 +348,7 @@ class Thumb(object):
           * max_pictures -- the maximum number of pictures on the thumbnail
         """
         #Background
-        bg = Image.open(bg_picture).convert("RGB")
+        bg = Image.open(bg_picture).convert("RGBA")
         bg_width = bg.size[0]
         bg_height = bg.size[1]
         picts = []
