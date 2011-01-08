@@ -11,7 +11,7 @@
 ##                                                                        ##
 ## Cover thumbnailer — Installer                                          ##
 ##                                                                        ##
-## Copyright (C) 2009 - 2010  Fabien Loison (flo@flogisoft.com)           ##
+## Copyright (C) 2009 - 2011  Fabien Loison (flo@flogisoft.com)           ##
 ##                                                                        ##
 ## This program is free software: you can redistribute it and/or modify   ##
 ## it under the terms of the GNU General Public License as published by   ##
@@ -28,7 +28,7 @@
 ##                                                                        ##
 ############################################################################
 ##                                                                        ##
-## VERSION : 0.8.1 (Fri, 23 Jul 2010 13:10:42 +0200)                      ##
+## VERSION : 0.8.2 (Sat, 08 Jan 2011 19:01:29 +0100)                      ##
 ## WEB SITE : http://software.flogisoft.com/cover-thumbnailer/            ##
 ##                                                                       ##
 #########################################################################

@@ -1,4 +1,4 @@
-# Romanian translation for cover-thumbnailer
+# Croatian translation for cover-thumbnailer
 # Copyright (c) 2010 Rosetta Contributors and Canonical Ltd 2010
 # This file is distributed under the same license as the cover-thumbnailer package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2010.
@@ -8,95 +8,93 @@ msgstr ""
 "Project-Id-Version: cover-thumbnailer\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2010-07-03 13:44+0200\n"
-"PO-Revision-Date: 2010-10-24 11:38+0000\n"
-"Last-Translator: Yvance77 <Unknown>\n"
-"Language-Team: Romanian <ro@li.org>\n"
+"PO-Revision-Date: 2010-10-14 06:20+0000\n"
+"Last-Translator: nafterburner <nafterburner@gmail.com>\n"
+"Language-Team: Croatian <hr@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-10-25 04:49+0000\n"
+"X-Launchpad-Export-Date: 2010-10-15 05:00+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: cover-thumbnailer-gui.py:90 cover-thumbnailer-gui.py:97
 #: cover-thumbnailer-gui.py:615 cover-thumbnailer-gui.py:619
 msgid "<None>"
-msgstr ""
+msgstr "<Nijedan>"
 
 #: cover-thumbnailer-gui.py:198
 msgid "Configuration written by Cover Thumbnailer GUI"
-msgstr "Configuratie scrisa de interfata Cover Thumbnailer"
+msgstr ""
 
 #: cover-thumbnailer-gui.py:199
 msgid "Please edit with caution"
-msgstr "Va rugam editati cu atentie"
+msgstr ""
 
 #: cover-thumbnailer-gui.py:570 share/cover-thumbnailer-gui.glade:377
 #, python-format
 msgid "Enable for GNOME's music folder (%s)"
-msgstr "Activează pentru dosarul muzică GNOME (%s)"
+msgstr ""
 
 #: cover-thumbnailer-gui.py:585 share/cover-thumbnailer-gui.glade:602
 #, python-format
 msgid "Enable for GNOME's picture folder (%s)"
-msgstr "Activează pentru dosar imagine GNOME (%s)"
+msgstr ""
 
 #: share/cover-thumbnailer-gui.glade:38
 msgid "Music Folders"
-msgstr "Dosar Music"
+msgstr "Muzička Mapa"
 
 #: share/cover-thumbnailer-gui.glade:62
 msgid "Enable Cover Thumbnailer for music folders"
-msgstr "Activeaza Cover Thumbnailer pentru dosarele cu muzica"
+msgstr ""
 
 #: share/cover-thumbnailer-gui.glade:76
 msgid "Keep the default folder icon if no cover was found"
-msgstr "Mentine icoana prestabilita daca nici o coperta nu a fost gasita"
+msgstr ""
 
 #: share/cover-thumbnailer-gui.glade:105
 msgid "Resize method:"
-msgstr "Redimensionarea metodă"
+msgstr ""
 
 #: share/cover-thumbnailer-gui.glade:123
 msgid "Crop"
-msgstr ""
+msgstr "Izreži"
 
 #: share/cover-thumbnailer-gui.glade:139
 msgid "Preserve"
-msgstr ""
+msgstr "Sačuvaj"
 
 #: share/cover-thumbnailer-gui.glade:194
 msgid "Allow mosaic:"
-msgstr "Permiteţi mozaic"
+msgstr "Dozvoli mozaik:"
 
 #: share/cover-thumbnailer-gui.glade:227
 msgid "No"
-msgstr ""
+msgstr "Ne"
 
 #: share/cover-thumbnailer-gui.glade:243
 msgid "Yes"
-msgstr ""
+msgstr "Da"
 
 #: share/cover-thumbnailer-gui.glade:286
 msgid "List of music folders:"
-msgstr "Lista de dosarele de muzică"
+msgstr "Lista muzičkih mapa:"
 
 #: share/cover-thumbnailer-gui.glade:402
 msgid "Music"
-msgstr "Muzica"
+msgstr "Muzika"
 
 #: share/cover-thumbnailer-gui.glade:415
 msgid "Picture Folders"
-msgstr "Dosare Imagine"
+msgstr "Mape Slika"
 
 #: share/cover-thumbnailer-gui.glade:439
 msgid "Enable Cover Thumbnailer for picture folders"
-msgstr "Activează Cover Thumbnailer pentru dosare imagine"
+msgstr ""
 
 #: share/cover-thumbnailer-gui.glade:453
 msgid "Keep the default folder icon if no pictures were found"
 msgstr ""
-"Păstrarea pictograma de dosar în mod implicit în cazul în care nici o "
-"imagine a fost găsit"
 
 #: share/cover-thumbnailer-gui.glade:472
 msgid "Maximum number of pictures on thumbnail:"
@@ -108,39 +106,39 @@ msgstr ""
 
 #: share/cover-thumbnailer-gui.glade:630
 msgid "Pictures"
-msgstr "Fotografii"
+msgstr ""
 
 #: share/cover-thumbnailer-gui.glade:644
 msgid "Other Folders"
-msgstr "Alte dosare"
+msgstr ""
 
 #: share/cover-thumbnailer-gui.glade:665
 msgid "Enable Cover Thumbnailer for other folders"
-msgstr "Activeaza Cover Thumbnailer pentru alte dosare"
+msgstr ""
 
 #: share/cover-thumbnailer-gui.glade:688
 msgid "Others"
-msgstr "Alţii"
+msgstr ""
 
 #: share/cover-thumbnailer-gui.glade:702
 msgid "Ignored Folders"
-msgstr "Ignorate Dosare"
+msgstr ""
 
 #: share/cover-thumbnailer-gui.glade:726
 msgid "Ignore hidden folders (folders whose name starts with a dot)"
-msgstr "Ignora dosarele ascunse (dosarele al cărui nume începe cu un punct)"
+msgstr ""
 
 #: share/cover-thumbnailer-gui.glade:747
 msgid "Folders to ignore:"
-msgstr "Dosare să ignore"
+msgstr ""
 
 #: share/cover-thumbnailer-gui.glade:844
 msgid "Folders to never ignore:"
-msgstr "Dosare niciodată să ignore"
+msgstr ""
 
 #: share/cover-thumbnailer-gui.glade:946
 msgid "Ignored"
-msgstr "Ignorat"
+msgstr ""
 
 #: share/cover-thumbnailer-gui.glade:959
 msgid "Miscellaneous Options"
@@ -148,7 +146,7 @@ msgstr ""
 
 #: share/cover-thumbnailer-gui.glade:984
 msgid "Enable Cover Thumbnailer"
-msgstr "Activeaza Cover Thumbnailer"
+msgstr ""
 
 #: share/cover-thumbnailer-gui.glade:1005
 msgid "Thumbnail size:"
@@ -166,7 +164,7 @@ msgstr ""
 
 #: share/cover-thumbnailer-gui.glade:1065
 msgid "Clear thumbnail cache"
-msgstr "Sterge thumbnail cache"
+msgstr ""
 
 #: share/cover-thumbnailer-gui.glade:1081
 msgid ""
@@ -176,15 +174,15 @@ msgstr ""
 
 #: share/cover-thumbnailer-gui.glade:1111
 msgid "Miscellaneous"
-msgstr "Diverse"
+msgstr ""
 
 #: share/cover-thumbnailer-gui.glade:1201
 msgid "About Cover Thumbnailer"
-msgstr "Despre Cover Thumbnailer"
+msgstr ""
 
 #: share/cover-thumbnailer-gui.glade:1211
 msgid "Configuration tool for Cover Thumbnailer"
-msgstr "Unealta de configurare pentru Cover Thumbnailer"
+msgstr ""
 
 #: share/cover-thumbnailer-gui.glade:1213
 msgid ""
@@ -206,7 +204,7 @@ msgstr ""
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
-"  Yvance77 https://launchpad.net/~yvance77"
+"  nafterburner https://launchpad.net/~nafterburner"
 
 #: share/cover-thumbnailer-gui.glade:1255
 msgid "Not in your language?"
@@ -214,15 +212,15 @@ msgstr ""
 
 #: share/cover-thumbnailer-gui.glade:1267
 msgid "Translate Cover Thumbnailer"
-msgstr "Tradu Cover Thumbnailer"
+msgstr ""
 
 #: share/cover-thumbnailer-gui.glade:1318
 msgid "Select a folder - Cover Thumbnailer"
-msgstr "Selecteaza un dosar - Cover Thumbnailer"
+msgstr ""
 
 #: share/cover-thumbnailer-gui.glade:1386
 msgid "Error - Cover Thumbnailer"
-msgstr "Erroare - Cover Thumbnailer"
+msgstr ""
 
 #: share/cover-thumbnailer-gui.glade:1393
 msgid "Can’t add this path"
@@ -231,28 +229,3 @@ msgstr ""
 #: share/cover-thumbnailer-gui.glade:1394
 msgid "This path was already in the list!"
 msgstr ""
-
-#~ msgid "Ignore hidden folders (folders whose name start with a dot)"
-#~ msgstr "Ingnoreaza Dosarele ascunse (Dosare care incep cu un punct)"
-
-#~ msgid "Keep the default folder icon if no pictures was found"
-#~ msgstr "Mentine icoana prestabilita daca nici o imagine nu a fost gasita"
-
-#~ msgid "Enable Cover Thumbnailer for pictures folders"
-#~ msgstr "Activeaza Cover Thumbnailer pentru dosar imagini"
-
-#~ msgid ""
-#~ "Clear the thumbnail cache if you have some problem with thumbnails, after "
-#~ "changing the configuration for example"
-#~ msgstr ""
-#~ "Sterge thumbnail cache daca exista vreo problema cu thumbnailurile , dupa "
-#~ "schimbarea configuratie de exemplu"
-
-#~ msgid "List of music folders :"
-#~ msgstr "Lista cu dosarele cu muzica :"
-
-#~ msgid "Folders to ignore :"
-#~ msgstr "Dosare Ignorate :"
-
-#~ msgid "Not in your language ?"
-#~ msgstr "Nu in limba ta ?"

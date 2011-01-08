@@ -12,7 +12,7 @@
 ##                                                                        ##
 ## Cover thumbnailer                                                      ##
 ##                                                                        ##
-## Copyright (C) 2009 - 2010  Fabien Loison (flo@flogisoft.com)           ##
+## Copyright (C) 2009 - 2011  Fabien Loison (flo@flogisoft.com)           ##
 ##                                                                        ##
 ## This program is free software: you can redistribute it and/or modify   ##
 ## it under the terms of the GNU General Public License as published by   ##
@@ -44,9 +44,9 @@ Usage:
     cover-thumbnailer <directory's path> <output thumbnail's path>
 """
 
-__version__ = "0.8.1"
+__version__ = "0.8.2"
 __author__ = "Fabien Loison <flo@flogisoft.com>"
-__copyright__ = "Copyright © 2009–2010 Fabien LOISON"
+__copyright__ = "Copyright © 2009 - 2011 Fabien LOISON"
 
 
 import Image, urllib, os.path, sys, re
@@ -88,7 +88,7 @@ class Conf(dict):
 
     def __init__(self):
         """ The constructor
-        
+
         Set the default values
         """
         #Initialize the dictionary
@@ -191,7 +191,7 @@ class Conf(dict):
                     self[current_section + "_" + key] = int(value)
 
             user_conf_file.close()
-            
+
             #Replace "~/" by the user home dir 
             for path_list in (self['music_paths'], self['pictures_paths'], self['ignored_paths']):
                 for i in range(0, len(path_list)):

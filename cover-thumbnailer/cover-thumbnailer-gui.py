@@ -12,7 +12,7 @@
 ##                                                                        ##
 ## Cover thumbnailer GUI                                                  ##
 ##                                                                        ##
-## Copyright (C) 2009 - 2010  Fabien Loison (flo@flogisoft.com)           ##
+## Copyright (C) 2009 - 2011  Fabien Loison (flo@flogisoft.com)           ##
 ##                                                                        ##
 ## This program is free software: you can redistribute it and/or modify   ##
 ## it under the terms of the GNU General Public License as published by   ##
@@ -39,9 +39,9 @@
 A GUI for easily configuring Cover Thumbnailer.
 """
 
-__version__ = "0.8.1"
+__version__ = "0.8.2"
 __author__ = "Fabien Loison <flo@flogisoft.com>"
-__copyright__ = "Copyright © 2009–2010 Fabien LOISON"
+__copyright__ = "Copyright © 2009 - 2011 Fabien LOISON"
 __appname__ = "cover-thumbnailer-gui"
 
 import gtk, pygtk
@@ -75,7 +75,7 @@ class Conf(dict):
 
     def __init__(self):
         """ The constructor
-        
+
         Set the default values
         """
         #Initialize the dictionary
@@ -170,7 +170,7 @@ class Conf(dict):
                     self[current_section + "_" + key] = int(value)
 
             user_conf_file.close()
-            
+
             #Replace "~/" by the user home dir 
             for path_list in (self['music_paths'], self['pictures_paths'], self['ignored_paths']):
                 for i in range(0, len(path_list)):
@@ -235,7 +235,7 @@ class Conf(dict):
 
     def _write_bool(self, key):
         """ Return the string to write in config file for boolean key
-        
+
         Argument:
           * key -- the name of the CONF key
         """
@@ -248,7 +248,7 @@ class Conf(dict):
 
     def _write_list(self, key):
         """ Return the string to write in config file for list key (path)
-        
+
         Argument:
           * key -- the name of the CONF key
         """
@@ -259,7 +259,7 @@ class Conf(dict):
 
     def _write_int(self, key):
         """ Return the string to write in config file for integer key
-        
+
         Argument:
           * key -- the name of the CONF key
         """
@@ -438,7 +438,7 @@ class MainWin(object):
                 CONF['pictures_paths']
                 )
         self.btnPicturesRemove.set_sensitive(False)
-    
+
     def on_spinbtn_maxThumbs_value_changed(self, widget):
         CONF['pictures_maxthumbs'] = int(self.spinbtn_maxThumbs.get_value())
 

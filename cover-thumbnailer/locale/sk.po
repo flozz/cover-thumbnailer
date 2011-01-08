@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: cover-thumbnailer\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2010-07-03 13:44+0200\n"
-"PO-Revision-Date: 2010-07-08 18:25+0000\n"
+"PO-Revision-Date: 2010-09-20 18:18+0000\n"
 "Last-Translator: Tomáš Virgl <tomas@virgl.net>\n"
 "Language-Team: Slovak <sk@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-07-09 04:13+0000\n"
+"X-Launchpad-Export-Date: 2010-09-21 05:57+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: cover-thumbnailer-gui.py:90 cover-thumbnailer-gui.py:97
@@ -231,4 +231,4 @@ msgstr ""
 
 #: share/cover-thumbnailer-gui.glade:1394
 msgid "This path was already in the list!"
-msgstr ""
+msgstr "Táto cesta už je v zozname."
