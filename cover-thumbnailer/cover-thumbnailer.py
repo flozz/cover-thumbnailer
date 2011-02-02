@@ -130,21 +130,21 @@ class Conf(dict):
                 ".cover-thumbnailer/cover-thumbnailer.conf"
                 )
         #Read configuration
-        self.import_gnome_conf()
         self.import_user_conf()
+        self.import_gnome_conf()
 
     def import_gnome_conf(self):
         """ Import user folders from GNOME configuration file. """
         if os.path.isfile(self.user_gnomeconf):
             gnome_conf_file = open(self.user_gnomeconf, 'r')
             for line in gnome_conf_file:
-                if re.match(r'.*?XDG_MUSIC_DIR.*?=.*?"(.*)".*?', line):
+                if re.match(r'.*?XDG_MUSIC_DIR.*?=.*?"(.*)".*?', line) and self['music_usegnomefolder']:
                     match = re.match(r'.*?XDG_MUSIC_DIR.*?=.*?"(.*)".*?', line)
                     path = match.group(1).replace('$HOME', self.user_homedir)
                     #If path == user home dir, don't use it, it's probably a misconfiguration !
                     if os.path.isdir(path) and not os.path.samefile(path, self.user_homedir):
                         self['music_paths'].append(path)
-                elif re.match(r'.*?XDG_PICTURES_DIR.*?=.*?"(.*)".*?', line):
+                elif re.match(r'.*?XDG_PICTURES_DIR.*?=.*?"(.*)".*?', line) and self['pictures_usegnomefolder']:
                     match = re.match(r'.*?XDG_PICTURES_DIR.*?=.*?"(.*)".*?', line)
                     path = match.group(1).replace('$HOME', self.user_homedir)
                     #If path == user home dir, don't use it, it's probably a misconfiguration !
@@ -158,7 +158,7 @@ class Conf(dict):
         """ Import user configuration file. """
         if os.path.isfile(self.user_conf):
             current_section = "unknown"
-            user_conf_file = open(self.user_conf, 'r')
+            user_conf_file = open(self.user_conf, "r")
             for line in user_conf_file:
                 #Comments
                 if re.match(r"\s*#.*", line):
@@ -192,7 +192,7 @@ class Conf(dict):
 
             user_conf_file.close()
 
-            #Replace "~/" by the user home dir 
+            #Replace "~/" by the user home dir
             for path_list in (self['music_paths'], self['pictures_paths'], self['ignored_paths']):
                 for i in range(0, len(path_list)):
                     if path_list[i][0] == "~":
