@@ -80,17 +80,9 @@ _install() {
 	mkdir -pv "$1"/usr/share/applications/ 1>> $LOGFILE 2>> $LOGFILE || error=1
 	cp -v ./freedesktop/cover-thumbnailer-gui.desktop "$1"/usr/share/applications/cover-thumbnailer-gui.desktop 1>> $LOGFILE 2>> $LOGFILE || error=1
 
-	#GConf schemas
-	mkdir -pv "$1"/etc/gconf/schemas/ 1>> $LOGFILE 2>> $LOGFILE || error=1
-	cp -v ./gconf/cover-thumbnailer.schemas "$1"/etc/gconf/schemas/ 1>> $LOGFILE 2>> $LOGFILE || error=1
-	if [ -z $1 ] ; then {
-		if [ -x /usr/sbin/gconf-schemas ] ; then { #For Debian/Ubuntu based distro
-			gconf-schemas --register /etc/gconf/schemas/cover-thumbnailer.schemas 1>> $LOGFILE 2>> $LOGFILE || error=1
-		} else {
-			export GCONF_CONFIG_SOURCE=`gconftool-2 --get-default-source`
-			gconftool-2 --makefile-install-rule /etc/gconf/schemas/cover-thumbnailer.schemas 1>> $LOGFILE 2>> $LOGFILE || error=1
-		} fi
-	} fi
+	#/usr/share/thumbnailers
+	mkdir -pv "$1"/usr/share/thumbnailers/ 1>> $LOGFILE 2>> $LOGFILE || error=1
+	cp -v ./freedesktop/cover.thumbnailer "$1"/usr/share/thumbnailers/cover.thumbnailer 1>> $LOGFILE 2>> $LOGFILE || error=1
 
 	#uninstall.sh
 	if [ -z $1 ] ; then {
@@ -211,18 +203,14 @@ _check_dep() {
 	echo "$_BOLD * Checking dependencies...$_NORMAL"
 	echo -n "   * Nautilus ............................ "
 	test -x /usr/bin/nautilus && echo "$_GREEN[OK]$_NORMAL" || { echo "$_RED[Missing]$_NORMAL" ; error=1 ; }
-	echo -n "   * GConf ............................... "
-	test -x /usr/bin/gconftool-2 && echo "$_GREEN[OK]$_NORMAL" || { echo "$_RED[Missing]$_NORMAL" ; error=1 ; }
-	echo -n "   * Python .............................. "
-	test -x /usr/bin/python && echo "$_GREEN[OK]$_NORMAL" || { echo "$_RED[Missing]$_NORMAL" ; error=1 ; }
+	#echo -n "   * Python .............................. "
+	#test -x /usr/bin/python && echo "$_GREEN[OK]$_NORMAL" || { echo "$_RED[Missing]$_NORMAL" ; error=1 ; }
 	echo -n "   * Python Imaging Library (PIL) ........ "
-	python <<< "import Image" 1> /dev/null 2> /dev/null && echo "$_GREEN[OK]$_NORMAL" || { echo "$_RED[Missing]$_NORMAL" ; error=1 ; }
+	$_PY <<< "import Image" 1> /dev/null 2> /dev/null && echo "$_GREEN[OK]$_NORMAL" || { echo "$_RED[Missing]$_NORMAL" ; error=1 ; }
 	echo -n "   * Python GTK Bindings (PyGTK) ......... "
-	python <<< "import gtk, pygtk" 1> /dev/null 2> /dev/null && echo "$_GREEN[OK]$_NORMAL" || { echo "$_RED[Missing]$_NORMAL" ; error=1 ; }
-	echo -n "   * Python GConf ........................ "
-	python <<< "import gconf" 1> /dev/null 2> /dev/null && echo "$_GREEN[OK]$_NORMAL" || { echo "$_RED[Missing]$_NORMAL" ; error=1 ; }
+	$_PY <<< "import gtk, pygtk" 1> /dev/null 2> /dev/null && echo "$_GREEN[OK]$_NORMAL" || { echo "$_RED[Missing]$_NORMAL" ; error=1 ; }
 	echo -n "   * Python gettext support .............. "
-	python <<< "import gettext" 1> /dev/null 2> /dev/null && echo "$_GREEN[OK]$_NORMAL" || { echo "$_RED[Missing]$_NORMAL" ; error=1 ; }
+	$_PY <<< "import gettext" 1> /dev/null 2> /dev/null && echo "$_GREEN[OK]$_NORMAL" || { echo "$_RED[Missing]$_NORMAL" ; error=1 ; }
 	if [ "$error" == "1" ] ; then {
 		echo "$_RED   E:$_NORMAL Some dependencies are missing."
 		exit 30
@@ -250,6 +238,12 @@ cd "${0%/*}" 1> /dev/null 2> /dev/null
 export LANG=C
 #Header
 echo -e "$SOFTWARE - $DESC\n"
+
+#Python
+export _PY=/usr/bin/python
+if [ -x /usr/bin/python2 ] ; then
+	export _PY=/usr/bin/python2
+fi
 
 #Action do to
 if [ "$1" == "--install" ] || [ "$1" == "-i" ] ; then {

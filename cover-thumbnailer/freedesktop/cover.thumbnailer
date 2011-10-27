@@ -1,0 +1,4 @@
+[Thumbnailer Entry]
+TryExec=cover-thumbnailer
+Exec=cover-thumbnailer %u %o
+MimeType=inode/directory;

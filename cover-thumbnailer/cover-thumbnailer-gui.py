@@ -50,7 +50,7 @@ pygtk.require("2.0")
 import gettext
 gettext.install(__appname__)
 
-import os, re, shutil, gconf
+import os, re, shutil
 
 
 #Base path
@@ -480,14 +480,14 @@ class MainWin(object):
         removePathFromList(self.trvNeverIgnoredPathList, self.lsstNeverIgnoredPathList, CONF['neverignored_paths'])
         self.btnNeverIgnoredRemove.set_sensitive(False)
 
-    #~~~ MISCELLANEOUS ~~~
-    def on_cbEnableCT_toggled(self, widget):
-        gconf_client = gconf.client_get_default()
-        gconf_client.set_bool(GCONF_KEY, self.cbEnableCT.get_active())
+    #~~~ MISCELLANEOUS ~~~ #FIXME: No more use GConf
+    #def on_cbEnableCT_toggled(self, widget):
+    #    gconf_client = gconf.client_get_default()
+    #    gconf_client.set_bool(GCONF_KEY, self.cbEnableCT.get_active())
 
-    def on_spinbtn_thumbSize_value_changed(self, widget):
-        gconf_client = gconf.client_get_default()
-        gconf_client.set_int(GCONF_KEY_NAUTILUS_THUMB_SIZE, int(self.spinbtn_thumbSize.get_value()))
+    #def on_spinbtn_thumbSize_value_changed(self, widget):
+    #    gconf_client = gconf.client_get_default()
+    #    gconf_client.set_int(GCONF_KEY_NAUTILUS_THUMB_SIZE, int(self.spinbtn_thumbSize.get_value()))
 
     ### FILECHOOSER DIALOG ###
     def on_btnFileChooserCancel_clicked(self, widget):
@@ -599,16 +599,16 @@ def loadInterface(gui):
     #Ignored
     for path in CONF['neverignored_paths']:
         gui.lsstNeverIgnoredPathList.append([path])
-    #Miscellaneous
-    gconf_client = gconf.client_get_default()
-    gui.cbEnableCT.set_active(gconf_client.get_bool(GCONF_KEY))
-    thumb_size = gconf_client.get_int(GCONF_KEY_NAUTILUS_THUMB_SIZE)
-    if thumb_size > 128:
-        gui.spinbtn_thumbSize.set_value(128)
-    elif thumb_size < 64:
-        gui.spinbtn_thumbSize.set_value(64)
-    else:
-        gui.spinbtn_thumbSize.set_value(thumb_size)
+    #Miscellaneous FIXME: No more use GConf
+    #gconf_client = gconf.client_get_default()
+    #gui.cbEnableCT.set_active(gconf_client.get_bool(GCONF_KEY))
+    #thumb_size = gconf_client.get_int(GCONF_KEY_NAUTILUS_THUMB_SIZE)
+    #if thumb_size > 128:
+    #    gui.spinbtn_thumbSize.set_value(128)
+    #elif thumb_size < 64:
+    #    gui.spinbtn_thumbSize.set_value(64)
+    #else:
+    #    gui.spinbtn_thumbSize.set_value(thumb_size)
     #If GNOME folders == user home dir or not defined,
     #deactivate the option, it's probably a misconfiguration !
     if os.path.isdir(CONF['music_gnomefolderpath']) \
