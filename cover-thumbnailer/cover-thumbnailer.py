@@ -12,7 +12,7 @@
 ##                                                                        ##
 ## Cover thumbnailer                                                      ##
 ##                                                                        ##
-## Copyright (C) 2009 - 2011  Fabien Loison (flo@flogisoft.com)           ##
+## Copyright (C) 2009 - 2011  Fabien Loison <flo at flogisoft dot com>    ##
 ##                                                                        ##
 ## This program is free software: you can redistribute it and/or modify   ##
 ## it under the terms of the GNU General Public License as published by   ##
@@ -29,7 +29,7 @@
 ##                                                                        ##
 ############################################################################
 ##                                                                        ##
-## WEB SITE : http://software.flogisoft.com/cover-thumbnailer/            ##
+## WEB SITE : http://projects.flogisoft.com/cover-thumbnailer/            ##
 ##                                                                       ##
 #########################################################################
 
@@ -44,7 +44,7 @@ Usage:
     cover-thumbnailer <directory's path> <output thumbnail's path>
 """
 
-__version__ = "0.8.2"
+__version__ = "0.8.3"
 __author__ = "Fabien Loison <flo@flogisoft.com>"
 __copyright__ = "Copyright © 2009 - 2011 Fabien LOISON"
 

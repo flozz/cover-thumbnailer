@@ -8,34 +8,34 @@ msgstr ""
 "Project-Id-Version: cover-thumbnailer\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2010-07-03 13:44+0200\n"
-"PO-Revision-Date: 2010-09-18 15:36+0000\n"
-"Last-Translator: Fabien LOISON (FLOZz) <flo@flogisoft.com>\n"
+"PO-Revision-Date: 2011-06-19 00:23+0000\n"
+"Last-Translator: Xiaomao Chen <Unknown>\n"
 "Language-Team: Chinese (Simplified) <zh_CN@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-09-19 05:48+0000\n"
-"X-Generator: Launchpad (build Unknown)\n"
+"X-Launchpad-Export-Date: 2011-06-20 05:06+0000\n"
+"X-Generator: Launchpad (build 13168)\n"
 
-#: cover-thumbnailer-gui.py:90 cover-thumbnailer-gui.py:97
-#: cover-thumbnailer-gui.py:615 cover-thumbnailer-gui.py:619
+#: cover-thumbnailer-gui.py:95 cover-thumbnailer-gui.py:102
+#: cover-thumbnailer-gui.py:719 cover-thumbnailer-gui.py:724
 msgid "<None>"
 msgstr "<无>"
 
-#: cover-thumbnailer-gui.py:198
+#: cover-thumbnailer-gui.py:210
 msgid "Configuration written by Cover Thumbnailer GUI"
 msgstr "由 Cover Thumbnailer GUI 生成的配置"
 
-#: cover-thumbnailer-gui.py:199
+#: cover-thumbnailer-gui.py:211
 msgid "Please edit with caution"
 msgstr "请谨慎修改"
 
-#: cover-thumbnailer-gui.py:570 share/cover-thumbnailer-gui.glade:377
+#: cover-thumbnailer-gui.py:635 share/cover-thumbnailer-gui.glade:378
 #, python-format
 msgid "Enable for GNOME's music folder (%s)"
 msgstr "对GNOME音乐文件夹启用（%s）"
 
-#: cover-thumbnailer-gui.py:585 share/cover-thumbnailer-gui.glade:602
+#: cover-thumbnailer-gui.py:650 share/cover-thumbnailer-gui.glade:603
 #, python-format
 msgid "Enable for GNOME's picture folder (%s)"
 msgstr "对GNOME图片文件夹启用（%s）"
@@ -64,127 +64,127 @@ msgstr "剪裁"
 msgid "Preserve"
 msgstr "保守"
 
-#: share/cover-thumbnailer-gui.glade:194
+#: share/cover-thumbnailer-gui.glade:195
 msgid "Allow mosaic:"
 msgstr "启用马赛克模式："
 
-#: share/cover-thumbnailer-gui.glade:227
+#: share/cover-thumbnailer-gui.glade:228
 msgid "No"
 msgstr "否"
 
-#: share/cover-thumbnailer-gui.glade:243
+#: share/cover-thumbnailer-gui.glade:244
 msgid "Yes"
 msgstr "是"
 
-#: share/cover-thumbnailer-gui.glade:286
+#: share/cover-thumbnailer-gui.glade:287
 msgid "List of music folders:"
 msgstr "音乐文件夹列表："
 
-#: share/cover-thumbnailer-gui.glade:402
+#: share/cover-thumbnailer-gui.glade:403
 msgid "Music"
 msgstr "音乐"
 
-#: share/cover-thumbnailer-gui.glade:415
+#: share/cover-thumbnailer-gui.glade:416
 msgid "Picture Folders"
 msgstr "图片文件夹"
 
-#: share/cover-thumbnailer-gui.glade:439
+#: share/cover-thumbnailer-gui.glade:440
 msgid "Enable Cover Thumbnailer for picture folders"
 msgstr "对图片文件夹启用封面略缩图"
 
-#: share/cover-thumbnailer-gui.glade:453
+#: share/cover-thumbnailer-gui.glade:454
 msgid "Keep the default folder icon if no pictures were found"
 msgstr "如果没有找到图片则保持默认文件夹图标"
 
-#: share/cover-thumbnailer-gui.glade:472
+#: share/cover-thumbnailer-gui.glade:473
 msgid "Maximum number of pictures on thumbnail:"
 msgstr "略缩图最大图片数"
 
-#: share/cover-thumbnailer-gui.glade:511
+#: share/cover-thumbnailer-gui.glade:512
 msgid "List of picture folders:"
 msgstr "图片文件夹列表"
 
-#: share/cover-thumbnailer-gui.glade:630
+#: share/cover-thumbnailer-gui.glade:631
 msgid "Pictures"
 msgstr "图片"
 
-#: share/cover-thumbnailer-gui.glade:644
+#: share/cover-thumbnailer-gui.glade:645
 msgid "Other Folders"
 msgstr "其他文件夹"
 
-#: share/cover-thumbnailer-gui.glade:665
+#: share/cover-thumbnailer-gui.glade:666
 msgid "Enable Cover Thumbnailer for other folders"
 msgstr "对其他文件夹启用封面略缩图"
 
-#: share/cover-thumbnailer-gui.glade:688
+#: share/cover-thumbnailer-gui.glade:689
 msgid "Others"
 msgstr "其他"
 
-#: share/cover-thumbnailer-gui.glade:702
+#: share/cover-thumbnailer-gui.glade:703
 msgid "Ignored Folders"
 msgstr "已忽略文件夹"
 
-#: share/cover-thumbnailer-gui.glade:726
+#: share/cover-thumbnailer-gui.glade:727
 msgid "Ignore hidden folders (folders whose name starts with a dot)"
 msgstr "忽略隐藏文件夹（名字以英文符号 . 开头的文件夹）"
 
-#: share/cover-thumbnailer-gui.glade:747
+#: share/cover-thumbnailer-gui.glade:748
 msgid "Folders to ignore:"
 msgstr "需要忽略的文件夹"
 
-#: share/cover-thumbnailer-gui.glade:844
+#: share/cover-thumbnailer-gui.glade:845
 msgid "Folders to never ignore:"
 msgstr "从不忽略的文件夹"
 
-#: share/cover-thumbnailer-gui.glade:946
+#: share/cover-thumbnailer-gui.glade:948
 msgid "Ignored"
 msgstr "已忽略"
 
-#: share/cover-thumbnailer-gui.glade:959
+#: share/cover-thumbnailer-gui.glade:1201
 msgid "Miscellaneous Options"
 msgstr "杂项"
 
-#: share/cover-thumbnailer-gui.glade:984
+#: share/cover-thumbnailer-gui.glade:1226
 msgid "Enable Cover Thumbnailer"
 msgstr "启用封面略缩图"
 
-#: share/cover-thumbnailer-gui.glade:1005
+#: share/cover-thumbnailer-gui.glade:1247
 msgid "Thumbnail size:"
 msgstr "缩略图大小："
 
-#: share/cover-thumbnailer-gui.glade:1016
+#: share/cover-thumbnailer-gui.glade:1258
 msgid "From 64px to 128px, the default value is 96px."
 msgstr "从64px到128px，默认值为96px"
 
-#: share/cover-thumbnailer-gui.glade:1045
+#: share/cover-thumbnailer-gui.glade:1287
 msgid ""
 "This option will affect all thumbnails, not only those created by Cover "
 "Thumbnailer."
 msgstr "该选项将会影响所有的预览，不仅仅影响由 Cover Thumbnailer 生成的预览。"
 
-#: share/cover-thumbnailer-gui.glade:1065
+#: share/cover-thumbnailer-gui.glade:1307
 msgid "Clear thumbnail cache"
 msgstr "清除略缩图缓存"
 
-#: share/cover-thumbnailer-gui.glade:1081
+#: share/cover-thumbnailer-gui.glade:1323
 msgid ""
 "Clear the thumbnail cache if you have some problem with thumbnails, for "
 "example after changing the configuration."
 msgstr "清除略缩图缓存当您遇到了由略缩图引起的问题，比如变更了设置。"
 
-#: share/cover-thumbnailer-gui.glade:1111
+#: share/cover-thumbnailer-gui.glade:1353
 msgid "Miscellaneous"
 msgstr "杂项"
 
-#: share/cover-thumbnailer-gui.glade:1201
+#: share/cover-thumbnailer-gui.glade:1443
 msgid "About Cover Thumbnailer"
 msgstr "关于Cover Thumbnailer"
 
-#: share/cover-thumbnailer-gui.glade:1211
+#: share/cover-thumbnailer-gui.glade:1453
 msgid "Configuration tool for Cover Thumbnailer"
 msgstr "Cover Thumbnailer的设置工具"
 
-#: share/cover-thumbnailer-gui.glade:1213
+#: share/cover-thumbnailer-gui.glade:1455
 msgid ""
 "This program is free software: you can redistribute it and/or modify\n"
 "it under the terms of the GNU General Public License as published by\n"
@@ -199,35 +199,45 @@ msgid ""
 "You should have received a copy of the GNU General Public License\n"
 "along with this program. If not, see <http://www.gnu.org/licenses/>."
 msgstr ""
+"本程序为自由软件；您可依据自由软件基金会所发表的GNU通用公共授权\n"
+"条款，对本程序再次发布和/或修改；无论您依据的是本授权的第三版，\n"
+"或（您可选的）任一日后发行的版本。\n"
+"\n"
+"本程序是基于使用目的而加以发布，然而不负任何担保责任；亦无对适售\n"
+"性或特定目的适用性所为的默示性担保。详情请参照GNU通用公共授权。\n"
+"\n"
+"您应已收到附随于本程序的GNU通用公共授权的副本；如果没有，请参照\n"
+"<http://www.gnu.org/licenses/>."
 
-#: share/cover-thumbnailer-gui.glade:1227
+#: share/cover-thumbnailer-gui.glade:1469
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
 "  Eleanor Chen https://launchpad.net/~chenyueg\n"
 "  Fabien LOISON (FLOZz) https://launchpad.net/~flozz\n"
-"  Jackallen https://launchpad.net/~jackallen"
+"  Jackallen https://launchpad.net/~jackallen\n"
+"  Xiaomao Chen https://launchpad.net/~xiaomao5"
 
-#: share/cover-thumbnailer-gui.glade:1255
+#: share/cover-thumbnailer-gui.glade:1498
 msgid "Not in your language?"
 msgstr "没有您熟悉的语言？"
 
-#: share/cover-thumbnailer-gui.glade:1267
+#: share/cover-thumbnailer-gui.glade:1510
 msgid "Translate Cover Thumbnailer"
 msgstr "帮助翻译 Cover Thumbnailer"
 
-#: share/cover-thumbnailer-gui.glade:1318
+#: share/cover-thumbnailer-gui.glade:1561
 msgid "Select a folder - Cover Thumbnailer"
 msgstr "选择一个文件夹 - Cover Thumbnailer"
 
-#: share/cover-thumbnailer-gui.glade:1386
+#: share/cover-thumbnailer-gui.glade:1629
 msgid "Error - Cover Thumbnailer"
 msgstr "错误 - Cover Thumbnailer"
 
-#: share/cover-thumbnailer-gui.glade:1393
+#: share/cover-thumbnailer-gui.glade:1636
 msgid "Can’t add this path"
 msgstr "无法添加该路径"
 
-#: share/cover-thumbnailer-gui.glade:1394
+#: share/cover-thumbnailer-gui.glade:1637
 msgid "This path was already in the list!"
 msgstr "列表中已经存在该路径"

@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: cover-thumbnailer\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2010-07-03 13:44+0200\n"
-"PO-Revision-Date: 2010-10-03 10:14+0000\n"
-"Last-Translator: Cristian Marchi <Unknown>\n"
+"PO-Revision-Date: 2011-02-11 00:43+0000\n"
+"Last-Translator: Martino Barbon <Unknown>\n"
 "Language-Team: Italian <it@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-10-04 05:06+0000\n"
-"X-Generator: Launchpad (build Unknown)\n"
+"X-Launchpad-Export-Date: 2011-02-12 05:21+0000\n"
+"X-Generator: Launchpad (build 12351)\n"
 
 #: cover-thumbnailer-gui.py:90 cover-thumbnailer-gui.py:97
 #: cover-thumbnailer-gui.py:615 cover-thumbnailer-gui.py:619
@@ -203,6 +203,19 @@ msgid ""
 "You should have received a copy of the GNU General Public License\n"
 "along with this program. If not, see <http://www.gnu.org/licenses/>."
 msgstr ""
+"Questo programma è software libero: lo puoi redistribuire e/o modificare\n"
+"secondo i termini della Licenza GNU General Public License pubblicata\n"
+"dalla Free Software Foundation, sia la versione 3 della Licenza, oppure\n"
+"(a tua scelta) qualsiasi versione successiva.\n"
+"\n"
+"Questo programma è distribuito nella speranza che sia utile,\n"
+"ma SENZA NESSUNA GARANZIA; neppure la garanzia implicita di\n"
+"COMMERCIABILITÀ o IDONEITÀ PER UN PARTICOLARE SCOPO.\n"
+"Vedere la GNU General Public License per ulteriori dettagli.\n"
+"\n"
+"Dovresti aver ricevuto una copia della GNU General Public\n"
+" License insieme a questo programma. In caso contrario, vai su\n"
+"<http://www.gnu.org/licenses/>."
 
 #: share/cover-thumbnailer-gui.glade:1227
 msgid "translator-credits"
@@ -210,6 +223,7 @@ msgstr ""
 "Launchpad Contributions:\n"
 "  Cristian Marchi https://launchpad.net/~cri79\n"
 "  Fabien LOISON (FLOZz) https://launchpad.net/~flozz\n"
+"  Martino Barbon https://launchpad.net/~martins999\n"
 "  faber https://launchpad.net/~faber-gaber"
 
 #: share/cover-thumbnailer-gui.glade:1255
@@ -235,3 +249,59 @@ msgstr "Impossibile aggiungere questo percorso"
 #: share/cover-thumbnailer-gui.glade:1394
 msgid "This path was already in the list!"
 msgstr "Questo percorso è già nella lista!"
+
+#~ msgid "<Empty>"
+#~ msgstr "<Vuoto>"
+
+#~ msgid "Keep the default folder icon if no pictures was found"
+#~ msgstr "Mantieni l'icona predefinita se non viene trovata nessuna immagine"
+
+#~ msgid "<big><b>Cover Thumbnailer For <i>Pictures Folders</i></b></big>"
+#~ msgstr "<big><b>Cover Thumbnailer per <i>Cartelle Immagini</i></b></big>"
+
+#~ msgid "Enable Cover Thumbnailer for pictures folders"
+#~ msgstr "Abilita Cover Thumbnailer per le cartelle immagini"
+
+#~ msgid "GNOME music folder :"
+#~ msgstr "Cartella Musica di GNOME :"
+
+#~ msgid "<big><b>Cover Thumbnailer For <i>Music Folders</i></b></big>"
+#~ msgstr "<big><b>Cover Thumbnailer per <i>Cartelle Musica</i></b></big>"
+
+#~ msgid "List of music folders :"
+#~ msgstr "Cartelle con musica :"
+
+#~ msgid "Folders to ignore :"
+#~ msgstr "Cartelle da ignorare :"
+
+#~ msgid "Ignore hidden folders (folders whose name start with a dot)"
+#~ msgstr "Ignora cartelle nascoste (cartelle il cui nome inizia con un punto)"
+
+#~ msgid "GNOME pictures folder :"
+#~ msgstr "Cartelle foto di GNOME :"
+
+#~ msgid "List of picures folders :"
+#~ msgstr "Lista di immagini delle cartelle :"
+
+#~ msgid "<big><b>Ignored Folders</b></big>"
+#~ msgstr "<big><b>Cartelle Ignorate</b></big>"
+
+#~ msgid "<big><b>Cover Thumbnailer For <i>Other Folders</i></b></big>"
+#~ msgstr "<big><b>Cover Thumbnailer per <i>altre cartelle</i></b></big>"
+
+#~ msgid "<big><b>Miscellaneous Options</b></big>"
+#~ msgstr "<big><b>Opzioni Varie</b></big>"
+
+#~ msgid "Not in your language ?"
+#~ msgstr "Non è nel tuo linguaggio ?"
+
+#~ msgid "Use GNOME configuration file for find default folders"
+#~ msgstr ""
+#~ "Usa il file di configurazione di GNOME per trovare le cartelle predefinite"
+
+#~ msgid ""
+#~ "Clear the thumbnail cache if you have some problem with thumbnails, after "
+#~ "changing the configuration for example"
+#~ msgstr ""
+#~ "Svuota la cache di thumbnail se hai qualche problema con thumbnails, dopo "
+#~ "aver cambiato la configurazione per esempio"

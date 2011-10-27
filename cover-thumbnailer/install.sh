@@ -11,7 +11,7 @@
 ##                                                                        ##
 ## Cover thumbnailer — Installer                                          ##
 ##                                                                        ##
-## Copyright (C) 2009 - 2011  Fabien Loison (flo@flogisoft.com)           ##
+## Copyright (C) 2009 - 2011  Fabien Loison <flo at flogisoft dot com>    ##
 ##                                                                        ##
 ## This program is free software: you can redistribute it and/or modify   ##
 ## it under the terms of the GNU General Public License as published by   ##
@@ -28,8 +28,8 @@
 ##                                                                        ##
 ############################################################################
 ##                                                                        ##
-## VERSION : 0.8.2 (Sat, 08 Jan 2011 19:01:29 +0100)                      ##
-## WEB SITE : http://software.flogisoft.com/cover-thumbnailer/            ##
+## VERSION : 0.8.3 (Thu, 27 Oct 2011 14:12:10 +0200)                      ##
+## WEB SITE : http://projects.flogisoft.com/cover-thumbnailer/            ##
 ##                                                                       ##
 #########################################################################
 
@@ -105,23 +105,6 @@ _install() {
 _remove() {
 	#Remove the software
 
-	#gconf schemas
-	if [ -f /etc/gconf/schemas/cover-thumbnailer.schemas ] ; then { #New place
-		if [ -x /usr/sbin/gconf-schemas ] ; then { #For Debian/Ubuntu based distro
-			gconf-schemas --unregister /etc/gconf/schemas/cover-thumbnailer.schemas 1>> $LOGFILE 2>> $LOGFILE || error=1
-		} else {
-			export GCONF_CONFIG_SOURCE=`gconftool-2 --get-default-source`
-			gconftool-2 --makefile-uninstall-rule /etc/gconf/schemas/cover-thumbnailer.schemas 1>> $LOGFILE 2>> $LOGFILE || error=1
-		} fi
-	} else { #Old place
-		if [ -x /usr/sbin/gconf-schemas ] ; then { #For Debian/Ubuntu based distro
-			gconf-schemas --unregister /usr/share/cover-thumbnailer/cover-thumbnailer.schemas 1>> $LOGFILE 2>> $LOGFILE || error=1
-		} else {
-			export GCONF_CONFIG_SOURCE=`gconftool-2 --get-default-source`
-			gconftool-2 --makefile-uninstall-rule /usr/share/cover-thumbnailer/cover-thumbnailer.schemas 1>> $LOGFILE 2>> $LOGFILE || error=1
-		} fi
-	} fi
-
 	#/usr/share/applications
 	rm -fv /usr/share/applications/cover-thumbnailer-gui.desktop 1>> $LOGFILE 2>> $LOGFILE || error=1
 
@@ -144,6 +127,9 @@ _remove() {
 	#/usr/bin
 	rm -vf /usr/bin/cover-thumbnailer 1>> $LOGFILE 2>> $LOGFILE || error=1
 	rm -vf /usr/bin/cover-thumbnailer-gui 1>> $LOGFILE 2>> $LOGFILE || error=1
+
+	#/usr/share/thumbnailers
+	rm -vf /usr/share/thumbnailers/cover.thumbnailer 1>> $LOGFILE 2>> $LOGFILE || error=1
 
 	if [ "$error" == "1" ] ; then {
 		echo "$_RED   E:$_NORMAL An error occurred when removing $SOFTWARE"

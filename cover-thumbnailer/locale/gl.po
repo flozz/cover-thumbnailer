@@ -8,20 +8,19 @@ msgstr ""
 "Project-Id-Version: cover-thumbnailer\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2010-07-03 13:44+0200\n"
-"PO-Revision-Date: 2010-09-18 15:34+0000\n"
-"Last-Translator: Launchpad Translations Administrators "
-"<rosetta@launchpad.net>\n"
+"PO-Revision-Date: 2011-01-15 15:02+0000\n"
+"Last-Translator: Dario <dario.villar.v@gmail.com>\n"
 "Language-Team: Galician <gl@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-09-19 05:48+0000\n"
-"X-Generator: Launchpad (build Unknown)\n"
+"X-Launchpad-Export-Date: 2011-01-16 05:21+0000\n"
+"X-Generator: Launchpad (build 12177)\n"
 
 #: cover-thumbnailer-gui.py:90 cover-thumbnailer-gui.py:97
 #: cover-thumbnailer-gui.py:615 cover-thumbnailer-gui.py:619
 msgid "<None>"
-msgstr ""
+msgstr "<Ningún>"
 
 #: cover-thumbnailer-gui.py:198
 msgid "Configuration written by Cover Thumbnailer GUI"
@@ -63,19 +62,19 @@ msgstr ""
 
 #: share/cover-thumbnailer-gui.glade:139
 msgid "Preserve"
-msgstr ""
+msgstr "Conservar"
 
 #: share/cover-thumbnailer-gui.glade:194
 msgid "Allow mosaic:"
-msgstr ""
+msgstr "Permitir mosaico:"
 
 #: share/cover-thumbnailer-gui.glade:227
 msgid "No"
-msgstr ""
+msgstr "Non"
 
 #: share/cover-thumbnailer-gui.glade:243
 msgid "Yes"
-msgstr ""
+msgstr "Si"
 
 #: share/cover-thumbnailer-gui.glade:286
 msgid "List of music folders:"
@@ -143,7 +142,7 @@ msgstr "Ignorado"
 
 #: share/cover-thumbnailer-gui.glade:959
 msgid "Miscellaneous Options"
-msgstr ""
+msgstr "Opcións varias"
 
 #: share/cover-thumbnailer-gui.glade:984
 msgid "Enable Cover Thumbnailer"
@@ -151,7 +150,7 @@ msgstr "Activar Cover Thumbnailer"
 
 #: share/cover-thumbnailer-gui.glade:1005
 msgid "Thumbnail size:"
-msgstr ""
+msgstr "Tamaño das miniaturas:"
 
 #: share/cover-thumbnailer-gui.glade:1016
 msgid "From 64px to 128px, the default value is 96px."
@@ -204,6 +203,8 @@ msgstr ""
 #: share/cover-thumbnailer-gui.glade:1227
 msgid "translator-credits"
 msgstr ""
+"Launchpad Contributions:\n"
+"  Dario https://launchpad.net/~dario-villar-v"
 
 #: share/cover-thumbnailer-gui.glade:1255
 msgid "Not in your language?"
@@ -229,20 +230,52 @@ msgstr ""
 msgid "This path was already in the list!"
 msgstr ""
 
+#~ msgid "<Empty>"
+#~ msgstr "<Baleiro>"
+
+#~ msgid "<big><b>Cover Thumbnailer For <i>Pictures Folders</i></b></big>"
+#~ msgstr "<big><b>Cover Thumbnailer para <i>Cartafoles de Imaxes</i></b></big>"
+
+#~ msgid "GNOME music folder :"
+#~ msgstr "Cartafol de música de GNOME :"
+
+#~ msgid "<big><b>Cover Thumbnailer For <i>Music Folders</i></b></big>"
+#~ msgstr "<big><b>Cover Thumbnailer para <i>Carpetas de Música</i></b></big>"
+
 #~ msgid "List of music folders :"
 #~ msgstr "Lista de cartafoles de música :"
 
 #~ msgid "Ignore hidden folders (folders whose name start with a dot)"
 #~ msgstr "Ignorar cartafoles ocultos (cartafoles cuxo nome comece cun punto)"
 
+#~ msgid "GNOME pictures folder :"
+#~ msgstr "Cartafol de imaxes de GNOME :"
+
 #~ msgid "Keep the default folder icon if no pictures was found"
 #~ msgstr "Manter a icona do cartafol por defecto se non se atopan imaxes"
+
+#~ msgid "<big><b>Ignored Folders</b></big>"
+#~ msgstr "<big><b>Cartafoles ignorados</b></big>"
+
+#~ msgid "<big><b>Cover Thumbnailer For <i>Other Folders</i></b></big>"
+#~ msgstr "<big><b>Cover Thumbnailer para <i>outros cartafoles</i></b></big>"
+
+#~ msgid "List of picures folders :"
+#~ msgstr "Lista de cartafoles de imaxes :"
 
 #~ msgid "Enable Cover Thumbnailer for pictures folders"
 #~ msgstr "Activar Cover Thumbnailer para cartafoles de imaxes"
 
 #~ msgid "Folders to ignore :"
 #~ msgstr "Cartafoles a ignorar :"
+
+#~ msgid "<big><b>Miscellaneous Options</b></big>"
+#~ msgstr "<big><b>Opcións varias</b></big>"
+
+#~ msgid "Use GNOME configuration file for find default folders"
+#~ msgstr ""
+#~ "Usar o arquivo de configuración de GNOME para atopar os cartafoles "
+#~ "predeterminados"
 
 #~ msgid ""
 #~ "Clear the thumbnail cache if you have some problem with thumbnails, after "
