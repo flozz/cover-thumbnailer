@@ -252,7 +252,11 @@ if [ "$1" == "--install" ] || [ "$1" == "-i" ] ; then {
 	_check_build_dep
 	echo " * Packaging $SOFTWARE..."
 	mkdir -p "$2" 1> /dev/null 2> /dev/null #create the output directory if not exists
-	rm -r "$2"/* 1> /dev/null 2> /dev/null #clean the directory
+	#Check if the directory is empty
+	if [ $(find "$2" | wc -l) != 1 ] ; then
+		echo "E: The destination folder '$2' is not empty..."
+		exit 5
+	fi
 	if [ -d "$2" ] ; then {
 		_install "$2"
 	} else {
