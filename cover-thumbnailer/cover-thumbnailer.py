@@ -49,7 +49,12 @@ __author__ = "Fabien Loison <flo@flogisoft.com>"
 __copyright__ = "Copyright © 2009 - 2011 Fabien LOISON"
 
 
-import Image, urllib, os.path, sys, re
+import urllib, os.path, sys, re
+
+try:
+    from PIL import Image
+except:
+    import Image
 
 
 #==================================================================== CONF ====

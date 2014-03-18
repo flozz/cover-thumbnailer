@@ -192,7 +192,7 @@ _check_dep() {
 	#echo -n "   * Python .............................. "
 	#test -x /usr/bin/python && echo "$_GREEN[OK]$_NORMAL" || { echo "$_RED[Missing]$_NORMAL" ; error=1 ; }
 	echo -n "   * Python Imaging Library (PIL) ........ "
-	$_PY <<< "import Image" 1> /dev/null 2> /dev/null && echo "$_GREEN[OK]$_NORMAL" || { echo "$_RED[Missing]$_NORMAL" ; error=1 ; }
+	$_PY <<< "$(echo -e "try: from PIL import Image\nexcept: import Image")" 1> /dev/null 2> /dev/null && echo "$_GREEN[OK]$_NORMAL" || { echo "$_RED[Missing]$_NORMAL" ; error=1 ; }
 	echo -n "   * Python GTK Bindings (PyGTK) ......... "
 	$_PY <<< "import gtk, pygtk" 1> /dev/null 2> /dev/null && echo "$_GREEN[OK]$_NORMAL" || { echo "$_RED[Missing]$_NORMAL" ; error=1 ; }
 	echo -n "   * Python gettext support .............. "
