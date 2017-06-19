@@ -49,7 +49,10 @@ __author__ = "Fabien Loison <flo@flogisoft.com>"
 __copyright__ = "Copyright © 2009 - 2011 Fabien LOISON"
 
 
-import urllib, os.path, sys, re
+import re
+import sys
+import os.path
+from gi.repository import Gio
 
 try:
     from PIL import Image
@@ -610,14 +613,26 @@ def match_path(path, path_list):
             if path != entry:
                 match = True
                 break
-    return match 
+    return match
+
+
+def gvfs_uri_to_path(uri):
+    """Returns local file path from gvfs URI
+
+    Arguments:
+    uri -- the gvfs URI
+    """
+    if not re.match(r"^[a-zA-Z0-9_-]+://", uri):
+        return uri
+    gvfs = Gio.Vfs.get_default()
+    return gvfs.get_file_for_uri(uri).get_path()
 
 
 if __name__ == "__main__":
     #If we have 2 args
     if len(sys.argv) == 3:
-        INPUT_FOLDER = urllib.url2pathname(sys.argv[1]).replace("file://", "")
-        OUTPUT_FILE = urllib.url2pathname(sys.argv[2]).replace("file://", "")
+        INPUT_FOLDER = gvfs_uri_to_path(sys.argv[1])
+        OUTPUT_FILE = gvfs_uri_to_path(sys.argv[2])
     else:
         #Display informations and usage
         print("Cover thumbnailer - %s" % __doc__)
