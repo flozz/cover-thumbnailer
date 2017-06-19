@@ -12,7 +12,7 @@
 ##                                                                        ##
 ## Cover thumbnailer                                                      ##
 ##                                                                        ##
-## Copyright (C) 2009 - 2011  Fabien Loison <flo at flogisoft dot com>    ##
+## Copyright (C) 2009 - 2017  Fabien Loison <http://www.flozz.fr/>        ##
 ##                                                                        ##
 ## This program is free software: you can redistribute it and/or modify   ##
 ## it under the terms of the GNU General Public License as published by   ##
@@ -44,9 +44,9 @@ Usage:
     cover-thumbnailer <directory's path> <output thumbnail's path>
 """
 
-__version__ = "0.8.3"
-__author__ = "Fabien Loison <flo@flogisoft.com>"
-__copyright__ = "Copyright © 2009 - 2011 Fabien LOISON"
+__version__ = "0.8.4"
+__author__ = "Fabien Loison <http://www.flozz.fr/>"
+__copyright__ = "Copyright © 2009 - 2017 Fabien LOISON"
 
 
 import re
