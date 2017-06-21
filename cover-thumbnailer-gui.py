@@ -378,7 +378,7 @@ class MainWin(object):
         gtk.main_quit()
 
     def on_btnClearThumbnailCache_clicked(self, widget):
-        thumbpath = os.path.join(CONF.user_homedir, '.thumbnails')
+        thumbpath = os.path.join(CONF.user_homedir, '.cache/thumbnails')
         if os.path.isdir(thumbpath):
             shutil.rmtree(thumbpath)
 
