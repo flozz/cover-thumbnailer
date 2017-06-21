@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python2
 # -*- coding: utf-8 -*-
 
    #########################################################################
@@ -395,7 +395,7 @@ class MainWin(object):
 
     def on_trvMusicPathList_cursor_changed(self, widget):
         model, iter_ = widget.get_selection().get_selected()
-        if iter_ != None:
+        if iter_ is not None:
             self.btnMusicRemove.set_sensitive(True)
 
     def on_btnMusicRemove_clicked(self, widget):
@@ -428,7 +428,7 @@ class MainWin(object):
 
     def on_trvPicturesPathList_cursor_changed(self, widget):
         model, iter_ = widget.get_selection().get_selected()
-        if iter_ != None:
+        if iter_ is not None:
             self.btnPicturesRemove.set_sensitive(True)
 
     def on_btnPicturesRemove_clicked(self, widget):
@@ -456,7 +456,7 @@ class MainWin(object):
 
     def on_trvIgnoredPathList_cursor_changed(self, widget):
         model, iter_ = widget.get_selection().get_selected()
-        if iter_ != None:
+        if iter_ is not None:
             self.btnIgnoredRemove.set_sensitive(True)
 
     def on_btnIgnoredRemove_clicked(self, widget):
@@ -473,7 +473,7 @@ class MainWin(object):
 
     def on_trvNeverIgnoredPathList_cursor_changed(self, widget):
         model, iter_ = widget.get_selection().get_selected()
-        if iter_ != None:
+        if iter_ is not None:
             self.btnNeverIgnoredRemove.set_sensitive(True)
 
     def on_btnNeverIgnoredRemove_clicked(self, widget):
