@@ -67,7 +67,7 @@ _install() {
 
 	#/usr/share/doc/cover-thumbnailer
 	mkdir -pv "$1"/usr/share/doc/cover-thumbnailer 1>> $LOGFILE 2>> $LOGFILE || error=1
-	cp -v ./README "$1"/usr/share/doc/cover-thumbnailer 1>> $LOGFILE 2>> $LOGFILE || error=1
+	cp -v ./README.md "$1"/usr/share/doc/cover-thumbnailer 1>> $LOGFILE 2>> $LOGFILE || error=1
 
 	#/usr/share/locale/xx_XX/LC_MESSAGES
 	for file in `find ./locale -name "*.po"` ; do {
