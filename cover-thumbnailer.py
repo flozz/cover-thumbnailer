@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python2
 # -*- coding: utf-8 -*-
 
    #########################################################################
@@ -531,7 +531,7 @@ class Thumb(object):
         NOTE : The output format must be a PNG for a standard
                freedesktop thumbnail
         """
-        if self.thumb != None:
+        if self.thumb is not None:
             self.thumb.save(output_path, output_format)
         else:
             print("E: [%s:Thumb.save_thumb] No thumbnail created" % __file__)
@@ -603,14 +603,14 @@ def match_path(path, path_list):
     """
     match = False
     #We add a slash at the end.
-    if path[-1:] != "/":
+    if path[-1:] is not "/":
         path += "/"
     for entry in path_list:
         #We add a slash at the end.
-        if entry[-1:] != "/":
+        if entry[-1:] is not "/":
             entry += "/"
         if re.match(r"^" + entry + ".*", path):
-            if path != entry:
+            if path is not entry:
                 match = True
                 break
     return match
