@@ -52,6 +52,17 @@ gettext.install(__appname__)
 
 import os, re, shutil
 
+# Import the thumbnailer itself as a library (workarounds needed for its name
+# having a dash and no .py extension)
+class Common(object):
+    def __init__(self):
+        self.__dict__ = {}
+        if "DEVEL" in os.environ:
+            common_path = "./cover-thumbnailer.py"
+        else:
+            common_path = "/usr/bin/cover-thumbnailer"
+        execfile(common_path, self.__dict__)
+common = Common()
 
 #Base path
 if "DEVEL" in os.environ:
@@ -66,121 +77,12 @@ GCONF_KEY = "/desktop/gnome/thumbnailers/inode@directory/enable"
 GCONF_KEY_NAUTILUS_THUMB_SIZE = "/apps/nautilus/icon_view/thumbnail_size"
 
 
-class Conf(dict):
+class Conf(common.Conf):
 
     """ Import configuration.
 
     Import configuration from the GNOME and cover thumbnailer files
     """
-
-    def __init__(self):
-        """ The constructor
-
-        Set the default values
-        """
-        #Initialize the dictionary
-        dict.__init__(self)
-        #Music
-        self['music_enabled'] = True
-        self['music_keepdefaulticon'] = False
-        self['music_usegnomefolder'] = True
-        self['music_cropimg'] = True
-        self['music_makemosaic'] = False
-        self['music_paths'] = []
-        self['music_gnomefolderpath'] = _("<None>")
-        #Pictures
-        self['pictures_enabled'] = True
-        self['pictures_keepdefaulticon'] = False
-        self['pictures_usegnomefolder'] = True
-        self['pictures_maxthumbs'] = 3
-        self['pictures_paths'] = []
-        self['pictures_gnomefolderpath'] = _("<None>")
-        #Other
-        self['other_enabled'] = True
-        #Ignored
-        self['ignored_dotted'] = False
-        self['ignored_paths'] = []
-        #Never ignored
-        self['neverignored_paths'] = []
-        #Global
-        self.user_homedir = os.environ.get("HOME")
-        self.user_gnomeconf = os.path.join(
-                self.user_homedir,
-                ".config/user-dirs.dirs"
-                )
-        self.user_conf = os.path.join(
-                self.user_homedir,
-                ".cover-thumbnailer/cover-thumbnailer.conf"
-                )
-        #Read configuration
-        self.import_gnome_conf()
-        self.import_user_conf()
-
-    def import_gnome_conf(self):
-        """ Import user folders from GNOME configuration file. """
-        if os.path.isfile(self.user_gnomeconf):
-            gnome_conf_file = open(self.user_gnomeconf, 'r')
-            for line in gnome_conf_file:
-                if re.match(r'.*?XDG_MUSIC_DIR.*?=.*?"(.*)".*?', line):
-                    match = re.match(r'.*?XDG_MUSIC_DIR.*?=.*?"(.*)".*?', line)
-                    path = match.group(1).replace('$HOME', self.user_homedir)
-                    self['music_gnomefolderpath'] = path
-                elif re.match(r'.*?XDG_PICTURES_DIR.*?=.*?"(.*)".*?', line):
-                    match = re.match(r'.*?XDG_PICTURES_DIR.*?=.*?"(.*)".*?', line)
-                    path = match.group(1).replace('$HOME', self.user_homedir)
-                    self['pictures_gnomefolderpath'] = path
-            gnome_conf_file.close()
-        else:
-            print("W: [%s:Conf.import_gnome_conf] Can't find `user-dirs.dirs' file." % __file__)
-
-    def import_user_conf(self):
-        """ Import user configuration file. """
-        if os.path.isfile(self.user_conf):
-            current_section = "unknown"
-            user_conf_file = open(self.user_conf, 'r')
-            for line in user_conf_file:
-                #Comments
-                if re.match(r"\s*#.*", line):
-                    continue
-                #Section
-                elif re.match(r"\s*\[([a-z]+)\]\s*", line.lower()):
-                    match = re.match(r'\s*\[([a-z]+)\]\s*', line.lower())
-                    current_section = match.group(1)
-                #Boolean key
-                elif re.match(r"\s*([a-z]+)\s*=\s*(yes|no|true|false)\s*", line.lower()):
-                    match = re.match(r"\s*([a-z]+)\s*=\s*(yes|no|true|false)\s*", line.lower())
-                    key = match.group(1)
-                    value = match.group(2)
-                    if value in ("yes", "true"):
-                        value = True
-                    else:
-                        value = False
-                    self[current_section + "_" + key] = value
-                #String key : path
-                elif re.match(r"\s*(path|PATH|Path)\s*=\s*\"(.+)\"\s*", line):
-                    match = re.match(r"\s*(path|PATH|Path)\s*=\s*\"(.+)\"\s*", line)
-                    key = "paths"
-                    value = match.group(2)
-                    self[current_section + "_" + key].append(value)
-                #Integer key
-                elif re.match(r"\s*([a-z]+)\s*=\s*([0-9]+)\s*", line.lower()):
-                    match = re.match(r"\s*([a-z]+)\s*=\s*([0-9]+)\s*", line.lower())
-                    key = match.group(1)
-                    value = match.group(2)
-                    self[current_section + "_" + key] = int(value)
-
-            user_conf_file.close()
-
-            #Replace "~/" by the user home dir 
-            for path_list in (self['music_paths'], self['pictures_paths'], self['ignored_paths']):
-                for i in range(0, len(path_list)):
-                    if path_list[i][0] == "~":
-                        path_list[i] = os.path.join(self.user_homedir, path_list[i][2:])
-
-            #Import "useGnomeConf" key (for compatibility)
-            if "miscellaneous_usegnomeconf" in self:
-                self["music_usegnomefolder"] = self["miscellaneous_usegnomeconf"]
-                self["pictures_usegnomefolder"] = self["miscellaneous_usegnomeconf"]
 
     def save_user_conf(self):
         """ Save configuration file. """

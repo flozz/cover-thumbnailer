@@ -47,12 +47,14 @@ Usage:
 __version__ = "0.8.4"
 __author__ = "Fabien Loison <http://www.flozz.fr/>"
 __copyright__ = "Copyright © 2009 - 2017 Fabien LOISON"
+__appname_for_gettext__ = "cover-thumbnailer-gui"
 
+import gettext
+gettext.install(__appname_for_gettext__)
 
 import re
 import sys
 import os.path
-from gi.repository import Gio
 
 try:
     from PIL import Image
@@ -111,6 +113,7 @@ class Conf(dict):
         self['music_defaultimg'] = os.path.join(BASE_PATH, "music_default.png")
         self['music_fg'] = os.path.join(BASE_PATH, "music_fg.png")
         self['music_bg'] = os.path.join(BASE_PATH, "music_bg.png")
+        self['music_gnomefolderpath'] = _("<None>") # for config GUI
         #Pictures
         self['pictures_enabled'] = True
         self['pictures_keepdefaulticon'] = False
@@ -119,6 +122,7 @@ class Conf(dict):
         self['pictures_paths'] = []
         self['pictures_fg'] = os.path.join(BASE_PATH, "pictures_fg.png")
         self['pictures_bg'] = os.path.join(BASE_PATH, "pictures_bg.png")
+        self['pictures_gnomefolderpath'] = _("<None>") # for config GUI
         #Other
         self['other_enabled'] = True
         self['other_fg'] = os.path.join(BASE_PATH, 'other_fg.png')
@@ -146,17 +150,23 @@ class Conf(dict):
         if os.path.isfile(self.user_gnomeconf):
             gnome_conf_file = open(self.user_gnomeconf, 'r')
             for line in gnome_conf_file:
-                if re.match(r'.*?XDG_MUSIC_DIR.*?=.*?"(.*)".*?', line) and self['music_usegnomefolder']:
+                if re.match(r'.*?XDG_MUSIC_DIR.*?=.*?"(.*)".*?', line):
                     match = re.match(r'.*?XDG_MUSIC_DIR.*?=.*?"(.*)".*?', line)
                     path = match.group(1).replace('$HOME', self.user_homedir)
+                    self['music_gnomefolderpath'] = path # for config GUI
                     #If path == user home dir, don't use it, it's probably a misconfiguration !
-                    if os.path.isdir(path) and not os.path.samefile(path, self.user_homedir):
+                    if self['music_usegnomefolder'] and os.path.isdir(path) and \
+                       not os.path.samefile(path, self.user_homedir) and \
+                       path not in self['music_paths']:
                         self['music_paths'].append(path)
-                elif re.match(r'.*?XDG_PICTURES_DIR.*?=.*?"(.*)".*?', line) and self['pictures_usegnomefolder']:
+                elif re.match(r'.*?XDG_PICTURES_DIR.*?=.*?"(.*)".*?', line):
                     match = re.match(r'.*?XDG_PICTURES_DIR.*?=.*?"(.*)".*?', line)
                     path = match.group(1).replace('$HOME', self.user_homedir)
+                    self['pictures_gnomefolderpath'] = path # for config GUI
                     #If path == user home dir, don't use it, it's probably a misconfiguration !
-                    if os.path.isdir(path) and not os.path.samefile(path, self.user_homedir):
+                    if self['pictures_usegnomefolder'] and os.path.isdir(path) and \
+                       not os.path.samefile(path, self.user_homedir) and \
+                       path not in self['pictures_paths']:
                         self['pictures_paths'].append(path)
             gnome_conf_file.close()
         else:
@@ -615,20 +625,20 @@ def match_path(path, path_list):
                 break
     return match
 
-
-def gvfs_uri_to_path(uri):
-    """Returns local file path from gvfs URI
-
-    Arguments:
-    uri -- the gvfs URI
-    """
-    if not re.match(r"^[a-zA-Z0-9_-]+://", uri):
-        return uri
-    gvfs = Gio.Vfs.get_default()
-    return gvfs.get_file_for_uri(uri).get_path()
-
-
 if __name__ == "__main__":
+    from gi.repository import Gio
+
+    def gvfs_uri_to_path(uri):
+        """Returns local file path from gvfs URI
+
+        Arguments:
+        uri -- the gvfs URI
+        """
+        if not re.match(r"^[a-zA-Z0-9_-]+://", uri):
+            return uri
+        gvfs = Gio.Vfs.get_default()
+        return gvfs.get_file_for_uri(uri).get_path()
+
     #If we have 2 args
     if len(sys.argv) == 3:
         INPUT_FOLDER = gvfs_uri_to_path(sys.argv[1])
