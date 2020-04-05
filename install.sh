@@ -187,8 +187,8 @@ _check_dep() {
 	#Checks dependencies
 
 	echo "$_BOLD * Checking dependencies...$_NORMAL"
-	echo -n "   * Nautilus ............................ "
-	test -x /usr/bin/nautilus && echo "$_GREEN[OK]$_NORMAL" || { echo "$_RED[Missing]$_NORMAL" ; error=1 ; }
+	#echo -n "   * Nautilus ............................ "
+	#test -x /usr/bin/nautilus && echo "$_GREEN[OK]$_NORMAL" || { echo "$_RED[Missing]$_NORMAL" ; error=1 ; }
 	#echo -n "   * Python .............................. "
 	#test -x /usr/bin/python && echo "$_GREEN[OK]$_NORMAL" || { echo "$_RED[Missing]$_NORMAL" ; error=1 ; }
 	echo -n "   * Python Imaging Library (PIL) ........ "
