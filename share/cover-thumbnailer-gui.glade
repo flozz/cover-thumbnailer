@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
   <requires lib="gtk+" version="2.16"/>
+  <!-- interface-naming-policy toplevel-contextual -->
   <object class="GtkAdjustment" id="adjustment1">
     <property name="lower">64</property>
     <property name="upper">128</property>
@@ -29,19 +30,18 @@
     <property name="preview_widget_active">False</property>
     <signal name="delete-event" handler="on_filechooserdialog_delete_event" swapped="no"/>
     <child internal-child="vbox">
-      <object class="GtkBox" id="dialog-vbox3">
+      <object class="GtkVBox" id="dialog-vbox3">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="spacing">2</property>
         <child internal-child="action_area">
-          <object class="GtkButtonBox" id="dialog-action_area3">
+          <object class="GtkHButtonBox" id="dialog-action_area3">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="layout_style">end</property>
             <child>
               <object class="GtkButton" id="btnFileChooserCancel">
                 <property name="label">gtk-cancel</property>
-                <property name="use_action_appearance">False</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
@@ -58,7 +58,6 @@
             <child>
               <object class="GtkButton" id="btnFileChooserOpen">
                 <property name="label">gtk-open</property>
-                <property name="use_action_appearance">False</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
@@ -109,12 +108,12 @@
     <property name="secondary_text" translatable="yes">This path was already in the list!</property>
     <signal name="delete-event" handler="on_msgdlgErrorPAIL_delete_event" swapped="no"/>
     <child internal-child="vbox">
-      <object class="GtkBox" id="dialog-vbox7">
+      <object class="GtkVBox" id="dialog-vbox7">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="spacing">2</property>
         <child internal-child="action_area">
-          <object class="GtkButtonBox" id="dialog-action_area7">
+          <object class="GtkHButtonBox" id="dialog-action_area7">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="layout_style">end</property>
@@ -124,7 +123,6 @@
             <child>
               <object class="GtkButton" id="btnErrorPAILClose">
                 <property name="label">gtk-close</property>
-                <property name="use_action_appearance">False</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
@@ -185,12 +183,12 @@ along with this program. If not, see &lt;http://www.gnu.org/licenses/&gt;.</prop
     <property name="logo">logo.png</property>
     <signal name="delete-event" handler="on_winAbout_delete_event" swapped="no"/>
     <child internal-child="vbox">
-      <object class="GtkBox" id="dialog-vbox1">
+      <object class="GtkVBox" id="dialog-vbox1">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="spacing">2</property>
         <child internal-child="action_area">
-          <object class="GtkButtonBox" id="dialog-action_area1">
+          <object class="GtkHButtonBox" id="dialog-action_area1">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="layout_style">end</property>
@@ -241,7 +239,6 @@ along with this program. If not, see &lt;http://www.gnu.org/licenses/&gt;.</prop
                 <child>
                   <object class="GtkLinkButton" id="linkbuttonTranslate">
                     <property name="label" translatable="yes">Translate Cover Thumbnailer</property>
-                    <property name="use_action_appearance">False</property>
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="receives_default">True</property>
@@ -349,7 +346,6 @@ along with this program. If not, see &lt;http://www.gnu.org/licenses/&gt;.</prop
                         <child>
                           <object class="GtkCheckButton" id="cbMusicEnable">
                             <property name="label" translatable="yes">Enable Cover Thumbnailer for music folders</property>
-                            <property name="use_action_appearance">False</property>
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="receives_default">False</property>
@@ -366,7 +362,6 @@ along with this program. If not, see &lt;http://www.gnu.org/licenses/&gt;.</prop
                         <child>
                           <object class="GtkCheckButton" id="cbMusicKeepFIcon">
                             <property name="label" translatable="yes">Keep the default folder icon if no cover was found</property>
-                            <property name="use_action_appearance">False</property>
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="receives_default">False</property>
@@ -423,7 +418,6 @@ along with this program. If not, see &lt;http://www.gnu.org/licenses/&gt;.</prop
                                         <child>
                                           <object class="GtkRadioButton" id="rbMusicCrop">
                                             <property name="label" translatable="yes">Crop</property>
-                                            <property name="use_action_appearance">False</property>
                                             <property name="visible">True</property>
                                             <property name="can_focus">True</property>
                                             <property name="receives_default">False</property>
@@ -441,7 +435,6 @@ along with this program. If not, see &lt;http://www.gnu.org/licenses/&gt;.</prop
                                         <child>
                                           <object class="GtkRadioButton" id="rbMusicPreserve">
                                             <property name="label" translatable="yes">Preserve</property>
-                                            <property name="use_action_appearance">False</property>
                                             <property name="visible">True</property>
                                             <property name="can_focus">True</property>
                                             <property name="receives_default">False</property>
@@ -545,7 +538,6 @@ along with this program. If not, see &lt;http://www.gnu.org/licenses/&gt;.</prop
                                         <child>
                                           <object class="GtkRadioButton" id="rbMusicNoMosaic">
                                             <property name="label" translatable="yes">No</property>
-                                            <property name="use_action_appearance">False</property>
                                             <property name="visible">True</property>
                                             <property name="can_focus">True</property>
                                             <property name="receives_default">False</property>
@@ -563,7 +555,6 @@ along with this program. If not, see &lt;http://www.gnu.org/licenses/&gt;.</prop
                                         <child>
                                           <object class="GtkRadioButton" id="rbMusicMosaic">
                                             <property name="label" translatable="yes">Yes</property>
-                                            <property name="use_action_appearance">False</property>
                                             <property name="visible">True</property>
                                             <property name="can_focus">True</property>
                                             <property name="receives_default">False</property>
@@ -649,9 +640,6 @@ along with this program. If not, see &lt;http://www.gnu.org/licenses/&gt;.</prop
                                         <property name="can_focus">True</property>
                                         <property name="headers_visible">False</property>
                                         <signal name="cursor-changed" handler="on_trvMusicPathList_cursor_changed" swapped="no"/>
-                                        <child internal-child="selection">
-                                          <object class="GtkTreeSelection" id="treeview-selection1"/>
-                                        </child>
                                       </object>
                                     </child>
                                   </object>
@@ -671,7 +659,6 @@ along with this program. If not, see &lt;http://www.gnu.org/licenses/&gt;.</prop
                                 <child>
                                   <object class="GtkButton" id="btnMusicAdd">
                                     <property name="label">gtk-add</property>
-                                    <property name="use_action_appearance">False</property>
                                     <property name="visible">True</property>
                                     <property name="can_focus">True</property>
                                     <property name="receives_default">True</property>
@@ -688,7 +675,6 @@ along with this program. If not, see &lt;http://www.gnu.org/licenses/&gt;.</prop
                                 <child>
                                   <object class="GtkButton" id="btnMusicRemove">
                                     <property name="label">gtk-remove</property>
-                                    <property name="use_action_appearance">False</property>
                                     <property name="visible">True</property>
                                     <property name="sensitive">False</property>
                                     <property name="can_focus">True</property>
@@ -723,7 +709,6 @@ along with this program. If not, see &lt;http://www.gnu.org/licenses/&gt;.</prop
                         <child>
                           <object class="GtkCheckButton" id="cb_useGnomeMusic">
                             <property name="label" translatable="yes" comments="%s will be replaced by the folder path and must be kept unchanged.">Enable for GNOME's music folder (%s)</property>
-                            <property name="use_action_appearance">False</property>
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="receives_default">False</property>
@@ -796,7 +781,6 @@ along with this program. If not, see &lt;http://www.gnu.org/licenses/&gt;.</prop
                         <child>
                           <object class="GtkCheckButton" id="cbPicturesEnable">
                             <property name="label" translatable="yes">Enable Cover Thumbnailer for picture folders</property>
-                            <property name="use_action_appearance">False</property>
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="receives_default">False</property>
@@ -813,7 +797,6 @@ along with this program. If not, see &lt;http://www.gnu.org/licenses/&gt;.</prop
                         <child>
                           <object class="GtkCheckButton" id="cbPicturesKeepFIcon">
                             <property name="label" translatable="yes">Keep the default folder icon if no pictures were found</property>
-                            <property name="use_action_appearance">False</property>
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="receives_default">False</property>
@@ -850,6 +833,10 @@ along with this program. If not, see &lt;http://www.gnu.org/licenses/&gt;.</prop
                                 <property name="can_focus">True</property>
                                 <property name="max_length">1</property>
                                 <property name="invisible_char">●</property>
+                                <property name="primary_icon_activatable">False</property>
+                                <property name="secondary_icon_activatable">False</property>
+                                <property name="primary_icon_sensitive">True</property>
+                                <property name="secondary_icon_sensitive">True</property>
                                 <property name="adjustment">adjustment2</property>
                                 <property name="climb_rate">1</property>
                                 <property name="snap_to_ticks">True</property>
@@ -914,9 +901,6 @@ along with this program. If not, see &lt;http://www.gnu.org/licenses/&gt;.</prop
                                         <property name="can_focus">True</property>
                                         <property name="headers_visible">False</property>
                                         <signal name="cursor-changed" handler="on_trvPicturesPathList_cursor_changed" swapped="no"/>
-                                        <child internal-child="selection">
-                                          <object class="GtkTreeSelection" id="treeview-selection2"/>
-                                        </child>
                                       </object>
                                     </child>
                                   </object>
@@ -936,7 +920,6 @@ along with this program. If not, see &lt;http://www.gnu.org/licenses/&gt;.</prop
                                 <child>
                                   <object class="GtkButton" id="btnPicturesAdd">
                                     <property name="label">gtk-add</property>
-                                    <property name="use_action_appearance">False</property>
                                     <property name="visible">True</property>
                                     <property name="can_focus">True</property>
                                     <property name="receives_default">True</property>
@@ -953,7 +936,6 @@ along with this program. If not, see &lt;http://www.gnu.org/licenses/&gt;.</prop
                                 <child>
                                   <object class="GtkButton" id="btnPicturesRemove">
                                     <property name="label">gtk-remove</property>
-                                    <property name="use_action_appearance">False</property>
                                     <property name="visible">True</property>
                                     <property name="sensitive">False</property>
                                     <property name="can_focus">True</property>
@@ -988,7 +970,6 @@ along with this program. If not, see &lt;http://www.gnu.org/licenses/&gt;.</prop
                         <child>
                           <object class="GtkCheckButton" id="cb_useGnomePictures">
                             <property name="label" translatable="yes" comments="%s will be replaced by the folder path and must be kept unchanged.">Enable for GNOME's picture folder (%s)</property>
-                            <property name="use_action_appearance">False</property>
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="receives_default">False</property>
@@ -1061,7 +1042,6 @@ along with this program. If not, see &lt;http://www.gnu.org/licenses/&gt;.</prop
                     <child>
                       <object class="GtkCheckButton" id="cbOtherEnable">
                         <property name="label" translatable="yes">Enable Cover Thumbnailer for other folders</property>
-                        <property name="use_action_appearance">False</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="receives_default">False</property>
@@ -1130,7 +1110,6 @@ along with this program. If not, see &lt;http://www.gnu.org/licenses/&gt;.</prop
                         <child>
                           <object class="GtkCheckButton" id="cbIgnoreHidden">
                             <property name="label" translatable="yes">Ignore hidden folders (folders whose name starts with a dot)</property>
-                            <property name="use_action_appearance">False</property>
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="receives_default">False</property>
@@ -1188,9 +1167,6 @@ along with this program. If not, see &lt;http://www.gnu.org/licenses/&gt;.</prop
                                         <property name="can_focus">True</property>
                                         <property name="headers_visible">False</property>
                                         <signal name="cursor-changed" handler="on_trvIgnoredPathList_cursor_changed" swapped="no"/>
-                                        <child internal-child="selection">
-                                          <object class="GtkTreeSelection" id="treeview-selection3"/>
-                                        </child>
                                       </object>
                                     </child>
                                   </object>
@@ -1210,7 +1186,6 @@ along with this program. If not, see &lt;http://www.gnu.org/licenses/&gt;.</prop
                                 <child>
                                   <object class="GtkButton" id="btnIgnoredAdd">
                                     <property name="label">gtk-add</property>
-                                    <property name="use_action_appearance">False</property>
                                     <property name="visible">True</property>
                                     <property name="can_focus">True</property>
                                     <property name="receives_default">True</property>
@@ -1227,7 +1202,6 @@ along with this program. If not, see &lt;http://www.gnu.org/licenses/&gt;.</prop
                                 <child>
                                   <object class="GtkButton" id="btnIgnoredRemove">
                                     <property name="label">gtk-remove</property>
-                                    <property name="use_action_appearance">False</property>
                                     <property name="visible">True</property>
                                     <property name="sensitive">False</property>
                                     <property name="can_focus">True</property>
@@ -1303,9 +1277,6 @@ along with this program. If not, see &lt;http://www.gnu.org/licenses/&gt;.</prop
                                         <property name="can_focus">True</property>
                                         <property name="headers_visible">False</property>
                                         <signal name="cursor-changed" handler="on_trvNeverIgnoredPathList_cursor_changed" swapped="no"/>
-                                        <child internal-child="selection">
-                                          <object class="GtkTreeSelection" id="treeview-selection4"/>
-                                        </child>
                                       </object>
                                     </child>
                                   </object>
@@ -1325,7 +1296,6 @@ along with this program. If not, see &lt;http://www.gnu.org/licenses/&gt;.</prop
                                 <child>
                                   <object class="GtkButton" id="btnNeverIgnoredAdd">
                                     <property name="label">gtk-add</property>
-                                    <property name="use_action_appearance">False</property>
                                     <property name="visible">True</property>
                                     <property name="can_focus">True</property>
                                     <property name="receives_default">True</property>
@@ -1342,7 +1312,6 @@ along with this program. If not, see &lt;http://www.gnu.org/licenses/&gt;.</prop
                                 <child>
                                   <object class="GtkButton" id="btnNeverIgnoredRemove">
                                     <property name="label">gtk-remove</property>
-                                    <property name="use_action_appearance">False</property>
                                     <property name="visible">True</property>
                                     <property name="sensitive">False</property>
                                     <property name="can_focus">True</property>
@@ -1436,7 +1405,6 @@ along with this program. If not, see &lt;http://www.gnu.org/licenses/&gt;.</prop
                         <child>
                           <object class="GtkCheckButton" id="cbEnableCT">
                             <property name="label" translatable="yes">Enable Cover Thumbnailer</property>
-                            <property name="use_action_appearance">False</property>
                             <property name="can_focus">True</property>
                             <property name="receives_default">False</property>
                             <property name="use_action_appearance">False</property>
@@ -1474,6 +1442,10 @@ along with this program. If not, see &lt;http://www.gnu.org/licenses/&gt;.</prop
                                 <property name="max_length">3</property>
                                 <property name="invisible_char">●</property>
                                 <property name="caps_lock_warning">False</property>
+                                <property name="primary_icon_activatable">False</property>
+                                <property name="secondary_icon_activatable">False</property>
+                                <property name="primary_icon_sensitive">True</property>
+                                <property name="secondary_icon_sensitive">True</property>
                                 <property name="adjustment">adjustment1</property>
                                 <property name="snap_to_ticks">True</property>
                                 <property name="numeric">True</property>
@@ -1526,7 +1498,6 @@ along with this program. If not, see &lt;http://www.gnu.org/licenses/&gt;.</prop
                             <child>
                               <object class="GtkButton" id="btnClearThumbnailCache">
                                 <property name="label" translatable="yes">Clear thumbnail cache</property>
-                                <property name="use_action_appearance">False</property>
                                 <property name="visible">True</property>
                                 <property name="can_focus">True</property>
                                 <property name="receives_default">True</property>
@@ -1606,7 +1577,6 @@ along with this program. If not, see &lt;http://www.gnu.org/licenses/&gt;.</prop
                 <child>
                   <object class="GtkButton" id="btnAbout">
                     <property name="label">gtk-about</property>
-                    <property name="use_action_appearance">False</property>
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="receives_default">True</property>
@@ -1637,7 +1607,6 @@ along with this program. If not, see &lt;http://www.gnu.org/licenses/&gt;.</prop
                 <child>
                   <object class="GtkButton" id="btnCancel">
                     <property name="label">gtk-cancel</property>
-                    <property name="use_action_appearance">False</property>
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="receives_default">True</property>
@@ -1654,7 +1623,6 @@ along with this program. If not, see &lt;http://www.gnu.org/licenses/&gt;.</prop
                 <child>
                   <object class="GtkButton" id="btnOk">
                     <property name="label">gtk-ok</property>
-                    <property name="use_action_appearance">False</property>
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="receives_default">True</property>
