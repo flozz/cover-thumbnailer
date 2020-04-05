@@ -107,6 +107,9 @@ class Conf(common.Conf):
             user_conf_file.write(self._write_bool("music_cropimg"))
             user_conf_file.write(self._write_bool("music_makemosaic"))
             user_conf_file.write(self._write_list("music_paths"))
+            user_conf_file.write(self._write_str("music_bg"))
+            user_conf_file.write(self._write_str("music_fg"))
+            user_conf_file.write(self._write_str("music_defaultimg"))
             #Pictures
             user_conf_file.write("\n[PICTURES]\n")
             user_conf_file.write(self._write_bool("pictures_enabled"))
@@ -169,6 +172,21 @@ class Conf(common.Conf):
         value = self[key]
         return "\t%s = %i\n" % (wkey, value)
 
+    def _write_str(self, key):
+        """ Return the string to write in config file for string key
+
+        Argument:
+          * key -- the name of the CONF key
+        """
+        wkey = key.split("_")[1]
+        value = self[key]
+        return "\t%s = \"%s\"\n" % (wkey, value)
+
+class Thumb(common.Thumb):
+    def as_pixbuf(self):
+        return gtk.gdk.pixbuf_new_from_data(self.thumb.tobytes(), gtk.gdk.COLORSPACE_RGB,
+                                            True, 8, self.thumb.width, self.thumb.height,
+                                            len(self.thumb.getbands()) * self.thumb.width)
 
 class MainWin(object):
     """ The configuration GUI """
@@ -204,6 +222,13 @@ class MainWin(object):
         #rbMusicNoMosaic and rbMusicMosaic radiobuttons
         self.rbMusicNoMosaic = win.get_object("rbMusicNoMosaic")
         self.rbMusicMosaic = win.get_object("rbMusicMosaic")
+        #thumbnail decorations configuration
+        self.imgMusicThPreview = win.get_object("imgMusicThPreview")
+        self.btnPickMusicBg = win.get_object("btnPickMusicBg")
+        self.btnPickMusicFg = win.get_object("btnPickMusicFg")
+        self.btnPickMusicDf = win.get_object("btnPickMusicDf")
+        self.btnImageMaxSize = self.btnPickMusicDf.get_child().get_allocation().height
+        self.updateMusicThPreview()
 
         ### PICTURES ###
         #Pictures path list
@@ -258,6 +283,14 @@ class MainWin(object):
         ### FileChooser Dialog ###
         self.fileChooser = win.get_object("filechooserdialog")
         self.fileChooserFor = None
+
+        ### Thumbnail Chooser Dialog ###
+        self.thumbnailChooser = win.get_object("thumbnailchooserdialog")
+        self.thumbnailChooserFor = None # should be a CONF key
+        self.thumbnailFilter = gtk.FileFilter()
+        self.thumbnailFilter.set_name("Image Files")
+        self.thumbnailFilter.add_pixbuf_formats()
+        self.thumbnailChooser.add_filter(self.thumbnailFilter)
 
         ### ERROR DIALOG file already in list ###
         self.msgdlgErrorPAIL = win.get_object("msgdlgErrorPAIL")
@@ -316,6 +349,41 @@ class MainWin(object):
 
     def on_rbMusicNoMosaic_toggled(self, widget):
         CONF['music_makemosaic'] = self.rbMusicMosaic.get_active()
+
+    def updateButtonImage(self, button, path):
+        img = gtk.image_new_from_file(path)
+        pixbuf = gtk.gdk.pixbuf_new_from_file(path)
+        orig_height = float(pixbuf.get_height())
+        orig_width = float(pixbuf.get_width())
+        scaled_width = int(round(orig_width * self.btnImageMaxSize / orig_height))
+        scaled_height = int(round(orig_height * self.btnImageMaxSize / orig_width))
+        if scaled_width < scaled_height:
+            scaled_height = self.btnImageMaxSize
+        else:
+            scaled_width = self.btnImageMaxSize
+        pixbuf = pixbuf.scale_simple(scaled_width, scaled_height, gtk.gdk.INTERP_HYPER)
+        button.set_image(gtk.image_new_from_pixbuf(pixbuf))
+
+    def updateMusicThPreview(self):
+        preview = Thumb([CONF['music_defaultimg']])
+        preview.music_thumbnail(
+                CONF['music_bg'],
+                CONF['music_fg'],
+                CONF['music_cropimg']
+                )
+        self.imgMusicThPreview.set_from_pixbuf(preview.as_pixbuf())
+        self.updateButtonImage(self.btnPickMusicBg, CONF['music_bg'])
+        self.updateButtonImage(self.btnPickMusicFg, CONF['music_fg'])
+        self.updateButtonImage(self.btnPickMusicDf, CONF['music_defaultimg'])
+
+    def on_btnPickMusicBg_clicked(self, widget):
+        self.show_thumbnail_chooser("music_bg")
+
+    def on_btnPickMusicFg_clicked(self, widget):
+        self.show_thumbnail_chooser("music_fg")
+
+    def on_btnPickMusicDf_clicked(self, widget):
+        self.show_thumbnail_chooser("music_defaultimg")()
 
     #~~~ PICTURES ~~~
     def on_cbPicturesEnable_toggled(self, widget):
@@ -409,6 +477,27 @@ class MainWin(object):
         self.fileChooserFor = None
 
     def on_filechooserdialog_delete_event(self, widget, response):
+        self.fileChooser.hide()
+        return True #Don't delete
+
+    ### THUMBNAILCHOOSER DIALOG ###
+    def show_thumbnail_chooser(self, config_option_name):
+        self.thumbnailChooserFor = config_option_name
+        self.thumbnailChooser.set_filename(CONF[config_option_name])
+        self.thumbnailChooser.show()
+
+    def on_btnThumbnailChooserCancel_clicked(self, widget):
+        self.thumbnailChooser.hide()
+
+    def on_btnThumbnailChooserOpen_clicked(self, widget):
+        self.thumbnailChooser.hide()
+        path = self.thumbnailChooser.get_filename()
+        CONF[self.thumbnailChooserFor] = path
+        if self.thumbnailChooserFor.startswith("music_"):
+            self.updateMusicThPreview()
+        self.thumbnailChooserFor = None
+
+    def on_thumbnailChooserdialog_delete_event(self, widget, response):
         self.fileChooser.hide()
         return True #Don't delete
 

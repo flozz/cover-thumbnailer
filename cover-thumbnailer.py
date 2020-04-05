@@ -207,6 +207,12 @@ class Conf(dict):
                     key = match.group(1)
                     value = match.group(2)
                     self[current_section + "_" + key] = int(value)
+                #Regular string key
+                elif re.match(r"\s*([a-z]+)\s*=\s*\"(.+)\"\s*", line):
+                    match = re.match(r"\s*([a-z]+)\s*=\s*\"(.+)\"\s*", line)
+                    key = match.group(1)
+                    value = match.group(2)
+                    self[current_section + "_" + key] = value
 
             user_conf_file.close()
 
@@ -283,7 +289,7 @@ class Thumb(object):
           * crop -- the resize method (True for having a squared thumbnail)
         """
         #Background picture
-        bg = Image.open(bg_picture).convert("RGB")
+        bg = Image.open(bg_picture).convert("RGBA")
         bg_width = bg.size[0]
         bg_height = bg.size[1]
         #Album cover
@@ -313,7 +319,7 @@ class Thumb(object):
         NOTE: call this function ONLY if self.img has, at least, two pictures.
         """
         #Background picture
-        bg = Image.open(bg_picture).convert("RGB")
+        bg = Image.open(bg_picture).convert("RGBA")
         bg_width = bg.size[0]
         bg_height = bg.size[1]
         #Album covers
