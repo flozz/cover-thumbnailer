@@ -117,6 +117,8 @@ class Conf(common.Conf):
             user_conf_file.write(self._write_bool("pictures_usegnomefolder"))
             user_conf_file.write(self._write_int("pictures_maxthumbs"))
             user_conf_file.write(self._write_list("pictures_paths"))
+            user_conf_file.write(self._write_str("pictures_bg"))
+            user_conf_file.write(self._write_str("pictures_fg"))
             #Other
             user_conf_file.write("\n[OTHER]\n")
             user_conf_file.write(self._write_bool("other_enabled"))
@@ -247,6 +249,11 @@ class MainWin(object):
         self.cbPicturesKeepFIcon = win.get_object("cbPicturesKeepFIcon")
         #spinbtn_maxThumbs Spin Button
         self.spinbtn_maxThumbs = win.get_object("spinbtn_maxThumbs")
+        #thumbnail decorations configuration
+        self.imgPicturesThPreview = win.get_object("imgPicturesThPreview")
+        self.btnPickPicturesBg = win.get_object("btnPickPicturesBg")
+        self.btnPickPicturesFg = win.get_object("btnPickPicturesFg")
+        self.updatePicturesThPreview()
 
         ### OTHER ###
         #Enable checkBox
@@ -415,6 +422,22 @@ class MainWin(object):
     def on_cb_useGnomePictures_toggled(self, widget):
         CONF['pictures_usegnomefolder'] = self.cb_useGnomePictures.get_active()
 
+    def updatePicturesThPreview(self):
+        preview = Thumb([os.path.join(BASE_PATH, "icon.png")])
+        preview.pictures_thumbnail(
+                CONF['pictures_bg'],
+                CONF['pictures_fg']
+                )
+        self.imgPicturesThPreview.set_from_pixbuf(preview.as_pixbuf())
+        self.updateButtonImage(self.btnPickPicturesBg, CONF['pictures_bg'])
+        self.updateButtonImage(self.btnPickPicturesFg, CONF['pictures_fg'])
+
+    def on_btnPickPicturesBg_clicked(self, widget):
+        self.show_thumbnail_chooser("pictures_bg")
+
+    def on_btnPickPicturesFg_clicked(self, widget):
+        self.show_thumbnail_chooser("pictures_fg")
+
     #~~~ OTHER ~~~
     def on_cbOtherEnable_toggled(self, widget):
         CONF['other_enabled'] = self.cbOtherEnable.get_active()
@@ -495,6 +518,8 @@ class MainWin(object):
         CONF[self.thumbnailChooserFor] = path
         if self.thumbnailChooserFor.startswith("music_"):
             self.updateMusicThPreview()
+        elif self.thumbnailChooserFor.startswith("pictures_"):
+            self.updatePicturesThPreview()
         self.thumbnailChooserFor = None
 
     def on_thumbnailChooserdialog_delete_event(self, widget, response):
