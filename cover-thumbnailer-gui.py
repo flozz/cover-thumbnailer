@@ -122,6 +122,7 @@ class Conf(common.Conf):
             #Other
             user_conf_file.write("\n[OTHER]\n")
             user_conf_file.write(self._write_bool("other_enabled"))
+            user_conf_file.write(self._write_str("other_fg"))
             #Ignored
             user_conf_file.write("\n[IGNORED]\n")
             user_conf_file.write(self._write_bool("ignored_dotted"))
@@ -258,6 +259,10 @@ class MainWin(object):
         ### OTHER ###
         #Enable checkBox
         self.cbOtherEnable = win.get_object("cbOtherEnable")
+        #thumbnail decorations configuration
+        self.imgOthersThPreview = win.get_object("imgOthersThPreview")
+        self.btnPickOthersFg = win.get_object("btnPickOthersFg")
+        self.updateOthersThPreview()
 
         ### IGNORED ###
         #Ignored path list
@@ -442,6 +447,15 @@ class MainWin(object):
     def on_cbOtherEnable_toggled(self, widget):
         CONF['other_enabled'] = self.cbOtherEnable.get_active()
 
+    def updateOthersThPreview(self):
+        preview = Thumb([os.path.join(BASE_PATH, "icon.png")])
+        preview.other_thumbnail(CONF['other_fg'])
+        self.imgOthersThPreview.set_from_pixbuf(preview.as_pixbuf())
+        self.updateButtonImage(self.btnPickOthersFg, CONF['other_fg'])
+
+    def on_btnPickOthersFg_clicked(self, widget):
+        self.show_thumbnail_chooser("other_fg")
+
     #~~~ IGNORED ~~~
     def on_btnIgnoredAdd_clicked(self, widget):
         self.fileChooserFor = 'ignored'
@@ -520,6 +534,8 @@ class MainWin(object):
             self.updateMusicThPreview()
         elif self.thumbnailChooserFor.startswith("pictures_"):
             self.updatePicturesThPreview()
+        elif self.thumbnailChooserFor.startswith("other_"):
+            self.updateOthersThPreview()
         self.thumbnailChooserFor = None
 
     def on_thumbnailChooserdialog_delete_event(self, widget, response):
