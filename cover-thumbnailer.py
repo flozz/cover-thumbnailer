@@ -265,6 +265,16 @@ class Thumb(object):
         """
         width = image.size[0]
         height = image.size[1]
+        if width < twidth or height < theight: # scale up if too small
+            if float(width) / twidth < float(height) / theight:
+                new_height = int(round(float(twidth) * height / width))
+                new_width = twidth
+            else:
+                new_width = int(round(float(theight) * width / height))
+                new_height = theight
+            image = image.resize((new_width, new_height))
+            width = image.size[0]
+            height = image.size[1]
         if crop and width >= twidth and height >= theight:
             if width > height:
                 left = int((width - height) / 2)
