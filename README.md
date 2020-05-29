@@ -22,12 +22,12 @@ you are free to modify and redistribute it under the terms of the license.
 
 Cover Thumbailer dependencies:
 
-* PIL / pillow
+* PIL / pillow (on Ubuntu: `sudo apt install python-pil`)
 * PyGI
 
 Cover Thumbnailer GUI dependencies:
 
-* PyGTK 2
+* PyGTK 2 (on Ubuntu: `sudo apt install python-gtk2`; this package is not available on Ubuntu 20.04, you'll need to use this PPA to install it: `sudo add-apt-repository ppa:nrbrtx/python2-stuff`)
 
 Development / Build dependencies:
 
@@ -35,6 +35,16 @@ Development / Build dependencies:
 
 
 ## Installing Cover Thumbnailer
+
+Clone this repository:
+
+    git clone https://github.com/flozz/cover-thumbnailer.git
+    # or through SSH:
+    git clone git@github.com:flozz/cover-thumbnailer.git
+
+Move to directory:
+
+    cd cover-thumbnailer/
 
 To install Cover thumbnailer, run the following command as root:
 
