@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- Generated with glade 3.22.2 -->
 <interface>
-  <requires lib="gtk+" version="2.16"/>
+  <requires lib="gtk+" version="3.0"/>
   <object class="GtkAdjustment" id="adjustment1">
     <property name="lower">64</property>
     <property name="upper">128</property>
@@ -32,6 +33,7 @@
       <object class="GtkBox" id="dialog-vbox3">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
+        <property name="orientation">vertical</property>
         <property name="spacing">2</property>
         <child internal-child="action_area">
           <object class="GtkButtonBox" id="dialog-action_area3">
@@ -45,7 +47,6 @@
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
-                <property name="use_action_appearance">False</property>
                 <property name="use_stock">True</property>
                 <signal name="clicked" handler="on_btnFileChooserCancel_clicked" swapped="no"/>
               </object>
@@ -62,7 +63,6 @@
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
-                <property name="use_action_appearance">False</property>
                 <property name="use_stock">True</property>
                 <signal name="clicked" handler="on_btnFileChooserOpen_clicked" swapped="no"/>
               </object>
@@ -80,9 +80,6 @@
             <property name="position">0</property>
           </packing>
         </child>
-        <child>
-          <placeholder/>
-        </child>
       </object>
     </child>
     <action-widgets>
@@ -94,194 +91,7 @@
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="stock">gtk-clear</property>
-    <property name="icon-size">5</property>
-  </object>
-  <object class="GtkMessageDialog" id="msgdlgErrorPAIL">
-    <property name="can_focus">False</property>
-    <property name="border_width">5</property>
-    <property name="title" translatable="yes">Error - Cover Thumbnailer</property>
-    <property name="modal">True</property>
-    <property name="type_hint">normal</property>
-    <property name="skip_taskbar_hint">True</property>
-    <property name="skip_pager_hint">True</property>
-    <property name="message_type">error</property>
-    <property name="text" translatable="yes">Can’t add this path</property>
-    <property name="secondary_text" translatable="yes">This path was already in the list!</property>
-    <signal name="delete-event" handler="on_msgdlgErrorPAIL_delete_event" swapped="no"/>
-    <child internal-child="vbox">
-      <object class="GtkBox" id="dialog-vbox7">
-        <property name="visible">True</property>
-        <property name="can_focus">False</property>
-        <property name="spacing">2</property>
-        <child internal-child="action_area">
-          <object class="GtkButtonBox" id="dialog-action_area7">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="layout_style">end</property>
-            <child>
-              <placeholder/>
-            </child>
-            <child>
-              <object class="GtkButton" id="btnErrorPAILClose">
-                <property name="label">gtk-close</property>
-                <property name="use_action_appearance">False</property>
-                <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="receives_default">True</property>
-                <property name="use_action_appearance">False</property>
-                <property name="use_stock">True</property>
-                <signal name="clicked" handler="on_btnErrorPAILClose_clicked" swapped="no"/>
-              </object>
-              <packing>
-                <property name="expand">False</property>
-                <property name="fill">False</property>
-                <property name="position">1</property>
-              </packing>
-            </child>
-          </object>
-          <packing>
-            <property name="expand">False</property>
-            <property name="fill">True</property>
-            <property name="pack_type">end</property>
-            <property name="position">0</property>
-          </packing>
-        </child>
-      </object>
-    </child>
-    <action-widgets>
-      <action-widget response="0">btnErrorPAILClose</action-widget>
-    </action-widgets>
-  </object>
-  <object class="GtkAboutDialog" id="winAbout">
-    <property name="can_focus">False</property>
-    <property name="border_width">5</property>
-    <property name="title" translatable="yes">About Cover Thumbnailer</property>
-    <property name="resizable">False</property>
-    <property name="modal">True</property>
-    <property name="window_position">center-on-parent</property>
-    <property name="destroy_with_parent">True</property>
-    <property name="icon_name">help-about</property>
-    <property name="type_hint">normal</property>
-    <property name="skip_taskbar_hint">True</property>
-    <property name="program_name">Cover Thumbnailer</property>
-    <property name="comments" translatable="yes">Configuration tool for Cover Thumbnailer</property>
-    <property name="website">http://software.flogisoft.com/cover-thumbnailer/</property>
-    <property name="license" translatable="yes">This program is free software: you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation, either version 3 of the License, or
-(at your option) any later version.
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License
-along with this program. If not, see &lt;http://www.gnu.org/licenses/&gt;.</property>
-    <property name="authors">Fabien LOISON &lt;flo@flogisoft.com&gt;</property>
-    <property name="documenters">Fabien LOISON &lt;flo@flogisoft.com&gt;</property>
-    <property name="translator_credits" translatable="yes">translator-credits</property>
-    <property name="artists">Fabien LOISON &lt;flo@flogisoft.com&gt;</property>
-    <property name="logo">logo.png</property>
-    <signal name="delete-event" handler="on_winAbout_delete_event" swapped="no"/>
-    <child internal-child="vbox">
-      <object class="GtkBox" id="dialog-vbox1">
-        <property name="visible">True</property>
-        <property name="can_focus">False</property>
-        <property name="spacing">2</property>
-        <child internal-child="action_area">
-          <object class="GtkButtonBox" id="dialog-action_area1">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="layout_style">end</property>
-          </object>
-          <packing>
-            <property name="expand">False</property>
-            <property name="fill">True</property>
-            <property name="pack_type">end</property>
-            <property name="position">0</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkVBox" id="vboxTranslate">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <child>
-              <object class="GtkHSeparator" id="hseparator1">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-              </object>
-              <packing>
-                <property name="expand">False</property>
-                <property name="fill">True</property>
-                <property name="position">0</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkHBox" id="hboxTranslate">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="spacing">5</property>
-                <child>
-                  <object class="GtkLabel" id="labelTranslate">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="xalign">0</property>
-                    <property name="label" translatable="yes">Not in your language?</property>
-                    <attributes>
-                      <attribute name="weight" value="bold"/>
-                    </attributes>
-                  </object>
-                  <packing>
-                    <property name="expand">False</property>
-                    <property name="fill">True</property>
-                    <property name="position">0</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkLinkButton" id="linkbuttonTranslate">
-                    <property name="label" translatable="yes">Translate Cover Thumbnailer</property>
-                    <property name="use_action_appearance">False</property>
-                    <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                    <property name="receives_default">True</property>
-                    <property name="use_action_appearance">False</property>
-                    <property name="relief">none</property>
-                    <property name="uri">https://translations.launchpad.net/cover-thumbnailer/+translations</property>
-                  </object>
-                  <packing>
-                    <property name="expand">True</property>
-                    <property name="fill">True</property>
-                    <property name="position">1</property>
-                  </packing>
-                </child>
-              </object>
-              <packing>
-                <property name="expand">True</property>
-                <property name="fill">True</property>
-                <property name="position">1</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkHSeparator" id="hseparator2">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-              </object>
-              <packing>
-                <property name="expand">False</property>
-                <property name="fill">True</property>
-                <property name="position">2</property>
-              </packing>
-            </child>
-          </object>
-          <packing>
-            <property name="expand">False</property>
-            <property name="fill">True</property>
-            <property name="position">2</property>
-          </packing>
-        </child>
-      </object>
-    </child>
+    <property name="icon_size">5</property>
   </object>
   <object class="GtkWindow" id="winMain">
     <property name="visible">True</property>
@@ -291,6 +101,9 @@ along with this program. If not, see &lt;http://www.gnu.org/licenses/&gt;.</prop
     <property name="resizable">False</property>
     <property name="icon">icon.png</property>
     <signal name="destroy" handler="on_winMain_destroy" swapped="no"/>
+    <child type="titlebar">
+      <placeholder/>
+    </child>
     <child>
       <object class="GtkVBox" id="vbox1">
         <property name="visible">True</property>
@@ -353,7 +166,6 @@ along with this program. If not, see &lt;http://www.gnu.org/licenses/&gt;.</prop
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="receives_default">False</property>
-                            <property name="use_action_appearance">False</property>
                             <property name="draw_indicator">True</property>
                             <signal name="toggled" handler="on_cbMusicEnable_toggled" swapped="no"/>
                           </object>
@@ -370,7 +182,6 @@ along with this program. If not, see &lt;http://www.gnu.org/licenses/&gt;.</prop
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="receives_default">False</property>
-                            <property name="use_action_appearance">False</property>
                             <property name="draw_indicator">True</property>
                             <signal name="toggled" handler="on_cbMusicKeepFIcon_toggled" swapped="no"/>
                           </object>
@@ -427,7 +238,6 @@ along with this program. If not, see &lt;http://www.gnu.org/licenses/&gt;.</prop
                                             <property name="visible">True</property>
                                             <property name="can_focus">True</property>
                                             <property name="receives_default">False</property>
-                                            <property name="use_action_appearance">False</property>
                                             <property name="active">True</property>
                                             <property name="draw_indicator">True</property>
                                             <signal name="toggled" handler="on_rbMusicCrop_toggled" swapped="no"/>
@@ -445,7 +255,6 @@ along with this program. If not, see &lt;http://www.gnu.org/licenses/&gt;.</prop
                                             <property name="visible">True</property>
                                             <property name="can_focus">True</property>
                                             <property name="receives_default">False</property>
-                                            <property name="use_action_appearance">False</property>
                                             <property name="active">True</property>
                                             <property name="draw_indicator">True</property>
                                             <property name="group">rbMusicCrop</property>
@@ -549,7 +358,6 @@ along with this program. If not, see &lt;http://www.gnu.org/licenses/&gt;.</prop
                                             <property name="visible">True</property>
                                             <property name="can_focus">True</property>
                                             <property name="receives_default">False</property>
-                                            <property name="use_action_appearance">False</property>
                                             <property name="active">True</property>
                                             <property name="draw_indicator">True</property>
                                             <signal name="toggled" handler="on_rbMusicNoMosaic_toggled" swapped="no"/>
@@ -567,7 +375,6 @@ along with this program. If not, see &lt;http://www.gnu.org/licenses/&gt;.</prop
                                             <property name="visible">True</property>
                                             <property name="can_focus">True</property>
                                             <property name="receives_default">False</property>
-                                            <property name="use_action_appearance">False</property>
                                             <property name="active">True</property>
                                             <property name="draw_indicator">True</property>
                                             <property name="group">rbMusicNoMosaic</property>
@@ -614,8 +421,8 @@ along with this program. If not, see &lt;http://www.gnu.org/licenses/&gt;.</prop
                               <object class="GtkLabel" id="label9">
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
-                                <property name="xalign">0</property>
                                 <property name="label" translatable="yes">List of music folders:</property>
+                                <property name="xalign">0</property>
                                 <attributes>
                                   <attribute name="weight" value="bold"/>
                                 </attributes>
@@ -675,7 +482,6 @@ along with this program. If not, see &lt;http://www.gnu.org/licenses/&gt;.</prop
                                     <property name="visible">True</property>
                                     <property name="can_focus">True</property>
                                     <property name="receives_default">True</property>
-                                    <property name="use_action_appearance">False</property>
                                     <property name="use_stock">True</property>
                                     <signal name="clicked" handler="on_btnMusicAdd_clicked" swapped="no"/>
                                   </object>
@@ -693,7 +499,6 @@ along with this program. If not, see &lt;http://www.gnu.org/licenses/&gt;.</prop
                                     <property name="sensitive">False</property>
                                     <property name="can_focus">True</property>
                                     <property name="receives_default">True</property>
-                                    <property name="use_action_appearance">False</property>
                                     <property name="use_stock">True</property>
                                     <signal name="clicked" handler="on_btnMusicRemove_clicked" swapped="no"/>
                                   </object>
@@ -727,7 +532,6 @@ along with this program. If not, see &lt;http://www.gnu.org/licenses/&gt;.</prop
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="receives_default">False</property>
-                            <property name="use_action_appearance">False</property>
                             <property name="active">True</property>
                             <property name="draw_indicator">True</property>
                             <signal name="toggled" handler="on_cb_useGnomeMusic_toggled" swapped="no"/>
@@ -800,7 +604,6 @@ along with this program. If not, see &lt;http://www.gnu.org/licenses/&gt;.</prop
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="receives_default">False</property>
-                            <property name="use_action_appearance">False</property>
                             <property name="draw_indicator">True</property>
                             <signal name="toggled" handler="on_cbPicturesEnable_toggled" swapped="no"/>
                           </object>
@@ -817,7 +620,6 @@ along with this program. If not, see &lt;http://www.gnu.org/licenses/&gt;.</prop
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="receives_default">False</property>
-                            <property name="use_action_appearance">False</property>
                             <property name="draw_indicator">True</property>
                             <signal name="toggled" handler="on_cbPicturesKeepFIcon_toggled" swapped="no"/>
                           </object>
@@ -879,8 +681,8 @@ along with this program. If not, see &lt;http://www.gnu.org/licenses/&gt;.</prop
                               <object class="GtkLabel" id="label10">
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
-                                <property name="xalign">0</property>
                                 <property name="label" translatable="yes">List of picture folders:</property>
+                                <property name="xalign">0</property>
                                 <attributes>
                                   <attribute name="weight" value="bold"/>
                                 </attributes>
@@ -940,7 +742,6 @@ along with this program. If not, see &lt;http://www.gnu.org/licenses/&gt;.</prop
                                     <property name="visible">True</property>
                                     <property name="can_focus">True</property>
                                     <property name="receives_default">True</property>
-                                    <property name="use_action_appearance">False</property>
                                     <property name="use_stock">True</property>
                                     <signal name="clicked" handler="on_btnPicturesAdd_clicked" swapped="no"/>
                                   </object>
@@ -958,7 +759,6 @@ along with this program. If not, see &lt;http://www.gnu.org/licenses/&gt;.</prop
                                     <property name="sensitive">False</property>
                                     <property name="can_focus">True</property>
                                     <property name="receives_default">True</property>
-                                    <property name="use_action_appearance">False</property>
                                     <property name="use_stock">True</property>
                                     <signal name="clicked" handler="on_btnPicturesRemove_clicked" swapped="no"/>
                                   </object>
@@ -992,7 +792,6 @@ along with this program. If not, see &lt;http://www.gnu.org/licenses/&gt;.</prop
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="receives_default">False</property>
-                            <property name="use_action_appearance">False</property>
                             <property name="active">True</property>
                             <property name="draw_indicator">True</property>
                             <signal name="toggled" handler="on_cb_useGnomePictures_toggled" swapped="no"/>
@@ -1065,7 +864,6 @@ along with this program. If not, see &lt;http://www.gnu.org/licenses/&gt;.</prop
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="receives_default">False</property>
-                        <property name="use_action_appearance">False</property>
                         <property name="draw_indicator">True</property>
                         <signal name="toggled" handler="on_cbOtherEnable_toggled" swapped="no"/>
                       </object>
@@ -1134,7 +932,6 @@ along with this program. If not, see &lt;http://www.gnu.org/licenses/&gt;.</prop
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="receives_default">False</property>
-                            <property name="use_action_appearance">False</property>
                             <property name="draw_indicator">True</property>
                             <signal name="toggled" handler="on_cbIgnoreHidden_toggled" swapped="no"/>
                           </object>
@@ -1154,8 +951,8 @@ along with this program. If not, see &lt;http://www.gnu.org/licenses/&gt;.</prop
                               <object class="GtkLabel" id="label8">
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
-                                <property name="xalign">0</property>
                                 <property name="label" translatable="yes">Folders to ignore:</property>
+                                <property name="xalign">0</property>
                                 <attributes>
                                   <attribute name="weight" value="bold"/>
                                 </attributes>
@@ -1214,7 +1011,6 @@ along with this program. If not, see &lt;http://www.gnu.org/licenses/&gt;.</prop
                                     <property name="visible">True</property>
                                     <property name="can_focus">True</property>
                                     <property name="receives_default">True</property>
-                                    <property name="use_action_appearance">False</property>
                                     <property name="use_stock">True</property>
                                     <signal name="clicked" handler="on_btnIgnoredAdd_clicked" swapped="no"/>
                                   </object>
@@ -1232,7 +1028,6 @@ along with this program. If not, see &lt;http://www.gnu.org/licenses/&gt;.</prop
                                     <property name="sensitive">False</property>
                                     <property name="can_focus">True</property>
                                     <property name="receives_default">True</property>
-                                    <property name="use_action_appearance">False</property>
                                     <property name="use_stock">True</property>
                                     <signal name="clicked" handler="on_btnIgnoredRemove_clicked" swapped="no"/>
                                   </object>
@@ -1269,8 +1064,8 @@ along with this program. If not, see &lt;http://www.gnu.org/licenses/&gt;.</prop
                               <object class="GtkLabel" id="label21">
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
-                                <property name="xalign">0</property>
                                 <property name="label" translatable="yes">Folders to never ignore:</property>
+                                <property name="xalign">0</property>
                                 <attributes>
                                   <attribute name="weight" value="bold"/>
                                 </attributes>
@@ -1329,7 +1124,6 @@ along with this program. If not, see &lt;http://www.gnu.org/licenses/&gt;.</prop
                                     <property name="visible">True</property>
                                     <property name="can_focus">True</property>
                                     <property name="receives_default">True</property>
-                                    <property name="use_action_appearance">False</property>
                                     <property name="use_stock">True</property>
                                     <signal name="clicked" handler="on_btnNeverIgnoredAdd_clicked" swapped="no"/>
                                   </object>
@@ -1347,7 +1141,6 @@ along with this program. If not, see &lt;http://www.gnu.org/licenses/&gt;.</prop
                                     <property name="sensitive">False</property>
                                     <property name="can_focus">True</property>
                                     <property name="receives_default">True</property>
-                                    <property name="use_action_appearance">False</property>
                                     <property name="use_stock">True</property>
                                     <signal name="clicked" handler="on_btnNeverIgnoredRemove_clicked" swapped="no"/>
                                   </object>
@@ -1434,91 +1227,6 @@ along with this program. If not, see &lt;http://www.gnu.org/licenses/&gt;.</prop
                         <property name="can_focus">False</property>
                         <property name="spacing">50</property>
                         <child>
-                          <object class="GtkCheckButton" id="cbEnableCT">
-                            <property name="label" translatable="yes">Enable Cover Thumbnailer</property>
-                            <property name="use_action_appearance">False</property>
-                            <property name="can_focus">True</property>
-                            <property name="receives_default">False</property>
-                            <property name="use_action_appearance">False</property>
-                            <property name="active">True</property>
-                            <property name="draw_indicator">True</property>
-                            <signal name="toggled" handler="on_cbEnableCT_toggled" swapped="no"/>
-                          </object>
-                          <packing>
-                            <property name="expand">False</property>
-                            <property name="fill">True</property>
-                            <property name="position">0</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkHBox" id="hbox6">
-                            <property name="visible">True</property>
-                            <property name="can_focus">False</property>
-                            <property name="spacing">10</property>
-                            <child>
-                              <object class="GtkLabel" id="label11">
-                                <property name="can_focus">False</property>
-                                <property name="xalign">0</property>
-                                <property name="label" translatable="yes">Thumbnail size:</property>
-                              </object>
-                              <packing>
-                                <property name="expand">False</property>
-                                <property name="fill">True</property>
-                                <property name="position">0</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkSpinButton" id="spinbtn_thumbSize">
-                                <property name="can_focus">True</property>
-                                <property name="tooltip_text" translatable="yes">From 64px to 128px, the default value is 96px.</property>
-                                <property name="max_length">3</property>
-                                <property name="invisible_char">●</property>
-                                <property name="caps_lock_warning">False</property>
-                                <property name="adjustment">adjustment1</property>
-                                <property name="snap_to_ticks">True</property>
-                                <property name="numeric">True</property>
-                                <signal name="value-changed" handler="on_spinbtn_thumbSize_value_changed" swapped="no"/>
-                              </object>
-                              <packing>
-                                <property name="expand">False</property>
-                                <property name="fill">True</property>
-                                <property name="position">1</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkLabel" id="label17">
-                                <property name="can_focus">False</property>
-                                <property name="xalign">0</property>
-                                <property name="label">px</property>
-                              </object>
-                              <packing>
-                                <property name="expand">True</property>
-                                <property name="fill">True</property>
-                                <property name="position">2</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkLabel" id="label18">
-                                <property name="width_request">300</property>
-                                <property name="can_focus">False</property>
-                                <property name="xalign">1</property>
-                                <property name="label" translatable="yes">This option will affect all thumbnails, not only those created by Cover Thumbnailer.</property>
-                                <property name="wrap">True</property>
-                              </object>
-                              <packing>
-                                <property name="expand">False</property>
-                                <property name="fill">True</property>
-                                <property name="position">3</property>
-                              </packing>
-                            </child>
-                          </object>
-                          <packing>
-                            <property name="expand">False</property>
-                            <property name="fill">True</property>
-                            <property name="position">1</property>
-                          </packing>
-                        </child>
-                        <child>
                           <object class="GtkHBox" id="hbox5">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
@@ -1530,7 +1238,6 @@ along with this program. If not, see &lt;http://www.gnu.org/licenses/&gt;.</prop
                                 <property name="visible">True</property>
                                 <property name="can_focus">True</property>
                                 <property name="receives_default">True</property>
-                                <property name="use_action_appearance">False</property>
                                 <property name="image">imageClearCache</property>
                                 <signal name="clicked" handler="on_btnClearThumbnailCache_clicked" swapped="no"/>
                               </object>
@@ -1541,17 +1248,15 @@ along with this program. If not, see &lt;http://www.gnu.org/licenses/&gt;.</prop
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkLabel" id="label16">
-                                <property name="width_request">300</property>
+                              <object class="GtkImage">
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
-                                <property name="xalign">1</property>
-                                <property name="label" translatable="yes">Clear the thumbnail cache if you have some problem with thumbnails, for example after changing the configuration.</property>
-                                <property name="wrap">True</property>
+                                <property name="tooltip_text" translatable="yes">Clear the thumbnail cache if you have some problem with thumbnails, for example after changing the configuration.</property>
+                                <property name="stock">gtk-help</property>
                               </object>
                               <packing>
                                 <property name="expand">False</property>
-                                <property name="fill">True</property>
+                                <property name="fill">False</property>
                                 <property name="position">1</property>
                               </packing>
                             </child>
@@ -1610,7 +1315,6 @@ along with this program. If not, see &lt;http://www.gnu.org/licenses/&gt;.</prop
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="receives_default">True</property>
-                    <property name="use_action_appearance">False</property>
                     <property name="use_stock">True</property>
                     <signal name="clicked" handler="on_btnAbout_clicked" swapped="no"/>
                   </object>
@@ -1641,7 +1345,6 @@ along with this program. If not, see &lt;http://www.gnu.org/licenses/&gt;.</prop
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="receives_default">True</property>
-                    <property name="use_action_appearance">False</property>
                     <property name="use_stock">True</property>
                     <signal name="clicked" handler="on_btnCancel_clicked" swapped="no"/>
                   </object>
@@ -1658,7 +1361,6 @@ along with this program. If not, see &lt;http://www.gnu.org/licenses/&gt;.</prop
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="receives_default">True</property>
-                    <property name="use_action_appearance">False</property>
                     <property name="use_stock">True</property>
                     <signal name="clicked" handler="on_btnOk_clicked" swapped="no"/>
                   </object>
@@ -1678,6 +1380,196 @@ along with this program. If not, see &lt;http://www.gnu.org/licenses/&gt;.</prop
           </object>
           <packing>
             <property name="expand">True</property>
+            <property name="fill">True</property>
+            <property name="position">2</property>
+          </packing>
+        </child>
+      </object>
+    </child>
+  </object>
+  <object class="GtkMessageDialog" id="msgdlgErrorPAIL">
+    <property name="can_focus">False</property>
+    <property name="border_width">5</property>
+    <property name="title" translatable="yes">Error - Cover Thumbnailer</property>
+    <property name="modal">True</property>
+    <property name="type_hint">normal</property>
+    <property name="skip_taskbar_hint">True</property>
+    <property name="skip_pager_hint">True</property>
+    <property name="message_type">error</property>
+    <property name="text" translatable="yes">Can’t add this path</property>
+    <property name="secondary_text" translatable="yes">This path was already in the list!</property>
+    <signal name="delete-event" handler="on_msgdlgErrorPAIL_delete_event" swapped="no"/>
+    <child internal-child="vbox">
+      <object class="GtkBox" id="dialog-vbox7">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="orientation">vertical</property>
+        <property name="spacing">2</property>
+        <child internal-child="action_area">
+          <object class="GtkButtonBox" id="dialog-action_area7">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="layout_style">end</property>
+            <child>
+              <placeholder/>
+            </child>
+            <child>
+              <object class="GtkButton" id="btnErrorPAILClose">
+                <property name="label">gtk-close</property>
+                <property name="use_action_appearance">False</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">True</property>
+                <property name="use_stock">True</property>
+                <signal name="clicked" handler="on_btnErrorPAILClose_clicked" swapped="no"/>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">False</property>
+                <property name="position">1</property>
+              </packing>
+            </child>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="pack_type">end</property>
+            <property name="position">0</property>
+          </packing>
+        </child>
+      </object>
+    </child>
+    <action-widgets>
+      <action-widget response="0">btnErrorPAILClose</action-widget>
+    </action-widgets>
+  </object>
+  <object class="GtkAboutDialog" id="winAbout">
+    <property name="can_focus">False</property>
+    <property name="border_width">5</property>
+    <property name="title" translatable="yes">About Cover Thumbnailer</property>
+    <property name="resizable">False</property>
+    <property name="modal">True</property>
+    <property name="window_position">center-on-parent</property>
+    <property name="destroy_with_parent">True</property>
+    <property name="icon_name">help-about</property>
+    <property name="type_hint">normal</property>
+    <property name="skip_taskbar_hint">True</property>
+    <property name="program_name">Cover Thumbnailer</property>
+    <property name="comments" translatable="yes">Configuration tool for Cover Thumbnailer</property>
+    <property name="website">http://software.flogisoft.com/cover-thumbnailer/</property>
+    <property name="license" translatable="yes">This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program. If not, see &lt;http://www.gnu.org/licenses/&gt;.</property>
+    <property name="authors">Fabien LOISON &lt;flo@flogisoft.com&gt;</property>
+    <property name="documenters">Fabien LOISON &lt;flo@flogisoft.com&gt;</property>
+    <property name="translator_credits" translatable="yes">translator-credits</property>
+    <property name="artists">Fabien LOISON &lt;flo@flogisoft.com&gt;</property>
+    <property name="logo">logo.png</property>
+    <signal name="delete-event" handler="on_winAbout_delete_event" swapped="no"/>
+    <child type="titlebar">
+      <placeholder/>
+    </child>
+    <child internal-child="vbox">
+      <object class="GtkBox" id="dialog-vbox1">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="orientation">vertical</property>
+        <property name="spacing">2</property>
+        <child internal-child="action_area">
+          <object class="GtkButtonBox" id="dialog-action_area1">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="layout_style">end</property>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="pack_type">end</property>
+            <property name="position">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkVBox" id="vboxTranslate">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <child>
+              <object class="GtkHSeparator" id="hseparator1">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkHBox" id="hboxTranslate">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="spacing">5</property>
+                <child>
+                  <object class="GtkLabel" id="labelTranslate">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="label" translatable="yes">Not in your language?</property>
+                    <property name="xalign">0</property>
+                    <attributes>
+                      <attribute name="weight" value="bold"/>
+                    </attributes>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">True</property>
+                    <property name="position">0</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkLinkButton" id="linkbuttonTranslate">
+                    <property name="label" translatable="yes">Translate Cover Thumbnailer</property>
+                    <property name="use_action_appearance">False</property>
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="receives_default">True</property>
+                    <property name="relief">none</property>
+                    <property name="uri">https://translations.launchpad.net/cover-thumbnailer/+translations</property>
+                  </object>
+                  <packing>
+                    <property name="expand">True</property>
+                    <property name="fill">True</property>
+                    <property name="position">1</property>
+                  </packing>
+                </child>
+              </object>
+              <packing>
+                <property name="expand">True</property>
+                <property name="fill">True</property>
+                <property name="position">1</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkHSeparator" id="hseparator2">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">2</property>
+              </packing>
+            </child>
+          </object>
+          <packing>
+            <property name="expand">False</property>
             <property name="fill">True</property>
             <property name="position">2</property>
           </packing>
