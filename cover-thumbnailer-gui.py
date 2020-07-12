@@ -12,7 +12,7 @@
 ##                                                                        ##
 ## Cover thumbnailer GUI                                                  ##
 ##                                                                        ##
-## Copyright (C) 2009 - 2011  Fabien Loison <flo at flogisoft dot com>    ##
+## Copyright (C) 2009 - 2020  Fabien Loison <http://www.flozz.fr/>        ##
 ##                                                                        ##
 ## This program is free software: you can redistribute it and/or modify   ##
 ## it under the terms of the GNU General Public License as published by   ##
@@ -29,7 +29,7 @@
 ##                                                                        ##
 ############################################################################
 ##                                                                        ##
-## WEB SITE : http://projects.flogisoft.com/cover-thumbnailer/            ##
+## WEB SITE : https://github.com/flozz/cover-thumbnailer                  ##
 ##                                                                       ##
 #########################################################################
 
@@ -39,9 +39,9 @@
 A GUI for easily configuring Cover Thumbnailer.
 """
 
-__version__ = "0.8.3"
-__author__ = "Fabien Loison <flo@flogisoft.com>"
-__copyright__ = "Copyright © 2009 - 2011 Fabien LOISON"
+__version__ = "0.10.0"
+__author__ = "Fabien Loison <http://www.flozz.fr/>"
+__copyright__ = "Copyright © 2009 - 2020 Fabien LOISON"
 __appname__ = "cover-thumbnailer-gui"
 
 

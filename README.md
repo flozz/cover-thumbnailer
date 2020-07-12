@@ -114,4 +114,11 @@ thumbnails should appear after a refresh of the folder.
 
 ## Changelog
 
+* **0.10.0 (2020-07-12):**
+    * Port from Python 2 to Python 3
+    * Port the config GUI from GTK 2 (PyGTK) to GTK 3 (GObject Introspection)
+    * Adds a button to generates manually the thumbnails (required for Nautilus)
+    * Support of Thunar and Caja
+    * Update translations
+    * various fixes
 * **0.8.4:** Old version imported to github
