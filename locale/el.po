@@ -7,171 +7,157 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: cover-thumbnailer\n"
-"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2010-07-03 13:44+0200\n"
-"PO-Revision-Date: 2011-01-10 20:11+0000\n"
-"Last-Translator: Ioannis Stilianakos(stilia-johny, d3vil) "
-"<stilia.johny@gmail.com>\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-07-12 17:59+0200\n"
+"PO-Revision-Date: 2020-07-12 18:05+0200\n"
+"Last-Translator: George Christofis <geochr22@gmail.com>\n"
 "Language-Team: Greek <team@gnome.gr>\n"
+"Language: el\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2011-01-11 05:28+0000\n"
-"X-Generator: Launchpad (build Unknown)\n"
+"X-Launchpad-Export-Date: 2017-06-23 05:43+0000\n"
+"X-Generator: Poedit 2.3\n"
 
-#: cover-thumbnailer-gui.py:90 cover-thumbnailer-gui.py:97
-#: cover-thumbnailer-gui.py:615 cover-thumbnailer-gui.py:619
+#: cover-thumbnailer-gui.py:93 cover-thumbnailer-gui.py:100
+#: cover-thumbnailer-gui.py:642 cover-thumbnailer-gui.py:647
 msgid "<None>"
 msgstr "<Κενό>"
 
-#: cover-thumbnailer-gui.py:198
+#: cover-thumbnailer-gui.py:201
 msgid "Configuration written by Cover Thumbnailer GUI"
 msgstr "Ρυθμίσεις γραμμένες από Cover Thumbnailer GUI"
 
-#: cover-thumbnailer-gui.py:199
+#: cover-thumbnailer-gui.py:202
 msgid "Please edit with caution"
 msgstr "Παρακάλώ επεξεργαστείτε με προσοχή"
 
-#: cover-thumbnailer-gui.py:570 share/cover-thumbnailer-gui.glade:377
+#. %s will be replaced by the folder path and must be kept unchanged.
+#: cover-thumbnailer-gui.py:606 share/cover-thumbnailer-gui.glade:530
 #, python-format
 msgid "Enable for GNOME's music folder (%s)"
 msgstr "Ενεργοποίηση για το φάκελο μουσικής του GNOME (%s)"
 
-#: cover-thumbnailer-gui.py:585 share/cover-thumbnailer-gui.glade:602
+#. %s will be replaced by the folder path and must be kept unchanged.
+#: cover-thumbnailer-gui.py:621 share/cover-thumbnailer-gui.glade:790
 #, python-format
 msgid "Enable for GNOME's picture folder (%s)"
 msgstr "Ενεργοποίηση για το φάκελο εικόνων του GNOME (%s)"
 
-#: share/cover-thumbnailer-gui.glade:38
+#: share/cover-thumbnailer-gui.glade:22
+msgid "Select a folder - Cover Thumbnailer"
+msgstr "Επιλέξτε ένα φάκελο - Cover Thumbnailer"
+
+#: share/cover-thumbnailer-gui.glade:137
 msgid "Music Folders"
 msgstr "Φάκελοι Μουσικής"
 
-#: share/cover-thumbnailer-gui.glade:62
+#: share/cover-thumbnailer-gui.glade:164
 msgid "Enable Cover Thumbnailer for music folders"
 msgstr "Ενεργοποίηση Cover Thumbnailer για φακέλους μουσικής"
 
-#: share/cover-thumbnailer-gui.glade:76
+#: share/cover-thumbnailer-gui.glade:180
 msgid "Keep the default folder icon if no cover was found"
 msgstr "Διατήρηση του προεπιλεγμένου εικονιδίου αν δεν βρεθεί εξώφυλλο"
 
-#: share/cover-thumbnailer-gui.glade:105
+#: share/cover-thumbnailer-gui.glade:215
 msgid "Resize method:"
 msgstr "Μέθοδος αλλαγής μεγέθους"
 
-#: share/cover-thumbnailer-gui.glade:123
+#: share/cover-thumbnailer-gui.glade:236
 msgid "Crop"
 msgstr "Περικοπή"
 
-#: share/cover-thumbnailer-gui.glade:139
+#: share/cover-thumbnailer-gui.glade:253
 msgid "Preserve"
 msgstr "Διατήρηση"
 
-#: share/cover-thumbnailer-gui.glade:194
+#: share/cover-thumbnailer-gui.glade:319
 msgid "Allow mosaic:"
 msgstr "Επιτρέπεται μωσαϊκό"
 
-#: share/cover-thumbnailer-gui.glade:227
+#: share/cover-thumbnailer-gui.glade:356
 msgid "No"
 msgstr "Όχι"
 
-#: share/cover-thumbnailer-gui.glade:243
+#: share/cover-thumbnailer-gui.glade:373
 msgid "Yes"
 msgstr "Ναι"
 
-#: share/cover-thumbnailer-gui.glade:286
+#: share/cover-thumbnailer-gui.glade:424
 msgid "List of music folders:"
 msgstr "Λίστα φακέλων μουσικής"
 
-#: share/cover-thumbnailer-gui.glade:402
+#: share/cover-thumbnailer-gui.glade:560
 msgid "Music"
 msgstr "Μουσική"
 
-#: share/cover-thumbnailer-gui.glade:415
+#: share/cover-thumbnailer-gui.glade:575
 msgid "Picture Folders"
 msgstr "Φάκελοι Εικόνων"
 
-#: share/cover-thumbnailer-gui.glade:439
+#: share/cover-thumbnailer-gui.glade:602
 msgid "Enable Cover Thumbnailer for picture folders"
 msgstr "Ενεργοποίηση Cover Thumbnailer για φακέλους εικόνων"
 
-#: share/cover-thumbnailer-gui.glade:453
+#: share/cover-thumbnailer-gui.glade:618
 msgid "Keep the default folder icon if no pictures were found"
 msgstr "Διατήρηση του προεπιλεγμένου εικονιδίου αν δεν βρεθεί εικόνα"
 
-#: share/cover-thumbnailer-gui.glade:472
+#: share/cover-thumbnailer-gui.glade:641
 msgid "Maximum number of pictures on thumbnail:"
 msgstr "Μέγιστος αριθμός εικόνων σε ένα thumbnail"
 
-#: share/cover-thumbnailer-gui.glade:511
+#: share/cover-thumbnailer-gui.glade:684
 msgid "List of picture folders:"
 msgstr "Λίστα φακέλων εικόνων"
 
-#: share/cover-thumbnailer-gui.glade:630
+#: share/cover-thumbnailer-gui.glade:823
 msgid "Pictures"
 msgstr "Εικόνες"
 
-#: share/cover-thumbnailer-gui.glade:644
+#: share/cover-thumbnailer-gui.glade:839
 msgid "Other Folders"
 msgstr "Άλλοι φάκελοι"
 
-#: share/cover-thumbnailer-gui.glade:665
+#: share/cover-thumbnailer-gui.glade:862
 msgid "Enable Cover Thumbnailer for other folders"
 msgstr "Ενεργοποίηση Cover Thumbnailer για άλλους φακέλους"
 
-#: share/cover-thumbnailer-gui.glade:688
+#: share/cover-thumbnailer-gui.glade:887
 msgid "Others"
 msgstr "Άλλα"
 
-#: share/cover-thumbnailer-gui.glade:702
+#: share/cover-thumbnailer-gui.glade:903
 msgid "Ignored Folders"
 msgstr "Φάκελοι Αγνόησης"
 
-#: share/cover-thumbnailer-gui.glade:726
+#: share/cover-thumbnailer-gui.glade:930
 msgid "Ignore hidden folders (folders whose name starts with a dot)"
 msgstr ""
 "Αγνόηση κρυφών φακέλων (φάκελοι που το όνομά τους αρχίζει με μια τελεία)"
 
-#: share/cover-thumbnailer-gui.glade:747
+#: share/cover-thumbnailer-gui.glade:954
 msgid "Folders to ignore:"
 msgstr "Φάκελοι για αγνόηση:"
 
-#: share/cover-thumbnailer-gui.glade:844
+#: share/cover-thumbnailer-gui.glade:1067
 msgid "Folders to never ignore:"
 msgstr "Φάκελοι που δεν θα αγνοούνται ποτέ:"
 
-#: share/cover-thumbnailer-gui.glade:946
+#: share/cover-thumbnailer-gui.glade:1188
 msgid "Ignored"
 msgstr "Αγνοούνται"
 
-#: share/cover-thumbnailer-gui.glade:959
+#: share/cover-thumbnailer-gui.glade:1203
 msgid "Miscellaneous Options"
 msgstr "Διάφορες Επιλογές"
 
-#: share/cover-thumbnailer-gui.glade:984
-msgid "Enable Cover Thumbnailer"
-msgstr "Ενεργοποίηση Cover Thumbnailer"
-
-#: share/cover-thumbnailer-gui.glade:1005
-msgid "Thumbnail size:"
-msgstr "Μέγεθος thumbnail:"
-
-#: share/cover-thumbnailer-gui.glade:1016
-msgid "From 64px to 128px, the default value is 96px."
-msgstr "Από 64px σε 128px, η προεπιλεγμένη τιμή είναι 96px."
-
-#: share/cover-thumbnailer-gui.glade:1045
-msgid ""
-"This option will affect all thumbnails, not only those created by Cover "
-"Thumbnailer."
-msgstr ""
-"Αυτή η επιλογή θα επηρεάσει όλα τα thumbnails, όχι μόνο αυτά που "
-"δημιουργήθηκαν από το Cover Thumbnailer."
-
-#: share/cover-thumbnailer-gui.glade:1065
+#: share/cover-thumbnailer-gui.glade:1236
 msgid "Clear thumbnail cache"
 msgstr "Εκκαθάριση προσωρινής μνήμης για thumbnail"
 
-#: share/cover-thumbnailer-gui.glade:1081
+#: share/cover-thumbnailer-gui.glade:1254
 msgid ""
 "Clear the thumbnail cache if you have some problem with thumbnails, for "
 "example after changing the configuration."
@@ -179,19 +165,51 @@ msgstr ""
 "Εκκαθάριση της προσωρινής μνήμης για thumbnail αν έχετε κάποιο πρόβλημα με "
 "τα thumbnails, για παράδειγμα μετά από αλλαγή των ρυθμίσεων."
 
-#: share/cover-thumbnailer-gui.glade:1111
+#: share/cover-thumbnailer-gui.glade:1277
+msgid "Select a folder and generate thumbnails"
+msgstr ""
+
+#: share/cover-thumbnailer-gui.glade:1293
+msgid ""
+"This button allows to select a folder and to generate thumbnails for each "
+"subfolder it contains. This option is useful for Nautilus as Cover "
+"Thumbnailer is not able to generate thumbnails automatically for this file "
+"browser."
+msgstr ""
+
+#: share/cover-thumbnailer-gui.glade:1327
 msgid "Miscellaneous"
 msgstr "Διάφορα"
 
-#: share/cover-thumbnailer-gui.glade:1201
+#: share/cover-thumbnailer-gui.glade:1432
+msgid "Error - Cover Thumbnailer"
+msgstr "Σφάλμα - Cover Thumbnailer"
+
+#: share/cover-thumbnailer-gui.glade:1442
+msgid "Can’t add this path"
+msgstr "Δεν ήταν δυνατή η προσθήκη αυτού του μονοπατιού"
+
+#: share/cover-thumbnailer-gui.glade:1443
+msgid "This path was already in the list!"
+msgstr "Αυτό το μονοπάτι ήταν ήδη στη λίστα!"
+
+#: share/cover-thumbnailer-gui.glade:1495
+msgid "Generating thumbnails"
+msgstr ""
+
+#: share/cover-thumbnailer-gui.glade:1496
+msgid "Please wait..."
+msgstr ""
+
+#: share/cover-thumbnailer-gui.glade:1526
 msgid "About Cover Thumbnailer"
 msgstr "Σχετικά με το Cover Thumbnailer"
 
-#: share/cover-thumbnailer-gui.glade:1211
+#: share/cover-thumbnailer-gui.glade:1536
 msgid "Configuration tool for Cover Thumbnailer"
 msgstr "Εργαλείο ρυθμίσεων για το Cover Thumbnailer"
 
-#: share/cover-thumbnailer-gui.glade:1213
+#: share/cover-thumbnailer-gui.glade:1538
 msgid ""
 "This program is free software: you can redistribute it and/or modify\n"
 "it under the terms of the GNU General Public License as published by\n"
@@ -208,7 +226,8 @@ msgid ""
 msgstr ""
 "Αυτό το πρόγραμμα είναι ελεύθερο λογισμικό: μπορείτε να το αναδιανείμετε ή "
 "και να τροποποιήσετε\n"
-"σύμφωνα με τους όρους της GNU General Public License όπως δημοσιεύεται από\n"
+"σύμφωνα με τους όρους της GNU General Public License όπως δημοσιεύεται "
+"από\n"
 "το Free Software Foundation, είτε την έκδοση 3 της άδειας, είτε\n"
 "(κατ 'επιλογή σας) οποιαδήποτε μεταγενέστερη έκδοση.\n"
 "Αυτό το πρόγραμμα διανέμεται με την ελπίδα ότι θα είναι χρήσιμο,\n"
@@ -218,7 +237,7 @@ msgstr ""
 "Θα πρέπει να έχετε λάβει ένα αντίγραφο της GNU General Public License\n"
 "μαζί με αυτό το πρόγραμμα. Αν όχι, δείτε <http://www.gnu.org/licenses/>."
 
-#: share/cover-thumbnailer-gui.glade:1227
+#: share/cover-thumbnailer-gui.glade:1552
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
@@ -226,26 +245,24 @@ msgstr ""
 "  Ioannis Stilianakos(stilia-johny, d3vil) https://launchpad.net/~stilia-"
 "johny"
 
-#: share/cover-thumbnailer-gui.glade:1255
-msgid "Not in your language?"
-msgstr "Δεν είναι στη γλώσσα σας;"
+#~ msgid "Enable Cover Thumbnailer"
+#~ msgstr "Ενεργοποίηση Cover Thumbnailer"
 
-#: share/cover-thumbnailer-gui.glade:1267
-msgid "Translate Cover Thumbnailer"
-msgstr "Μεταφράστε το Cover Thumbnailer"
+#~ msgid "Thumbnail size:"
+#~ msgstr "Μέγεθος thumbnail:"
 
-#: share/cover-thumbnailer-gui.glade:1318
-msgid "Select a folder - Cover Thumbnailer"
-msgstr "Επιλέξτε ένα φάκελο - Cover Thumbnailer"
+#~ msgid "From 64px to 128px, the default value is 96px."
+#~ msgstr "Από 64px σε 128px, η προεπιλεγμένη τιμή είναι 96px."
 
-#: share/cover-thumbnailer-gui.glade:1386
-msgid "Error - Cover Thumbnailer"
-msgstr "Σφάλμα - Cover Thumbnailer"
+#~ msgid ""
+#~ "This option will affect all thumbnails, not only those created by Cover "
+#~ "Thumbnailer."
+#~ msgstr ""
+#~ "Αυτή η επιλογή θα επηρεάσει όλα τα thumbnails, όχι μόνο αυτά που "
+#~ "δημιουργήθηκαν από το Cover Thumbnailer."
 
-#: share/cover-thumbnailer-gui.glade:1393
-msgid "Can’t add this path"
-msgstr "Δεν ήταν δυνατή η προσθήκη αυτού του μονοπατιού"
+#~ msgid "Not in your language?"
+#~ msgstr "Δεν είναι στη γλώσσα σας;"
 
-#: share/cover-thumbnailer-gui.glade:1394
-msgid "This path was already in the list!"
-msgstr "Αυτό το μονοπάτι ήταν ήδη στη λίστα!"
+#~ msgid "Translate Cover Thumbnailer"
+#~ msgstr "Μεταφράστε το Cover Thumbnailer"

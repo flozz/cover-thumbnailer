@@ -1,4 +1,4 @@
-#!/usr/bin/python2
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
    #########################################################################
@@ -418,17 +418,17 @@ class Thumb(object):
                     })
             #Thumb 1
             thumb = self.thumbnailize(self.img[1], 49, 56, crop=False)
-            x = bg_width - thumb.size[0] - 5
+            x = int(bg_width - thumb.size[0] - 5)
             picts.append({
                     'thumb': thumb,
                     'x': x,
                     'y': 5
                     })
             #Thumb 2
-            h = bg_height - max(picts[0]['thumb'].size[1], picts[1]['thumb'].size[1]) - 15
+            h = int(bg_height - max(picts[0]['thumb'].size[1], picts[1]['thumb'].size[1]) - 15)
             thumb = self.thumbnailize(self.img[2], 103, h, crop=False)
-            x = (bg_width - 15 - thumb.size[0])/2 + 15
-            y = bg_height - thumb.size[1] - 5
+            x = int((bg_width - 15 - thumb.size[0])/2 + 15)
+            y = int(bg_height - thumb.size[1] - 5)
             picts.append({
                     'thumb': thumb,
                     'x': x,
@@ -603,14 +603,14 @@ def match_path(path, path_list):
     """
     match = False
     #We add a slash at the end.
-    if path[-1:] is not "/":
+    if path[-1:] != "/":
         path += "/"
     for entry in path_list:
         #We add a slash at the end.
-        if entry[-1:] is not "/":
+        if entry[-1:] != "/":
             entry += "/"
         if re.match(r"^" + entry + ".*", path):
-            if path is not entry:
+            if path != entry:
                 match = True
                 break
     return match

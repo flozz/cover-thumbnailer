@@ -1,4 +1,4 @@
-#!/usr/bin/python2
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
    #########################################################################
@@ -44,13 +44,22 @@ __author__ = "Fabien Loison <flo@flogisoft.com>"
 __copyright__ = "Copyright © 2009 - 2011 Fabien LOISON"
 __appname__ = "cover-thumbnailer-gui"
 
-import gtk, pygtk
-pygtk.require("2.0")
 
 import gettext
-gettext.install(__appname__)
+import os
+import re
+import shutil
+import glob
+import hashlib
+import subprocess
 
-import os, re, shutil
+import gi
+gi.require_version("Gtk", "3.0")  # noqa
+from gi.repository import Gtk as gtk
+from gi.repository import Gio
+
+
+gettext.install(__appname__)
 
 
 #Base path
@@ -58,12 +67,6 @@ if "DEVEL" in os.environ:
     BASE_PATH = "./share/" #For devel
 else:
     BASE_PATH = "/usr/share/cover-thumbnailer/"
-
-#GConf key for enabling/disabling Cover thumbnailer
-GCONF_KEY = "/desktop/gnome/thumbnailers/inode@directory/enable"
-
-#GConf key for nautilus thumbnails size
-GCONF_KEY_NAUTILUS_THUMB_SIZE = "/apps/nautilus/icon_view/thumbnail_size"
 
 
 class Conf(dict):
@@ -171,7 +174,7 @@ class Conf(dict):
 
             user_conf_file.close()
 
-            #Replace "~/" by the user home dir 
+            #Replace "~/" by the user home dir
             for path_list in (self['music_paths'], self['pictures_paths'], self['ignored_paths']):
                 for i in range(0, len(path_list)):
                     if path_list[i][0] == "~":
@@ -360,6 +363,9 @@ class MainWin(object):
         ### ERROR DIALOG file already in list ###
         self.msgdlgErrorPAIL = win.get_object("msgdlgErrorPAIL")
 
+        ### INFO DIALOG generating thumbnails ###
+        self.msgdlgGeneratingThumbnails = win.get_object("msgdlgGeneratingThumbnails")
+
         loadInterface(self) #Put config on the gui
         win.connect_signals(self)
 
@@ -376,11 +382,6 @@ class MainWin(object):
     def on_btnOk_clicked(self, widget):
         CONF.save_user_conf()
         gtk.main_quit()
-
-    def on_btnClearThumbnailCache_clicked(self, widget):
-        thumbpath = os.path.join(CONF.user_homedir, '.cache/thumbnails')
-        if os.path.isdir(thumbpath):
-            shutil.rmtree(thumbpath)
 
     #~~~ MUSIC ~~~
     def on_cbMusicEnable_toggled(self, widget):
@@ -480,14 +481,15 @@ class MainWin(object):
         removePathFromList(self.trvNeverIgnoredPathList, self.lsstNeverIgnoredPathList, CONF['neverignored_paths'])
         self.btnNeverIgnoredRemove.set_sensitive(False)
 
-    #~~~ MISCELLANEOUS ~~~ #FIXME: No more use GConf
-    #def on_cbEnableCT_toggled(self, widget):
-    #    gconf_client = gconf.client_get_default()
-    #    gconf_client.set_bool(GCONF_KEY, self.cbEnableCT.get_active())
+    #~~~ MISCELLANEOUS ~~~
+    def on_btnClearThumbnailCache_clicked(self, widget):
+        thumbpath = os.path.join(CONF.user_homedir, '.cache/thumbnails')
+        if os.path.isdir(thumbpath):
+            shutil.rmtree(thumbpath)
 
-    #def on_spinbtn_thumbSize_value_changed(self, widget):
-    #    gconf_client = gconf.client_get_default()
-    #    gconf_client.set_int(GCONF_KEY_NAUTILUS_THUMB_SIZE, int(self.spinbtn_thumbSize.get_value()))
+    def on_btnGenerateThumbnails_clicked(self, widget):
+        self.fileChooserFor = 'generatethumbnails'
+        self.fileChooser.show()
 
     ### FILECHOOSER DIALOG ###
     def on_btnFileChooserCancel_clicked(self, widget):
@@ -504,6 +506,13 @@ class MainWin(object):
             addPathToList(self.lsstIgnoredPathList, path, CONF['ignored_paths'])
         elif self.fileChooserFor == 'neverignored':
             addPathToList(self.lsstNeverIgnoredPathList, path, CONF['neverignored_paths'])
+        elif self.fileChooserFor == 'generatethumbnails':
+            self.msgdlgGeneratingThumbnails.show()
+            gtk.main_iteration_do(True)
+            CONF.save_user_conf()  # Save user conf before generating thumbs
+            gtk.main_iteration_do(True)
+            generateThumbnails(path)
+            self.msgdlgGeneratingThumbnails.hide()
         self.fileChooserFor = None
 
     def on_filechooserdialog_delete_event(self, widget, response):
@@ -526,6 +535,33 @@ class MainWin(object):
 
     def on_btnErrorPAILClose_clicked(self, widget):
         self.msgdlgErrorPAIL.hide()
+
+
+def list_folders(base_path):
+    return glob.glob(os.path.join(base_path, "**/"), recursive=True)
+
+
+def generate_thumbnail_path(path):
+    gvfs = Gio.Vfs.get_default()
+    uri = gvfs.get_file_for_path(path).get_uri()
+    uri = uri.encode("utf-8")
+    uri_hash = hashlib.md5(uri).hexdigest()
+    return os.path.join(
+            CONF.user_homedir,
+            '.cache/thumbnails/normal',
+            '%s.png' % uri_hash)
+
+
+def generateThumbnails(path):
+    CT_CMD = 'cover-thumbnailer'
+    if "DEVEL" in os.environ:
+        CT_CMD = './cover-thumbnailer.py'
+    for input_folder in list_folders(path):
+        gtk.main_iteration_do(False)
+        print('Generating thumbnail for %s' % input_folder)
+        output_file = generate_thumbnail_path(input_folder)
+        print('  -> dest: %s' % output_file)
+        subprocess.run([CT_CMD, input_folder, output_file])
 
 
 def addPathToList(gtklist, path, conflist):
@@ -599,16 +635,6 @@ def loadInterface(gui):
     #Ignored
     for path in CONF['neverignored_paths']:
         gui.lsstNeverIgnoredPathList.append([path])
-    #Miscellaneous FIXME: No more use GConf
-    #gconf_client = gconf.client_get_default()
-    #gui.cbEnableCT.set_active(gconf_client.get_bool(GCONF_KEY))
-    #thumb_size = gconf_client.get_int(GCONF_KEY_NAUTILUS_THUMB_SIZE)
-    #if thumb_size > 128:
-    #    gui.spinbtn_thumbSize.set_value(128)
-    #elif thumb_size < 64:
-    #    gui.spinbtn_thumbSize.set_value(64)
-    #else:
-    #    gui.spinbtn_thumbSize.set_value(thumb_size)
     #If GNOME folders == user home dir or not defined,
     #deactivate the option, it's probably a misconfiguration !
     if os.path.isdir(CONF['music_gnomefolderpath']) \
@@ -623,10 +649,7 @@ def loadInterface(gui):
         gui.cb_useGnomePictures.set_sensitive(False)
 
 
-
 if __name__ == "__main__":
     CONF = Conf()
     gui = MainWin()
     gtk.main()
-
-

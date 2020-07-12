@@ -6,185 +6,208 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: cover-thumbnailer\n"
-"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2010-07-03 13:44+0200\n"
-"PO-Revision-Date: 2011-01-10 16:42+0000\n"
-"Last-Translator: nafterburner <nafterburner@gmail.com>\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-07-12 17:59+0200\n"
+"PO-Revision-Date: 2020-07-12 18:06+0200\n"
+"Last-Translator: gogo <trebelnik2@gmail.com>\n"
 "Language-Team: Croatian <hr@li.org>\n"
+"Language: hr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2011-01-11 05:28+0000\n"
-"X-Generator: Launchpad (build Unknown)\n"
+"X-Launchpad-Export-Date: 2017-06-23 05:43+0000\n"
+"X-Generator: Poedit 2.3\n"
 
-#: cover-thumbnailer-gui.py:90 cover-thumbnailer-gui.py:97
-#: cover-thumbnailer-gui.py:615 cover-thumbnailer-gui.py:619
+#: cover-thumbnailer-gui.py:93 cover-thumbnailer-gui.py:100
+#: cover-thumbnailer-gui.py:642 cover-thumbnailer-gui.py:647
 msgid "<None>"
 msgstr "<Nijedan>"
 
-#: cover-thumbnailer-gui.py:198
+#: cover-thumbnailer-gui.py:201
 msgid "Configuration written by Cover Thumbnailer GUI"
-msgstr ""
+msgstr "Konfiguracija napisana Cover Thumbnailer grafičkim sučeljem"
 
-#: cover-thumbnailer-gui.py:199
+#: cover-thumbnailer-gui.py:202
 msgid "Please edit with caution"
-msgstr ""
+msgstr "Molim, uređujte oprezno"
 
-#: cover-thumbnailer-gui.py:570 share/cover-thumbnailer-gui.glade:377
+#. %s will be replaced by the folder path and must be kept unchanged.
+#: cover-thumbnailer-gui.py:606 share/cover-thumbnailer-gui.glade:530
 #, python-format
 msgid "Enable for GNOME's music folder (%s)"
-msgstr ""
+msgstr "Omogući za GNOME glazbenu mapu (%s)"
 
-#: cover-thumbnailer-gui.py:585 share/cover-thumbnailer-gui.glade:602
+#. %s will be replaced by the folder path and must be kept unchanged.
+#: cover-thumbnailer-gui.py:621 share/cover-thumbnailer-gui.glade:790
 #, python-format
 msgid "Enable for GNOME's picture folder (%s)"
-msgstr ""
+msgstr "Omogući za GNOME mapu slika (%s)"
 
-#: share/cover-thumbnailer-gui.glade:38
+#: share/cover-thumbnailer-gui.glade:22
+msgid "Select a folder - Cover Thumbnailer"
+msgstr "Odaberi mapu - Cover Thumbnailer"
+
+#: share/cover-thumbnailer-gui.glade:137
 msgid "Music Folders"
-msgstr "Muzička Mapa"
+msgstr "Glazbena mapa"
 
-#: share/cover-thumbnailer-gui.glade:62
+#: share/cover-thumbnailer-gui.glade:164
 msgid "Enable Cover Thumbnailer for music folders"
-msgstr ""
+msgstr "Omogući minijaturu omota za glazbenu mapu"
 
-#: share/cover-thumbnailer-gui.glade:76
+#: share/cover-thumbnailer-gui.glade:180
 msgid "Keep the default folder icon if no cover was found"
-msgstr ""
+msgstr "Zadrži uobičajenu ikonu mape ako omot nije pronbađen"
 
-#: share/cover-thumbnailer-gui.glade:105
+#: share/cover-thumbnailer-gui.glade:215
 msgid "Resize method:"
-msgstr ""
+msgstr "Način promjene veličine:"
 
-#: share/cover-thumbnailer-gui.glade:123
+#: share/cover-thumbnailer-gui.glade:236
 msgid "Crop"
 msgstr "Izreži"
 
-#: share/cover-thumbnailer-gui.glade:139
+#: share/cover-thumbnailer-gui.glade:253
 msgid "Preserve"
 msgstr "Sačuvaj"
 
-#: share/cover-thumbnailer-gui.glade:194
+#: share/cover-thumbnailer-gui.glade:319
 msgid "Allow mosaic:"
-msgstr "Dozvoli mozaik:"
+msgstr "Dopusti mozaik:"
 
-#: share/cover-thumbnailer-gui.glade:227
+#: share/cover-thumbnailer-gui.glade:356
 msgid "No"
 msgstr "Ne"
 
-#: share/cover-thumbnailer-gui.glade:243
+#: share/cover-thumbnailer-gui.glade:373
 msgid "Yes"
 msgstr "Da"
 
-#: share/cover-thumbnailer-gui.glade:286
+#: share/cover-thumbnailer-gui.glade:424
 msgid "List of music folders:"
-msgstr "Lista muzičkih mapa:"
+msgstr "Popis glazbenih mapa:"
 
-#: share/cover-thumbnailer-gui.glade:402
+#: share/cover-thumbnailer-gui.glade:560
 msgid "Music"
-msgstr "Muzika"
+msgstr "Glazba"
 
-#: share/cover-thumbnailer-gui.glade:415
+#: share/cover-thumbnailer-gui.glade:575
 msgid "Picture Folders"
-msgstr "Mape Slika"
+msgstr "Mape slika"
 
-#: share/cover-thumbnailer-gui.glade:439
+#: share/cover-thumbnailer-gui.glade:602
 msgid "Enable Cover Thumbnailer for picture folders"
-msgstr ""
+msgstr "Omogući omot minijatura za mape slika"
 
-#: share/cover-thumbnailer-gui.glade:453
+#: share/cover-thumbnailer-gui.glade:618
 msgid "Keep the default folder icon if no pictures were found"
-msgstr ""
+msgstr "Zadrži uobičajenu ikonu mape ako nije pronađena slika"
 
-#: share/cover-thumbnailer-gui.glade:472
+#: share/cover-thumbnailer-gui.glade:641
 msgid "Maximum number of pictures on thumbnail:"
-msgstr ""
+msgstr "Maksimalan broj slika na minijaturi:"
 
-#: share/cover-thumbnailer-gui.glade:511
+#: share/cover-thumbnailer-gui.glade:684
 msgid "List of picture folders:"
-msgstr ""
+msgstr "Popis mapa slika:"
 
-#: share/cover-thumbnailer-gui.glade:630
+#: share/cover-thumbnailer-gui.glade:823
 msgid "Pictures"
-msgstr ""
+msgstr "Slike"
 
-#: share/cover-thumbnailer-gui.glade:644
+#: share/cover-thumbnailer-gui.glade:839
 msgid "Other Folders"
-msgstr ""
+msgstr "Ostale mape"
 
-#: share/cover-thumbnailer-gui.glade:665
+#: share/cover-thumbnailer-gui.glade:862
 msgid "Enable Cover Thumbnailer for other folders"
-msgstr ""
+msgstr "Omogući omot minijatura za ostale mape"
 
-#: share/cover-thumbnailer-gui.glade:688
+#: share/cover-thumbnailer-gui.glade:887
 msgid "Others"
-msgstr ""
+msgstr "Ostalo"
 
-#: share/cover-thumbnailer-gui.glade:702
+#: share/cover-thumbnailer-gui.glade:903
 msgid "Ignored Folders"
-msgstr ""
+msgstr "Ignorirane mape"
 
-#: share/cover-thumbnailer-gui.glade:726
+#: share/cover-thumbnailer-gui.glade:930
 msgid "Ignore hidden folders (folders whose name starts with a dot)"
-msgstr ""
+msgstr "Ignoriraj skrivene mape (mape čiji naziv počinje sa točkom)"
 
-#: share/cover-thumbnailer-gui.glade:747
+#: share/cover-thumbnailer-gui.glade:954
 msgid "Folders to ignore:"
-msgstr ""
+msgstr "Ignorirane mape:"
 
-#: share/cover-thumbnailer-gui.glade:844
+#: share/cover-thumbnailer-gui.glade:1067
 msgid "Folders to never ignore:"
-msgstr ""
+msgstr "Mape koje nikada nisu ignorirane:"
 
-#: share/cover-thumbnailer-gui.glade:946
+#: share/cover-thumbnailer-gui.glade:1188
 msgid "Ignored"
-msgstr ""
+msgstr "Ignorirano"
 
-#: share/cover-thumbnailer-gui.glade:959
+#: share/cover-thumbnailer-gui.glade:1203
 msgid "Miscellaneous Options"
-msgstr ""
+msgstr "Razne mogućnosti"
 
-#: share/cover-thumbnailer-gui.glade:984
-msgid "Enable Cover Thumbnailer"
-msgstr ""
-
-#: share/cover-thumbnailer-gui.glade:1005
-msgid "Thumbnail size:"
-msgstr ""
-
-#: share/cover-thumbnailer-gui.glade:1016
-msgid "From 64px to 128px, the default value is 96px."
-msgstr ""
-
-#: share/cover-thumbnailer-gui.glade:1045
-msgid ""
-"This option will affect all thumbnails, not only those created by Cover "
-"Thumbnailer."
-msgstr ""
-
-#: share/cover-thumbnailer-gui.glade:1065
+#: share/cover-thumbnailer-gui.glade:1236
 msgid "Clear thumbnail cache"
-msgstr ""
+msgstr "Isprazni priručnu memoriju minijature"
 
-#: share/cover-thumbnailer-gui.glade:1081
+#: share/cover-thumbnailer-gui.glade:1254
 msgid ""
 "Clear the thumbnail cache if you have some problem with thumbnails, for "
 "example after changing the configuration."
 msgstr ""
+"Isprazni priručnu memoriju minijature ako imate neki problem sa "
+"minijaturama, npr. nakon promjene konfiguracije."
 
-#: share/cover-thumbnailer-gui.glade:1111
+#: share/cover-thumbnailer-gui.glade:1277
+msgid "Select a folder and generate thumbnails"
+msgstr ""
+
+#: share/cover-thumbnailer-gui.glade:1293
+msgid ""
+"This button allows to select a folder and to generate thumbnails for each "
+"subfolder it contains. This option is useful for Nautilus as Cover "
+"Thumbnailer is not able to generate thumbnails automatically for this file "
+"browser."
+msgstr ""
+
+#: share/cover-thumbnailer-gui.glade:1327
 msgid "Miscellaneous"
+msgstr "Razno"
+
+#: share/cover-thumbnailer-gui.glade:1432
+msgid "Error - Cover Thumbnailer"
+msgstr "Greška - Cover Thumbnailer"
+
+#: share/cover-thumbnailer-gui.glade:1442
+msgid "Can’t add this path"
+msgstr "Nemoguće je dodati ovu putanju"
+
+#: share/cover-thumbnailer-gui.glade:1443
+msgid "This path was already in the list!"
+msgstr "Ova putanja je već na popisu!"
+
+#: share/cover-thumbnailer-gui.glade:1495
+msgid "Generating thumbnails"
 msgstr ""
 
-#: share/cover-thumbnailer-gui.glade:1201
+#: share/cover-thumbnailer-gui.glade:1496
+msgid "Please wait..."
+msgstr ""
+
+#: share/cover-thumbnailer-gui.glade:1526
 msgid "About Cover Thumbnailer"
-msgstr ""
+msgstr "O Cover Thumbnaileru"
 
-#: share/cover-thumbnailer-gui.glade:1211
+#: share/cover-thumbnailer-gui.glade:1536
 msgid "Configuration tool for Cover Thumbnailer"
-msgstr ""
+msgstr "Alat podešavanja za Cover Thumbnailer"
 
-#: share/cover-thumbnailer-gui.glade:1213
+#: share/cover-thumbnailer-gui.glade:1538
 msgid ""
 "This program is free software: you can redistribute it and/or modify\n"
 "it under the terms of the GNU General Public License as published by\n"
@@ -199,33 +222,46 @@ msgid ""
 "You should have received a copy of the GNU General Public License\n"
 "along with this program. If not, see <http://www.gnu.org/licenses/>."
 msgstr ""
+"Ovaj program je slobodan software; možete ga redistribuirati i/ili "
+"modificirati\n"
+"pod uvjetima GNU Opće Javne Licence objavljene od \n"
+"Fundacije Slobodnog Softvera (Free Software Foundation); ili inačice 3 "
+"Licence ili\n"
+"(po vašemu mišljenju) svaka kasnija inačica.\n"
+"\n"
+"Ovaj program je distribuiran u nadi da će biti koristan\n"
+"ali BEZ IKAKVOG JAMSTVA; čak i bez podrazumjevanog jamstva ili\n"
+"POGODNOSTI ZA ODREĐENU NAMJENU. Pogledajte\n"
+"GNU Opću Javnu Licencu za više informacija.\n"
+"\n"
+"Trebali ste dobiti primjerak GNU Opće Javne Licence\n"
+"uz ovaj program; ako niste pogledajte <http://www.gnu.org/licenses>."
 
-#: share/cover-thumbnailer-gui.glade:1227
+#: share/cover-thumbnailer-gui.glade:1552
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
-"  nafterburner https://launchpad.net/~nafterburner"
+"  freedomrun https://launchpad.net/~freedomrun\n"
+"  gogo https://launchpad.net/~trebelnik-stefina"
 
-#: share/cover-thumbnailer-gui.glade:1255
-msgid "Not in your language?"
-msgstr ""
+#~ msgid "Enable Cover Thumbnailer"
+#~ msgstr "Omogući omot minijatura"
 
-#: share/cover-thumbnailer-gui.glade:1267
-msgid "Translate Cover Thumbnailer"
-msgstr ""
+#~ msgid "Thumbnail size:"
+#~ msgstr "Veličina minijature:"
 
-#: share/cover-thumbnailer-gui.glade:1318
-msgid "Select a folder - Cover Thumbnailer"
-msgstr ""
+#~ msgid "From 64px to 128px, the default value is 96px."
+#~ msgstr "Od 64px do 128px, zadana vrijednost je 96px."
 
-#: share/cover-thumbnailer-gui.glade:1386
-msgid "Error - Cover Thumbnailer"
-msgstr ""
+#~ msgid ""
+#~ "This option will affect all thumbnails, not only those created by Cover "
+#~ "Thumbnailer."
+#~ msgstr ""
+#~ "Ova mogućnost će utjecati na sve minijature a ne samo one stvorene Cover "
+#~ "Thumbnailer-om."
 
-#: share/cover-thumbnailer-gui.glade:1393
-msgid "Can’t add this path"
-msgstr ""
+#~ msgid "Not in your language?"
+#~ msgstr "Još nije na vašem jeziku?"
 
-#: share/cover-thumbnailer-gui.glade:1394
-msgid "This path was already in the list!"
-msgstr ""
+#~ msgid "Translate Cover Thumbnailer"
+#~ msgstr "Prevedite Cover Thumbnailer"
