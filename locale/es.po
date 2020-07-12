@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: cover-thumbnailer\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-07-12 17:59+0200\n"
-"PO-Revision-Date: 2011-04-20 22:30+0000\n"
+"PO-Revision-Date: 2020-07-12 18:05+0200\n"
 "Last-Translator: Quentin Pagès <Unknown>\n"
 "Language-Team: Spanish <es@li.org>\n"
 "Language: es\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Launchpad-Export-Date: 2017-06-23 05:43+0000\n"
-"X-Generator: Launchpad (build 18416)\n"
+"X-Generator: Poedit 2.3\n"
 
 #: cover-thumbnailer-gui.py:93 cover-thumbnailer-gui.py:100
 #: cover-thumbnailer-gui.py:642 cover-thumbnailer-gui.py:647
@@ -165,9 +165,8 @@ msgstr ""
 "ejemplo, luego de cambiar la configuración."
 
 #: share/cover-thumbnailer-gui.glade:1277
-#, fuzzy
 msgid "Select a folder and generate thumbnails"
-msgstr "Seleccionar carpeta -  Cover Thumbnailer"
+msgstr ""
 
 #: share/cover-thumbnailer-gui.glade:1293
 msgid ""
@@ -224,7 +223,8 @@ msgid ""
 "You should have received a copy of the GNU General Public License\n"
 "along with this program. If not, see <http://www.gnu.org/licenses/>."
 msgstr ""
-"Este programa es software libre: usted puede redistribuirlo y / o modificar\n"
+"Este programa es software libre: usted puede redistribuirlo y / o "
+"modificar\n"
 "bajo los términos de la GNU General Public License publicada por\n"
 "la Free Software Foundation, tanto de la versión 3 de la Licencia, o\n"
 "(A su elección) cualquier versión posterior.\n"

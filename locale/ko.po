@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: cover-thumbnailer\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-07-12 17:59+0200\n"
-"PO-Revision-Date: 2017-06-21 17:49+0000\n"
+"PO-Revision-Date: 2020-07-12 18:06+0200\n"
 "Last-Translator: Jaesung <jaesung@liberotown.com>\n"
 "Language-Team: Korean <ko@li.org>\n"
 "Language: ko\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Launchpad-Export-Date: 2017-06-23 05:43+0000\n"
-"X-Generator: Launchpad (build 18416)\n"
+"X-Generator: Poedit 2.3\n"
 
 #: cover-thumbnailer-gui.py:93 cover-thumbnailer-gui.py:100
 #: cover-thumbnailer-gui.py:642 cover-thumbnailer-gui.py:647
@@ -61,7 +61,7 @@ msgstr "커버 이미지가 없는 경우 기본 폴더 아이콘 유지"
 
 #: share/cover-thumbnailer-gui.glade:215
 msgid "Resize method:"
-msgstr "크기 변환 방법"
+msgstr ""
 
 #: share/cover-thumbnailer-gui.glade:236
 msgid "Crop"
@@ -162,9 +162,8 @@ msgid ""
 msgstr "썸네일에 문제가 있을 경우 썸네일 캐시를 지움"
 
 #: share/cover-thumbnailer-gui.glade:1277
-#, fuzzy
 msgid "Select a folder and generate thumbnails"
-msgstr "폴더 선택 - Cover Thumbnailer"
+msgstr ""
 
 #: share/cover-thumbnailer-gui.glade:1293
 msgid ""

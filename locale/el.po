@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: cover-thumbnailer\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-07-12 17:59+0200\n"
-"PO-Revision-Date: 2012-01-22 00:50+0000\n"
+"PO-Revision-Date: 2020-07-12 18:05+0200\n"
 "Last-Translator: George Christofis <geochr22@gmail.com>\n"
 "Language-Team: Greek <team@gnome.gr>\n"
 "Language: el\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Launchpad-Export-Date: 2017-06-23 05:43+0000\n"
-"X-Generator: Launchpad (build 18416)\n"
+"X-Generator: Poedit 2.3\n"
 
 #: cover-thumbnailer-gui.py:93 cover-thumbnailer-gui.py:100
 #: cover-thumbnailer-gui.py:642 cover-thumbnailer-gui.py:647
@@ -166,9 +166,8 @@ msgstr ""
 "τα thumbnails, για παράδειγμα μετά από αλλαγή των ρυθμίσεων."
 
 #: share/cover-thumbnailer-gui.glade:1277
-#, fuzzy
 msgid "Select a folder and generate thumbnails"
-msgstr "Επιλέξτε ένα φάκελο - Cover Thumbnailer"
+msgstr ""
 
 #: share/cover-thumbnailer-gui.glade:1293
 msgid ""
@@ -227,7 +226,8 @@ msgid ""
 msgstr ""
 "Αυτό το πρόγραμμα είναι ελεύθερο λογισμικό: μπορείτε να το αναδιανείμετε ή "
 "και να τροποποιήσετε\n"
-"σύμφωνα με τους όρους της GNU General Public License όπως δημοσιεύεται από\n"
+"σύμφωνα με τους όρους της GNU General Public License όπως δημοσιεύεται "
+"από\n"
 "το Free Software Foundation, είτε την έκδοση 3 της άδειας, είτε\n"
 "(κατ 'επιλογή σας) οποιαδήποτε μεταγενέστερη έκδοση.\n"
 "Αυτό το πρόγραμμα διανέμεται με την ελπίδα ότι θα είναι χρήσιμο,\n"

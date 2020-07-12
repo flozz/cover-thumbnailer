@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: cover-thumbnailer\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-07-12 17:59+0200\n"
-"PO-Revision-Date: 2011-06-17 20:33+0000\n"
+"PO-Revision-Date: 2020-07-12 18:09+0200\n"
 "Last-Translator: Atilla Öntaş <Unknown>\n"
 "Language-Team: Turkish <tr@li.org>\n"
 "Language: tr\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Launchpad-Export-Date: 2017-06-23 05:43+0000\n"
-"X-Generator: Launchpad (build 18416)\n"
+"X-Generator: Poedit 2.3\n"
 
 #: cover-thumbnailer-gui.py:93 cover-thumbnailer-gui.py:100
 #: cover-thumbnailer-gui.py:642 cover-thumbnailer-gui.py:647
@@ -164,9 +164,8 @@ msgstr ""
 "yaşıyorsanız, küçük resim önbelleğini temizleyin."
 
 #: share/cover-thumbnailer-gui.glade:1277
-#, fuzzy
 msgid "Select a folder and generate thumbnails"
-msgstr "Bir dizin seçin - Kapak Önizlemesi"
+msgstr ""
 
 #: share/cover-thumbnailer-gui.glade:1293
 msgid ""
@@ -233,7 +232,8 @@ msgstr ""
 "ÖZEL BİR UYGULAMA veya TİCARİ boyuttada bir garanti iddası da \n"
 "mevcut değildir. Daha fazla detay için GNU Genel Kamu Lisansı'na bakın.\n"
 "\n"
-"GNU Genel Kamu Lisansının bir kopyasını bu program ile edinmiş olmalısınız.\n"
+"GNU Genel Kamu Lisansının bir kopyasını bu program ile edinmiş "
+"olmalısınız.\n"
 "Eğer bulamaz iseniz bu adresden edinebilirsiniz: <http://www.gnu.org/"
 "licenses/>"
 
