@@ -363,6 +363,9 @@ class MainWin(object):
         ### ERROR DIALOG file already in list ###
         self.msgdlgErrorPAIL = win.get_object("msgdlgErrorPAIL")
 
+        ### INFO DIALOG generating thumbnails ###
+        self.msgdlgGeneratingThumbnails = win.get_object("msgdlgGeneratingThumbnails")
+
         loadInterface(self) #Put config on the gui
         win.connect_signals(self)
 
@@ -504,7 +507,10 @@ class MainWin(object):
         elif self.fileChooserFor == 'neverignored':
             addPathToList(self.lsstNeverIgnoredPathList, path, CONF['neverignored_paths'])
         elif self.fileChooserFor == 'generatethumbnails':
+            self.msgdlgGeneratingThumbnails.show()
+            gtk.main_iteration_do(True)
             generateThumbnails(path)
+            self.msgdlgGeneratingThumbnails.hide()
         self.fileChooserFor = None
 
     def on_filechooserdialog_delete_event(self, widget, response):
@@ -549,6 +555,7 @@ def generateThumbnails(path):
     if "DEVEL" in os.environ:
         CT_CMD = './cover-thumbnailer.py'
     for input_folder in list_folders(path):
+        gtk.main_iteration_do(False)
         print('Generating thumbnail for %s' % input_folder)
         output_file = generate_thumbnail_path(input_folder)
         print('  -> dest: %s' % output_file)
