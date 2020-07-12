@@ -45,15 +45,21 @@ __copyright__ = "Copyright © 2009 - 2011 Fabien LOISON"
 __appname__ = "cover-thumbnailer-gui"
 
 
-import gi
-gi.require_version("Gtk", "3.0")
-
-from gi.repository import Gtk as gtk
-
 import gettext
-gettext.install(__appname__)
+import os
+import re
+import shutil
+import glob
+import hashlib
+import subprocess
 
-import os, re, shutil
+import gi
+gi.require_version("Gtk", "3.0")  # noqa
+from gi.repository import Gtk as gtk
+from gi.repository import Gio
+
+
+gettext.install(__appname__)
 
 
 #Base path
@@ -374,11 +380,6 @@ class MainWin(object):
         CONF.save_user_conf()
         gtk.main_quit()
 
-    def on_btnClearThumbnailCache_clicked(self, widget):
-        thumbpath = os.path.join(CONF.user_homedir, '.cache/thumbnails')
-        if os.path.isdir(thumbpath):
-            shutil.rmtree(thumbpath)
-
     #~~~ MUSIC ~~~
     def on_cbMusicEnable_toggled(self, widget):
         CONF['music_enabled'] = self.cbMusicEnable.get_active()
@@ -478,6 +479,14 @@ class MainWin(object):
         self.btnNeverIgnoredRemove.set_sensitive(False)
 
     #~~~ MISCELLANEOUS ~~~
+    def on_btnClearThumbnailCache_clicked(self, widget):
+        thumbpath = os.path.join(CONF.user_homedir, '.cache/thumbnails')
+        if os.path.isdir(thumbpath):
+            shutil.rmtree(thumbpath)
+
+    def on_btnGenerateThumbnails_clicked(self, widget):
+        self.fileChooserFor = 'generatethumbnails'
+        self.fileChooser.show()
 
     ### FILECHOOSER DIALOG ###
     def on_btnFileChooserCancel_clicked(self, widget):
@@ -494,6 +503,8 @@ class MainWin(object):
             addPathToList(self.lsstIgnoredPathList, path, CONF['ignored_paths'])
         elif self.fileChooserFor == 'neverignored':
             addPathToList(self.lsstNeverIgnoredPathList, path, CONF['neverignored_paths'])
+        elif self.fileChooserFor == 'generatethumbnails':
+            generateThumbnails(path)
         self.fileChooserFor = None
 
     def on_filechooserdialog_delete_event(self, widget, response):
@@ -516,6 +527,32 @@ class MainWin(object):
 
     def on_btnErrorPAILClose_clicked(self, widget):
         self.msgdlgErrorPAIL.hide()
+
+
+def list_folders(base_path):
+    return glob.glob(os.path.join(base_path, "**/"), recursive=True)
+
+
+def generate_thumbnail_path(path):
+    gvfs = Gio.Vfs.get_default()
+    uri = gvfs.get_file_for_path(path).get_uri()
+    uri = uri.encode("utf-8")
+    uri_hash = hashlib.md5(uri).hexdigest()
+    return os.path.join(
+            CONF.user_homedir,
+            '.cache/thumbnails/normal',
+            '%s.png' % uri_hash)
+
+
+def generateThumbnails(path):
+    CT_CMD = 'cover-thumbnailer'
+    if "DEVEL" in os.environ:
+        CT_CMD = './cover-thumbnailer.py'
+    for input_folder in list_folders(path):
+        print('Generating thumbnail for %s' % input_folder)
+        output_file = generate_thumbnail_path(input_folder)
+        print('  -> dest: %s' % output_file)
+        subprocess.run([CT_CMD, input_folder, output_file])
 
 
 def addPathToList(gtklist, path, conflist):
