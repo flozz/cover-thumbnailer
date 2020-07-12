@@ -109,7 +109,7 @@ and generate thumbnails"` button.
 ![Screenshot](./screenshots/screenshot_ctgui_generate.png)
 
 **NOTE:** The thumbnail generation could take a while, just be patient. The
-thumbnails should appear afrer a relfresh of the folder.
+thumbnails should appear after a refresh of the folder.
 
 
 ## Changelog
