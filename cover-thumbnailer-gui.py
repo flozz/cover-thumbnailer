@@ -509,6 +509,8 @@ class MainWin(object):
         elif self.fileChooserFor == 'generatethumbnails':
             self.msgdlgGeneratingThumbnails.show()
             gtk.main_iteration_do(True)
+            CONF.save_user_conf()  # Save user conf before generating thumbs
+            gtk.main_iteration_do(True)
             generateThumbnails(path)
             self.msgdlgGeneratingThumbnails.hide()
         self.fileChooserFor = None
