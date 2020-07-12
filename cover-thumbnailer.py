@@ -1,4 +1,4 @@
-#!/usr/bin/python2
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
    #########################################################################
@@ -603,14 +603,14 @@ def match_path(path, path_list):
     """
     match = False
     #We add a slash at the end.
-    if path[-1:] is not "/":
+    if path[-1:] != "/":
         path += "/"
     for entry in path_list:
         #We add a slash at the end.
-        if entry[-1:] is not "/":
+        if entry[-1:] != "/":
             entry += "/"
         if re.match(r"^" + entry + ".*", path):
-            if path is not entry:
+            if path != entry:
                 match = True
                 break
     return match
