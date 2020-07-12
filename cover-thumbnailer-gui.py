@@ -62,12 +62,6 @@ if "DEVEL" in os.environ:
 else:
     BASE_PATH = "/usr/share/cover-thumbnailer/"
 
-#GConf key for enabling/disabling Cover thumbnailer
-GCONF_KEY = "/desktop/gnome/thumbnailers/inode@directory/enable"
-
-#GConf key for nautilus thumbnails size
-GCONF_KEY_NAUTILUS_THUMB_SIZE = "/apps/nautilus/icon_view/thumbnail_size"
-
 
 class Conf(dict):
 
