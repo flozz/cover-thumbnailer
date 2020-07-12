@@ -4,13 +4,18 @@
 > is legacy code that have not been maintained for years, so it may not work
 > out of the box and fixes can take time to be released.
 
-Cover thumbnailer is a small Python script which displays music album covers
-in Nautilus (GNOME file browser) and Thunar (XFCE file browser), preview of
-pictures which are in a folder and more.
+Cover thumbnailer is a small Python script which displays music album covers,
+preview of pictures which are in a folder and more.
+
+Supported file browser:
+
+* Nautilus¹ (GNOME file browser)
+* Thunar (XFCE file browser)
+* Caja (MATE file browser)
 
 ----
 
-**NOTE: Nautilus support**
+**NOTE¹: Nautilus support**
 
 Since Nautilus started sandboxing thumbnailers, Cover Thumbnailer do not work
 out of the box with this file borwser anymore. A button have been added to the
