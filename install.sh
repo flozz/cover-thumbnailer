@@ -41,7 +41,7 @@ LOGFILE="/tmp/cover-thumbnailer$1_$$.log"
 _install() {
 	#Install the software
 	#$1 : The installation path if different of /
-	
+
 	#Check if an older version is installed
 	if [ -z $1 ] ; then { #Only for --install
 		_check_for_old_version
@@ -189,12 +189,12 @@ _check_dep() {
 	echo "$_BOLD * Checking dependencies...$_NORMAL"
 	echo -n "   * Nautilus ............................ "
 	test -x /usr/bin/nautilus && echo "$_GREEN[OK]$_NORMAL" || { echo "$_RED[Missing]$_NORMAL" ; error=1 ; }
-	#echo -n "   * Python .............................. "
-	#test -x /usr/bin/python && echo "$_GREEN[OK]$_NORMAL" || { echo "$_RED[Missing]$_NORMAL" ; error=1 ; }
+	echo -n "   * Python 3 ............................ "
+	test -x /usr/bin/python3 && echo "$_GREEN[OK]$_NORMAL" || { echo "$_RED[Missing]$_NORMAL" ; error=1 ; }
 	echo -n "   * Python Imaging Library (PIL) ........ "
 	$_PY <<< "$(echo -e "try: from PIL import Image\nexcept: import Image")" 1> /dev/null 2> /dev/null && echo "$_GREEN[OK]$_NORMAL" || { echo "$_RED[Missing]$_NORMAL" ; error=1 ; }
-	echo -n "   * Python GTK Bindings (PyGTK) ......... "
-	$_PY <<< "import gtk, pygtk" 1> /dev/null 2> /dev/null && echo "$_GREEN[OK]$_NORMAL" || { echo "$_RED[Missing]$_NORMAL" ; error=1 ; }
+	echo -n "   * Python gi and GTK introspection ..... "
+	$_PY <<< "import gi ; gi.require_version('Gtk', '3.0') ; from gi.repository import Gtk" 1> /dev/null 2> /dev/null && echo "$_GREEN[OK]$_NORMAL" || { echo "$_RED[Missing]$_NORMAL" ; error=1 ; }
 	echo -n "   * Python gettext support .............. "
 	$_PY <<< "import gettext" 1> /dev/null 2> /dev/null && echo "$_GREEN[OK]$_NORMAL" || { echo "$_RED[Missing]$_NORMAL" ; error=1 ; }
 	if [ "$error" == "1" ] ; then {
@@ -226,10 +226,7 @@ export LANG=C
 echo -e "$SOFTWARE - $DESC\n"
 
 #Python
-export _PY=/usr/bin/python
-if [ -x /usr/bin/python2 ] ; then
-	export _PY=/usr/bin/python2
-fi
+export _PY=/usr/bin/python3
 
 #Action do to
 if [ "$1" == "--install" ] || [ "$1" == "-i" ] ; then {
