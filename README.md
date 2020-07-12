@@ -5,11 +5,18 @@
 > out of the box and fixes can take time to be released.
 
 Cover thumbnailer is a small Python script which displays music album covers
-in Nautilus, preview of pictures which are in a folder and more.
+in Nautilus (GNOME file browser) and Thunar (XFCE file browser), preview of
+pictures which are in a folder and more.
 
-The script fits in Nautilus like any other thumbnailer of the GNOME
-thumbnail factory; so you don't have to run it manually to generate
-thumbnails.
+----
+
+**NOTE: Nautilus support**
+
+Since Nautilus started sandboxing thumbnailers, Cover Thumbnailer do not work
+out of the box with this file borwser anymore. A button have been added to the
+configuration GUI to generate manually the thumbnails for a specific folder.
+
+----
 
 Cover Thumbnailer is free software distributed under the GNU GPL v3+ license,
 you are free to modify and redistribute it under the terms of the license.
@@ -22,40 +29,39 @@ you are free to modify and redistribute it under the terms of the license.
 
 Cover Thumbailer dependencies:
 
-* PIL / pillow (on Ubuntu: `sudo apt install python-pil`)
-* PyGI
-
-Cover Thumbnailer GUI dependencies:
-
-* PyGTK 2 (on Ubuntu: `sudo apt install python-gtk2`; this package is not available on Ubuntu 20.04, you'll need to use this PPA to install it: `sudo add-apt-repository ppa:nrbrtx/python2-stuff`)
-
-Development / Build dependencies:
-
+* PIL / pillow
+* Python bindings for GObject Introspection
+* Introspection files for GTK 3.0
 * GNU gettext
+
+On Debian / Ubuntu, this can be installed using the following command:
+
+    sudo apt install gettext python3-pil python3-gi gir1.2-gtk-3.0
 
 
 ## Installing Cover Thumbnailer
 
-Clone this repository:
+Clone this repository or [download a zip][gh-zip] from Github:
 
     git clone https://github.com/flozz/cover-thumbnailer.git
-    # or through SSH:
-    git clone git@github.com:flozz/cover-thumbnailer.git
 
-Move to directory:
+Go to the project folder:
 
     cd cover-thumbnailer/
 
-To install Cover thumbnailer, run the following command as root:
+Install Cover thumbnailer using the following command:
 
-    ./install.sh --install
+    sudo ./install.sh --install
+
+
+[gh-zip]: https://github.com/flozz/cover-thumbnailer/archive/master.zip
 
 
 ## Uninstalling Cover Thumbnailer
 
-To uninstall Cover thumbnailer, run the following command as root:
+To uninstall Cover thumbnailer, run the following command:
 
-    /usr/share/cover-thumbnailer/uninstall.sh --remove
+    sudo /usr/share/cover-thumbnailer/uninstall.sh --remove
 
 
 ## Configuring Cover Thumbnailer
@@ -65,3 +71,7 @@ command to start the tool:
 
     cover-thumbnailer-gui
 
+
+## Changelog
+
+* **0.8.4:** Old version imported to github
