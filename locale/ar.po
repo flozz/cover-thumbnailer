@@ -6,170 +6,156 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: cover-thumbnailer\n"
-"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2010-07-03 13:44+0200\n"
-"PO-Revision-Date: 2011-01-10 19:12+0000\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-07-12 17:59+0200\n"
+"PO-Revision-Date: 2017-06-21 17:48+0000\n"
 "Last-Translator: Xeriab Nabil <kodeburner@gmail.com>\n"
 "Language-Team: Arabic <ar@li.org>\n"
+"Language: ar\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2011-01-11 05:28+0000\n"
-"X-Generator: Launchpad (build Unknown)\n"
+"X-Launchpad-Export-Date: 2017-06-23 05:43+0000\n"
+"X-Generator: Launchpad (build 18416)\n"
 
-#: cover-thumbnailer-gui.py:90 cover-thumbnailer-gui.py:97
-#: cover-thumbnailer-gui.py:615 cover-thumbnailer-gui.py:619
+#: cover-thumbnailer-gui.py:93 cover-thumbnailer-gui.py:100
+#: cover-thumbnailer-gui.py:642 cover-thumbnailer-gui.py:647
 msgid "<None>"
-msgstr "<بدون>"
+msgstr "<لا شيء>"
 
-#: cover-thumbnailer-gui.py:198
+#: cover-thumbnailer-gui.py:201
 msgid "Configuration written by Cover Thumbnailer GUI"
-msgstr ""
-"تمت كتابة اﻹعداد بواسطة واجهة المستخدم الخاص ببرنامج Cover Thumbnailer"
+msgstr "تمت كتابة الإعدادات بواسطة Cover Thumbnailer GUI"
 
-#: cover-thumbnailer-gui.py:199
+#: cover-thumbnailer-gui.py:202
 msgid "Please edit with caution"
-msgstr "الرجاء التعديل بحرص!"
+msgstr "الرجاء الحذر عند التعديل"
 
-#: cover-thumbnailer-gui.py:570 share/cover-thumbnailer-gui.glade:377
+#. %s will be replaced by the folder path and must be kept unchanged.
+#: cover-thumbnailer-gui.py:606 share/cover-thumbnailer-gui.glade:530
 #, python-format
 msgid "Enable for GNOME's music folder (%s)"
-msgstr "تمكين لمجلد غنوم الصوتي (%s)"
+msgstr "تفعيل مجلد غنوم الصوتي (%s)"
 
-#: cover-thumbnailer-gui.py:585 share/cover-thumbnailer-gui.glade:602
+#. %s will be replaced by the folder path and must be kept unchanged.
+#: cover-thumbnailer-gui.py:621 share/cover-thumbnailer-gui.glade:790
 #, python-format
 msgid "Enable for GNOME's picture folder (%s)"
-msgstr "تمكين لمجلد غنوم للصور (%s)"
+msgstr "تفعيل مجلد غنوم للصور (%s)"
 
-#: share/cover-thumbnailer-gui.glade:38
+#: share/cover-thumbnailer-gui.glade:22
+msgid "Select a folder - Cover Thumbnailer"
+msgstr "إخر مجلداً - برنامج Cover Thumbnailer"
+
+#: share/cover-thumbnailer-gui.glade:137
 msgid "Music Folders"
 msgstr "مجلدات الموسيقى"
 
-#: share/cover-thumbnailer-gui.glade:62
+#: share/cover-thumbnailer-gui.glade:164
 msgid "Enable Cover Thumbnailer for music folders"
 msgstr "فَعَل أغلفة المصغرات لمجلدات الموسيقى"
 
-#: share/cover-thumbnailer-gui.glade:76
+#: share/cover-thumbnailer-gui.glade:180
 msgid "Keep the default folder icon if no cover was found"
 msgstr "اﻹبقاء على غلاف المجلد اﻹفتراضي إن لم تجد غلافاً"
 
-#: share/cover-thumbnailer-gui.glade:105
+#: share/cover-thumbnailer-gui.glade:215
 msgid "Resize method:"
 msgstr "طريقة إعادة التحجيم:"
 
-#: share/cover-thumbnailer-gui.glade:123
+#: share/cover-thumbnailer-gui.glade:236
 msgid "Crop"
 msgstr "إقتصاص"
 
-#: share/cover-thumbnailer-gui.glade:139
+#: share/cover-thumbnailer-gui.glade:253
 msgid "Preserve"
 msgstr "إبقاء"
 
-#: share/cover-thumbnailer-gui.glade:194
+#: share/cover-thumbnailer-gui.glade:319
 msgid "Allow mosaic:"
 msgstr "السماح بوضع الفسيفساء:"
 
-#: share/cover-thumbnailer-gui.glade:227
+#: share/cover-thumbnailer-gui.glade:356
 msgid "No"
 msgstr "لا"
 
-#: share/cover-thumbnailer-gui.glade:243
+#: share/cover-thumbnailer-gui.glade:373
 msgid "Yes"
 msgstr "موافق"
 
-#: share/cover-thumbnailer-gui.glade:286
+#: share/cover-thumbnailer-gui.glade:424
 msgid "List of music folders:"
 msgstr "قائمة المجلدات الموسيقية"
 
-#: share/cover-thumbnailer-gui.glade:402
+#: share/cover-thumbnailer-gui.glade:560
 msgid "Music"
 msgstr "موسيقى"
 
-#: share/cover-thumbnailer-gui.glade:415
+#: share/cover-thumbnailer-gui.glade:575
 msgid "Picture Folders"
 msgstr "مجلدات الصور"
 
-#: share/cover-thumbnailer-gui.glade:439
+#: share/cover-thumbnailer-gui.glade:602
 msgid "Enable Cover Thumbnailer for picture folders"
-msgstr "تمكين المصغرات لمجلدات الصور"
+msgstr "تفعيل المصغرات لمجلدات الصور"
 
-#: share/cover-thumbnailer-gui.glade:453
+#: share/cover-thumbnailer-gui.glade:618
 msgid "Keep the default folder icon if no pictures were found"
 msgstr "إبقاء ايقونه المجلد الإفتراضيه في حال عدم العثور على صوره"
 
-#: share/cover-thumbnailer-gui.glade:472
+#: share/cover-thumbnailer-gui.glade:641
 msgid "Maximum number of pictures on thumbnail:"
 msgstr "أقصى عدد للصور على المصغرات"
 
-#: share/cover-thumbnailer-gui.glade:511
+#: share/cover-thumbnailer-gui.glade:684
 msgid "List of picture folders:"
 msgstr "قائمة بمجلدات الصور:"
 
-#: share/cover-thumbnailer-gui.glade:630
+#: share/cover-thumbnailer-gui.glade:823
 msgid "Pictures"
 msgstr "صور"
 
-#: share/cover-thumbnailer-gui.glade:644
+#: share/cover-thumbnailer-gui.glade:839
 msgid "Other Folders"
 msgstr "مجلدات أخرى"
 
-#: share/cover-thumbnailer-gui.glade:665
+#: share/cover-thumbnailer-gui.glade:862
 msgid "Enable Cover Thumbnailer for other folders"
 msgstr "السماح بعرض المصغرات للمجلدات الأخرى"
 
-#: share/cover-thumbnailer-gui.glade:688
+#: share/cover-thumbnailer-gui.glade:887
 msgid "Others"
 msgstr "أخرى"
 
-#: share/cover-thumbnailer-gui.glade:702
+#: share/cover-thumbnailer-gui.glade:903
 msgid "Ignored Folders"
 msgstr "المجلدات المتجاهلة"
 
-#: share/cover-thumbnailer-gui.glade:726
+#: share/cover-thumbnailer-gui.glade:930
 msgid "Ignore hidden folders (folders whose name starts with a dot)"
 msgstr "تجاهل المجلدات المخفية (المجلدات التي تبدأ اسمائها بنقطة)"
 
-#: share/cover-thumbnailer-gui.glade:747
+#: share/cover-thumbnailer-gui.glade:954
 msgid "Folders to ignore:"
 msgstr "المجلدات للتجاهل:"
 
-#: share/cover-thumbnailer-gui.glade:844
+#: share/cover-thumbnailer-gui.glade:1067
 msgid "Folders to never ignore:"
 msgstr "المجلدات التي لا يتم تجاهلها ابدا:"
 
-#: share/cover-thumbnailer-gui.glade:946
+#: share/cover-thumbnailer-gui.glade:1188
 msgid "Ignored"
 msgstr "تم تجاهله"
 
-#: share/cover-thumbnailer-gui.glade:959
+#: share/cover-thumbnailer-gui.glade:1203
 msgid "Miscellaneous Options"
 msgstr "خيارات متنوعة"
 
-#: share/cover-thumbnailer-gui.glade:984
-msgid "Enable Cover Thumbnailer"
-msgstr "تشغيل Cover Thumbnailer"
-
-#: share/cover-thumbnailer-gui.glade:1005
-msgid "Thumbnail size:"
-msgstr "قياس المصغرة:"
-
-#: share/cover-thumbnailer-gui.glade:1016
-msgid "From 64px to 128px, the default value is 96px."
-msgstr "من 64 بيكسل إلى 128 بيكسل , القيمة الإفتراضية 96 بيكسل."
-
-#: share/cover-thumbnailer-gui.glade:1045
-msgid ""
-"This option will affect all thumbnails, not only those created by Cover "
-"Thumbnailer."
-msgstr ""
-"هذا الخيار يوثر على جميع المصغرات, وليس فقط الناتجة عن البرنامج Cover "
-"Thumbnailer."
-
-#: share/cover-thumbnailer-gui.glade:1065
+#: share/cover-thumbnailer-gui.glade:1236
 msgid "Clear thumbnail cache"
 msgstr "أفرغ ذاكرة التخزين المؤقت للمصغرات"
 
-#: share/cover-thumbnailer-gui.glade:1081
+#: share/cover-thumbnailer-gui.glade:1254
 msgid ""
 "Clear the thumbnail cache if you have some problem with thumbnails, for "
 "example after changing the configuration."
@@ -177,19 +163,52 @@ msgstr ""
 "أفرغ ذاكرة التخزين المؤقت للمصغرات إذا كنت تواجه مشاكلاً مع المصغرات، مثلاً "
 "بعد تغيير اﻹعدادات."
 
-#: share/cover-thumbnailer-gui.glade:1111
+#: share/cover-thumbnailer-gui.glade:1277
+#, fuzzy
+msgid "Select a folder and generate thumbnails"
+msgstr "إخر مجلداً - برنامج Cover Thumbnailer"
+
+#: share/cover-thumbnailer-gui.glade:1293
+msgid ""
+"This button allows to select a folder and to generate thumbnails for each "
+"subfolder it contains. This option is useful for Nautilus as Cover "
+"Thumbnailer is not able to generate thumbnails automatically for this file "
+"browser."
+msgstr ""
+
+#: share/cover-thumbnailer-gui.glade:1327
 msgid "Miscellaneous"
 msgstr "متنوع"
 
-#: share/cover-thumbnailer-gui.glade:1201
+#: share/cover-thumbnailer-gui.glade:1432
+msgid "Error - Cover Thumbnailer"
+msgstr "خطأ - برنامج المصغرات Cover Thumbnailer"
+
+#: share/cover-thumbnailer-gui.glade:1442
+msgid "Can’t add this path"
+msgstr "لا يمكن إضافه هذا المسار"
+
+#: share/cover-thumbnailer-gui.glade:1443
+msgid "This path was already in the list!"
+msgstr "هذا المسار موجود مسبقا في القائمه!"
+
+#: share/cover-thumbnailer-gui.glade:1495
+msgid "Generating thumbnails"
+msgstr ""
+
+#: share/cover-thumbnailer-gui.glade:1496
+msgid "Please wait..."
+msgstr ""
+
+#: share/cover-thumbnailer-gui.glade:1526
 msgid "About Cover Thumbnailer"
 msgstr "حول برنامج Cover Thumbnailer"
 
-#: share/cover-thumbnailer-gui.glade:1211
+#: share/cover-thumbnailer-gui.glade:1536
 msgid "Configuration tool for Cover Thumbnailer"
 msgstr "أداة إعداد برنامج Cover Thumbnailer"
 
-#: share/cover-thumbnailer-gui.glade:1213
+#: share/cover-thumbnailer-gui.glade:1538
 msgid ""
 "This program is free software: you can redistribute it and/or modify\n"
 "it under the terms of the GNU General Public License as published by\n"
@@ -217,41 +236,33 @@ msgstr ""
 "You should have received a copy of the GNU General Public License\n"
 "along with this program. If not, see <http://www.gnu.org/licenses/>."
 
-#: share/cover-thumbnailer-gui.glade:1227
+#: share/cover-thumbnailer-gui.glade:1552
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
+"  Houssem BELHADJ AHMED https://launchpad.net/~houssem\n"
+"  Mahmoud https://launchpad.net/~mahmouds-com\n"
 "  Xeriab Nabil https://launchpad.net/~kodeburner\n"
 "  mega speed https://launchpad.net/~dr-megaspeed"
 
-#: share/cover-thumbnailer-gui.glade:1255
-msgid "Not in your language?"
-msgstr "غير متوفر بلغتك ؟"
+#~ msgid "Enable Cover Thumbnailer"
+#~ msgstr "تفعيل Cover Thumbnailer:"
 
-#: share/cover-thumbnailer-gui.glade:1267
-msgid "Translate Cover Thumbnailer"
-msgstr "ترجم برنامج المصغرات  Cover Thumbnailer"
+#~ msgid "Thumbnail size:"
+#~ msgstr "قياس المصغرة:"
 
-#: share/cover-thumbnailer-gui.glade:1318
-msgid "Select a folder - Cover Thumbnailer"
-msgstr "إخر مجلداً - برنامج Cover Thumbnailer"
+#~ msgid "From 64px to 128px, the default value is 96px."
+#~ msgstr "من 64 بيكسل إلى 128 بيكسل , القيمة الإفتراضية 96 بيكسل."
 
-#: share/cover-thumbnailer-gui.glade:1386
-msgid "Error - Cover Thumbnailer"
-msgstr "خطأ - برنامج المصغرات Cover Thumbnailer"
+#~ msgid ""
+#~ "This option will affect all thumbnails, not only those created by Cover "
+#~ "Thumbnailer."
+#~ msgstr ""
+#~ "هذا الخيار يوثر على جميع المصغرات, وليس فقط الناتجة عن البرنامج Cover "
+#~ "Thumbnailer."
 
-#: share/cover-thumbnailer-gui.glade:1393
-msgid "Can’t add this path"
-msgstr "لا يمكن إضافه هذا المسار"
+#~ msgid "Not in your language?"
+#~ msgstr "غير متوفر بلغتك ؟"
 
-#: share/cover-thumbnailer-gui.glade:1394
-msgid "This path was already in the list!"
-msgstr "هذا المسار موجود مسبقا في القائمه!"
-
-#, python-format
-#~ msgid "Enable for GNOME’s music folder (%s)"
-#~ msgstr "التفعيل لمجلد الموسيقى الخاص بغنوم (%s)"
-
-#, python-format
-#~ msgid "Enable for GNOME’s picture folder (%s)"
-#~ msgstr "التفعيل لمجلد الصور الخاص بغنوم (%s)"
+#~ msgid "Translate Cover Thumbnailer"
+#~ msgstr "ترجم برنامج المصغرات  Cover Thumbnailer"

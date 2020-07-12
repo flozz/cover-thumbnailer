@@ -6,186 +6,211 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: cover-thumbnailer\n"
-"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2010-07-03 13:44+0200\n"
-"PO-Revision-Date: 2010-09-18 15:33+0000\n"
-"Last-Translator: Launchpad Translations Administrators "
-"<rosetta@launchpad.net>\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-07-12 17:59+0200\n"
+"PO-Revision-Date: 2012-01-23 21:10+0000\n"
+"Last-Translator: Marc Coll Carrillo <Unknown>\n"
 "Language-Team: Catalan <ca@li.org>\n"
+"Language: ca\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-09-19 05:48+0000\n"
-"X-Generator: Launchpad (build Unknown)\n"
+"X-Launchpad-Export-Date: 2017-06-23 05:43+0000\n"
+"X-Generator: Launchpad (build 18416)\n"
 
-#: cover-thumbnailer-gui.py:90 cover-thumbnailer-gui.py:97
-#: cover-thumbnailer-gui.py:615 cover-thumbnailer-gui.py:619
+#: cover-thumbnailer-gui.py:93 cover-thumbnailer-gui.py:100
+#: cover-thumbnailer-gui.py:642 cover-thumbnailer-gui.py:647
 msgid "<None>"
-msgstr ""
+msgstr "<Cap>"
 
-#: cover-thumbnailer-gui.py:198
+#: cover-thumbnailer-gui.py:201
 msgid "Configuration written by Cover Thumbnailer GUI"
-msgstr "Configuració Escrita per Cover Thumbnailer GUI"
+msgstr "Configuració escrita per Cover Thumbnailer GUI"
 
-#: cover-thumbnailer-gui.py:199
+#: cover-thumbnailer-gui.py:202
 msgid "Please edit with caution"
-msgstr "Si us plau, modifiqui amb precaució"
+msgstr "Si us plau, editeu amb precaució"
 
-#: cover-thumbnailer-gui.py:570 share/cover-thumbnailer-gui.glade:377
+#. %s will be replaced by the folder path and must be kept unchanged.
+#: cover-thumbnailer-gui.py:606 share/cover-thumbnailer-gui.glade:530
 #, python-format
 msgid "Enable for GNOME's music folder (%s)"
-msgstr ""
+msgstr "Habilita per a la carpeta de música de GNOME (%s)"
 
-#: cover-thumbnailer-gui.py:585 share/cover-thumbnailer-gui.glade:602
+#. %s will be replaced by the folder path and must be kept unchanged.
+#: cover-thumbnailer-gui.py:621 share/cover-thumbnailer-gui.glade:790
 #, python-format
 msgid "Enable for GNOME's picture folder (%s)"
-msgstr ""
+msgstr "Habilita per a la carpeta d'imatges de GNOME (%s)"
 
-#: share/cover-thumbnailer-gui.glade:38
+#: share/cover-thumbnailer-gui.glade:22
+msgid "Select a folder - Cover Thumbnailer"
+msgstr "Seleccioni una carpeta - Cover Thumbnailer"
+
+#: share/cover-thumbnailer-gui.glade:137
 msgid "Music Folders"
-msgstr ""
+msgstr "Carpetes de música"
 
-#: share/cover-thumbnailer-gui.glade:62
+#: share/cover-thumbnailer-gui.glade:164
 msgid "Enable Cover Thumbnailer for music folders"
-msgstr "Activar Cover Thumbnailer per carpetes de Música"
+msgstr "Habilita el Cover Thumbnailer per a les carpetes de música"
 
-#: share/cover-thumbnailer-gui.glade:76
+#: share/cover-thumbnailer-gui.glade:180
 msgid "Keep the default folder icon if no cover was found"
 msgstr "Manté l'icona per defecte si no es troba la tapa"
 
-#: share/cover-thumbnailer-gui.glade:105
+#: share/cover-thumbnailer-gui.glade:215
 msgid "Resize method:"
-msgstr ""
+msgstr "Métode de redimensionament:"
 
-#: share/cover-thumbnailer-gui.glade:123
+#: share/cover-thumbnailer-gui.glade:236
 msgid "Crop"
-msgstr ""
+msgstr "Escapça"
 
-#: share/cover-thumbnailer-gui.glade:139
+#: share/cover-thumbnailer-gui.glade:253
 msgid "Preserve"
-msgstr ""
+msgstr "Conservar"
 
-#: share/cover-thumbnailer-gui.glade:194
+#: share/cover-thumbnailer-gui.glade:319
 msgid "Allow mosaic:"
-msgstr ""
+msgstr "Permet mosaic :"
 
-#: share/cover-thumbnailer-gui.glade:227
+#: share/cover-thumbnailer-gui.glade:356
 msgid "No"
-msgstr ""
+msgstr "No"
 
-#: share/cover-thumbnailer-gui.glade:243
+#: share/cover-thumbnailer-gui.glade:373
 msgid "Yes"
-msgstr ""
+msgstr "Sí"
 
-#: share/cover-thumbnailer-gui.glade:286
+#: share/cover-thumbnailer-gui.glade:424
 msgid "List of music folders:"
-msgstr ""
+msgstr "Llista de carpetes de música:"
 
-#: share/cover-thumbnailer-gui.glade:402
+#: share/cover-thumbnailer-gui.glade:560
 msgid "Music"
 msgstr "Música"
 
-#: share/cover-thumbnailer-gui.glade:415
+#: share/cover-thumbnailer-gui.glade:575
 msgid "Picture Folders"
-msgstr ""
+msgstr "Carpetes d'imatges"
 
-#: share/cover-thumbnailer-gui.glade:439
+#: share/cover-thumbnailer-gui.glade:602
 msgid "Enable Cover Thumbnailer for picture folders"
-msgstr ""
+msgstr "Habilita el Cover Thumbnailer per a les carpetes d'imatges"
 
-#: share/cover-thumbnailer-gui.glade:453
+#: share/cover-thumbnailer-gui.glade:618
 msgid "Keep the default folder icon if no pictures were found"
-msgstr ""
+msgstr "Mantingues l'icona per defecte de la carpeta si no es troben imatges"
 
-#: share/cover-thumbnailer-gui.glade:472
+#: share/cover-thumbnailer-gui.glade:641
 msgid "Maximum number of pictures on thumbnail:"
-msgstr ""
+msgstr "Màxim nombre d'imatges en miniatura:"
 
-#: share/cover-thumbnailer-gui.glade:511
+#: share/cover-thumbnailer-gui.glade:684
 msgid "List of picture folders:"
-msgstr ""
+msgstr "Llista de carpetes d'imatges:"
 
-#: share/cover-thumbnailer-gui.glade:630
+#: share/cover-thumbnailer-gui.glade:823
 msgid "Pictures"
 msgstr "Imatges"
 
-#: share/cover-thumbnailer-gui.glade:644
+#: share/cover-thumbnailer-gui.glade:839
 msgid "Other Folders"
-msgstr ""
+msgstr "Altres carpetes"
 
-#: share/cover-thumbnailer-gui.glade:665
+#: share/cover-thumbnailer-gui.glade:862
 msgid "Enable Cover Thumbnailer for other folders"
-msgstr "Activar Cover Thumbnailer per altres carpetes"
+msgstr "Habilita el Cover Thumbnailer per a les altres carpetes"
 
-#: share/cover-thumbnailer-gui.glade:688
+#: share/cover-thumbnailer-gui.glade:887
 msgid "Others"
 msgstr "Altres"
 
-#: share/cover-thumbnailer-gui.glade:702
+#: share/cover-thumbnailer-gui.glade:903
 msgid "Ignored Folders"
-msgstr ""
+msgstr "Carpetes ignorades"
 
-#: share/cover-thumbnailer-gui.glade:726
+#: share/cover-thumbnailer-gui.glade:930
 msgid "Ignore hidden folders (folders whose name starts with a dot)"
 msgstr ""
+"Ignora les carpetes ocultes (carpetes el nom de les quals comença per un "
+"punt)"
 
-#: share/cover-thumbnailer-gui.glade:747
+#: share/cover-thumbnailer-gui.glade:954
 msgid "Folders to ignore:"
-msgstr ""
+msgstr "Carpetes a ignorar"
 
-#: share/cover-thumbnailer-gui.glade:844
+#: share/cover-thumbnailer-gui.glade:1067
 msgid "Folders to never ignore:"
-msgstr ""
+msgstr "Carpetes que mai s'han d'ignorar"
 
-#: share/cover-thumbnailer-gui.glade:946
+#: share/cover-thumbnailer-gui.glade:1188
 msgid "Ignored"
-msgstr "Ignorat"
+msgstr "Ignorada"
 
-#: share/cover-thumbnailer-gui.glade:959
+#: share/cover-thumbnailer-gui.glade:1203
 msgid "Miscellaneous Options"
-msgstr ""
+msgstr "Opcions diverses"
 
-#: share/cover-thumbnailer-gui.glade:984
-msgid "Enable Cover Thumbnailer"
-msgstr "Activar Cover Thumbnailer"
-
-#: share/cover-thumbnailer-gui.glade:1005
-msgid "Thumbnail size:"
-msgstr ""
-
-#: share/cover-thumbnailer-gui.glade:1016
-msgid "From 64px to 128px, the default value is 96px."
-msgstr ""
-
-#: share/cover-thumbnailer-gui.glade:1045
-msgid ""
-"This option will affect all thumbnails, not only those created by Cover "
-"Thumbnailer."
-msgstr ""
-
-#: share/cover-thumbnailer-gui.glade:1065
+#: share/cover-thumbnailer-gui.glade:1236
 msgid "Clear thumbnail cache"
-msgstr "Esborrar la memòria cau de les miniatures"
+msgstr "Neteja la memòria cau de les miniatures"
 
-#: share/cover-thumbnailer-gui.glade:1081
+#: share/cover-thumbnailer-gui.glade:1254
 msgid ""
 "Clear the thumbnail cache if you have some problem with thumbnails, for "
 "example after changing the configuration."
 msgstr ""
+"Netejeu la memòria cau de les miniatures si teniu cap problema amb les "
+"miniatures, per exemple després de canviar la configuració."
 
-#: share/cover-thumbnailer-gui.glade:1111
+#: share/cover-thumbnailer-gui.glade:1277
+#, fuzzy
+msgid "Select a folder and generate thumbnails"
+msgstr "Seleccioni una carpeta - Cover Thumbnailer"
+
+#: share/cover-thumbnailer-gui.glade:1293
+msgid ""
+"This button allows to select a folder and to generate thumbnails for each "
+"subfolder it contains. This option is useful for Nautilus as Cover "
+"Thumbnailer is not able to generate thumbnails automatically for this file "
+"browser."
+msgstr ""
+
+#: share/cover-thumbnailer-gui.glade:1327
 msgid "Miscellaneous"
 msgstr "Miscel·lània"
 
-#: share/cover-thumbnailer-gui.glade:1201
+#: share/cover-thumbnailer-gui.glade:1432
+msgid "Error - Cover Thumbnailer"
+msgstr "Error - Cover Thumbnailer"
+
+#: share/cover-thumbnailer-gui.glade:1442
+msgid "Can’t add this path"
+msgstr "No es pot efegir aquest camí"
+
+#: share/cover-thumbnailer-gui.glade:1443
+msgid "This path was already in the list!"
+msgstr "Aquest camí ja es trobava a la llista!"
+
+#: share/cover-thumbnailer-gui.glade:1495
+msgid "Generating thumbnails"
+msgstr ""
+
+#: share/cover-thumbnailer-gui.glade:1496
+msgid "Please wait..."
+msgstr ""
+
+#: share/cover-thumbnailer-gui.glade:1526
 msgid "About Cover Thumbnailer"
 msgstr "Sobre Cover Thumbnailer"
 
-#: share/cover-thumbnailer-gui.glade:1211
+#: share/cover-thumbnailer-gui.glade:1536
 msgid "Configuration tool for Cover Thumbnailer"
-msgstr "Eina de configuració per Cover Thumbnailer"
+msgstr "Eina de configuració del Cover Thumbnailer"
 
-#: share/cover-thumbnailer-gui.glade:1213
+#: share/cover-thumbnailer-gui.glade:1538
 msgid ""
 "This program is free software: you can redistribute it and/or modify\n"
 "it under the terms of the GNU General Public License as published by\n"
@@ -200,56 +225,46 @@ msgid ""
 "You should have received a copy of the GNU General Public License\n"
 "along with this program. If not, see <http://www.gnu.org/licenses/>."
 msgstr ""
+"Aquest programa és software lliure: podeu redistribuir-lo i/o modificar-lo\n"
+"sota les condicions de la Llicència Pública General (GPL) publicada per la\n"
+"Free Software Foundation, tant la versió 3 de la llicència com (a la vostra\n"
+"elecció) qualsevol versió posterior.\n"
+"\n"
+"Aquest programa es distribueix amb l'esperança de que serà útil, però\n"
+"SENSE CAP GARANTIA; fins i tot sense la garantia mercantil implícita de\n"
+"propòsit general. Veieu la Llicència Pública General de GNU per a més\n"
+"detalls.\n"
+"\n"
+"Hauríeu d'haver rebut una còpia de la Llicència Pública General de GNU\n"
+"juntament amb aquest programa. Si no és així, veieu\n"
+"<http://www.gnu.org/licenses/>."
 
-#: share/cover-thumbnailer-gui.glade:1227
+#: share/cover-thumbnailer-gui.glade:1552
 msgid "translator-credits"
 msgstr ""
+"Launchpad Contributions:\n"
+"  Marc Coll Carrillo https://launchpad.net/~marc-coll-carrillo\n"
+"  Quentin Pagès https://launchpad.net/~kwentin\n"
+"  RedRudeBoy https://launchpad.net/~redrudeboy"
 
-#: share/cover-thumbnailer-gui.glade:1255
-msgid "Not in your language?"
-msgstr ""
+#~ msgid "Enable Cover Thumbnailer"
+#~ msgstr "Habilita el Cover Thumbnailer"
 
-#: share/cover-thumbnailer-gui.glade:1267
-msgid "Translate Cover Thumbnailer"
-msgstr "Tradueix Cover Thumbnailer"
+#~ msgid "Thumbnail size:"
+#~ msgstr "Mida de les miniatures:"
 
-#: share/cover-thumbnailer-gui.glade:1318
-msgid "Select a folder - Cover Thumbnailer"
-msgstr "Seleccioni una carpeta - Cover Thumbnailer"
-
-#: share/cover-thumbnailer-gui.glade:1386
-msgid "Error - Cover Thumbnailer"
-msgstr "Error - Cover Thumbnailer"
-
-#: share/cover-thumbnailer-gui.glade:1393
-msgid "Can’t add this path"
-msgstr ""
-
-#: share/cover-thumbnailer-gui.glade:1394
-msgid "This path was already in the list!"
-msgstr ""
-
-#~ msgid "Ignore hidden folders (folders whose name start with a dot)"
-#~ msgstr "Ignorar carpetes ocultes (carpetes que el nom comença amb un punt)"
-
-#~ msgid "Keep the default folder icon if no pictures was found"
-#~ msgstr "Manté l'icona per defecte si no troba imatges"
-
-#~ msgid "Enable Cover Thumbnailer for pictures folders"
-#~ msgstr "Activar Cover Thumbnailer per carpetes d'imatges"
+#~ msgid "From 64px to 128px, the default value is 96px."
+#~ msgstr "Des de 64px fins a 128px, el valor per defecte és 96px"
 
 #~ msgid ""
-#~ "Clear the thumbnail cache if you have some problem with thumbnails, after "
-#~ "changing the configuration for example"
+#~ "This option will affect all thumbnails, not only those created by Cover "
+#~ "Thumbnailer."
 #~ msgstr ""
-#~ "Esborri la memòria cau de les miniatures si té algun problema amb les "
-#~ "miniatures, després de canviar la configuració per exemple"
+#~ "Aquesta opció afectarà a totes les miniatures, no només les creades pel "
+#~ "Cover Thumbnailer."
 
-#~ msgid "List of music folders :"
-#~ msgstr "Llista de carpetes amb música :"
+#~ msgid "Not in your language?"
+#~ msgstr "No està en el seu idioma?"
 
-#~ msgid "Folders to ignore :"
-#~ msgstr "Carpetes a ignorar :"
-
-#~ msgid "Not in your language ?"
-#~ msgstr "No està en el teu idioma ?"
+#~ msgid "Translate Cover Thumbnailer"
+#~ msgstr "Tradueix Cover Thumbnailer"
