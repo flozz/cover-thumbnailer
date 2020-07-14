@@ -34,6 +34,7 @@ browsers:
 * Nautilus¹ (GNOME file browser)
 * Thunar (XFCE file browser)
 * Caja (MATE file browser)
+* Nemo (Cinnamon file browser)
 
 ----
 
@@ -98,8 +99,8 @@ You can also run it with the following command:
 
 ## Generating Thumbnails
 
-If you are using **Thunar** or **Caja**, it should work out of the box: just
-open a folder and thumbnails should be generated automatically.
+If you are using **Thunar**, **Caja**, or **Nemo**, it should work out of the
+box: just open a folder and thumbnails should be generated automatically.
 
 If you are using **Nautilus**, thumbnails cannot be generated automatically in
 most recent version of this file browser. You can generate thumbnails manually
