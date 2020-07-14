@@ -55,9 +55,17 @@ Cover Thumbailer dependencies:
 * Introspection files for GTK 3.0
 * GNU gettext
 
-On Debian / Ubuntu, this can be installed using the following command:
+On **Debian** / **Ubuntu**, this can be installed using the following command:
 
     sudo apt install gettext python3-pil python3-gi gir1.2-gtk-3.0
+
+On **Fedora**, you can install the dependencies using this command:
+
+    sudo dnf install git gettext python3-pillow python3-gobject
+
+On **Arch Linux** and **Manjaro**, the command to install requirements is:
+
+    sudo pacman -S git gettext gtk3 python-pillow
 
 
 ## Installing Cover Thumbnailer
