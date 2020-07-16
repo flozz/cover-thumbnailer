@@ -81,7 +81,7 @@ If definitively no picture was found, it will display an empty CD case (or the d
 
 ### Pictures folders
 
-If Cover Thumbnailer is **enabled for pictures folders** (it is the case by default) and the current folder is recognized as a pictures folder, the generated thumbnail will looks like a portfolio, up to four pictures found in the folder.
+If Cover Thumbnailer is **enabled for pictures folders** (it is the case by default) and the current folder is recognized as a pictures folder, the generated thumbnail will looks like a portfolio, and up to four pictures found in the folder will be displayed on it.
 
 #### In short
 
@@ -89,9 +89,9 @@ If any pictures are available in the folder (or its subfolders), they will be us
 
 #### In detail
 
-First, Cover Thumbnailer will look for pictures in any supported format (list bellow) in the folder. If it find at least one, it will stops its search here and will display up to four pictures in the thumbnail, depending of what was found and you configuration (by default it will display up to tree pictures).
+First, Cover Thumbnailer will look for pictures in any supported format (list bellow) in the folder. If it find at least one, it will stops its search here and will display up to four pictures in the thumbnail, depending of what was found and your configuration (by default it will display up to tree pictures).
 
-If no image were found, it will then search recursively in the folder.
+If no images were found, it will then search recursively in the folder.
 
 If there is still no picture found, it will display an empty portfolio or the default folder icon depending of your configuration.
 
@@ -109,7 +109,7 @@ List of supported images formats / extensions:
 
 ### Other folders
 
-If Cover Thumbnailer is **enabled for pictures folders** (it is the case by default), Cover Thumbnailer will search in the folder for a file with a name like `cover/folder.png/jpg` (same list than for the music).
+If Cover Thumbnailer is **enabled for other folders** (it is the case by default), Cover Thumbnailer will search in the folder for a file with a name like `cover/folder.png/jpg` (same list than for the music).
 
 
 ## Installing Cover Thumbnailer
