@@ -46,9 +46,77 @@ configuration GUI to generate manually the thumbnails for a specific folder,
 see bellow.
 
 
-## Requirements
+## How does it work?
 
-Cover Thumbailer dependencies:
+How Cover Thumbnailer decides what to display on a folder? It depends on the type of the folder and you configuration.
+
+By default, Cover Thumbnailer will detect your main "Music" and "Pictures" folder using the XDG configuration file (`~/.config/user-dirs.dirs`). You can disable this and / or add other folders using the configuration GUI (see bellow).
+
+
+### Music folders
+
+If Cover Thumbnailer is **enabled for music folders** (it is the case by default) and the current folder is recognized as a music folder, the generated thumbnail will looks like a CD case, with zero, one or more cover on it depending on found pictures and user configuration.
+
+#### In short
+
+Just put an image with a name like `cover.png/jpg`, `.cover.png/jpg`, `folder.png/jpg` in the folder, and it should work.
+
+#### In detail
+
+Cover Thumbnailer will first look in the folder itself if an image with one of the following name exists (it searches in this precise order) :
+
+    cover.png   cover.jpg   .cover.png   .cover.jpg
+    Cover.png   Cover.jpg   .Cover.png   .Cover.jpg
+    folder.png  folder.jpg  .folder.png  .folder.jpg
+    Folder.png  Folder.jpg  .Folder.png  .Folder.jpg
+
+If yes it will use **this** image to generate the thumbnail.
+
+If there is no file matching one of the name above, it will search for any picture in a supported format (see "Pictures folders" documentation bellow for a list) in the folder and by default it will use the first one it found, or up to four pictures if the `Allow mosaic` option is enabled.
+
+If there is still no picture found, it will then search recursively for it and will use the first one or up to four pictures depending of the `Allow mosaic` option.
+
+If definitively no picture was found, it will display an empty CD case (or the default folder icon depending of your configuration).
+
+
+### Pictures folders
+
+If Cover Thumbnailer is **enabled for pictures folders** (it is the case by default) and the current folder is recognized as a pictures folder, the generated thumbnail will looks like a portfolio, up to four pictures found in the folder.
+
+#### In short
+
+If any pictures are available in the folder (or its subfolders), they will be used in the thumbnail.
+
+#### In detail
+
+First, Cover Thumbnailer will look for pictures in any supported format (list bellow) in the folder. If it find at least one, it will stops its search here and will display up to four pictures in the thumbnail, depending of what was found and you configuration (by default it will display up to tree pictures).
+
+If no image were found, it will then search recursively in the folder.
+
+If there is still no picture found, it will display an empty portfolio or the default folder icon depending of your configuration.
+
+List of supported images formats / extensions:
+
+* `.jpg`, `.JPG`, `jpeg`, `JPEG`,
+* `.png`, `.PNG`,
+* `.gif`, `.GIF`,
+* `.bmp`, `.BMP` (Window ans OS/2 bitmap),
+* `.ico`, `.ICO` (Windows icon format),
+* `.tga`, `.TGA` (Truevision Targa format),
+* `.tif`, `.TIF`, `tiff`, `TIFF` (Adobe Tagged Image File Format),
+* `.psd`, `.PSD` (#Adobe Photosop format, only version 2.5 and 3.0).
+
+
+### Other folders
+
+If Cover Thumbnailer is **enabled for pictures folders** (it is the case by default), Cover Thumbnailer will search in the folder for a file with a name like `cover/folder.png/jpg` (same list than for the music).
+
+
+## Installing Cover Thumbnailer
+
+### Requirements
+
+Cover Thumbnailer dependencies:
 
 * PIL / pillow
 * Python bindings for GObject Introspection
@@ -68,7 +136,7 @@ On **Arch Linux** and **Manjaro**, the command to install requirements is:
     sudo pacman -S git gettext gtk3 python-pillow
 
 
-## Installing Cover Thumbnailer
+### Install from source
 
 Clone this repository or [download a zip][gh-zip] from Github:
 
@@ -86,6 +154,22 @@ Install Cover Thumbnailer using the following command:
 [gh-zip]: https://github.com/flozz/cover-thumbnailer/archive/master.zip
 
 
+### Ubuntu PPA
+
+There use to be a PPA for Ubuntu, but it is not up to date anymore, please do
+not use it.
+
+**You have to uninstall the package from the PPA before installing Cover
+Thumbnailer from the sources.**
+
+
+### Archlinux AUR
+
+There is a package in AUR for Archlinux:
+
+* https://aur.archlinux.org/packages/cover-thumbnailer/
+
+
 ## Uninstalling Cover Thumbnailer
 
 To uninstall Cover thumbnailer, run the following command:
@@ -95,14 +179,18 @@ To uninstall Cover thumbnailer, run the following command:
 
 ## Configuring Cover Thumbnailer
 
-Cover Thumbnailer provides a GUI tool to configure it. You will find it in your
-application launcher like any other software.
+Cover Thumbnailer provides a graphical tool to configure it. You will find it
+in your application launcher like any other software.
 
 You can also run it with the following command:
 
     cover-thumbnailer-gui
 
 ![Screenshot of Cover Thumnailer configuration tool](./screenshots/screenshot_ctgui.png)
+
+The configuration tool will write the configuration in the
+`~/.cover-thumbnailer/cover-thumbnailer.conf` file. It is a plain-text file, so
+you can also edit it manually.
 
 
 ## Generating Thumbnails
@@ -127,7 +215,8 @@ thumbnails should appear after a refresh of the folder.
     * Port from Python 2 to Python 3
     * Port the config GUI from GTK 2 (PyGTK) to GTK 3 (GObject Introspection)
     * Adds a button to generates manually the thumbnails (required for Nautilus)
-    * Support of Thunar and Caja
+    * Support of Thunar, Caja, and Nemo
     * Update translations
     * various fixes
+
 * **0.8.4:** Old version imported to github
