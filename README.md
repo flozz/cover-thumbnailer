@@ -26,7 +26,7 @@ you are free to modify and redistribute it under the terms of the license.
 [contact]: https://contact.flozz.fr/
 
 
-## Supported file browser
+## Supported file browsers
 
 As far as I know, Cover Thumbnailer currently works with the following file
 browsers:
@@ -48,9 +48,9 @@ see bellow.
 
 ## How does it work?
 
-How Cover Thumbnailer decides what to display on a folder? It depends on the type of the folder and you configuration.
+How Cover Thumbnailer decides what to display on a folder? It depends on the type of the folder and your configuration.
 
-By default, Cover Thumbnailer will detect your main "Music" and "Pictures" folder using the XDG configuration file (`~/.config/user-dirs.dirs`). You can disable this and / or add other folders using the configuration GUI (see bellow).
+By default, Cover Thumbnailer will detect your main "Music" and "Pictures" folders using the XDG configuration file (`~/.config/user-dirs.dirs`). You can disable this and / or add other folders using the graphical configuration tool (see bellow).
 
 
 ### Music folders
