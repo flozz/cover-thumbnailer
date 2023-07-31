@@ -261,7 +261,7 @@ class Thumb(object):
                 right = width
                 lower = width + upper
             image = image.crop((left, upper, right, lower))
-        image.thumbnail((twidth, theight), Image.ANTIALIAS)
+        image.thumbnail((twidth, theight), Image.LANCZOS)
         return image
 
     def music_thumbnail(self, bg_picture, fg_picture, crop=True):
