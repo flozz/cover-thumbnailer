@@ -44,7 +44,7 @@ Usage:
     cover-thumbnailer <directory's path> <output thumbnail's path>
 """
 
-__version__ = "0.10.0"
+__version__ = "0.10.1"
 __author__ = "Fabien Loison <http://www.flozz.fr/>"
 __copyright__ = "Copyright © 2009 - 2023 Fabien LOISON"
 

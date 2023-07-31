@@ -213,6 +213,10 @@ thumbnails should appear after a refresh of the folder.
 
 * **[NEXT]** (changes on `master` but not released yet):
 
+  * Nothing yet :)
+
+* **v0.10.1 (2023-07-31):**
+
   * Added Pillow >= 10.0 compatibility by replacing deprecated `PIL.Image.ANTIALIAS` constant by `PIL.Image.LANCSZOS` (@flozz, #16)
 
 * **v0.10.0 (2020-07-12):**

@@ -28,8 +28,8 @@
 ##                                                                        ##
 ############################################################################
 ##                                                                        ##
-## VERSION : 0.8.3 (Thu, 27 Oct 2011 14:12:10 +0200)                      ##
-## WEB SITE : http://projects.flogisoft.com/cover-thumbnailer/            ##
+## VERSION : 0.10.1 (Mon Jul 31 13:41:54 CEST 2023)                       ##
+## WEB SITE : https://github.com/flozz/cover-thumbnailer                  ##
 ##                                                                       ##
 #########################################################################
 
@@ -293,5 +293,3 @@ if [ "$1" == "--install" ] || [ "$1" == "-i" ] ; then {
 	echo "  --locale : extract strings to for the translation template."
 	exit 4
 } fi
-
-
