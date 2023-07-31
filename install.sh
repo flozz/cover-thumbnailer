@@ -11,7 +11,7 @@
 ##                                                                        ##
 ## Cover thumbnailer — Installer                                          ##
 ##                                                                        ##
-## Copyright (C) 2009 - 2011  Fabien Loison <flo at flogisoft dot com>    ##
+## Copyright (C) 2009 - 2023  Fabien Loison <flo at flogisoft dot com>    ##
 ##                                                                        ##
 ## This program is free software: you can redistribute it and/or modify   ##
 ## it under the terms of the GNU General Public License as published by   ##
