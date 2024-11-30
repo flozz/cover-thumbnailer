@@ -654,7 +654,7 @@ if __name__ == "__main__":
         sys.exit(0)
 
     #Folders whose name starts with a dot
-    elif CONF['ignored_dotted'] and re.match(".*/\..*", INPUT_FOLDER):
+    elif CONF['ignored_dotted'] and re.match(r".*/\..*", INPUT_FOLDER):
         sys.exit(0)
 
     #Music folders
