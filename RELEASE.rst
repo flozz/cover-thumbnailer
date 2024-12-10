@@ -17,13 +17,8 @@ This file is a memo for the maintainer.
 1. Release
 ----------
 
-* Update version number in ``cover-thumbnailer.py`` (``__version__`` var)
-* Update version number in ``cover-thumbnailer-gui.py`` (``__version__`` var)
-* Update version number in ``install.sh`` (comment)
-* Update version number and date in ``man/cover-thumbnailer.1`` (header)
-* Update version number and date in ``man/cover-thumbnailer-gui.1`` (header)
 * Edit / update changelog in ``README.md``
-* Commit / tag (``git commit -m vX.Y.Z && git tag vX.Y.Z && git push && git push --tags``)
+* Publish (``make publish``)
 
 
 2. Publish Github Release
