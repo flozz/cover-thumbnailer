@@ -214,6 +214,7 @@ thumbnails should appear after a refresh of the folder.
 * **[NEXT]** (changes on `master` but not released yet):
 
   * fix: Fixed bad regex escape sequence (@Caellian, #21)
+  * feat: Added pyproject.toml (@Caellian, #22)
 
 * **v0.10.1 (2023-07-31):**
 
