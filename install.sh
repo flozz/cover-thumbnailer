@@ -11,7 +11,7 @@
 ##                                                                        ##
 ## Cover thumbnailer — Installer                                          ##
 ##                                                                        ##
-## Copyright (C) 2009 - 2023  Fabien Loison <flo at flogisoft dot com>    ##
+## Copyright (C) 2009 - 2024  Fabien Loison <flo at flogisoft dot com>    ##
 ##                                                                        ##
 ## This program is free software: you can redistribute it and/or modify   ##
 ## it under the terms of the GNU General Public License as published by   ##
@@ -28,7 +28,7 @@
 ##                                                                        ##
 ############################################################################
 ##                                                                        ##
-## VERSION : 0.10.1 (Mon Jul 31 13:41:54 CEST 2023)                       ##
+## VERSION : 0.10.2 (Sat Dec 14 18:29:51 CET 2024)                        ##
 ## WEB SITE : https://github.com/flozz/cover-thumbnailer                  ##
 ##                                                                       ##
 #########################################################################
