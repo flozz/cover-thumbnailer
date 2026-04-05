@@ -1,8 +1,8 @@
 [project]
 name = "cover-thumbnailer"
-version = "0.10.1"
+version = "0.10.3"
 description = "directory cover thumbnailer for GTK based file viewers"
-authors = ["Fabien Loison <http://www.flozz.fr/>"]
+authors = ["Fabien LOISON <http://www.flozz.fr/>"]
 readme = "README.md"
 license = "GPL-3.0"
 classifiers = [

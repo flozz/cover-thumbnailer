@@ -20,6 +20,7 @@ This file is a memo for the maintainer.
 * Update version number in ``cover-thumbnailer.py`` (``__version__`` var)
 * Update version number in ``cover-thumbnailer-gui.py`` (``__version__`` var)
 * Update version number in ``install.sh`` (comment)
+* Update version number in ``pyproject.toml``
 * Update version number and date in ``man/cover-thumbnailer.1`` (header)
 * Update version number and date in ``man/cover-thumbnailer-gui.1`` (header)
 * Edit / update changelog in ``README.md``
