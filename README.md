@@ -215,6 +215,10 @@ thumbnails should appear after a refresh of the folder.
 
   * Nothing yet ;)
 
+* **v0.10.4 (2026-10-05):**
+
+  * feat(l10n): Updated European Portuguese translation (@Ricardo-Simoes, #29)
+
 * **v0.10.3 (2026-04-05):**
 
   * fix: Ensure the output directory exists (@dmzoneill, #23, #25)

@@ -39,7 +39,7 @@
 A GUI for easily configuring Cover Thumbnailer.
 """
 
-__version__ = "0.10.3"
+__version__ = "0.10.4"
 __author__ = "Fabien LOISON <http://www.flozz.fr/>"
 __copyright__ = "Copyright © 2009 - 2026 Fabien LOISON"
 __appname__ = "cover-thumbnailer-gui"

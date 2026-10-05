@@ -1,6 +1,6 @@
 [project]
 name = "cover-thumbnailer"
-version = "0.10.3"
+version = "0.10.4"
 description = "directory cover thumbnailer for GTK based file viewers"
 authors = ["Fabien LOISON <http://www.flozz.fr/>"]
 readme = "README.md"
